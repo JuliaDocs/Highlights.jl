@@ -1,5 +1,8 @@
 using Highlights
-using Base.Test
 
-# write your own tests here
-@test 1 == 2
+if VERSION >= v"0.5.0-dev+7720"
+    using Base.Test
+else
+    using BaseTestNext
+    const Test = BaseTestNext
+end
