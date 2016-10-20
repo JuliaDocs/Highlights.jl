@@ -14,6 +14,9 @@ end
 
 # Names.
 
+export
+    JuliaLexer
+
 abstract JuliaLexer <: AbstractLexer
 
 

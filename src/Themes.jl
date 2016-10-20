@@ -42,9 +42,20 @@ immutable Theme
 end
 
 
+# Theme names.
+
+export
+    DefaultTheme,
+    GitHubTheme
+
+abstract DefaultTheme <: AbstractTheme
+abstract GitHubTheme <: AbstractTheme
+
+
 # Theme definitions.
 
 include("themes/default.jl")
+include("themes/github.jl")
 
 
 # Theme builder.

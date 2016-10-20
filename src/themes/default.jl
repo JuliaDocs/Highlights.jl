@@ -1,5 +1,3 @@
-abstract DefaultTheme <: AbstractTheme
-
 definition(::Type{DefaultTheme}) = Dict(
     :name => "Default Theme",
     :comments => "Based on the default theme provided by Pygments.",
