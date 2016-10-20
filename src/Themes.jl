@@ -49,11 +49,13 @@ end
 export
     DefaultTheme,
     GitHubTheme,
-    MonokaiTheme
+    MonokaiTheme,
+    XcodeTheme
 
 abstract DefaultTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
 abstract MonokaiTheme <: AbstractTheme
+abstract XcodeTheme <: AbstractTheme
 
 
 # Theme definitions.
@@ -61,6 +63,7 @@ abstract MonokaiTheme <: AbstractTheme
 include("themes/default.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")
+include("themes/xcode.jl")
 
 
 # Theme builder.
