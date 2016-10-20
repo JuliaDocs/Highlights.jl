@@ -36,6 +36,7 @@ macro S_str(spec)
 end
 
 immutable Theme
+    base::Style
     style::Dict{UInt, Style}
     names::Dict{UInt, Symbol}
 end
@@ -49,7 +50,9 @@ include("themes/default.jl")
 # Theme builder.
 
 @generated function build_theme{T <: AbstractTheme, L <: AbstractLexer}(::Type{T}, ::Type{L})
-    local style = get(definition(T), :tokens, Dict{Symbol, Style}())
+    local def = definition(T)
+    local base = get(def, :style, S"")
+    local style = get(def, :tokens, Dict{Symbol, Style}())
     local par = Dict{UInt, UInt}()
     local rev = Dict{UInt, Symbol}()
     # Parent tokens for all tokens used in the lexer `L`.
@@ -74,7 +77,7 @@ include("themes/default.jl")
             end
         end
     end
-    return Theme(sty, rev)
+    return Theme(base, sty, rev)
 end
 
 function parent!(d::Dict, rev::Dict, s::Symbol)

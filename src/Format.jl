@@ -42,9 +42,10 @@ function render(io::IO, mime::MIME"text/css", theme::Theme)
             margin: 5px;
             padding: 5px;
             overflow-x: auto;
-        }
-        """
+            """
     )
+    render(io, mime, theme.base)
+    println(io, "}")
     for (hash, style) in theme.style
         print(io, "pre.hljl > span.hljl-", theme.names[hash], " { ")
         render(io, mime, style)
