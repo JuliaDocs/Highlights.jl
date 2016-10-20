@@ -1,6 +1,7 @@
 definition(::Type{GitHubTheme}) = Dict(
     :name => "GitHub Theme",
     :comments => "Based on the Rouge 'GitHub' theme.",
+    :style => S"bg: f8f8f8",
     :tokens => Dict(
         :comment             => S"fg: 999988; italic",
         :comment_multiline   => S"fg: 999988; italic",

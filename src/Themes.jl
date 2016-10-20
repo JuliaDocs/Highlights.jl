@@ -18,15 +18,17 @@ immutable Style
         fg = bg = NULL_STRING
         bold = italics = underline = false
         for part in split(spec, r"\s*;\s*")
-            startswith(part, "fg:") && (fg = part[4:end])
-            startswith(part, "bg:") && (bg = part[4:end])
+            startswith(part, "fg:") && (fg = strip(part[4:end]))
+            startswith(part, "bg:") && (bg = strip(part[4:end]))
             part == "bold" && (bold = true)
             part == "italic" && (italics = true)
             part == "underline" && (underline = true)
         end
-        return new(fg, bg, bold, italics, underline)
+        return new(expand_html(fg), expand_html(bg), bold, italics, underline)
     end
 end
+
+expand_html(s::AbstractString) = length(s) == 3 ? join(map(join, zip(s, s))) : s
 
 has_fg(s::Style) = s.fg !== NULL_STRING
 has_bg(s::Style) = s.bg !== NULL_STRING
