@@ -1,7 +1,55 @@
 # Highlights
 
-[![Build Status](https://travis-ci.org/MichaelHatherly/Highlights.jl.svg?branch=master)](https://travis-ci.org/MichaelHatherly/Highlights.jl)
+*A source code highlighter for Julia.*
 
-[![Coverage Status](https://coveralls.io/repos/MichaelHatherly/Highlights.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/MichaelHatherly/Highlights.jl?branch=master)
+| **Documentation**                                                               | **Build Status**                                                                                |
+|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
 
-[![codecov.io](http://codecov.io/github/MichaelHatherly/Highlights.jl/coverage.svg?branch=master)](http://codecov.io/github/MichaelHatherly/Highlights.jl?branch=master)
+
+## Installation
+
+The package is not yet registered in `METADATA.jl` and so just be installed with `Pkg.clone`.
+
+```julia
+julia> Pkg.clone("https://github.com/JuliaDocs/Highlights.jl")
+```
+
+## Documentation
+
+- [**STABLE**][docs-stable-url] &mdash; **most recently tagged version of the documentation.**
+- [**LATEST**][docs-latest-url] &mdash; *in-development version of the documentation.*
+
+## Project Status
+
+The package is tested against Julia `0.4`, `0.5`, and `0.6-dev` on Linux, OS X, and Windows.
+
+## Contributing and Questions
+
+Contributions are very welcome, as are feature requests and suggestions. The
+[contributing][contrib-url] page details the guidelines that should be followed when opening
+pull requests.
+
+Please open an [issue][issues-url] if you encounter any problems. If you have a question
+then feel free to ask for help in the [Gitter chat room][gitter-url].
+
+[gitter-url]: https://gitter.im/juliadocs/users
+
+[contrib-url]: https://juliadocs.github.io/Documenter.jl/latest/man/contributing/
+
+[docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
+[docs-latest-url]: https://juliadocs.github.io/Highlights.jl/latest
+
+[docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-stable-url]: https://juliadocs.github.io/Highlights.jl/stable
+
+[travis-img]: https://travis-ci.org/JuliaDocs/Highlights.jl.svg?branch=master
+[travis-url]: https://travis-ci.org/JuliaDocs/Highlights.jl
+
+[appveyor-img]: https://ci.appveyor.com/api/projects/status/qnphq3a8eph3o979/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/MichaelHatherly/highlights-jl/branch/master
+
+[codecov-img]: https://codecov.io/gh/JuliaDocs/Highlights.jl/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/JuliaDocs/Highlights.jl
+
+[issues-url]: https://github.com/JuliaDocs/Highlights.jl/issues
