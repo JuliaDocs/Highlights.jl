@@ -124,11 +124,11 @@ end
 
 function escape(io::IO, ::MIME"text/html", str::AbstractString)
     for char in str
-        char === '&' ? print(io, "&amp;") :
-        char === '<' ? print(io, "&lt;") :
-        char === '>' ? print(io, "&gt;") :
-        char === '"' ? print(io, "&quot;") :
-        char === ''' ? print(io, "&#39;") :
+        char === '&'  ? print(io, "&amp;") :
+        char === '<'  ? print(io, "&lt;") :
+        char === '>'  ? print(io, "&gt;") :
+        char === '"'  ? print(io, "&quot;") :
+        char === '\'' ? print(io, "&#39;") :
             print(io, char)
     end
 end
@@ -136,7 +136,7 @@ end
 function escape(io::IO, ::MIME"text/latex", str::AbstractString)
     for char in str
         char === '`'  ? print(io, "{\\textasciigrave}") :
-        char === '''  ? print(io, "{\\textquotesingle}") :
+        char === '\'' ? print(io, "{\\textquotesingle}") :
         char === '$'  ? print(io, "{\\\$}") :
         char === '%'  ? print(io, "{\\%}") :
         char === '#'  ? print(io, "{\\#}") :
