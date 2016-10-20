@@ -50,12 +50,14 @@ export
     DefaultTheme,
     GitHubTheme,
     MonokaiTheme,
+    TangoTheme,
     VisualStudioTheme,
     XcodeTheme
 
 abstract DefaultTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
 abstract MonokaiTheme <: AbstractTheme
+abstract TangoTheme <: AbstractTheme
 abstract VisualStudioTheme <: AbstractTheme
 abstract XcodeTheme <: AbstractTheme
 
@@ -65,6 +67,7 @@ abstract XcodeTheme <: AbstractTheme
 include("themes/default.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")
+include("themes/tango.jl")
 include("themes/vs.jl")
 include("themes/xcode.jl")
 
