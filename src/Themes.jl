@@ -52,6 +52,7 @@ export
     GitHubTheme,
     MonokaiTheme,
     TangoTheme,
+    TracTheme,
     VimTheme,
     VisualStudioTheme,
     XcodeTheme
@@ -61,6 +62,7 @@ abstract EmacsTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
 abstract MonokaiTheme <: AbstractTheme
 abstract TangoTheme <: AbstractTheme
+abstract TracTheme <: AbstractTheme
 abstract VimTheme <: AbstractTheme
 abstract VisualStudioTheme <: AbstractTheme
 abstract XcodeTheme <: AbstractTheme
@@ -73,6 +75,7 @@ include("themes/emacs.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")
 include("themes/tango.jl")
+include("themes/trac.jl")
 include("themes/vim.jl")
 include("themes/vs.jl")
 include("themes/xcode.jl")
