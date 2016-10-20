@@ -69,7 +69,39 @@ var documenterSearchIndex = {"docs": [
     "page": "Theme Guide",
     "title": "Theme Guide",
     "category": "section",
-    "text": "Under Construction..."
+    "text": "This page outlines how to go about adding new theme definitions to Highlights."
+},
+
+{
+    "location": "man/theme.html#Required-Imports-1",
+    "page": "Theme Guide",
+    "title": "Required Imports",
+    "category": "section",
+    "text": "To get started adding a new theme definition you will need to import the following two names from the Highlights module and one from the Highlights.Themes module.import Highlights: AbstractTheme, definition\nimport Highlights.Themes: @S_strIn the next two sections we'll explain the purpose of each of those imports."
+},
+
+{
+    "location": "man/theme.html#The-AbstractTheme-Type-1",
+    "page": "Theme Guide",
+    "title": "The AbstractTheme Type",
+    "category": "section",
+    "text": "AbstractTheme is the super type of all theme definitions in Highlights. A theme is just an abstract type that is a subtype of Highlights.AbstractTheme. For this example we will define a new theme called, very imaginatively, CustomTheme:abstract CustomTheme <: AbstractThemeThat's all there is to the type itself. Next we'll define what colours should be used for each token [1] when we highlight source code using our new theme."
+},
+
+{
+    "location": "man/theme.html#The-definition-Definition-1",
+    "page": "Theme Guide",
+    "title": "The definition Definition",
+    "category": "section",
+    "text": "Now we'll use the definition function to tell Highlights what colours we want different parts of our source code to be highlighted in. We do this by defining a new Method of definition for our CustomTheme type as follows:definition(::Type{CustomTheme}) = Dict(\n    :style => S\"bg: f7f3ee; fg: 605b53\",\n    :tokens => Dict(\n        :text    => S\"\",\n        :keyword => S\"fg: 614c60; bold\",\n        :string  => S\"fg: a1789f\",\n        :comment => S\"fg: ad9c84; italic\",\n    ),\n)\nnothing # hideThere's a couple of things going on up there, so let's split it into sections:The first line is our standard short-form method definition used in Julia. We define a method definition that accepts the type CustomTheme as it's one argument and returns a new Dict that contains our theme definition.\nLine two, i.e. :style => ..., defines the default style for code blocks styled with this theme. The S\" string macro is used to write the nessecary style information. It is a ;-separated string where each part of the string is one of\nbg: <html-color-code> – the background colour as an HTML 3 or 6 digit hex code;\nfg: <html-color-code> – as above, but for the foreground colour;\nbold – boldface text;\nitalic – emphasised text;\nunderline – underlined text.\nLine three, the :tokens line, defines the Dict of token-to-style rules;\nLine four defines what colour default text should be, this must always be included for the theme to work. We set it to S\"\", which is \"no styling\".\nThe rest of the lines just set out rules for other tokens that we would like to emphasise using different colours and font styles."
+},
+
+{
+    "location": "man/theme.html#Using-the-theme-1",
+    "page": "Theme Guide",
+    "title": "Using the theme",
+    "category": "section",
+    "text": "Now that we've written a new theme we might as well try it out. We'll use the new theme to highlight itself:using Highlights\nsource =\n\"\"\"\n# Required imports...\nimport Highlights: AbstractTheme, definition\nimport Highlights.Themes: @S_str\n\n# ... the theme type...\nabstract CustomTheme <: AbstractTheme\n\n# ... and finally the theme definition.\ndefinition(::Type{CustomTheme}) = Dict(\n    :style => S\"bg: f7f3ee; fg: 605b53\",\n    :tokens => Dict(\n        :text    => S\"\",\n        :keyword => S\"fg: 614c60; bold\",\n        :string  => S\"fg: a1789f\",\n        :comment => S\"fg: ad9c84; italic\",\n    ),\n)\n\n# Let's also print it to a file to we can have a look.\nopen(\"custom-theme.html\", \"w\") do stream\n    stylesheet(stream, MIME(\"text/html\"), Lexers.JuliaLexer, CustomTheme)\n    highlight(stream, MIME(\"text/html\"), source, Lexers.JuliaLexer, CustomTheme)\nend\n\"\"\"open(\"custom-theme.html\", \"w\") do stream\n    stylesheet(stream, MIME(\"text/html\"), Lexers.JuliaLexer, CustomTheme)\n    highlight(stream, MIME(\"text/html\"), source, Lexers.JuliaLexer, CustomTheme)\nendThe highlighted code can be found here.[1]: \"Tokens\" refer to the substrings of the input string with an identified \"meaning\". For example :string, :number, :text, or :keyword."
 },
 
 {
