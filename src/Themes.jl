@@ -48,6 +48,7 @@ end
 
 export
     DefaultTheme,
+    EmacsTheme,
     GitHubTheme,
     MonokaiTheme,
     TangoTheme,
@@ -56,6 +57,7 @@ export
     XcodeTheme
 
 abstract DefaultTheme <: AbstractTheme
+abstract EmacsTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
 abstract MonokaiTheme <: AbstractTheme
 abstract TangoTheme <: AbstractTheme
@@ -67,6 +69,7 @@ abstract XcodeTheme <: AbstractTheme
 # Theme definitions.
 
 include("themes/default.jl")
+include("themes/emacs.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")
 include("themes/tango.jl")
