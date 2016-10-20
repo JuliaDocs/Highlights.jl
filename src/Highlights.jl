@@ -24,7 +24,7 @@ include("Format.jl")
 
 # Public interface.
 
-export highlight, stylesheet
+export Lexers, Themes, highlight, stylesheet
 
 function highlight{
         L <: AbstractLexer,
