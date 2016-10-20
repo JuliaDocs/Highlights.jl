@@ -1,13 +1,17 @@
-# Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
+
 os:
   - linux
   - osx
+
 julia:
   - 0.4
   - 0.5
   - nightly
+
 notifications:
   email: false
+
 after_success:
-  - julia -e 'cd(Pkg.dir("Highlights")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'Pkg.add("Documenter")'
+  - julia -e 'include(Pkg.dir("Highlights", "docs", "make.jl"))'
