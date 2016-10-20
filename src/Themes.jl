@@ -48,16 +48,19 @@ end
 
 export
     DefaultTheme,
-    GitHubTheme
+    GitHubTheme,
+    MonokaiTheme
 
 abstract DefaultTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
+abstract MonokaiTheme <: AbstractTheme
 
 
 # Theme definitions.
 
 include("themes/default.jl")
 include("themes/github.jl")
+include("themes/monokai.jl")
 
 
 # Theme builder.
