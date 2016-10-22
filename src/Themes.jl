@@ -47,6 +47,8 @@ end
 # Theme names.
 
 export
+    DefaultTheme,
+
     EmacsTheme,
     GitHubTheme,
     MonokaiTheme,
@@ -56,6 +58,8 @@ export
     VimTheme,
     VisualStudioTheme,
     XcodeTheme
+
+abstract DefaultTheme <: AbstractTheme
 
 abstract EmacsTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
@@ -69,6 +73,8 @@ abstract XcodeTheme <: AbstractTheme
 
 
 # Theme definitions.
+
+include("themes/default.jl")
 
 include("themes/pygments.jl")
 include("themes/emacs.jl")
