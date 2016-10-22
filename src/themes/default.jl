@@ -10,6 +10,7 @@ definition(::Type{DefaultTheme}) = Dict(
         :string => S"fg: c93d39",
         :string_escape => S"fg: 3b972e",
         :string_iterpol => S"",
+        :literal_date => S"fg: 945bb0; italic",
         :comment => S"fg: 999977; italic",
         :number => S"fg: 3b972e",
         :name_function => S"fg: 4266d5",

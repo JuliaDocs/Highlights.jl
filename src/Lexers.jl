@@ -45,14 +45,18 @@ end
 # Names.
 
 export
-    JuliaLexer
+    JuliaLexer,
+    TOMLLexer
 
 "A lexer for Julia source code."
 abstract JuliaLexer <: AbstractLexer
+"TOML (Tom's Obvious, Minimal Language) lexer."
+abstract TOMLLexer <: AbstractLexer
 
 
 # Definitions.
 
 include("lexers/julia.jl")
+include("lexers/toml.jl")
 
 end # module
