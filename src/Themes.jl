@@ -47,20 +47,20 @@ end
 # Theme names.
 
 export
-    DefaultTheme,
     EmacsTheme,
     GitHubTheme,
     MonokaiTheme,
+    PygmentsTheme,
     TangoTheme,
     TracTheme,
     VimTheme,
     VisualStudioTheme,
     XcodeTheme
 
-abstract DefaultTheme <: AbstractTheme
 abstract EmacsTheme <: AbstractTheme
 abstract GitHubTheme <: AbstractTheme
 abstract MonokaiTheme <: AbstractTheme
+abstract PygmentsTheme <: AbstractTheme
 abstract TangoTheme <: AbstractTheme
 abstract TracTheme <: AbstractTheme
 abstract VimTheme <: AbstractTheme
@@ -70,7 +70,7 @@ abstract XcodeTheme <: AbstractTheme
 
 # Theme definitions.
 
-include("themes/default.jl")
+include("themes/pygments.jl")
 include("themes/emacs.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")

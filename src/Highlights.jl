@@ -31,7 +31,7 @@ function highlight{
         T <: AbstractTheme,
     }(
         io::IO, mime::MIME, src::AbstractString,
-        ::Type{L}, ::Type{T} = Themes.DefaultTheme,
+        ::Type{L}, ::Type{T} = Themes.PygmentsTheme,
     )
     local ctx = Compiler.lex(src, L)
     local theme = Themes.build_theme(T, L)
@@ -43,7 +43,7 @@ function stylesheet{
         T <: AbstractTheme,
     }(
         io::IO, mime::MIME,
-        ::Type{L}, ::Type{T} = Themes.DefaultTheme
+        ::Type{L}, ::Type{T} = Themes.PygmentsTheme,
     )
     local theme = Themes.build_theme(T, L)
     Format.render(io, mime, theme)

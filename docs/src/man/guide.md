@@ -64,7 +64,7 @@ end
 ```
 
 This will print the highlighted version of `source` to `source.html` using the `JuliaLexer`
-definition and the `DefaultTheme`. We can also output ``\LaTeX`` formatted text by using
+definition and the `PygmentsTheme`. We can also output ``\LaTeX`` formatted text by using
 `MIME("text/latex")` instead.
 
 Note though that at this point we have not included any style information needed to
