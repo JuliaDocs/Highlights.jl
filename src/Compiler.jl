@@ -80,7 +80,7 @@ end
 
 function error!(ctx::Context)
     push!(ctx.tokens, Token(hash(:error), ctx.pos[], ctx.pos[]))
-    ctx.pos[] = nextind(ctx.source, pos)
+    ctx.pos[] = nextind(ctx.source, ctx.pos[])
     return ctx
 end
 

@@ -20,10 +20,11 @@ function definition(::Type{JuliaLexer})
                 (r"#.*$"m, :comment_singleline),
                 (r"[\[\]{}(),;]", :punctuation),
 
-                (r"\b(?<![:_])in\b", :keyword_pseudo),
-                (r"\b(?<![:_])(true|false)\b", :keyword_constant),
-                (r"\b(?<![:_])(local|global|const)\b", :keyword_declaration),
-                (words(keywords, prefix = "\\b(?<![:_])", suffix = "\\b"), :keyword),
+                (r"\b(?<![:_.])in\b", :keyword_pseudo),
+                (r"\b(?<![_.])end\b", :keyword_end),
+                (r"\b(?<![:_.])(true|false)\b", :keyword_constant),
+                (r"\b(?<![:_.])(local|global|const)\b", :keyword_declaration),
+                (words(keywords, prefix = "\\b(?<![:_.])", suffix = "\\b"), :keyword),
 
                 (Regex(join(char_regex)), :string_char),
 
@@ -35,6 +36,7 @@ function definition(::Type{JuliaLexer})
 
                 (r"`", :string_backtick, :commands),
 
+                (julia_is_method_call, :name_function),
                 (julia_is_identifier, :name),
                 (julia_is_macro_identifier, :name_decorator),
 
@@ -50,6 +52,8 @@ function definition(::Type{JuliaLexer})
                 (r"0x[a-fA-F0-9]+", :number_hex),
                 (r"\d+(_\d+)+", :number_integer),
                 (r"\d+", :number_integer),
+
+                (r"[^[:alnum:]\s()\[\]{},;_\"\']+", :operator),
 
                 (r"."ms, :text),
             ],
@@ -117,6 +121,15 @@ function julia_is_identifier(ctx::Context, prefix = '\0')
 end
 julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
 julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
+
+function julia_is_method_call(ctx::Context)
+    local range = julia_is_identifier(ctx)
+    range === NULL_RANGE && return range
+    i = nextind(ctx.source, last(range))
+    done(ctx.source, i) && return NULL_RANGE
+    (c, i) = next(ctx.source, i)
+    return (c === '(' || c === '{') ? range : NULL_RANGE
+end
 
 function julia_is_string_macro(ctx::Context, count::Integer = 1)
     local range = julia_is_identifier(ctx)
