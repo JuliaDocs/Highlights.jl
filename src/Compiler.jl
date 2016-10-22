@@ -24,10 +24,10 @@ immutable Context
     tokens::Vector{Token}
     captures::Vector{UnitRange{Int}}
     Context(c::Context, len::Int) = new(c.source, c.pos, len, c.tokens, c.captures)
-    Context(s::AbstractString) = new(s, Mut(1), length(s), [], [])
+    Context(s::AbstractString) = new(s, Mut(1), endof(s), [], [])
 end
 
-isdone(ctx::Context) = ctx.pos[] >= ctx.length
+isdone(ctx::Context) = ctx.pos[] > ctx.length
 
 
 immutable State{s} end
@@ -61,27 +61,26 @@ nullmatch(f::Function, ctx::Context) = f(ctx)
 
 
 function update!(ctx::Context, range::Range, token::Integer)
-    local pos = ctx.pos[] + length(range) - 1
+    local pos = prevind(ctx.source, ctx.pos[] + length(range))
     if !isempty(ctx.tokens) && ctx.tokens[end].value == token
         ctx.tokens[end] = Token(token, ctx.tokens[end].first, pos)
     else
         ctx.pos[] <= pos && push!(ctx.tokens, Token(token, ctx.pos[], pos))
     end
-    ctx.pos[] = pos + 1
+    ctx.pos[] = nextind(ctx.source, pos)
     return ctx
 end
 
 function update!(ctx::Context, range::Range, lexer::Type, state = State{:root}())
     local pos = ctx.pos[] + length(range)
     lex!(Context(ctx, last(range)), lexer, state)
-    ctx.pos[] = pos
+    ctx.pos[] = nextind(ctx.source, pos)
     return ctx
 end
 
 function error!(ctx::Context)
-    local pos = ctx.pos[] + 1
-    push!(ctx.tokens, Token(hash(:error), ctx.pos[], pos))
-    ctx.pos[] = pos
+    push!(ctx.tokens, Token(hash(:error), ctx.pos[], ctx.pos[]))
+    ctx.pos[] = nextind(ctx.source, pos)
     return ctx
 end
 
