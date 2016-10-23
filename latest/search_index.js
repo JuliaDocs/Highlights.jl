@@ -193,7 +193,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.DefaultTheme.html#",
+    "location": "demo/themes/default.html#",
     "page": "Default",
     "title": "Default",
     "category": "page",
@@ -201,7 +201,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.DefaultTheme.html#Default-1",
+    "location": "demo/themes/default.html#Default-1",
     "page": "Default",
     "title": "Default",
     "category": "section",
@@ -209,7 +209,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.EmacsTheme.html#",
+    "location": "demo/themes/emacs.html#",
     "page": "Emacs",
     "title": "Emacs",
     "category": "page",
@@ -217,7 +217,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.EmacsTheme.html#Emacs-1",
+    "location": "demo/themes/emacs.html#Emacs-1",
     "page": "Emacs",
     "title": "Emacs",
     "category": "section",
@@ -225,7 +225,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.GitHubTheme.html#",
+    "location": "demo/themes/github.html#",
     "page": "GitHub",
     "title": "GitHub",
     "category": "page",
@@ -233,7 +233,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.GitHubTheme.html#GitHub-1",
+    "location": "demo/themes/github.html#GitHub-1",
     "page": "GitHub",
     "title": "GitHub",
     "category": "section",
@@ -241,7 +241,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.MonokaiTheme.html#",
+    "location": "demo/themes/monokai.html#",
     "page": "Monokai",
     "title": "Monokai",
     "category": "page",
@@ -249,7 +249,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.MonokaiTheme.html#Monokai-1",
+    "location": "demo/themes/monokai.html#Monokai-1",
     "page": "Monokai",
     "title": "Monokai",
     "category": "section",
@@ -257,7 +257,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.PygmentsTheme.html#",
+    "location": "demo/themes/pygments.html#",
     "page": "Pygments",
     "title": "Pygments",
     "category": "page",
@@ -265,7 +265,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.PygmentsTheme.html#Pygments-1",
+    "location": "demo/themes/pygments.html#Pygments-1",
     "page": "Pygments",
     "title": "Pygments",
     "category": "section",
@@ -273,7 +273,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.TangoTheme.html#",
+    "location": "demo/themes/tango.html#",
     "page": "Tango",
     "title": "Tango",
     "category": "page",
@@ -281,7 +281,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.TangoTheme.html#Tango-1",
+    "location": "demo/themes/tango.html#Tango-1",
     "page": "Tango",
     "title": "Tango",
     "category": "section",
@@ -289,7 +289,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.TracTheme.html#",
+    "location": "demo/themes/trac.html#",
     "page": "Trac",
     "title": "Trac",
     "category": "page",
@@ -297,7 +297,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.TracTheme.html#Trac-1",
+    "location": "demo/themes/trac.html#Trac-1",
     "page": "Trac",
     "title": "Trac",
     "category": "section",
@@ -305,7 +305,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.VimTheme.html#",
+    "location": "demo/themes/vim.html#",
     "page": "Vim",
     "title": "Vim",
     "category": "page",
@@ -313,7 +313,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.VimTheme.html#Vim-1",
+    "location": "demo/themes/vim.html#Vim-1",
     "page": "Vim",
     "title": "Vim",
     "category": "section",
@@ -321,7 +321,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.VisualStudioTheme.html#",
+    "location": "demo/themes/visual studio.html#",
     "page": "Visual Studio",
     "title": "Visual Studio",
     "category": "page",
@@ -329,7 +329,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.VisualStudioTheme.html#Visual-Studio-1",
+    "location": "demo/themes/visual studio.html#Visual-Studio-1",
     "page": "Visual Studio",
     "title": "Visual Studio",
     "category": "section",
@@ -337,7 +337,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.XcodeTheme.html#",
+    "location": "demo/themes/xcode.html#",
     "page": "Xcode",
     "title": "Xcode",
     "category": "page",
@@ -345,7 +345,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/Highlights.Themes.XcodeTheme.html#Xcode-1",
+    "location": "demo/themes/xcode.html#Xcode-1",
     "page": "Xcode",
     "title": "Xcode",
     "category": "section",
