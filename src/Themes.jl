@@ -5,7 +5,7 @@ import ..Highlights: Str, AbstractTheme, AbstractLexer, definition
 
 # Style and Theme types.
 
-const NULL_STRING = ""
+const NULL_STRING = Str("")
 
 immutable Style
     fg::Str
