@@ -25,7 +25,7 @@ let dir = joinpath(dirname(@__FILE__), "..", "test", "samples")
     mkpath(destination)
     for theme in subtypes(Highlights.AbstractTheme)
         local def = Highlights.definition(theme)
-        open(joinpath(destination, lowercase(def[:name]) * ".md"), "w") do buf
+        open(joinpath(destination, replace(lowercase(def[:name]), " ", "-") * ".md"), "w") do buf
             println(buf, "# ", def[:name], "\n")
             println(buf, "`$theme` -- *", def[:description], "*", "\n")
             println(buf, "```@raw html")
