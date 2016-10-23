@@ -53,4 +53,12 @@ end
             include("lexers/$file")
         end
     end
+    @testset "Miscellaneous" begin
+        @test Highlights.definition(Highlights.AbstractTheme) == Dict()
+        @test Highlights.definition(Highlights.AbstractLexer) == Dict()
+
+        @test Highlights.lexer("julia") == Lexers.JuliaLexer
+        @test Highlights.lexer("jl") == Lexers.JuliaLexer
+        @test_throws ArgumentError Highlights.lexer("???")
+    end
 end
