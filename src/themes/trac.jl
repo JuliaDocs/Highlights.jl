@@ -1,6 +1,6 @@
 definition(::Type{TracTheme}) = Dict(
-    :name => "Trac Theme",
-    :description => "A theme based on the default trac highlighter design.",
+    :name => "Trac",
+    :description => "Based on the default trac highlighter design.",
     :comments => "Based on the theme from Pygments.",
     :tokens => Dict(
         :comment             => S"italic; fg: 999988",

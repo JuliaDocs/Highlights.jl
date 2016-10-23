@@ -1,5 +1,5 @@
 definition(::Type{VimTheme}) = Dict(
-    :name => "Vim Theme",
+    :name => "Vim",
     :description => "A theme similar to the vim 7.0 default theme.",
     :comments => "Based on the theme from Pygments.",
     :style => S"bg: 000000; fg: cccccc",

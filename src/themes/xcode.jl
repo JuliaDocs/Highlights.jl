@@ -1,5 +1,5 @@
 definition(::Type{XcodeTheme}) = Dict(
-    :name => "Xcode Theme",
+    :name => "Xcode",
     :description => "Style similar to the Xcode default colouring theme.",
     :comments => "Based on the Xcode theme from Pygments.",
     :tokens => Dict(

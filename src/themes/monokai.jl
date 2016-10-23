@@ -1,5 +1,5 @@
 definition(::Type{MonokaiTheme}) = Dict(
-    :name => "Monokai Theme",
+    :name => "Monokai",
     :description => "A style that mimics the Monokai color scheme.",
     :comments => "Based on the Monokai theme from Pygments.",
     :style => S"bg: 272822; fg: 49483e",

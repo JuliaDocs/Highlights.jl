@@ -1,5 +1,5 @@
 definition(::Type{EmacsTheme}) = Dict(
-    :name => "Emacs Theme",
+    :name => "Emacs",
     :description => "A theme inspired by Emacs 22.",
     :comments => "Based on the Emacs theme from Pygments.",
     :style => S"bg: f8f8f8",

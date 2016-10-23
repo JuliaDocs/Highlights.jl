@@ -1,6 +1,6 @@
 definition(::Type{VisualStudioTheme}) = Dict(
-    :name => "Visual Studio Theme",
-    :description => "A theme based on the simple one from MS Visual Studio.",
+    :name => "Visual Studio",
+    :description => "Based on the theme from MS Visual Studio.",
     :comments => "Based on the Visual Studio theme from Pygments.",
     :style => S"bg: ffffff",
     :tokens => Dict(

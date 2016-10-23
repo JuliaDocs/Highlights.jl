@@ -1,6 +1,6 @@
 definition(::Type{PygmentsTheme}) = Dict(
-    :name => "Pygments Theme",
-    :comments => "Based on the default theme provided by Pygments.",
+    :name => "Pygments",
+    :description => "Based on the default theme provided by Pygments.",
     :tokens => Dict(
         :text               => S"",
         :error              => S"fg:ffffff; bg:ff3300",

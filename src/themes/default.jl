@@ -1,4 +1,6 @@
 definition(::Type{DefaultTheme}) = Dict(
+    :name => "Default",
+    :description => "Based on the official Julia colours.",
     :style => S"bg: fbfbfb; fg: 444",
     :tokens => Dict(
         :text => S"",
