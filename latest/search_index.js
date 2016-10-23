@@ -321,7 +321,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/visual studio.html#",
+    "location": "demo/themes/visual-studio.html#",
     "page": "Visual Studio",
     "title": "Visual Studio",
     "category": "page",
@@ -329,7 +329,7 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "demo/themes/visual studio.html#Visual-Studio-1",
+    "location": "demo/themes/visual-studio.html#Visual-Studio-1",
     "page": "Visual Studio",
     "title": "Visual Studio",
     "category": "section",
