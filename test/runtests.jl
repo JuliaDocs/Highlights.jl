@@ -69,6 +69,31 @@ end
             @test !s.underline
         end
     end
+    @testset "Format" begin
+        local render = function(mime, style)
+            local buffer = IOBuffer()
+            Highlights.Format.render(buffer, mime, style)
+            return takebuf_string(buffer)
+        end
+        @testset "CSS" begin
+            let mime = MIME("text/css")
+                @test render(mime, Themes.Style("fg: 111"))   == "color: #111111; "
+                @test render(mime, Themes.Style("bg: 111"))   == "background-color: #111111; "
+                @test render(mime, Themes.Style("bold"))      == "font-weight: bold; "
+                @test render(mime, Themes.Style("italic"))    == "font-style: italic; "
+                @test render(mime, Themes.Style("underline")) == "text-decoration: underline; "
+            end
+        end
+        @testset "LaTeX" begin
+            let mime = MIME("text/latex")
+                @test render(mime, Themes.Style("fg: 111"))   == "[1]{\\textcolor[HTML]{111111}{#1}}"
+                @test render(mime, Themes.Style("bg: 111"))   == "[1]{\\colorbox[HTML]{111111}{#1}}"
+                @test render(mime, Themes.Style("bold"))      == "[1]{\\textbf{#1}}"
+                @test render(mime, Themes.Style("italic"))    == "[1]{\\textit{#1}}"
+                @test render(mime, Themes.Style("underline")) == "[1]{\\underline{#1}}"
+            end
+        end
+    end
     @testset "Miscellaneous" begin
         @test Highlights.definition(Highlights.AbstractTheme) == Dict()
         @test Highlights.definition(Highlights.AbstractLexer) == Dict()
