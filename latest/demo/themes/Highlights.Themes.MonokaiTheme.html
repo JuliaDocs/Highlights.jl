@@ -1,38 +1,89 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="julia.html">Julia</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="julia.html">Julia</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/063763941c58a18b39b8433e15c7483d333817cf/docs/src/demo/lexers/julia.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Julia-1" href="#Julia-1">Julia</a></h1><p><code>Highlights.Lexers.JuliaLexer</code> – <em>A lexer for Julia source code.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Monokai · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="Highlights.Themes.MonokaiTheme.html">Monokai</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="Highlights.Themes.MonokaiTheme.html">Monokai</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/063763941c58a18b39b8433e15c7483d333817cf/docs/src/demo/themes/Highlights.Themes.MonokaiTheme.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Monokai-1" href="#Monokai-1">Monokai</a></h1><p><code>Highlights.Themes.MonokaiTheme</code> – <em>A style that mimics the Monokai color scheme.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
     margin: 5px;
     padding: 5px;
     overflow-x: auto;
-    color: #444444; background-color: #fbfbfb; }
-pre.hljl > span.hljl-keyword_declaration { color: #d66661; font-style: italic; }
-pre.hljl > span.hljl-string_backtick { color: #c93d39; }
-pre.hljl > span.hljl-string { color: #c93d39; }
-pre.hljl > span.hljl-keyword { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-name_decorator { color: #d66661; }
-pre.hljl > span.hljl-number_hex { color: #3b972e; }
-pre.hljl > span.hljl-keyword_pseudo { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-string_escape { color: #3b972e; }
-pre.hljl > span.hljl-string_char { color: #c93d39; }
-pre.hljl > span.hljl-number_integer { color: #3b972e; }
-pre.hljl > span.hljl-keyword_constant { color: #3b972e; font-style: italic; }
-pre.hljl > span.hljl-text { }
-pre.hljl > span.hljl-name_function { color: #4266d5; }
-pre.hljl > span.hljl-operator { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-name { }
-pre.hljl > span.hljl-number_float { color: #3b972e; }
-pre.hljl > span.hljl-comment_singleline { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-number { color: #3b972e; }
-pre.hljl > span.hljl-comment { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-number_bin { color: #3b972e; }
-pre.hljl > span.hljl-string_iterpol { }
-pre.hljl > span.hljl-string_macro { color: #c93d39; }
-pre.hljl > span.hljl-number_oct { color: #3b972e; }
-pre.hljl > span.hljl-comment_multiline { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-keyword_end { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-punctuation { }
+    color: #49483e; background-color: #272822; }
+pre.hljl > span.hljl-literal { color: #ae81ff; }
+pre.hljl > span.hljl-name_entity { }
+pre.hljl > span.hljl-keyword_declaration { }
+pre.hljl > span.hljl-keyword_namespace { color: #f92672; }
+pre.hljl > span.hljl-name_variable_global { }
+pre.hljl > span.hljl-name_variable { }
+pre.hljl > span.hljl-number_hex { }
+pre.hljl > span.hljl-name_decorator { color: #a6e22e; }
+pre.hljl > span.hljl-other { }
+pre.hljl > span.hljl-string_doc { }
+pre.hljl > span.hljl-keyword_type { }
+pre.hljl > span.hljl-string_char { }
+pre.hljl > span.hljl-string_double { }
+pre.hljl > span.hljl-name_tag { color: #f92672; }
+pre.hljl > span.hljl-keyword_constant { }
+pre.hljl > span.hljl-text { color: #f8f8f2; }
+pre.hljl > span.hljl-name_exception { color: #a6e22e; }
+pre.hljl > span.hljl-error { color: #960050; background-color: #1e0010; }
+pre.hljl > span.hljl-name_attribute { color: #a6e22e; }
+pre.hljl > span.hljl-comment_preproc { }
+pre.hljl > span.hljl-comment_single { }
+pre.hljl > span.hljl-name_label { }
+pre.hljl > span.hljl-generic_subheading { color: #75715e; }
+pre.hljl > span.hljl-generic_strong { font-weight: bold; }
+pre.hljl > span.hljl-generic_deleted { color: #f92672; }
+pre.hljl > span.hljl-operator_word { }
+pre.hljl > span.hljl-name_class { color: #a6e22e; }
+pre.hljl > span.hljl-name_namespace { }
+pre.hljl > span.hljl-namebuiltin { color: #f8f8f2; }
+pre.hljl > span.hljl-name_constant { color: #66d9ef; }
+pre.hljl > span.hljl-name_builtin_pseudo { }
+pre.hljl > span.hljl-name_property { }
+pre.hljl > span.hljl-number_integer { }
+pre.hljl > span.hljl-generic_inserted { color: #a6e22e; }
+pre.hljl > span.hljl-name_function { color: #a6e22e; }
+pre.hljl > span.hljl-name { color: #f8f8f2; }
+pre.hljl > span.hljl-keyword_reserved { }
+pre.hljl > span.hljl-generic_heading { }
+pre.hljl > span.hljl-comment_singleline { color: #75715e; }
+pre.hljl > span.hljl-string_regex { }
+pre.hljl > span.hljl-name_other { color: #a6e22e; }
+pre.hljl > span.hljl-number_bin { color: #ae81ff; }
+pre.hljl > span.hljl-punctuation { color: #f8f8f2; }
+pre.hljl > span.hljl-keyword_end { color: #66d9ef; }
+pre.hljl > span.hljl-literal_date { color: #e6db74; }
+pre.hljl > span.hljl-string_backtick { }
+pre.hljl > span.hljl-generic_error { }
+pre.hljl > span.hljl-name_variable_class { }
+pre.hljl > span.hljl-name_builtin { }
+pre.hljl > span.hljl-string_escape { color: #ae81ff; }
+pre.hljl > span.hljl-whitespace { }
+pre.hljl > span.hljl-number_integer_long { }
+pre.hljl > span.hljl-operator { color: #f92672; }
+pre.hljl > span.hljl-generic { }
+pre.hljl > span.hljl-number_float { }
+pre.hljl > span.hljl-generic_traceback { }
+pre.hljl > span.hljl-string_interpol { }
+pre.hljl > span.hljl-string_symbol { }
+pre.hljl > span.hljl-number { color: #ae81ff; }
+pre.hljl > span.hljl-string_iterpol { color: #e6db74; }
+pre.hljl > span.hljl-string_macro { color: #e6db74; }
+pre.hljl > span.hljl-number_oct { }
+pre.hljl > span.hljl-comment_multiline { }
+pre.hljl > span.hljl-namevariable { color: #f8f8f2; }
+pre.hljl > span.hljl-string_heredoc { }
+pre.hljl > span.hljl-generic_output { }
+pre.hljl > span.hljl-string_other { }
+pre.hljl > span.hljl-string { color: #e6db74; }
+pre.hljl > span.hljl-comment_special { }
+pre.hljl > span.hljl-keyword { color: #66d9ef; }
+pre.hljl > span.hljl-name_variable_instance { }
+pre.hljl > span.hljl-keyword_pseudo { }
+pre.hljl > span.hljl-generic_emph { font-style: italic; }
+pre.hljl > span.hljl-generic_prompt { }
+pre.hljl > span.hljl-numberinteger { color: #f8f8f2; }
+pre.hljl > span.hljl-string_single { }
+pre.hljl > span.hljl-comment { color: #75715e; }
 </style>
 
 <pre class='hljl'>
@@ -120,4 +171,4 @@ a
 </span><span class='hljl-number_integer'>1234</span><span class='hljl-text'>
 </span><span class='hljl-number_integer'>1_2_3_4</span><span class='hljl-text'>
 
-</span></pre><footer><hr/><a class="previous" href="../lexers.html"><span class="direction">Previous</span><span class="title">Lexers</span></a><a class="next" href="../themes.html"><span class="direction">Next</span><span class="title">Themes</span></a></footer></article></body></html>
+</span></pre><footer><hr/><a class="previous" href="Highlights.Themes.GitHubTheme.html"><span class="direction">Previous</span><span class="title">GitHub</span></a><a class="next" href="Highlights.Themes.PygmentsTheme.html"><span class="direction">Next</span><span class="title">Pygments</span></a></footer></article></body></html>
