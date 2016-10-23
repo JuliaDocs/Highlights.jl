@@ -22,6 +22,14 @@ include("Lexers.jl")
 include("Format.jl")
 
 
+function lexer(name::AbstractString)
+    for each in subtypes(AbstractLexer)
+        local def = definition(each)
+        name in get(def, :aliases, []) && return each
+    end
+    throw(ArgumentError("no lexer found with name '$name'."))
+end
+
 # Public interface.
 
 export Lexers, Themes, highlight, stylesheet

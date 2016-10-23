@@ -13,6 +13,5 @@ notifications:
   email: false
 
 after_success:
-  - julia -e 'Pkg.add("Documenter")'
-  - julia -e 'include(Pkg.dir("Highlights", "docs", "make.jl"))'
+  - julia -e 'include(Pkg.dir("Documenter", "docs", "travis.jl"))'
   - julia -e 'include(Pkg.dir("Documenter", "test", "coverage.jl"))'

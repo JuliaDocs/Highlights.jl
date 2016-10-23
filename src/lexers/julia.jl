@@ -9,6 +9,7 @@ function definition(::Type{JuliaLexer})
     ]
     return Dict(
         :name => "Julia",
+        :description => "A lexer for Julia source code.",
         :aliases => ["julia", "jl"],
         :filenames => ["*.jl"],
         :mimetypes => ["text/x-julia", "application/x-julia"],
