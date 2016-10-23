@@ -1,4 +1,11 @@
+"""
+A submodule that provides a selection of themes that can be used to colourise source code.
+
+$(EXPORTS)
+"""
 module Themes
+
+using DocStringExtensions
 
 import ..Highlights: Str, AbstractTheme, AbstractLexer, definition
 
@@ -7,6 +14,12 @@ import ..Highlights: Str, AbstractTheme, AbstractLexer, definition
 
 const NULL_STRING = Str("")
 
+"""
+$(TYPEDEF)
+
+An internal type used to track colour scheme definition information such as foreground and
+background colours as well as bold, italic, and underlining.
+"""
 immutable Style
     fg::Str
     bg::Str
@@ -28,15 +41,42 @@ immutable Style
     end
 end
 
+"""
+$(SIGNATURES)
+
+Expands an HTML colour code `s` from 3 digits to 6.
+"""
 expand_html(s::AbstractString) = length(s) == 3 ? join(map(join, zip(s, s))) : s
 
+"""
+$(SIGNATURES)
+
+Does the [`Style`](@ref) `s` have a foreground colour set?
+"""
 has_fg(s::Style) = s.fg !== NULL_STRING
+
+"""
+$(SIGNATURES)
+
+Does the [`Style`](@ref) `s` have a background colour set?
+"""
 has_bg(s::Style) = s.bg !== NULL_STRING
 
+"""
+$(SIGNATURES)
+
+Construct a [`Style`](@ref) object.
+"""
 macro S_str(spec)
     Style(spec)
 end
 
+"""
+$(TYPEDEF)
+
+Represents a "compiled" colour scheme as constructed by [`build_theme`](@ref). Not a
+user-facing type.
+"""
 immutable Theme
     base::Style
     style::Dict{UInt, Style}
@@ -59,16 +99,26 @@ export
     VisualStudioTheme,
     XcodeTheme
 
+"The default colour scheme with colours based on the Julia logo."
 abstract DefaultTheme <: AbstractTheme
 
+"A theme based on the Emacs colour scheme."
 abstract EmacsTheme <: AbstractTheme
+"A GitHub inspired colour scheme."
 abstract GitHubTheme <: AbstractTheme
+"A colour scheme similar to the Monokai theme."
 abstract MonokaiTheme <: AbstractTheme
+"Based on the default colour scheme used by the Pygments highlighter."
 abstract PygmentsTheme <: AbstractTheme
+"A Tango-inspired colour scheme."
 abstract TangoTheme <: AbstractTheme
+"Based on the default trac highlighter."
 abstract TracTheme <: AbstractTheme
+"A Vim 7.0 based colour scheme."
 abstract VimTheme <: AbstractTheme
+"A theme based on the default Visual Studio colours."
 abstract VisualStudioTheme <: AbstractTheme
+"A theme based on the default Xcode colour scheme."
 abstract XcodeTheme <: AbstractTheme
 
 
@@ -89,6 +139,9 @@ include("themes/xcode.jl")
 
 # Theme builder.
 
+"""
+Build a colour scheme `Theme` object based on a user-defined theme and lexer.
+"""
 @generated function build_theme{T <: AbstractTheme, L <: AbstractLexer}(::Type{T}, ::Type{L})
     local def = definition(T)
     local base = get(def, :style, S"")

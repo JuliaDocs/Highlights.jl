@@ -99,7 +99,7 @@ function render(io::IO, mime::MIME"text/html", ctx::Context, theme::Theme)
         escape(io, mime, SubString(ctx.source, token.first, token.last))
         print(io, "</span>")
     end
-    println(io, "</pre>")
+    println(io, "\n</pre>")
 end
 
 function render(io::IO, mime::MIME"text/latex", ctx::Context, theme::Theme)
@@ -117,7 +117,7 @@ function render(io::IO, mime::MIME"text/latex", ctx::Context, theme::Theme)
             end
         end
     end
-    println(io, "\\end{lstlisting}")
+    println(io, "\n\\end{lstlisting}")
 end
 
 
