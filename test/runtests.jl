@@ -53,6 +53,22 @@ end
             include("lexers/$file")
         end
     end
+    @testset "Themes" begin
+        let s = Themes.Style("fg: 111")
+            @test s.fg == "111111"
+            @test s.bg == Themes.NULL_STRING
+            @test !s.bold
+            @test !s.italic
+            @test !s.underline
+        end
+        let s = Themes.Style("bg: f8c; italic; bold")
+            @test s.fg == Themes.NULL_STRING
+            @test s.bg == "ff88cc"
+            @test s.bold
+            @test s.italic
+            @test !s.underline
+        end
+    end
     @testset "Miscellaneous" begin
         @test Highlights.definition(Highlights.AbstractTheme) == Dict()
         @test Highlights.definition(Highlights.AbstractLexer) == Dict()
