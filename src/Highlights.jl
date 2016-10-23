@@ -2,6 +2,7 @@ __precompile__(true)
 
 module Highlights
 
+using Compat
 const Str = all(s -> isdefined(Core, s), (:String, :AbstractString)) ? String : UTF8String
 
 
