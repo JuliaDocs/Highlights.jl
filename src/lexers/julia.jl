@@ -53,7 +53,7 @@ function definition(::Type{JuliaLexer})
                 (r"\d+(_\d+)+", :number_integer),
                 (r"\d+", :number_integer),
 
-                (r"[^[:alnum:]\s()\[\]{},;_\"\']+", :operator),
+                (r"[^[:alnum:]\s()\[\]{},;@_\"\']+", :operator),
 
                 (r"."ms, :text),
             ],

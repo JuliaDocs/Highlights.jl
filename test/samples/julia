@@ -1,0 +1,84 @@
+#=
+Multiline comments...
+    can be...
+    #= nested #= to =# any depth. =#
+=#
+
+# A single line comment.
+    # And another one.
+
+# Array and tuple literals.
+[1, 3, 3, 4][1:end]
+(1, 2, 1.0)[1:2]
+[(1, 3), (3, 4)][end - 1]
+
+# Keywords.
+if x in y
+    # ...
+end
+
+x in y ? false : true
+
+let x = 1
+    local t
+    global s
+    t = x
+    s = x
+end
+
+module M end
+baremodule M end
+
+typealias T A
+abstract A <: T
+type Point{T}
+    x::T
+    y::T
+
+    Point(x) = new(x, 2x)
+
+    @inline function Point(x, y)
+        return new(y, x)
+    end
+end
+
+immutable Empty{T} end
+
+macro something(x...)
+    # ...
+end
+
+# Character literals.
+' ', '\n', '\'', '"', '\u1234', '⻆'
+
+# String literals.
+
+⻪ = "    "
+"'"
+"\"\" ..."
+"
+a
+"
+"""
+...
+    """
+
+" $x $(let x = y + 1; x^2; end) ... \n"
+
+r"[a-z]+$xyz"m
+
+raw"\n\n\r\t...\b"
+raw"""\n\n\r\t...\b"""abc
+
+v"0.0.2" ≥ v"0.0.1"
+
+run(`foo $bar --baz $([a, b, c])`)
+
+1_000_000_000 + 1.0e-9 * .121 / 1121.
+1f0 - 1E-12
+0b100_101_111
+0o12123535252
+0x4312afAfabC
+1234
+1_2_3_4
+
