@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tango · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="tango.html">Tango</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="tango.html">Tango</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/3a4dce6e4d50a64c6b0cd62522bef87afd6aede6/docs/src/demo/themes/tango.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Tango-1" href="#Tango-1">Tango</a></h1><p><code>Highlights.Themes.TangoTheme</code> – <em>A theme inspired by the Tango Icon Theme Guidelines.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tango · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="tango.html">Tango</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="tango.html">Tango</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/59ce87ba21ba017f781c308a980a0528738a5efa/docs/src/demo/themes/tango.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Tango-1" href="#Tango-1">Tango</a></h1><p><code>Highlights.Themes.TangoTheme</code> – <em>A theme inspired by the Tango Icon Theme Guidelines.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
@@ -7,169 +7,161 @@ pre.hljl {
     padding: 5px;
     overflow-x: auto;
     color: #f8f8f8; }
-pre.hljl > span.hljl-literal { color: #000000; }
-pre.hljl > span.hljl-name_entity { color: #ce5c00; }
-pre.hljl > span.hljl-keyword_declaration { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-keyword_namespace { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-name_variable_global { color: #000000; }
-pre.hljl > span.hljl-name_variable { color: #000000; }
-pre.hljl > span.hljl-number_hex { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-name_decorator { color: #5c35cc; font-weight: bold; }
-pre.hljl > span.hljl-other { color: #000000; }
-pre.hljl > span.hljl-string_doc { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-keyword_type { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-string_char { color: #4e9a06; }
-pre.hljl > span.hljl-string_double { color: #4e9a06; }
-pre.hljl > span.hljl-name_tag { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-keyword_constant { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-text { }
-pre.hljl > span.hljl-name_exception { color: #cc0000; font-weight: bold; }
-pre.hljl > span.hljl-error { color: #a40000; background-color: #ef2929; }
-pre.hljl > span.hljl-name_attribute { color: #c4a000; }
-pre.hljl > span.hljl-comment_preproc { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-comment_single { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-name_label { color: #f57900; }
-pre.hljl > span.hljl-generic_subheading { color: #800080; font-weight: bold; }
-pre.hljl > span.hljl-generic_strong { color: #000000; font-weight: bold; }
-pre.hljl > span.hljl-generic_deleted { color: #a40000; }
-pre.hljl > span.hljl-operator_word { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-name_class { color: #000000; }
-pre.hljl > span.hljl-name_namespace { color: #000000; }
-pre.hljl > span.hljl-namebuiltin { }
-pre.hljl > span.hljl-name_constant { color: #000000; }
-pre.hljl > span.hljl-name_builtin_pseudo { color: #3465a4; }
-pre.hljl > span.hljl-name_property { color: #000000; }
-pre.hljl > span.hljl-number_integer { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-generic_inserted { color: #00a000; }
-pre.hljl > span.hljl-name_function { color: #000000; }
-pre.hljl > span.hljl-name { color: #000000; }
-pre.hljl > span.hljl-keyword_reserved { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-generic_heading { color: #000080; font-weight: bold; }
-pre.hljl > span.hljl-comment_singleline { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-string_regex { color: #4e9a06; }
-pre.hljl > span.hljl-name_other { color: #000000; }
-pre.hljl > span.hljl-number_bin { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-punctuation { color: #000000; font-weight: bold; }
-pre.hljl > span.hljl-keyword_end { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-literal_date { color: #000000; }
-pre.hljl > span.hljl-string_backtick { color: #4e9a06; }
-pre.hljl > span.hljl-generic_error { color: #ef2929; }
-pre.hljl > span.hljl-name_variable_class { color: #000000; }
-pre.hljl > span.hljl-name_builtin { color: #204a87; }
-pre.hljl > span.hljl-string_escape { color: #4e9a06; }
-pre.hljl > span.hljl-whitespace { color: #f8f8f8; text-decoration: underline; }
-pre.hljl > span.hljl-number_integer_long { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-operator { color: #ce5c00; font-weight: bold; }
-pre.hljl > span.hljl-generic { color: #000000; }
-pre.hljl > span.hljl-number_float { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-generic_traceback { color: #a40000; font-weight: bold; }
-pre.hljl > span.hljl-string_interpol { color: #4e9a06; }
-pre.hljl > span.hljl-string_symbol { color: #4e9a06; }
-pre.hljl > span.hljl-number { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-string_iterpol { color: #4e9a06; }
-pre.hljl > span.hljl-string_macro { color: #4e9a06; }
-pre.hljl > span.hljl-number_oct { color: #0000cf; font-weight: bold; }
-pre.hljl > span.hljl-comment_multiline { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-namevariable { }
-pre.hljl > span.hljl-string_heredoc { color: #4e9a06; }
-pre.hljl > span.hljl-generic_output { color: #000000; font-style: italic; }
-pre.hljl > span.hljl-string_other { color: #4e9a06; }
-pre.hljl > span.hljl-string { color: #4e9a06; }
-pre.hljl > span.hljl-comment_special { color: #8f5902; font-style: italic; }
-pre.hljl > span.hljl-keyword { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-name_variable_instance { color: #000000; }
-pre.hljl > span.hljl-keyword_pseudo { color: #204a87; font-weight: bold; }
-pre.hljl > span.hljl-generic_emph { color: #000000; font-style: italic; }
-pre.hljl > span.hljl-generic_prompt { color: #8f5902; }
-pre.hljl > span.hljl-numberinteger { }
-pre.hljl > span.hljl-string_single { color: #4e9a06; }
-pre.hljl > span.hljl-comment { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_PSEUDO { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_HEADING { color: #000080; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_SUBHEADING { color: #800080; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_EMPH { color: #000000; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_TYPE { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-NUMBER { color: #0000cf; font-weight: bold; }
+pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { color: #000000; }
+pre.hljl > span.hljl-NAME_ATTRIBUTE { color: #c4a000; }
+pre.hljl > span.hljl-COMMENT_MULTILINE { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-COMMENT { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-STRING_SINGLE { color: #4e9a06; }
+pre.hljl > span.hljl-NAME_CLASS { color: #000000; }
+pre.hljl > span.hljl-NAME_VARIABLE { color: #000000; }
+pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-STRING_BACKTICK { color: #4e9a06; }
+pre.hljl > span.hljl-NAME_OTHER { color: #000000; }
+pre.hljl > span.hljl-GENERIC_DELETED { color: #a40000; }
+pre.hljl > span.hljl-PUNCTUATION { color: #000000; font-weight: bold; }
+pre.hljl > span.hljl-NAME_LABEL { color: #f57900; }
+pre.hljl > span.hljl-NAME_BUILTIN { color: #204a87; }
+pre.hljl > span.hljl-NAME_FUNCTION { color: #000000; }
+pre.hljl > span.hljl-GENERIC_ERROR { color: #ef2929; }
+pre.hljl > span.hljl-LITERAL { color: #000000; }
+pre.hljl > span.hljl-OPERATOR { color: #ce5c00; font-weight: bold; }
+pre.hljl > span.hljl-NUMBER_OCT { color: #0000cf; font-weight: bold; }
+pre.hljl > span.hljl-WHITESPACE { color: #f8f8f8; text-decoration: underline; }
+pre.hljl > span.hljl-KEYWORD { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-NAME_DECORATOR { color: #5c35cc; font-weight: bold; }
+pre.hljl > span.hljl-OTHER { color: #000000; }
+pre.hljl > span.hljl-STRING_HEREDOC { color: #4e9a06; }
+pre.hljl > span.hljl-STRING { color: #4e9a06; }
+pre.hljl > span.hljl-GENERIC_STRONG { color: #000000; font-weight: bold; }
+pre.hljl > span.hljl-NUMBER_INTEGER { color: #0000cf; font-weight: bold; }
+pre.hljl > span.hljl-NUMBER_INTEGER_LONG { color: #0000cf; font-weight: bold; }
+pre.hljl > span.hljl-STRING_ESCAPE { color: #4e9a06; }
+pre.hljl > span.hljl-OPERATOR_WORD { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-STRING_REGEX { color: #4e9a06; }
+pre.hljl > span.hljl-NAME_ENTITY { color: #ce5c00; }
+pre.hljl > span.hljl-GENERIC_TRACEBACK { color: #a40000; font-weight: bold; }
+pre.hljl > span.hljl-COMMENT_PREPROC { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-NUMBER_FLOAT { color: #0000cf; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_OUTPUT { color: #000000; font-style: italic; }
+pre.hljl > span.hljl-NAME_CONSTANT { color: #000000; }
+pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { color: #000000; }
+pre.hljl > span.hljl-STRING_INTERPOL { color: #4e9a06; }
+pre.hljl > span.hljl-NAME_VARIABLE_CLASS { color: #000000; }
+pre.hljl > span.hljl-STRING_SYMBOL { color: #4e9a06; }
+pre.hljl > span.hljl-NAME_TAG { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC { color: #000000; }
+pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-ERROR { color: #a40000; background-color: #ef2929; }
+pre.hljl > span.hljl-TEXT { }
+pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { color: #3465a4; }
+pre.hljl > span.hljl-NAME_PROPERTY { color: #000000; }
+pre.hljl > span.hljl-NAME { color: #000000; }
+pre.hljl > span.hljl-NAME_NAMESPACE { color: #000000; }
+pre.hljl > span.hljl-STRING_OTHER { color: #4e9a06; }
+pre.hljl > span.hljl-COMMENT_SPECIAL { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-GENERIC_PROMPT { color: #8f5902; }
+pre.hljl > span.hljl-LITERAL_DATE { color: #000000; }
+pre.hljl > span.hljl-COMMENT_SINGLE { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-NAME_EXCEPTION { color: #cc0000; font-weight: bold; }
+pre.hljl > span.hljl-STRING_DOUBLE { color: #4e9a06; }
+pre.hljl > span.hljl-KEYWORD_RESERVED { color: #204a87; font-weight: bold; }
+pre.hljl > span.hljl-STRING_DOC { color: #8f5902; font-style: italic; }
+pre.hljl > span.hljl-STRING_CHAR { color: #4e9a06; }
+pre.hljl > span.hljl-GENERIC_INSERTED { color: #00a000; }
+pre.hljl > span.hljl-NUMBER_HEX { color: #0000cf; font-weight: bold; }
 </style>
 
 <pre class='hljl'>
-<span class='hljl-comment_multiline'>#=
+<span class='hljl-COMMENT_MULTILINE'>#=
 Multiline comments...
     can be...
     #= nested #= to =# any depth. =#
-=#</span><span class='hljl-text'>
+=#</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-comment_singleline'># A single line comment.</span><span class='hljl-text'>
-    </span><span class='hljl-comment_singleline'># And another one.</span><span class='hljl-text'>
+</span><span class='hljl-COMMENT_SINGLE'># A single line comment.</span><span class='hljl-TEXT'>
+    </span><span class='hljl-COMMENT_SINGLE'># And another one.</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-comment_singleline'># Array and tuple literals.</span><span class='hljl-text'>
-</span><span class='hljl-punctuation'>[</span><span class='hljl-number_integer'>1</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>3</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>3</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>4</span><span class='hljl-punctuation'>][</span><span class='hljl-number_integer'>1</span><span class='hljl-operator'>:</span><span class='hljl-keyword_end'>end</span><span class='hljl-punctuation'>]</span><span class='hljl-text'>
-</span><span class='hljl-punctuation'>(</span><span class='hljl-number_integer'>1</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>2</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_float'>1.0</span><span class='hljl-punctuation'>)[</span><span class='hljl-number_integer'>1</span><span class='hljl-operator'>:</span><span class='hljl-number_integer'>2</span><span class='hljl-punctuation'>]</span><span class='hljl-text'>
-</span><span class='hljl-punctuation'>[(</span><span class='hljl-number_integer'>1</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>3</span><span class='hljl-punctuation'>),</span><span class='hljl-text'> </span><span class='hljl-punctuation'>(</span><span class='hljl-number_integer'>3</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>4</span><span class='hljl-punctuation'>)][</span><span class='hljl-keyword_end'>end</span><span class='hljl-text'> </span><span class='hljl-operator'>-</span><span class='hljl-text'> </span><span class='hljl-number_integer'>1</span><span class='hljl-punctuation'>]</span><span class='hljl-text'>
+</span><span class='hljl-COMMENT_SINGLE'># Array and tuple literals.</span><span class='hljl-TEXT'>
+</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>][</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-KEYWORD'>end</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1.0</span><span class='hljl-PUNCTUATION'>)[</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-PUNCTUATION'>[(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-PUNCTUATION'>),</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>)][</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>-</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-comment_singleline'># Keywords.</span><span class='hljl-text'>
-</span><span class='hljl-keyword'>if</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-text'> </span><span class='hljl-keyword_pseudo'>in</span><span class='hljl-text'> </span><span class='hljl-name'>y</span><span class='hljl-text'>
-    </span><span class='hljl-comment_singleline'># ...</span><span class='hljl-text'>
-</span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+</span><span class='hljl-COMMENT_SINGLE'># Keywords.</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>if</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_PSEUDO'>in</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'>
+    </span><span class='hljl-COMMENT_SINGLE'># ...</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-name'>x</span><span class='hljl-text'> </span><span class='hljl-keyword_pseudo'>in</span><span class='hljl-text'> </span><span class='hljl-name'>y</span><span class='hljl-text'> </span><span class='hljl-operator'>?</span><span class='hljl-text'> </span><span class='hljl-keyword_constant'>false</span><span class='hljl-text'> </span><span class='hljl-operator'>:</span><span class='hljl-text'> </span><span class='hljl-keyword_constant'>true</span><span class='hljl-text'>
+</span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_PSEUDO'>in</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>?</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_CONSTANT'>false</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>:</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_CONSTANT'>true</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-keyword'>let</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-number_integer'>1</span><span class='hljl-text'>
-    </span><span class='hljl-keyword_declaration'>local</span><span class='hljl-text'> </span><span class='hljl-name'>t</span><span class='hljl-text'>
-    </span><span class='hljl-keyword_declaration'>global</span><span class='hljl-text'> </span><span class='hljl-name'>s</span><span class='hljl-text'>
-    </span><span class='hljl-name'>t</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-text'>
-    </span><span class='hljl-name'>s</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-text'>
-</span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+</span><span class='hljl-KEYWORD'>let</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD_DECLARATION'>local</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD_DECLARATION'>global</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>s</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>s</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-keyword'>module</span><span class='hljl-text'> </span><span class='hljl-name'>M</span><span class='hljl-text'> </span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
-</span><span class='hljl-keyword'>baremodule</span><span class='hljl-text'> </span><span class='hljl-name'>M</span><span class='hljl-text'> </span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+</span><span class='hljl-KEYWORD'>module</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>M</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>baremodule</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>M</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-keyword'>typealias</span><span class='hljl-text'> </span><span class='hljl-name'>T</span><span class='hljl-text'> </span><span class='hljl-name'>A</span><span class='hljl-text'>
-</span><span class='hljl-keyword'>abstract</span><span class='hljl-text'> </span><span class='hljl-name'>A</span><span class='hljl-text'> </span><span class='hljl-operator'>&lt;:</span><span class='hljl-text'> </span><span class='hljl-name'>T</span><span class='hljl-text'>
-</span><span class='hljl-keyword'>type</span><span class='hljl-text'> </span><span class='hljl-name_function'>Point</span><span class='hljl-punctuation'>{</span><span class='hljl-name'>T</span><span class='hljl-punctuation'>}</span><span class='hljl-text'>
-    </span><span class='hljl-name'>x</span><span class='hljl-operator'>::</span><span class='hljl-name'>T</span><span class='hljl-text'>
-    </span><span class='hljl-name'>y</span><span class='hljl-operator'>::</span><span class='hljl-name'>T</span><span class='hljl-text'>
+</span><span class='hljl-KEYWORD'>typealias</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>T</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>A</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>abstract</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>A</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>&lt;:</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>T</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>type</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>Point</span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-NAME'>T</span><span class='hljl-PUNCTUATION'>}</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>x</span><span class='hljl-OPERATOR'>::</span><span class='hljl-NAME'>T</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>y</span><span class='hljl-OPERATOR'>::</span><span class='hljl-NAME'>T</span><span class='hljl-TEXT'>
 
-    </span><span class='hljl-name_function'>Point</span><span class='hljl-punctuation'>(</span><span class='hljl-name'>x</span><span class='hljl-punctuation'>)</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-name_function'>new</span><span class='hljl-punctuation'>(</span><span class='hljl-name'>x</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-number_integer'>2</span><span class='hljl-name'>x</span><span class='hljl-punctuation'>)</span><span class='hljl-text'>
+    </span><span class='hljl-NAME_FUNCTION'>Point</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>x</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>new</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>x</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-NAME'>x</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
 
-    </span><span class='hljl-name_decorator'>@inline</span><span class='hljl-text'> </span><span class='hljl-keyword'>function</span><span class='hljl-text'> </span><span class='hljl-name_function'>Point</span><span class='hljl-punctuation'>(</span><span class='hljl-name'>x</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-name'>y</span><span class='hljl-punctuation'>)</span><span class='hljl-text'>
-        </span><span class='hljl-keyword'>return</span><span class='hljl-text'> </span><span class='hljl-name_function'>new</span><span class='hljl-punctuation'>(</span><span class='hljl-name'>y</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-punctuation'>)</span><span class='hljl-text'>
-    </span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
-</span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+    </span><span class='hljl-NAME_DECORATOR'>@inline</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>function</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>Point</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>x</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-KEYWORD'>return</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>new</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>y</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-keyword'>immutable</span><span class='hljl-text'> </span><span class='hljl-name_function'>Empty</span><span class='hljl-punctuation'>{</span><span class='hljl-name'>T</span><span class='hljl-punctuation'>}</span><span class='hljl-text'> </span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+</span><span class='hljl-KEYWORD'>immutable</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>Empty</span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-NAME'>T</span><span class='hljl-PUNCTUATION'>}</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-keyword'>macro</span><span class='hljl-text'> </span><span class='hljl-name_function'>something</span><span class='hljl-punctuation'>(</span><span class='hljl-name'>x</span><span class='hljl-operator'>...</span><span class='hljl-punctuation'>)</span><span class='hljl-text'>
-    </span><span class='hljl-comment_singleline'># ...</span><span class='hljl-text'>
-</span><span class='hljl-keyword_end'>end</span><span class='hljl-text'>
+</span><span class='hljl-KEYWORD'>macro</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>something</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>x</span><span class='hljl-OPERATOR'>...</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-COMMENT_SINGLE'># ...</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-comment_singleline'># Character literals.</span><span class='hljl-text'>
-</span><span class='hljl-string_char'>&#39; &#39;</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-string_char'>&#39;\n&#39;</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-string_char'>&#39;\&#39;&#39;</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-string_char'>&#39;&quot;&#39;</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-string_char'>&#39;\u1234&#39;</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-string_char'>&#39;⻆&#39;</span><span class='hljl-text'>
+</span><span class='hljl-COMMENT_SINGLE'># Character literals.</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING_CHAR'>&#39; &#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_CHAR'>&#39;\n&#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_CHAR'>&#39;\&#39;&#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_CHAR'>&#39;&quot;&#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_CHAR'>&#39;\u1234&#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_CHAR'>&#39;⻆&#39;</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-comment_singleline'># String literals.</span><span class='hljl-text'>
+</span><span class='hljl-COMMENT_SINGLE'># String literals.</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-name'>⻪</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-string'>&quot;    &quot;</span><span class='hljl-text'>
-</span><span class='hljl-string'>&quot;&#39;&quot;</span><span class='hljl-text'>
-</span><span class='hljl-string'>&quot;</span><span class='hljl-string_escape'>\&quot;\&quot;</span><span class='hljl-string'> ...&quot;</span><span class='hljl-text'>
-</span><span class='hljl-string'>&quot;
+</span><span class='hljl-NAME'>⻪</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;    &quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING'>&quot;&#39;&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING'>&quot;</span><span class='hljl-STRING_ESCAPE'>\&quot;\&quot;</span><span class='hljl-STRING'> ...&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING'>&quot;
 a
-&quot;</span><span class='hljl-text'>
-</span><span class='hljl-string'>&quot;&quot;&quot;
+&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING'>&quot;&quot;&quot;
 ...
-    &quot;&quot;&quot;</span><span class='hljl-text'>
+    &quot;&quot;&quot;</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-string'>&quot; </span><span class='hljl-string_iterpol'>$x</span><span class='hljl-string'> </span><span class='hljl-string_iterpol'>$</span><span class='hljl-punctuation'>(</span><span class='hljl-keyword'>let</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-text'> </span><span class='hljl-operator'>=</span><span class='hljl-text'> </span><span class='hljl-name'>y</span><span class='hljl-text'> </span><span class='hljl-operator'>+</span><span class='hljl-text'> </span><span class='hljl-number_integer'>1</span><span class='hljl-punctuation'>;</span><span class='hljl-text'> </span><span class='hljl-name'>x</span><span class='hljl-operator'>^</span><span class='hljl-number_integer'>2</span><span class='hljl-punctuation'>;</span><span class='hljl-text'> </span><span class='hljl-keyword_end'>end</span><span class='hljl-punctuation'>)</span><span class='hljl-string'> ... </span><span class='hljl-string_escape'>\n</span><span class='hljl-string'>&quot;</span><span class='hljl-text'>
+</span><span class='hljl-STRING'>&quot; </span><span class='hljl-STRING_INTERPOL'>$x</span><span class='hljl-STRING'> </span><span class='hljl-STRING_INTERPOL'>$</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-KEYWORD'>let</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>;</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>;</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>end</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-STRING'> ... </span><span class='hljl-STRING_ESCAPE'>\n</span><span class='hljl-STRING'>&quot;</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-string_macro'>r&quot;[a-z]+$xyz&quot;</span><span class='hljl-name'>m</span><span class='hljl-text'>
+</span><span class='hljl-STRING_OTHER'>r&quot;[a-z]+$xyz&quot;</span><span class='hljl-NAME'>m</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-string_macro'>raw&quot;\n\n\r\t...\b&quot;</span><span class='hljl-text'>
-</span><span class='hljl-string_macro'>raw&quot;&quot;&quot;\n\n\r\t...\b&quot;&quot;&quot;</span><span class='hljl-name'>abc</span><span class='hljl-text'>
+</span><span class='hljl-STRING_OTHER'>raw&quot;\n\n\r\t...\b&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-STRING_OTHER'>raw&quot;&quot;&quot;\n\n\r\t...\b&quot;&quot;&quot;</span><span class='hljl-NAME'>abc</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-string_macro'>v&quot;0.0.2&quot;</span><span class='hljl-text'> </span><span class='hljl-operator'>≥</span><span class='hljl-text'> </span><span class='hljl-string_macro'>v&quot;0.0.1&quot;</span><span class='hljl-text'>
+</span><span class='hljl-STRING_OTHER'>v&quot;0.0.2&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>≥</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_OTHER'>v&quot;0.0.1&quot;</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-name_function'>run</span><span class='hljl-punctuation'>(</span><span class='hljl-string_backtick'>`foo </span><span class='hljl-string_iterpol'>$bar</span><span class='hljl-string_backtick'> --baz </span><span class='hljl-string_iterpol'>$</span><span class='hljl-punctuation'>([</span><span class='hljl-name'>a</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-name'>b</span><span class='hljl-punctuation'>,</span><span class='hljl-text'> </span><span class='hljl-name'>c</span><span class='hljl-punctuation'>])</span><span class='hljl-string_backtick'>`</span><span class='hljl-punctuation'>)</span><span class='hljl-text'>
+</span><span class='hljl-NAME_FUNCTION'>run</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-STRING_BACKTICK'>`foo </span><span class='hljl-STRING_INTERPOL'>$bar</span><span class='hljl-STRING_BACKTICK'> --baz </span><span class='hljl-STRING_INTERPOL'>$</span><span class='hljl-PUNCTUATION'>([</span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-PUNCTUATION'>])</span><span class='hljl-STRING_BACKTICK'>`</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-number_integer'>1_000_000_000</span><span class='hljl-text'> </span><span class='hljl-operator'>+</span><span class='hljl-text'> </span><span class='hljl-number_float'>1.0e-9</span><span class='hljl-text'> </span><span class='hljl-operator'>*</span><span class='hljl-text'> </span><span class='hljl-number_float'>.121</span><span class='hljl-text'> </span><span class='hljl-operator'>/</span><span class='hljl-text'> </span><span class='hljl-number_float'>1121.</span><span class='hljl-text'>
-</span><span class='hljl-number_float'>1f0</span><span class='hljl-text'> </span><span class='hljl-operator'>-</span><span class='hljl-text'> </span><span class='hljl-number_float'>1E-12</span><span class='hljl-text'>
-</span><span class='hljl-number_bin'>0b100_101_111</span><span class='hljl-text'>
-</span><span class='hljl-number_oct'>0o12123535252</span><span class='hljl-text'>
-</span><span class='hljl-number_hex'>0x4312afAfabC</span><span class='hljl-text'>
-</span><span class='hljl-number_integer'>1234</span><span class='hljl-text'>
-</span><span class='hljl-number_integer'>1_2_3_4</span><span class='hljl-text'>
+</span><span class='hljl-NUMBER_INTEGER'>1_000_000_000</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1.0e-9</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>*</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>.121</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>/</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1121.</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER_FLOAT'>1f0</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>-</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1E-12</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER'>0b100_101_111</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER_OCT'>0o12123535252</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER_HEX'>0x4312afAfabC</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER_INTEGER'>1234</span><span class='hljl-TEXT'>
+</span><span class='hljl-NUMBER_INTEGER'>1_2_3_4</span><span class='hljl-TEXT'>
 
 </span>
 </pre><footer><hr/><a class="previous" href="pygments.html"><span class="direction">Previous</span><span class="title">Pygments</span></a><a class="next" href="trac.html"><span class="direction">Next</span><span class="title">Trac</span></a></footer></article></body></html>
