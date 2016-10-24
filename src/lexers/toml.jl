@@ -5,46 +5,46 @@ definition(::Type{TOMLLexer}) = Dict(
     :filenames => ["*.toml"],
     :tokens => Dict(
         :root => [
-            (r"\s+"sm, :text),
-            (r"#.*?$"m, :comment),
+            (r"\s+"sm, TEXT),
+            (r"#.*?$"m, COMMENT),
 
-            (r"\"\"\"", :string, :triple_strings),
-            (r"\"", :string, :strings),
-            (r"'''", :string, :triple_literal_strings),
-            (r"'", :string, :literal_strings),
+            (r"\"\"\"", STRING, :triple_strings),
+            (r"\"", STRING, :strings),
+            (r"'''", STRING, :triple_literal_strings),
+            (r"'", STRING, :literal_strings),
 
-            (r"(true|false)$"m, :keyword_constant),
-            (r"[a-zA-Z_][a-zA-Z0-9_\-]*", :name),
+            (r"(true|false)$"m, KEYWORD_CONSTANT),
+            (r"[a-zA-Z_][a-zA-Z0-9_\-]*", NAME),
 
-            (r"([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?(?:Z|[-+][0-9]{2}:[0-9]{2}|))", :literal_date),
-            (r"([0-9]{4}-[0-9]{2}-[0-9]{2})", :literal_date),
+            (r"([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?(?:Z|[-+][0-9]{2}:[0-9]{2}|))", LITERAL_DATE),
+            (r"([0-9]{4}-[0-9]{2}-[0-9]{2})", LITERAL_DATE),
 
-            (r"([-+]?(?:[0-9_]+(?:\.[0-9_]+)?[eE][-+]?[0-9_]+|[0-9_]*\.[0-9_]+))", :number_float),
+            (r"([-+]?(?:[0-9_]+(?:\.[0-9_]+)?[eE][-+]?[0-9_]+|[0-9_]*\.[0-9_]+))", NUMBER_FLOAT),
 
-            (r"([-+]?[0-9_]+)", :number_integer),
+            (r"([-+]?[0-9_]+)", NUMBER_INTEGER),
 
-            (r"[\[\];.,:(){}]", :punctuation),
-            (r"\.", :punctuation),
+            (r"[\[\];.,:(){}]", PUNCTUATION),
+            (r"\.", PUNCTUATION),
 
-            (r"=", :operator),
+            (r"=", OPERATOR),
         ],
         :strings => [
-            (r"\"", :string, :__pop__),
-            (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", :string_escape),
-            (r"."sm, :string),
+            (r"\"", STRING, :__pop__),
+            (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
+            (r"."sm, STRING),
         ],
         :triple_strings => [
-            (r"\"\"\"", :string, :__pop__),
-            (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", :string_escape),
-            (r"."sm, :string),
+            (r"\"\"\"", STRING, :__pop__),
+            (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
+            (r"."sm, STRING),
         ],
         :literal_strings => [
-            (r"'", :string, :__pop__),
-            (r"."sm, :string),
+            (r"'", STRING, :__pop__),
+            (r"."sm, STRING),
         ],
         :triple_literal_strings => [
-            (r"'''", :string, :__pop__),
-            (r"."sm, :string),
+            (r"'''", STRING, :__pop__),
+            (r"."sm, STRING),
         ],
     )
 )

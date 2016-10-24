@@ -56,6 +56,8 @@ abstract TOMLLexer <: AbstractLexer
 
 # Definitions.
 
+using ..Highlights.Tokens
+
 include("lexers/julia.jl")
 include("lexers/toml.jl")
 

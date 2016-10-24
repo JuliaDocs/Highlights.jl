@@ -34,13 +34,15 @@ parts of our source code to be highlighted in. We do this by defining a new `Met
 `definition` for our `CustomTheme` type as follows:
 
 ```@example 1
+using Highlights.Tokens
+
 definition(::Type{CustomTheme}) = Dict(
     :style => S"bg: f7f3ee; fg: 605b53",
     :tokens => Dict(
-        :text    => S"",
-        :keyword => S"fg: 614c60; bold",
-        :string  => S"fg: a1789f",
-        :comment => S"fg: ad9c84; italic",
+        TEXT    => S"",
+        KEYWORD => S"fg: 614c60; bold",
+        STRING  => S"fg: a1789f",
+        COMMENT => S"fg: ad9c84; italic",
     ),
 )
 nothing # hide
@@ -94,16 +96,16 @@ abstract CustomTheme <: AbstractTheme
 definition(::Type{CustomTheme}) = Dict(
     :style => S"bg: f7f3ee; fg: 605b53",
     :tokens => Dict(
-        :text    => S"",
-        :keyword => S"fg: 614c60; bold",
-        :string  => S"fg: a1789f",
-        :comment => S"fg: ad9c84; italic",
+        TEXT    => S"",
+        KEYWORD => S"fg: 614c60; bold",
+        STRING  => S"fg: a1789f",
+        COMMENT => S"fg: ad9c84; italic",
     ),
 )
 
 # Let's also print it to a file to we can have a look.
 open("custom-theme.html", "w") do stream
-    stylesheet(stream, MIME("text/html"), Lexers.JuliaLexer, CustomTheme)
+    stylesheet(stream, MIME("text/html"), CustomTheme)
     highlight(stream, MIME("text/html"), source, Lexers.JuliaLexer, CustomTheme)
 end
 """
@@ -111,7 +113,7 @@ end
 
 ```@example 1
 open("custom-theme.html", "w") do stream
-    stylesheet(stream, MIME("text/html"), Lexers.JuliaLexer, CustomTheme)
+    stylesheet(stream, MIME("text/html"), CustomTheme)
     highlight(stream, MIME("text/html"), source, Lexers.JuliaLexer, CustomTheme)
 end
 ```

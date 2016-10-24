@@ -71,6 +71,8 @@ macro S_str(spec)
     Style(spec)
 end
 
+import ..Highlights.Tokens: TokenValue
+
 """
 $(TYPEDEF)
 
@@ -79,8 +81,9 @@ user-facing type.
 """
 immutable Theme
     base::Style
-    style::Dict{UInt, Style}
-    names::Dict{UInt, Symbol}
+    style::Dict{TokenValue, Style}
+    tokens::Dict{TokenValue, Symbol}
+    defaults::Dict{TokenValue, TokenValue}
 end
 
 
@@ -124,6 +127,8 @@ abstract XcodeTheme <: AbstractTheme
 
 # Theme definitions.
 
+using ..Highlights.Tokens
+
 include("themes/default.jl")
 
 include("themes/pygments.jl")
@@ -142,69 +147,20 @@ include("themes/xcode.jl")
 """
 Build a colour scheme `Theme` object based on a user-defined theme and lexer.
 """
-@generated function build_theme{T <: AbstractTheme, L <: AbstractLexer}(::Type{T}, ::Type{L})
+@generated function build_theme{T <: AbstractTheme}(::Type{T})
     local def = definition(T)
     local base = get(def, :style, S"")
-    local style = get(def, :tokens, Dict{Symbol, Style}())
-    local par = Dict{UInt, UInt}()
-    local rev = Dict{UInt, Symbol}()
-    # Parent tokens for all tokens used in the lexer `L`.
-    for each in tokens(L)
-        parent!(par, rev, each)
+    local style = get(def, :tokens, Dict{TokenValue, Style}())
+    get!(style, TEXT, S"") # The default TEXT if it hasn't been provided.
+    local tokens = Tokens.tokens()
+    local defaults = Dict{TokenValue, TokenValue}()
+    for (t::TokenValue, s::Symbol) in tokens
+        defaults[t] = fallback(style, t, s)
     end
-    # Style dict and parents of all tokens defined in theme `T`.
-    local sty = Dict{UInt, Style}()
-    for (k, v) in style
-        parent!(par, rev, k)
-        sty[hash(k)] = v
-    end
-    # Calculate the 'fallback' style to use for each token if not defined.
-    for (k, v) in par
-        _k = k
-        while true
-            if haskey(sty, _k)
-                sty[k] = sty[_k]
-                break
-            else
-                _k = par[_k]
-            end
-        end
-    end
-    return Theme(base, sty, rev)
+    return Theme(base, style, tokens, defaults)
 end
 
-function parent!(d::Dict, rev::Dict, s::Symbol)
-    local p = Symbol(join(split(string(s), '_')[1:end-1]))
-    p = p === Symbol("") ? :text : (parent!(d, rev, p); p)
-    rev[hash(s)] = s; rev[hash(p)] = p
-    d[hash(s)] = hash(p)
-    return p
-end
-
-tokens{L <: AbstractLexer}(::Type{L}) = tokens!(Set{Symbol}(), Set{DataType}(), L)
-
-function tokens!{L <: AbstractLexer}(ts::Set{Symbol}, seen::Set{DataType}, ::Type{L})
-    if !(L in seen)
-        push!(seen, L)
-        for (state, rules) in get(definition(L), :tokens, Dict())
-            for rule in rules
-                tokens!(ts, seen, rule)
-            end
-        end
-    end
-    return ts
-end
-
-tokens!(ts::Set, seen::Set, tup::Union{NTuple{2}, NTuple{3}}) = _tokens!(ts, seen, tup[2])
-tokens!(ts::Set, ::Set, ::Symbol) = ts
-
-function _tokens!(ts::Set, seen::Set, group::Tuple)
-    for each in group
-        _tokens!(ts, seen, each)
-    end
-    return ts
-end
-_tokens!(ts::Set, seen::Set, s::Symbol) = push!(ts, s)
-_tokens!{L <: AbstractLexer}(ts::Set, seen::Set, ::Type{L}) = tokens!(ts, seen, L)
+fallback(sty, t, s) = haskey(sty, t) ? t :
+    (p = Tokens.parent(s); fallback(sty, Tokens.TokenValue(p), p))
 
 end # module

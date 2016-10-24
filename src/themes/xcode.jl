@@ -3,33 +3,33 @@ definition(::Type{XcodeTheme}) = Dict(
     :description => "Style similar to the Xcode default colouring theme.",
     :comments => "Based on the Xcode theme from Pygments.",
     :tokens => Dict(
-        :comment             => S"fg: 177500",
-        :comment_preproc     => S"fg: 633820",
+        COMMENT             => S"fg: 177500",
+        COMMENT_PREPROC     => S"fg: 633820",
 
-        :error               => S"fg: 000000",
+        ERROR               => S"fg: 000000",
 
-        :keyword             => S"fg: A90D91",
+        KEYWORD             => S"fg: A90D91",
 
-        :literal             => S"fg: 1C01CE",
+        LITERAL             => S"fg: 1C01CE",
 
-        :name                => S"fg: 000000",
-        :name_attribute      => S"fg: 836C28",
-        :name_builtin        => S"fg: A90D91",
-        :name_builtin_pseudo => S"fg: 5B269A",
-        :name_class          => S"fg: 3F6E75",
-        :name_decorator      => S"fg: 000000",
-        :name_function       => S"fg: 000000",
-        :name_label          => S"fg: 000000",
-        :name_tag            => S"fg: 000000",
-        :name_variable       => S"fg: 000000",
+        NAME                => S"fg: 000000",
+        NAME_ATTRIBUTE      => S"fg: 836C28",
+        NAME_BUILTIN        => S"fg: A90D91",
+        NAME_BUILTIN_PSEUDO => S"fg: 5B269A",
+        NAME_CLASS          => S"fg: 3F6E75",
+        NAME_DECORATOR      => S"fg: 000000",
+        NAME_FUNCTION       => S"fg: 000000",
+        NAME_LABEL          => S"fg: 000000",
+        NAME_TAG            => S"fg: 000000",
+        NAME_VARIABLE       => S"fg: 000000",
 
-        :number              => S"fg: 1C01CE",
+        NUMBER              => S"fg: 1C01CE",
 
-        :operator            => S"fg: 000000",
+        OPERATOR            => S"fg: 000000",
 
-        :string              => S"fg: C41A16",
-        :string_char         => S"fg: 2300CE",
+        STRING              => S"fg: C41A16",
+        STRING_CHAR         => S"fg: 2300CE",
 
-        :text                => S"",
+        TEXT                => S"",
     )
 )

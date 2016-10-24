@@ -20,3 +20,10 @@ Private = false
 Modules = [Highlights.Lexers]
 Private = false
 ```
+
+## `Tokens` Subtype
+
+```@autodocs
+Modules = [Highlights.Tokens]
+Private = false
+```

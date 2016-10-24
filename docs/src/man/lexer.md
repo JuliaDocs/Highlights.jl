@@ -31,19 +31,21 @@ Finally we add a method to the `definition` function.
 We'll list the entire definition and then go over each part individually.
 
 ```@example 1
+using Highlights.Tokens
+
 definition(::Type{CommentLexer}) = Dict(
     :name => "Comments",
     :description => "A C-style comment lexer.",
     :tokens => Dict(
         :root => [
-            (r"//.*\n", :comment_singleline),
-            (r"/\*",    :comment_multiline,   :multiline_comments),
-            (r"[^/]+",  :text)
+            (r"//.*\n", COMMENT_SINGLE),
+            (r"/\*",    COMMENT_MULTILINE,   :multiline_comments),
+            (r"[^/]+",  TEXT)
         ],
         :multiline_comments => [
-            (r"/\*",     :comment_multiline,  :__push__),
-            (r"\*/",     :comment_multiline,  :__pop__),
-            (r"[^/\*]+", :comment_multiline),
+            (r"/\*",     COMMENT_MULTILINE,  :__push__),
+            (r"\*/",     COMMENT_MULTILINE,  :__pop__),
+            (r"[^/\*]+", COMMENT_MULTILINE),
         ],
     )
 )
@@ -77,7 +79,7 @@ move the current position forward and begin again at the first rule of the curre
 In the `:root` state of our `CommentLexer` we begin with
 
 ```julia
-(r"//.*\n", :comment_singleline)
+(r"//.*\n", COMMENT_SINGLE)
 ```
 
 which tests whether the current position in our source code matches the given regular
@@ -87,13 +89,13 @@ expression `r"//.*"`, i.e. a single line comment such as
 // This is a singleline comment.
 ```
 
-If it matches then we create a new `:comment_singleline` *token* that spans the entire
+If it matches then we create a new `COMMENT_SINGLE` *token* that spans the entire
 match -- from `/` to `.` in the above example.
 
 When the rule does not match we then move onto the next one:
 
 ```julia
-("r/\*", :comment_multiline, :multiline_comments)
+("r/\*", COMMENT_MULTILINE, :multiline_comments)
 ```
 
 which tries to match against a string starting with `/*`, i.e. the start of a multiline
@@ -108,14 +110,14 @@ comment such as
 ```
 
 When this rule is successfully matched we, like in the previous example, create a new
-`:comment_multiline` *token* and move passed the match. Instead of going back to the start
+`COMMENT_MULTILINE` *token* and move passed the match. Instead of going back to the start
 of the current state though, we first enter a new state called `:multiline_comments`. Once
 that state returns then we jump back to the first rule of the `:root` state.
 
 The last rule of the `:root` state isn't all that interesting:
 
 ```julia
-(r"[^/]+", :text)
+(r"[^/]+", TEXT)
 ```
 
 This just matches any non-comment characters and assigns them to a `:text` *token*.
@@ -123,7 +125,7 @@ This just matches any non-comment characters and assigns them to a `:text` *toke
 Now lets look at the `:multiline_comments` state.
 
 ```julia
-(r"/\*", :comment_multiline, :__push__),
+(r"/\*", COMMENT_MULTILINE, :__push__),
 ```
 
 When the above rule matches, i.e. the start of a multiline comment, then we enter a special
@@ -134,19 +136,19 @@ A similar naming scheme is used for the `:__pop__` state, where we `return` from
 *state* and so *pop* the current function call off the call stack:
 
 ```julia
-(r"\*/", :comment_multiline, :__pop__),
+(r"\*/", COMMENT_MULTILINE, :__pop__),
 ```
 
 And the last rule, similar to the `:text` *rule* in `:root`, just matches all non multiline
-comment characters and assigns the result to a `:comment_multiline` *token*:
+comment characters and assigns the result to a `COMMENT_MULTILINE` *token*:
 
 ```julia
-(r"[^/\*]+", :comment_multiline),
+(r"[^/\*]+", COMMENT_MULTILINE),
 ```
 
 !!! note
 
-    All the *tokens* in `:multiline_comments` are assigned to `:comment_multiline`. This is
+    All the *tokens* in `:multiline_comments` are assigned to `COMMENT_MULTILINE`. This is
     because when we are inside a nested comment everything will be a multiline comment.
 
 That's all there is to writing a *basic* lexer. There are a couple of other *rule* types
@@ -172,7 +174,7 @@ source =
     // And another single line // comment.
     """
 open("comments-lexer.html", "w") do stream
-    stylesheet(stream, MIME("text/html"), CommentLexer)
+    stylesheet(stream, MIME("text/html"))
     highlight(stream, MIME("text/html"), source, CommentLexer)
 end
 ```
@@ -200,7 +202,7 @@ help avoid duplicating rules.
     other recursively.
 
 ```julia
-(custom_matcher, :token_name)
+(custom_matcher, TOKEN_NAME)
 ```
 
 Use a custom function as the matcher rather than a regular expression. This function must
@@ -208,7 +210,7 @@ take a `Compiler.Context` object and return a `UnitRange{Int}` as the result. A 
 `0:0` signifies *no match*.
 
 ```julia
-(r"(group_one)(group_two)", (:group_one_token, :group_two_token))
+(r"(group_one)(group_two)", (GROUP_ONE_TOKEN, GROUP_TWO_TOKEN))
 ```
 
 Assigns two or more *tokens* at once based on the capture groups present in the regular

@@ -47,7 +47,7 @@ function render(io::IO, mime::MIME"text/css", theme::Theme)
     render(io, mime, theme.base)
     println(io, "}")
     for (hash, style) in theme.style
-        print(io, "pre.hljl > span.hljl-", theme.names[hash], " { ")
+        print(io, "pre.hljl > span.hljl-", theme.tokens[hash], " { ")
         render(io, mime, style)
         println(io, "}")
     end
@@ -82,7 +82,7 @@ function render(io::IO, mime::MIME"text/latex", theme::Theme)
         """
     )
     for (hash, style) in theme.style
-        print(io, "\\newcommand{\\HLJL", replace(string(theme.names[hash]), "_", ""), "}")
+        print(io, "\\newcommand{\\HLJL", replace(string(theme.tokens[hash]), "_", ""), "}")
         render(io, mime, style)
         println(io)
     end
@@ -95,7 +95,7 @@ function render(io::IO, mime::MIME"text/html", ctx::Context, theme::Theme)
     println(io, "<pre class='hljl'>")
     for token in ctx.tokens
         print(io, "<span class='hljl-")
-        print(io, theme.names[token.value], "'>")
+        print(io, theme.tokens[theme.defaults[token.value]], "'>")
         escape(io, mime, SubString(ctx.source, token.first, token.last))
         print(io, "</span>")
     end
@@ -105,12 +105,12 @@ end
 function render(io::IO, mime::MIME"text/latex", ctx::Context, theme::Theme)
     println(io, "\\begin{lstlisting}")
     for token in ctx.tokens
-        if theme.names[token.value] === :text
+        if theme.tokens[token.value] === :TEXT
             print(io, SubString(ctx.source, token.first, token.last))
         else
             for (nth, line) in enumerate(split(SubString(ctx.source, token.first, token.last), '\n'))
                 nth > 1 && println(io)
-                local name = replace(string(theme.names[token.value]), "_", "")
+                local name = replace(string(theme.tokens[theme.defaults[token.value]]), "_", "")
                 print(io, "(*@\\HLJL", name, "{")
                 escape(io, mime, line)
                 print(io, "}@*)")

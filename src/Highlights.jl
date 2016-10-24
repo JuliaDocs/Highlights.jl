@@ -58,6 +58,7 @@ definition{T <: AbstractTheme}(::Type{T}) = Dict{Symbol, Any}()
 
 # Submodules.
 
+include("Tokens.jl")
 include("Compiler.jl")
 include("Themes.jl")
 include("Lexers.jl")
@@ -106,12 +107,12 @@ julia> using Highlights
 
 julia> highlight(STDOUT, MIME("text/html"), "2x", Lexers.JuliaLexer)
 <pre class='hljl'>
-<span class='hljl-number_integer'>2</span><span class='hljl-name'>x</span>
+<span class='hljl-NUMBER'>2</span><span class='hljl-NAME'>x</span>
 </pre>
 
 julia> highlight(STDOUT, MIME("text/latex"), "'x'", Lexers.JuliaLexer, Themes.VimTheme)
 \\begin{lstlisting}
-(*@\\HLJLstringchar{{\\textquotesingle}x{\\textquotesingle}}@*)
+(*@\\HLJLSTRING{{\\textquotesingle}x{\\textquotesingle}}@*)
 \\end{lstlisting}
 
 ```
@@ -123,17 +124,17 @@ function highlight{
         io::IO, mime::MIME, src::AbstractString,
         lexer::Type{L}, theme::Type{T} = Themes.DefaultTheme,
     )
-    Format.render(io, mime, Compiler.lex(src, L), Themes.build_theme(T, L))
+    Format.render(io, mime, Compiler.lex(src, L), Themes.build_theme(T))
 end
 
 """
-Generate a "stylesheet" for the given theme and lexer.
+Generate a "stylesheet" for the given theme.
 
 $(SIGNATURES)
 
-Prints out the style information needed to colourise source code lexed using `lexer` in the
-given `theme`. Note that `theme` defaults to `Themes.DefaultTheme`. Output is printed to
-`io` in the format `mime`. `mine` can be one of
+Prints out the style information needed to colourise source code in the given
+`theme`. Note that `theme` defaults to `Themes.DefaultTheme`. Output is printed
+to `io` in the format `mime`. `mine` can be one of
 
   * `MIME("text/html")`
   * `MIME("text/css")`
@@ -146,21 +147,14 @@ julia> using Highlights
 
 julia> buf = IOBuffer();
 
-julia> stylesheet(buf, MIME("text/css"), Lexers.JuliaLexer, Themes.EmacsTheme)
+julia> stylesheet(buf, MIME("text/css"), Themes.EmacsTheme)
 
 julia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.
 "pre.hljl {"
 
 ```
 """
-function stylesheet{
-        L <: AbstractLexer,
-        T <: AbstractTheme,
-    }(
-        io::IO, mime::MIME,
-        lexer::Type{L}, theme::Type{T} = Themes.DefaultTheme,
-    )
-    Format.render(io, mime, Themes.build_theme(T, L))
-end
+stylesheet{T <: AbstractTheme}(io::IO, mime::MIME, theme::Type{T} = Themes.DefaultTheme) =
+    Format.render(io, mime, Themes.build_theme(T))
 
 end # module

@@ -14,17 +14,12 @@ end
 
 const __DIR__ = dirname(@__FILE__)
 
-const TOKEN_NAME_CACHE = Dict()
-
 function tokentest(lexer, source, expects...)
     local tokens = Highlights.Compiler.lex(source, lexer).tokens
-    local lookup::Dict = get!(TOKEN_NAME_CACHE, lexer) do
-        Dict([(hash(s), s) for s in Themes.tokens(lexer)])
-    end
     @test length(tokens) == length(expects)
     @test join([s for (n, s) in expects]) == source
     for (token, (name, str)) in zip(tokens, expects)
-        @test lookup[token.value] == name
+        @test token.value == name
         @test SubString(source, token.first, token.last) == str
     end
 end
@@ -35,19 +30,31 @@ function print_all(lexer, file)
     for m in ["html", "latex"]
         mime = MIME("text/$m")
         for theme in subtypes(Themes.AbstractTheme)
-            stylesheet(buffer, mime, Lexers.JuliaLexer, theme)
+            stylesheet(buffer, mime, theme)
             highlight(buffer, mime, source, Lexers.JuliaLexer, theme)
         end
     end
     return buffer
 end
 
+#
+# Setup.
+#
+
+using Highlights.Tokens
+
+@tokengroup CustomTokens [__a, __b, __c]
 
 #
 # Testsets.
 #
 
 @testset "Highlights" begin
+    @testset "Tokens" begin
+        @test string(__a) == "<__a>"
+        @test string(__b) == "<__b>"
+        @test string(__c) == "<__c>"
+    end
     @testset "Lexers" begin
         @testset for file in readdir(joinpath(__DIR__, "lexers"))
             include("lexers/$file")

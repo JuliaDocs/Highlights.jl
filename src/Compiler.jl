@@ -1,6 +1,7 @@
 module Compiler
 
 import ..Highlights: Str, AbstractLexer, definition
+import ..Highlights.Tokens: TokenValue, ERROR
 
 type Mut{T}
     value::T
@@ -11,7 +12,7 @@ Base.setindex!(m::Mut, v) = m.value = v
 
 
 immutable Token
-    value::UInt
+    value::TokenValue
     first::Int
     last::Int
 end
@@ -60,7 +61,7 @@ end
 nullmatch(f::Function, ctx::Context) = f(ctx)
 
 
-function update!(ctx::Context, range::Range, token::Integer)
+function update!(ctx::Context, range::Range, token::TokenValue)
     local pos = prevind(ctx.source, ctx.pos[] + length(range))
     if !isempty(ctx.tokens) && ctx.tokens[end].value == token
         ctx.tokens[end] = Token(token, ctx.tokens[end].first, pos)
@@ -79,7 +80,7 @@ function update!(ctx::Context, range::Range, lexer::Type, state = State{:root}()
 end
 
 function error!(ctx::Context)
-    push!(ctx.tokens, Token(hash(:error), ctx.pos[], ctx.pos[]))
+    push!(ctx.tokens, Token(Tokens.ERROR, ctx.pos[], ctx.pos[]))
     ctx.pos[] = nextind(ctx.source, ctx.pos[])
     return ctx
 end
@@ -149,16 +150,13 @@ end
 function prepare_bindings(t::Tuple)
     local out = Expr(:block)
     for (nth, token) in enumerate(t)
-        push!(out.args, :(update!(ctx, ctx.captures[$(nth)], $(convert_token(token)))))
+        push!(out.args, :(update!(ctx, ctx.captures[$(nth)], $(token))))
     end
     return out
 end
 
-convert_token(s::Symbol) = hash(s)
-convert_token(d::DataType) = d
-
 # The common bind case: bind matched range to token `s`.
-prepare_bindings(s::Symbol) = :(update!(ctx, range, $(hash(s))))
+prepare_bindings(s::TokenValue) = :(update!(ctx, range, $(s)))
 
 
 # Do nothing, pop the state, push another one on, or enter a new one entirely.
