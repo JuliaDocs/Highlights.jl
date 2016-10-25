@@ -47,6 +47,7 @@ end
 export
     FortranLexer,
     JuliaLexer,
+    JuliaConsoleLexer,
     MatlabLexer,
     TOMLLexer
 
@@ -54,6 +55,8 @@ export
 abstract FortranLexer <: AbstractLexer
 "A lexer for Julia source code."
 abstract JuliaLexer <: AbstractLexer
+"A lexer for Julia REPL sessions."
+abstract JuliaConsoleLexer <: AbstractLexer
 "A lexer for MATLAB source code."
 abstract MatlabLexer <: AbstractLexer
 "TOML (Tom's Obvious, Minimal Language) lexer."

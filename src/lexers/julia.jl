@@ -1,4 +1,6 @@
-import ..Highlights.Compiler: NULL_RANGE, Context
+import ..Highlights.Compiler: NULL_RANGE, Context, nullmatch
+
+# Julia Script Lexer.
 
 function definition(::Type{JuliaLexer})
     local keywords = Base.REPLCompletions.complete_keyword("")
@@ -145,3 +147,26 @@ function julia_is_string_macro(ctx::Context, count::Integer = 1)
     num == count ? (ctx.pos[]:prevind(s, i)) : NULL_RANGE
 end
 julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
+
+# Julia Console Lexer.
+
+definition(::Type{JuliaConsoleLexer}) = Dict(
+    :name => "Julia Console",
+    :description => "A lexer for Julia REPL sessions.",
+    :aliases => ["jlcon"],
+    :tokens => Dict(
+        :root => [
+            (r"^(julia|shell|help\?)> "m, NUMBER, :source),
+            (r"."ms, TEXT),
+        ],
+        :source => [
+            # Here we separate input from output using the following rule. Match everything
+            # from the start of the string until we encounter a line that starts with less
+            # than 7 space indent and where no subsequent lines start with a 7 space indent.
+            #
+            # NOTE: this is unlikely to capture input/output perfectly.
+            #
+            (r".+?(?=(^\s{0,6}[^\s]*$(?!^\s*$\s{7})))"ms, JuliaLexer, :__pop__)
+        ],
+    ),
+)

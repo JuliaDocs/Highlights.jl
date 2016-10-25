@@ -75,7 +75,7 @@ end
 function update!(ctx::Context, range::Range, lexer::Type, state = State{:root}())
     local pos = ctx.pos[] + length(range)
     lex!(Context(ctx, last(range)), lexer, state)
-    ctx.pos[] = nextind(ctx.source, pos)
+    ctx.pos[] = pos
     return ctx
 end
 
@@ -140,11 +140,9 @@ prepare_match(r::Regex) = Regex("\\G$(r.pattern)", r.compile_options, r.match_op
 prepare_match(f::Function) = f
 
 
-# Bind the matched range to the (lexer, state) tuple `tup`.
-function prepare_bindings{T <: AbstractLexer}(tup::Tuple{Type{T}, Symbol})
-    lexer, state = tup
-    return :(update!(ctx, range, $(lexer), $(State{state}())))
-end
+# Lex the `range` using lexer `L`, starting in state `:root`.
+prepare_bindings{L <: AbstractLexer}(::Type{L}) =
+    :(update!(ctx, range, $(L), $(State{:root}())))
 
 # Bind each of a group of captured matches to each element in the tuple `t`.
 function prepare_bindings(t::Tuple)
