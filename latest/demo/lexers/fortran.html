@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Fortran 90 · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="fortran.html">Fortran 90</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="fortran.html">Fortran 90</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/cda8959246e312ca29cdfd595683ed2ca83fccb1/docs/src/demo/lexers/fortran.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Fortran-90-1" href="#Fortran-90-1">Fortran 90</a></h1><p><code>Highlights.Lexers.FortranLexer</code> – <em>A lexer for Fortran 90 source code.</em></p>
+<style>
+pre.hljl {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
+    overflow-x: auto;
+    color: #444444; background-color: #fbfbfb; }
+pre.hljl > span.hljl-STRING { color: #c93d39; }
+pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
+pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
+pre.hljl > span.hljl-NUMBER { color: #3b972e; }
+pre.hljl > span.hljl-TEXT { }
+pre.hljl > span.hljl-NAME { }
+pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
+pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
+pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
+pre.hljl > span.hljl-STRING_INTERPOL { }
+pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
+</style>
+
+<pre class='hljl'>
+<span class='hljl-COMMENT'>! Based on code samples from https://en.wikipedia.org/wiki/Fortran</span><span class='hljl-TEXT'>
+</span><span class='hljl-COMMENT'>! and https://learnxinyminutes.com/docs/fortran95/.</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-KEYWORD'>PROGRAM</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>test</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>CALL</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>PROGRAM</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>test</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>SUBROUTINE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>PRINT</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>*</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;Hello world!&#39;</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>SUBROUTINE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-COMMENT'># a preprocessor comment</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-NAME'>.true.</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>==</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>.FALSE.</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>&lt;</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>.AND.</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>/=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>j</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>flag</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>==</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-KEYWORD'>print</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;(F6.3)&quot;</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>4.32</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-COMMENT'>! A comment...</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>string80</span><span class='hljl-TEXT'>            </span><span class='hljl-COMMENT'>! ... and other comment.</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>INTEGER</span><span class='hljl-TEXT'>       </span><span class='hljl-NAME'>length</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>CHARACTER</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>80</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>value</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>string80</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>CHARACTER</span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char1</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char2</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char3</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>string80</span><span class='hljl-TEXT'>)</span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>str1</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'>  </span><span class='hljl-NAME'>str2</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'>  </span><span class='hljl-NAME'>str3</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-KEYWORD'>REAL</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>DIMENSION</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>10</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>20</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>REAL</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>DIMENSION</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>      </span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>LOGICAL</span><span class='hljl-TEXT'>                    </span><span class='hljl-NAME'>flag</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>10</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>20</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>1.2</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>5</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>8</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>10</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>2</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>9</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>10</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>8</span><span class='hljl-TEXT'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>15</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>20</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+</span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>2</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>4</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+
+</span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>10</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>select</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>0</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-COMMENT'>! case i == 0</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER'>0</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>:</span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>(</span><span class='hljl-NUMBER'>6</span><span class='hljl-TEXT'>:)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER'>2</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>default</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER'>3</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>select</span><span class='hljl-TEXT'>
+</span>
+</pre><footer><hr/><a class="previous" href="../lexers.html"><span class="direction">Previous</span><span class="title">Lexers</span></a><a class="next" href="julia.html"><span class="direction">Next</span><span class="title">Julia</span></a></footer></article></body></html>
