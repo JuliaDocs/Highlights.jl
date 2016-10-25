@@ -45,10 +45,13 @@ end
 # Names.
 
 export
+    FortranLexer,
     JuliaLexer,
     MatlabLexer,
     TOMLLexer
 
+"A FORTRAN 90 source code lexer."
+abstract FortranLexer <: AbstractLexer
 "A lexer for Julia source code."
 abstract JuliaLexer <: AbstractLexer
 "A lexer for MATLAB source code."
@@ -61,6 +64,7 @@ abstract TOMLLexer <: AbstractLexer
 
 using ..Highlights.Tokens
 
+include("lexers/fortran.jl")
 include("lexers/julia.jl")
 include("lexers/matlab.jl")
 include("lexers/toml.jl")
