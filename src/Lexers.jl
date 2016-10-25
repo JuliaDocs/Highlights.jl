@@ -46,10 +46,13 @@ end
 
 export
     JuliaLexer,
+    MatlabLexer,
     TOMLLexer
 
 "A lexer for Julia source code."
 abstract JuliaLexer <: AbstractLexer
+"A lexer for MATLAB source code."
+abstract MatlabLexer <: AbstractLexer
 "TOML (Tom's Obvious, Minimal Language) lexer."
 abstract TOMLLexer <: AbstractLexer
 
@@ -59,6 +62,7 @@ abstract TOMLLexer <: AbstractLexer
 using ..Highlights.Tokens
 
 include("lexers/julia.jl")
+include("lexers/matlab.jl")
 include("lexers/toml.jl")
 
 end # module

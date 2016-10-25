@@ -1,7 +1,7 @@
 module Compiler
 
 import ..Highlights: Str, AbstractLexer, definition
-import ..Highlights.Tokens: TokenValue, ERROR
+import ..Highlights.Tokens: Tokens, TokenValue, ERROR
 
 type Mut{T}
     value::T
