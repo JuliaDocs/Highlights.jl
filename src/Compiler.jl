@@ -1,5 +1,7 @@
 module Compiler
 
+using Compat
+
 import ..Highlights: Str, AbstractLexer, definition
 import ..Highlights.Tokens: Tokens, TokenValue, ERROR
 
