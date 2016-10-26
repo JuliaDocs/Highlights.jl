@@ -174,4 +174,15 @@ function prepare_target(T, s::Symbol, ts::Tuple)
     return out
 end
 
+# Useful function for checking tokens.
+function debug(io::IO, src::AbstractString, lexer)
+    local tokens = lex(src, lexer).tokens
+    local padding = mapreduce(t -> length(string(t.value)), max, tokens)
+    for each in tokens
+        print(io, lpad(string(each.value), padding), " := ")
+        println(io, repr(SubString(src, each.first, each.last)))
+    end
+end
+debug(src::AbstractString, lexer) = debug(STDOUT, src, lexer)
+
 end # module

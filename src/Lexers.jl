@@ -49,6 +49,7 @@ export
     JuliaLexer,
     JuliaConsoleLexer,
     MatlabLexer,
+    RLexer,
     TOMLLexer
 
 "A FORTRAN 90 source code lexer."
@@ -59,6 +60,8 @@ abstract JuliaLexer <: AbstractLexer
 abstract JuliaConsoleLexer <: AbstractLexer
 "A lexer for MATLAB source code."
 abstract MatlabLexer <: AbstractLexer
+"A lexer for the R language."
+abstract RLexer <: AbstractLexer
 "TOML (Tom's Obvious, Minimal Language) lexer."
 abstract TOMLLexer <: AbstractLexer
 
@@ -70,6 +73,7 @@ using ..Highlights.Tokens
 include("lexers/fortran.jl")
 include("lexers/julia.jl")
 include("lexers/matlab.jl")
+include("lexers/r.jl")
 include("lexers/toml.jl")
 
 end # module
