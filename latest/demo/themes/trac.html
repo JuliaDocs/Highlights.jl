@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Trac · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="trac.html">Trac</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="trac.html">Trac</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/deecd615b395bbe64d0852de4dc03f6c8356cdb4/docs/src/demo/themes/trac.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Trac-1" href="#Trac-1">Trac</a></h1><p><code>Highlights.Themes.TracTheme</code> – <em>Based on the default trac highlighter design.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Trac · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="trac.html">Trac</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="trac.html">Trac</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/e9f91d111aaae976f838781cb0bb06452df44a53/docs/src/demo/themes/trac.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Trac-1" href="#Trac-1">Trac</a></h1><p><code>Highlights.Themes.TracTheme</code> – <em>Based on the default trac highlighter design.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
@@ -7,38 +7,38 @@ pre.hljl {
     padding: 5px;
     overflow-x: auto;
     }
-pre.hljl > span.hljl-GENERIC_OUTPUT { color: #888888; }
-pre.hljl > span.hljl-GENERIC_STRONG { font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_SUBHEADING { color: #aaaaaa; }
+pre.hljl > span.hljl-NAME_ENTITY { color: #800080; }
+pre.hljl > span.hljl-STRING { color: #bb8844; }
 pre.hljl > span.hljl-NAME_FUNCTION { color: #990000; font-weight: bold; }
-pre.hljl > span.hljl-COMMENT_PREPROC { color: #999999; font-weight: bold; }
-pre.hljl > span.hljl-NAME_CLASS { color: #445588; font-weight: bold; }
-pre.hljl > span.hljl-GENERIC_TRACEBACK { color: #aa0000; }
-pre.hljl > span.hljl-NAME_EXCEPTION { color: #990000; font-weight: bold; }
-pre.hljl > span.hljl-GENERIC_PROMPT { color: #555555; }
-pre.hljl > span.hljl-NAME_CONSTANT { color: #008080; }
+pre.hljl > span.hljl-COMMENT_SPECIAL { color: #999999; font-weight: bold; }
 pre.hljl > span.hljl-GENERIC_ERROR { color: #aa0000; }
 pre.hljl > span.hljl-NUMBER { color: #009999; }
-pre.hljl > span.hljl-GENERIC_INSERTED { color: #000000; background-color: #ddffdd; }
-pre.hljl > span.hljl-OPERATOR { font-weight: bold; }
-pre.hljl > span.hljl-GENERIC_DELETED { color: #000000; background-color: #ffdddd; }
-pre.hljl > span.hljl-COMMENT_SPECIAL { color: #999999; font-weight: bold; }
-pre.hljl > span.hljl-ERROR { color: #a61717; background-color: #e3d2d2; }
-pre.hljl > span.hljl-GENERIC_HEADING { color: #999999; }
-pre.hljl > span.hljl-NAME_ENTITY { color: #800080; }
-pre.hljl > span.hljl-TEXT { }
-pre.hljl > span.hljl-NAME_TAG { color: #000080; }
-pre.hljl > span.hljl-NAME_NAMESPACE { color: #555555; }
-pre.hljl > span.hljl-NAME_BUILTIN { color: #999999; }
-pre.hljl > span.hljl-STRING_REGEX { color: #808000; }
-pre.hljl > span.hljl-STRING { color: #bb8844; }
-pre.hljl > span.hljl-WHITESPACE { color: #bbbbbb; }
-pre.hljl > span.hljl-GENERIC_EMPH { font-style: italic; }
 pre.hljl > span.hljl-KEYWORD_TYPE { color: #445588; }
-pre.hljl > span.hljl-NAME_VARIABLE { color: #008080; }
-pre.hljl > span.hljl-GENERIC_SUBHEADING { color: #aaaaaa; }
+pre.hljl > span.hljl-STRING_REGEX { color: #808000; }
+pre.hljl > span.hljl-COMMENT_PREPROC { color: #999999; font-weight: bold; }
+pre.hljl > span.hljl-ERROR { color: #a61717; background-color: #e3d2d2; }
+pre.hljl > span.hljl-GENERIC_PROMPT { color: #555555; }
 pre.hljl > span.hljl-KEYWORD { font-weight: bold; }
+pre.hljl > span.hljl-NAME_EXCEPTION { color: #990000; font-weight: bold; }
+pre.hljl > span.hljl-NAME_NAMESPACE { color: #555555; }
+pre.hljl > span.hljl-GENERIC_TRACEBACK { color: #aa0000; }
+pre.hljl > span.hljl-NAME_TAG { color: #000080; }
+pre.hljl > span.hljl-NAME_CLASS { color: #445588; font-weight: bold; }
+pre.hljl > span.hljl-GENERIC_EMPH { font-style: italic; }
 pre.hljl > span.hljl-NAME_ATTRIBUTE { color: #008080; }
+pre.hljl > span.hljl-WHITESPACE { color: #bbbbbb; }
+pre.hljl > span.hljl-GENERIC_OUTPUT { color: #888888; }
+pre.hljl > span.hljl-TEXT { }
+pre.hljl > span.hljl-GENERIC_INSERTED { color: #000000; background-color: #ddffdd; }
+pre.hljl > span.hljl-GENERIC_HEADING { color: #999999; }
+pre.hljl > span.hljl-NAME_BUILTIN { color: #999999; }
+pre.hljl > span.hljl-NAME_CONSTANT { color: #008080; }
 pre.hljl > span.hljl-COMMENT { color: #999988; font-style: italic; }
+pre.hljl > span.hljl-GENERIC_STRONG { font-weight: bold; }
+pre.hljl > span.hljl-NAME_VARIABLE { color: #008080; }
+pre.hljl > span.hljl-GENERIC_DELETED { color: #000000; background-color: #ffdddd; }
+pre.hljl > span.hljl-OPERATOR { font-weight: bold; }
 </style>
 
 <pre class='hljl'>
