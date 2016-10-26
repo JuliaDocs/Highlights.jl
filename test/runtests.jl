@@ -45,6 +45,12 @@ using Highlights.Tokens
 
 @tokengroup CustomTokens [__a, __b, __c]
 
+abstract BrokenLexer <: Highlights.AbstractLexer
+
+Highlights.definition(::Type{BrokenLexer}) = Dict(
+    :tokens => Dict(:root => [(r"\w+", TEXT, (:b, :a))], :a => [], :b => []),
+)
+
 #
 # Testsets.
 #
@@ -54,10 +60,16 @@ using Highlights.Tokens
         @test string(__a) == "<__a>"
         @test string(__b) == "<__b>"
         @test string(__c) == "<__c>"
+        let f = getfield(Highlights.Tokens, Symbol("@tokengroup"))
+            @test_throws ErrorException f(:FAILS, :[a.b, c.d])
+        end
     end
     @testset "Lexers" begin
         @testset for file in readdir(joinpath(__DIR__, "lexers"))
             include("lexers/$file")
+        end
+        @testset "Errors" begin
+            tokentest(BrokenLexer, " ", ERROR => " ")
         end
     end
     @testset "Themes" begin
@@ -99,6 +111,14 @@ using Highlights.Tokens
                 @test render(mime, Themes.Style("italic"))    == "[1]{\\textit{#1}}"
                 @test render(mime, Themes.Style("underline")) == "[1]{\\underline{#1}}"
             end
+        end
+    end
+    @testset "Compiler" begin
+        let buf = IOBuffer()
+            Highlights.Compiler.debug(buf, "x", Highlights.Lexers.JuliaLexer)
+            @test takebuf_string(buf) == "<NAME> := \"x\"\n"
+            # Should print nothing to STDOUT.
+            Highlights.Compiler.debug("", Highlights.Lexers.JuliaLexer)
         end
     end
     @testset "Miscellaneous" begin

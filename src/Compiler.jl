@@ -33,8 +33,6 @@ isdone(ctx::Context) = ctx.pos[] > ctx.length
 
 immutable State{s} end
 
-state{s}(::State{s}) = s
-
 
 const NULL_RANGE = 0:0
 valid(r::Range) = r !== NULL_RANGE
@@ -177,7 +175,7 @@ end
 # Useful function for checking tokens.
 function debug(io::IO, src::AbstractString, lexer)
     local tokens = lex(src, lexer).tokens
-    local padding = mapreduce(t -> length(string(t.value)), max, tokens)
+    local padding = mapreduce(t -> length(string(t.value)), max, 0, tokens)
     for each in tokens
         print(io, lpad(string(each.value), padding), " := ")
         println(io, repr(SubString(src, each.first, each.last)))
