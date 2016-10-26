@@ -201,6 +201,8 @@ help avoid duplicating rules.
     **De not** create a *cycle* between two or more states by including *states* within each
     other recursively.
 
+### Custom Matchers
+
 ```julia
 (custom_matcher, TOKEN_NAME)
 ```
@@ -209,6 +211,8 @@ Use a custom function as the matcher rather than a regular expression. This func
 take a `Compiler.Context` object and return a `UnitRange{Int}` as the result. A range of
 `0:0` signifies *no match*.
 
+### Regular Expression Groups
+
 ```julia
 (r"(group_one)(group_two)", (GROUP_ONE_TOKEN, GROUP_TWO_TOKEN))
 ```
@@ -216,17 +220,60 @@ take a `Compiler.Context` object and return a `UnitRange{Int}` as the result. A 
 Assigns two or more *tokens* at once based on the capture groups present in the regular
 expression that is used. Token count and group count **must** match exactly.
 
+### Calling Other Lexers
+
 ```julia
 (r"...", OtherLexer)
 ```
 
-Lexer the source code matched by `r"..."` using a different lexer called `OtherLexer`.
+Tokenise the source code matched by `r"..."` using a different lexer called `OtherLexer`.
+The special symbol named `:__this__` refers to the current lexer:
+
+```julia
+(r"...", :__this__)
+```
+
+### State Queues
 
 ```julia
 (r"...", :token, (:state_3, :state_2, :state_1))
 ```
 
 Push a tuple of *states* onto the lexer stack that will be called from right to left.
+
+### Inheriting Rules
+
+If a lexer is defined as a subtype of another lexer, say
+
+```julia
+abstract Parent <: AbstractLexer
+abstract Child <: Parent
+```
+
+Then `Child` can use `:__inherit__` to include the rules from an ancestor's state within the
+current rule set, i.e.
+
+```julia
+definition(::Type{Parent}) = Dict(
+    :tokens => Dict(
+        :root => [
+            (r"\d+", NUMBER),
+        ],
+    ),
+)
+
+definition(::Type{Child}) = Dict(
+    :tokens => Dict(
+        :root => [
+            :__inherit__,
+            (r"\w+", NAME),
+        ],
+    ),
+)
+```
+
+In the above example `Parent` will tokenise `NUMBER`s and `Child` tokenise `NAME`s in
+addition to tokenising `NUMBER`s.
 
 !!! note
 

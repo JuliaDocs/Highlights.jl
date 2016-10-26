@@ -86,11 +86,11 @@ end
 
 lex{T <: AbstractLexer}(s::AbstractString, l::Type{T}) = lex!(Context(s), l, State{:root}())
 
-@generated function lex!{T, s}(ctx::Context, ::Type{T}, ::State{s})
+@generated function lex!{__this__, s}(ctx::Context, ::Type{__this__}, ::State{s})
     quote
         # The main lexer loop for each state.
         while !isdone(ctx)
-            $(compile_patterns(T, s))
+            $(compile_patterns(__this__, s))
             # When no patterns match the current `ctx` position then push an error token
             # and then move on to the next position.
             error!(ctx)
@@ -99,8 +99,13 @@ lex{T <: AbstractLexer}(s::AbstractString, l::Type{T}) = lex!(Context(s), l, Sta
     end
 end
 
+function get_tokens{L <: AbstractLexer}(::Type{L})
+    local tokens = get(definition(L), :tokens, Dict{Symbol, Any}())
+    return merge(get_tokens(supertype(L)), tokens)
+end
+get_tokens(::Type{Any}) = Dict{Symbol, Any}()
 
-getrules(T, s) = get(get(definition(T), :tokens, Dict()), s, [])
+getrules(lexer, state) = get(get_tokens(lexer), state, [])
 
 function compile_patterns(T::Type, s::Symbol, rules::Vector = getrules(T, s))
     local out = Expr(:block)
@@ -113,7 +118,13 @@ end
 compile_rule(T::Type, s::Symbol, rule::Tuple) = compile_rule(T, s, rule...)
 
 # Include the rules from state `inc` in the current state `s`.
-compile_rule(T::Type, s::Symbol, inc::Symbol) = compile_patterns(T, s, getrules(T, inc))
+#
+# `:__inherit__` is special cased to include the rules for the current state `s` of the
+# ancestor of the current lexer `T`.
+function compile_rule(T::Type, s::Symbol, inc::Symbol)
+    (ty, st) = inc === :__inherit__ ? (supertype(T), s) : (T, inc)
+    return compile_patterns(T, s, getrules(ty, st))
+end
 
 # Inherit the rules from lexer `T` and it's state `s`.
 compile_rule{T}(::Type, s::Symbol, ::Type{T}) = compile_patterns(T, s, getrules(T, s))
@@ -152,7 +163,7 @@ function prepare_bindings(t::Tuple)
 end
 
 # The common bind case: bind matched range to token `s`.
-prepare_bindings(s::TokenValue) = :(update!(ctx, range, $(s)))
+prepare_bindings(s::Union{Symbol, TokenValue}) = :(update!(ctx, range, $(s)))
 
 
 # Do nothing, pop the state, push another one on, or enter a new one entirely.

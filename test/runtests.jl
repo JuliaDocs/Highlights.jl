@@ -45,10 +45,33 @@ using Highlights.Tokens
 
 @tokengroup CustomTokens [__a, __b, __c]
 
+# Error reporting for broken lexers.
 abstract BrokenLexer <: Highlights.AbstractLexer
-
 Highlights.definition(::Type{BrokenLexer}) = Dict(
     :tokens => Dict(:root => [(r"\w+", TEXT, (:b, :a))], :a => [], :b => []),
+)
+
+# Lexer inheritance.
+abstract ParentLexer <: Highlights.AbstractLexer
+abstract ChildLexer <: ParentLexer
+Highlights.definition(::Type{ParentLexer}) = Dict(
+    :tokens => Dict(:root => [(r"#.*$"m, COMMENT)])
+)
+Highlights.definition(::Type{ChildLexer}) = Dict(
+    :tokens => Dict(:root => [:__inherit__, (r"\d+", NUMBER), (r".", TEXT)])
+)
+
+# Lexer self-reference using `:__this__`.
+abstract SelfLexer <: Highlights.AbstractLexer
+Highlights.definition(::Type{SelfLexer}) = Dict(
+    :tokens => Dict(
+        :root => [
+            (r"(#)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :__this__, PUNCTUATION)),
+            (r"\d+", NUMBER),
+            (r"\w+", NAME),
+            (r" ", WHITESPACE),
+        ],
+    ),
 )
 
 #
@@ -67,6 +90,47 @@ Highlights.definition(::Type{BrokenLexer}) = Dict(
     @testset "Lexers" begin
         @testset for file in readdir(joinpath(__DIR__, "lexers"))
             include("lexers/$file")
+        end
+        @testset "Self-referencing" begin
+            tokentest(
+                SelfLexer,
+                "# word;",
+                COMMENT => "#",
+                WHITESPACE => " ",
+                NAME => "word",
+                PUNCTUATION => ";",
+            )
+            tokentest(
+                SelfLexer,
+                "# 1 word;",
+                COMMENT => "#",
+                WHITESPACE => " ",
+                NUMBER => "1",
+                WHITESPACE => " ",
+                NAME => "word",
+                PUNCTUATION => ";",
+            )
+        end
+        @testset "Inheritance" begin
+            tokentest(
+                ParentLexer,
+                "# ...",
+                COMMENT => "# ...",
+            )
+            tokentest(
+                ParentLexer,
+                "1 # ...",
+                ERROR => "1",
+                ERROR => " ",
+                COMMENT => "# ...",
+            )
+            tokentest(
+                ChildLexer,
+                "1 # ...",
+                NUMBER => "1",
+                TEXT => " ",
+                COMMENT => "# ...",
+            )
         end
         @testset "Errors" begin
             tokentest(BrokenLexer, " ", ERROR => " ")
