@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia Console · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="jlcon.html">Julia Console</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="jlcon.html">Julia Console</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/3eecdf787081727d39b504f4492aa53468ff3a5c/docs/src/demo/lexers/jlcon.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Julia-Console-1" href="#Julia-Console-1">Julia Console</a></h1><p><code>Highlights.Lexers.JuliaConsoleLexer</code> – <em>A lexer for Julia REPL sessions.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia Console · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="jlcon.html">Julia Console</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="jlcon.html">Julia Console</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/8260a3de1f235ce97433fa10f6bf306772af7e6d/docs/src/demo/lexers/jlcon.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Julia-Console-1" href="#Julia-Console-1">Julia Console</a></h1><p><code>Highlights.Lexers.JuliaConsoleLexer</code> – <em>A lexer for Julia REPL sessions.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
@@ -7,20 +7,20 @@ pre.hljl {
     padding: 5px;
     overflow-x: auto;
     color: #444444; background-color: #fbfbfb; }
-pre.hljl > span.hljl-STRING { color: #c93d39; }
-pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
-pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
-pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
-pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
-pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
-pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-NUMBER { color: #3b972e; }
 pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-NAME { }
-pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
-pre.hljl > span.hljl-STRING_INTERPOL { }
-pre.hljl > span.hljl-TEXT { }
+pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
+pre.hljl > span.hljl-STRING { color: #c93d39; }
 pre.hljl > span.hljl-KEYWORD { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
+pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
+pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
+pre.hljl > span.hljl-STRING_INTERPOL { }
+pre.hljl > span.hljl-NUMBER { color: #3b972e; }
+pre.hljl > span.hljl-TEXT { }
+pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
+pre.hljl > span.hljl-NAME { }
 </style>
 
 <pre class='hljl'>

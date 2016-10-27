@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Monokai · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="monokai.html">Monokai</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="monokai.html">Monokai</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/3eecdf787081727d39b504f4492aa53468ff3a5c/docs/src/demo/themes/monokai.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Monokai-1" href="#Monokai-1">Monokai</a></h1><p><code>Highlights.Themes.MonokaiTheme</code> – <em>A style that mimics the Monokai color scheme.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Monokai · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a></li><li><a class="toctext" href="../themes.html">Themes</a><ul><li class="current"><a class="toctext" href="monokai.html">Monokai</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../themes.html">Themes</a></li><li><a href="monokai.html">Monokai</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/8260a3de1f235ce97433fa10f6bf306772af7e6d/docs/src/demo/themes/monokai.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Monokai-1" href="#Monokai-1">Monokai</a></h1><p><code>Highlights.Themes.MonokaiTheme</code> – <em>A style that mimics the Monokai color scheme.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
@@ -7,75 +7,75 @@ pre.hljl {
     padding: 5px;
     overflow-x: auto;
     color: #49483e; background-color: #272822; }
-pre.hljl > span.hljl-STRING { color: #e6db74; }
-pre.hljl > span.hljl-GENERIC_TRACEBACK { }
-pre.hljl > span.hljl-STRING_BACKTICK { }
-pre.hljl > span.hljl-GENERIC_DELETED { color: #f92672; }
-pre.hljl > span.hljl-KEYWORD_CONSTANT { }
-pre.hljl > span.hljl-STRING_SINGLE { }
-pre.hljl > span.hljl-COMMENT { color: #75715e; }
-pre.hljl > span.hljl-COMMENT_PREPROC { }
-pre.hljl > span.hljl-GENERIC_HEADING { }
-pre.hljl > span.hljl-NAME_NAMESPACE { }
-pre.hljl > span.hljl-STRING_OTHER { }
-pre.hljl > span.hljl-NAME_OTHER { color: #a6e22e; }
-pre.hljl > span.hljl-PUNCTUATION { color: #f8f8f2; }
-pre.hljl > span.hljl-GENERIC_EMPH { font-style: italic; }
-pre.hljl > span.hljl-COMMENT_MULTILINE { }
-pre.hljl > span.hljl-WHITESPACE { }
-pre.hljl > span.hljl-NAME_CLASS { color: #a6e22e; }
-pre.hljl > span.hljl-NAME_CONSTANT { color: #66d9ef; }
-pre.hljl > span.hljl-NUMBER_FLOAT { }
-pre.hljl > span.hljl-GENERIC_STRONG { font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_RESERVED { }
-pre.hljl > span.hljl-ERROR { color: #960050; background-color: #1e0010; }
-pre.hljl > span.hljl-LITERAL_DATE { color: #e6db74; }
-pre.hljl > span.hljl-STRING_CHAR { }
-pre.hljl > span.hljl-NAME_VARIABLE_CLASS { }
-pre.hljl > span.hljl-STRING_ESCAPE { color: #ae81ff; }
-pre.hljl > span.hljl-GENERIC_ERROR { }
-pre.hljl > span.hljl-OPERATOR_WORD { }
 pre.hljl > span.hljl-KEYWORD_DECLARATION { }
-pre.hljl > span.hljl-KEYWORD_TYPE { }
-pre.hljl > span.hljl-LITERAL { color: #ae81ff; }
-pre.hljl > span.hljl-STRING_DOC { }
-pre.hljl > span.hljl-NUMBER_INTEGER_LONG { }
-pre.hljl > span.hljl-STRING_HEREDOC { }
-pre.hljl > span.hljl-STRING_SYMBOL { }
-pre.hljl > span.hljl-KEYWORD { color: #66d9ef; }
-pre.hljl > span.hljl-GENERIC_PROMPT { }
-pre.hljl > span.hljl-GENERIC_SUBHEADING { color: #75715e; }
-pre.hljl > span.hljl-GENERIC_INSERTED { color: #a6e22e; }
 pre.hljl > span.hljl-GENERIC_OUTPUT { }
-pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { }
+pre.hljl > span.hljl-KEYWORD_RESERVED { }
+pre.hljl > span.hljl-STRING_SYMBOL { }
+pre.hljl > span.hljl-STRING_BACKTICK { }
+pre.hljl > span.hljl-STRING_ESCAPE { color: #ae81ff; }
+pre.hljl > span.hljl-NAME_CONSTANT { color: #66d9ef; }
+pre.hljl > span.hljl-GENERIC_TRACEBACK { }
 pre.hljl > span.hljl-NAME_VARIABLE { }
-pre.hljl > span.hljl-NAME_PROPERTY { }
-pre.hljl > span.hljl-NUMBER { color: #ae81ff; }
-pre.hljl > span.hljl-NAME { color: #f8f8f2; }
-pre.hljl > span.hljl-KEYWORD_PSEUDO { }
-pre.hljl > span.hljl-OPERATOR { color: #f92672; }
-pre.hljl > span.hljl-NAME_DECORATOR { color: #a6e22e; }
-pre.hljl > span.hljl-NUMBER_OCT { }
-pre.hljl > span.hljl-STRING_INTERPOL { }
-pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { }
-pre.hljl > span.hljl-STRING_REGEX { }
-pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #f92672; }
-pre.hljl > span.hljl-NAME_BUILTIN { }
-pre.hljl > span.hljl-NAME_ATTRIBUTE { color: #a6e22e; }
-pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { }
-pre.hljl > span.hljl-GENERIC { }
-pre.hljl > span.hljl-COMMENT_SPECIAL { }
-pre.hljl > span.hljl-NAME_FUNCTION { color: #a6e22e; }
-pre.hljl > span.hljl-NAME_EXCEPTION { color: #a6e22e; }
-pre.hljl > span.hljl-COMMENT_SINGLE { }
-pre.hljl > span.hljl-STRING_DOUBLE { }
 pre.hljl > span.hljl-NAME_LABEL { }
+pre.hljl > span.hljl-GENERIC_DELETED { color: #f92672; }
+pre.hljl > span.hljl-NAME_VARIABLE_CLASS { }
+pre.hljl > span.hljl-NAME_CLASS { color: #a6e22e; }
+pre.hljl > span.hljl-GENERIC_ERROR { }
+pre.hljl > span.hljl-STRING_INTERPOL { }
+pre.hljl > span.hljl-STRING_REGEX { }
+pre.hljl > span.hljl-NUMBER_FLOAT { }
+pre.hljl > span.hljl-GENERIC_EMPH { font-style: italic; }
+pre.hljl > span.hljl-NAME_DECORATOR { color: #a6e22e; }
+pre.hljl > span.hljl-TEXT { color: #f8f8f2; }
+pre.hljl > span.hljl-NAME { color: #f8f8f2; }
+pre.hljl > span.hljl-OPERATOR_WORD { }
+pre.hljl > span.hljl-NAME_OTHER { color: #a6e22e; }
+pre.hljl > span.hljl-OPERATOR { color: #f92672; }
+pre.hljl > span.hljl-STRING { color: #e6db74; }
+pre.hljl > span.hljl-STRING_SINGLE { }
+pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #f92672; }
+pre.hljl > span.hljl-NAME_FUNCTION { color: #a6e22e; }
+pre.hljl > span.hljl-LITERAL_DATE { color: #e6db74; }
+pre.hljl > span.hljl-PUNCTUATION { color: #f8f8f2; }
+pre.hljl > span.hljl-COMMENT_SPECIAL { }
+pre.hljl > span.hljl-NUMBER { color: #ae81ff; }
+pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { }
+pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { }
+pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { }
+pre.hljl > span.hljl-GENERIC_INSERTED { color: #a6e22e; }
 pre.hljl > span.hljl-NUMBER_INTEGER { }
+pre.hljl > span.hljl-KEYWORD { color: #66d9ef; }
 pre.hljl > span.hljl-NUMBER_HEX { }
 pre.hljl > span.hljl-OTHER { }
-pre.hljl > span.hljl-TEXT { color: #f8f8f2; }
+pre.hljl > span.hljl-GENERIC { }
+pre.hljl > span.hljl-STRING_CHAR { }
+pre.hljl > span.hljl-KEYWORD_PSEUDO { }
+pre.hljl > span.hljl-STRING_OTHER { }
+pre.hljl > span.hljl-STRING_DOUBLE { }
+pre.hljl > span.hljl-GENERIC_HEADING { }
+pre.hljl > span.hljl-COMMENT_MULTILINE { }
+pre.hljl > span.hljl-NAME_PROPERTY { }
+pre.hljl > span.hljl-NUMBER_INTEGER_LONG { }
+pre.hljl > span.hljl-NAME_NAMESPACE { }
+pre.hljl > span.hljl-GENERIC_STRONG { font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_TYPE { }
+pre.hljl > span.hljl-ERROR { color: #960050; background-color: #1e0010; }
+pre.hljl > span.hljl-GENERIC_SUBHEADING { color: #75715e; }
+pre.hljl > span.hljl-GENERIC_PROMPT { }
+pre.hljl > span.hljl-NUMBER_OCT { }
 pre.hljl > span.hljl-NAME_TAG { color: #f92672; }
+pre.hljl > span.hljl-LITERAL { color: #ae81ff; }
+pre.hljl > span.hljl-STRING_HEREDOC { }
+pre.hljl > span.hljl-COMMENT { color: #75715e; }
+pre.hljl > span.hljl-STRING_DOC { }
+pre.hljl > span.hljl-KEYWORD_CONSTANT { }
+pre.hljl > span.hljl-NAME_ATTRIBUTE { color: #a6e22e; }
+pre.hljl > span.hljl-NAME_EXCEPTION { color: #a6e22e; }
 pre.hljl > span.hljl-NAME_ENTITY { }
+pre.hljl > span.hljl-WHITESPACE { }
+pre.hljl > span.hljl-COMMENT_PREPROC { }
+pre.hljl > span.hljl-NAME_BUILTIN { }
+pre.hljl > span.hljl-COMMENT_SINGLE { }
 </style>
 
 <pre class='hljl'>
