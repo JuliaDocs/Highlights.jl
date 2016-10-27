@@ -88,11 +88,15 @@ end
 
 lex{T <: AbstractLexer}(s::AbstractString, l::Type{T}) = lex!(Context(s), l, State{:root}())
 
-@generated function lex!{__this__, s}(ctx::Context, ::Type{__this__}, ::State{s})
+@generated lex!{__this__, s}(ctx::Context, ::Type{__this__}, ::State{s}) = compile(__this__, s)
+
+# Separate from the `lex!` generated function so that it is easier to check the resulting
+# `quote` block for particular argument types.
+function compile(lexer, s)
     quote
         # The main lexer loop for each state.
         while !isdone(ctx)
-            $(compile_patterns(__this__, s))
+            $(compile_patterns(lexer, s))
             # When no patterns match the current `ctx` position then push an error token
             # and then move on to the next position.
             error!(ctx)
@@ -150,22 +154,23 @@ end
 prepare_match(r::Regex) = Regex("\\G$(r.pattern)", r.compile_options, r.match_options)
 prepare_match(f::Function) = f
 
-
-# Lex the `range` using lexer `L`, starting in state `:root`.
-prepare_bindings{L <: AbstractLexer}(::Type{L}) =
-    :(update!(ctx, range, $(L), $(State{:root}())))
-
-# Bind each of a group of captured matches to each element in the tuple `t`.
-function prepare_bindings(t::Tuple)
-    local out = Expr(:block)
-    for (nth, token) in enumerate(t)
-        push!(out.args, :(update!(ctx, ctx.captures[$(nth)], $(token))))
+function prepare_bindings(tuple::Tuple)
+    local block = Expr(:block)
+    for (nth, element) in enumerate(tuple)
+        push!(block.args, prepare_binding(element, :(ctx.captures[$(nth)])))
     end
-    return out
+    return block
 end
+prepare_bindings(other) = prepare_binding(other, :range)
 
-# The common bind case: bind matched range to token `s`.
-prepare_bindings(s::Union{Symbol, TokenValue}) = :(update!(ctx, range, $(s)))
+# A token such as `TEXT` or `NUMBER`.
+prepare_binding(t::TokenValue, range) = :(update!(ctx, $range, $t))
+# Call different lexer's `:root` state.
+prepare_binding{L}(::Type{L}, range) = :(update!(ctx, $range, $L, $(State{:root}())))
+# Call current lexer in state `s`.
+prepare_binding(s::Symbol, range) = :(update!(ctx, $range, __this__, $(State{s}())))
+# Call different lexer's state `p.second`.
+prepare_binding(p::Pair, range) = :(update!(ctx, $range, $(first(p)), $(State{last(p)}())))
 
 
 # Do nothing, pop the state, push another one on, or enter a new one entirely.

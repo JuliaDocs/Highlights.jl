@@ -198,7 +198,7 @@ help avoid duplicating rules.
 
 !!! warning
 
-    **De not** create a *cycle* between two or more states by including *states* within each
+    **Do not** create a *cycle* between two or more states by including *states* within each
     other recursively.
 
 ### Custom Matchers
@@ -211,6 +211,14 @@ Use a custom function as the matcher rather than a regular expression. This func
 take a `Compiler.Context` object and return a `UnitRange{Int}` as the result. A range of
 `0:0` signifies *no match*.
 
+!!! warning
+
+    Using matcher functions and interacting with `Compiler.Context` objects is still subject
+    to change and should be considered **unstable** and **non-public** currently.
+
+    It is included here only for the sake of completeness and to allow readers of some of
+    the lexers in `src/lexers` to more easily understand their use.
+
 ### Regular Expression Groups
 
 ```julia
@@ -218,7 +226,8 @@ take a `Compiler.Context` object and return a `UnitRange{Int}` as the result. A 
 ```
 
 Assigns two or more *tokens* at once based on the capture groups present in the regular
-expression that is used. Token count and group count **must** match exactly.
+expression that is used. Token count and group count **must** match exactly and all parts of
+the matching substring must be covered by exactly one group with no overlap between groups.
 
 ### Calling Other Lexers
 
@@ -226,12 +235,23 @@ expression that is used. Token count and group count **must** match exactly.
 (r"...", OtherLexer)
 ```
 
-Tokenise the source code matched by `r"..."` using a different lexer called `OtherLexer`.
-The special symbol named `:__this__` refers to the current lexer:
+Tokenise the source code matched by `r"..."` using a different lexer called `OtherLexer` --
+starting from it's `:root` state.
 
 ```julia
-(r"...", :__this__)
+(r"...", :other_state)
 ```
+
+Use the current lexer's `:other_state` *state* to tokenise source code matched by `r"..."`.
+
+!!! note
+
+    Additionally, the previous two examples can be combined to call another lexer, but
+    starting at the specified *state*, i.e.
+
+    ```julia
+    (r"...", OtherLexer => :other_state)
+    ```
 
 ### State Queues
 

@@ -61,15 +61,35 @@ Highlights.definition(::Type{ChildLexer}) = Dict(
     :tokens => Dict(:root => [:__inherit__, (r"\d+", NUMBER), (r".", TEXT)])
 )
 
-# Lexer self-reference using `:__this__`.
+abstract NumberLexer <: Highlights.AbstractLexer
+Highlights.definition(::Type{NumberLexer}) = Dict(
+    :tokens => Dict(
+        :root => [
+            (r"0b[0-1]+", NUMBER_BIN),
+            (r"0o[0-7]+", NUMBER_OCT),
+            (r"0x[0-9a-f]+", NUMBER_HEX),
+        ],
+        :integers => [
+            (r"\d+", NUMBER_INTEGER),
+        ],
+    ),
+)
+
 abstract SelfLexer <: Highlights.AbstractLexer
 Highlights.definition(::Type{SelfLexer}) = Dict(
     :tokens => Dict(
         :root => [
-            (r"(#)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :__this__, PUNCTUATION)),
+            (r"(#)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :root, PUNCTUATION)),
+            (r"(!)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :string, PUNCTUATION)),
             (r"\d+", NUMBER),
             (r"\w+", NAME),
             (r" ", WHITESPACE),
+        ],
+        :string => [
+            (r"'[^']*'", STRING),
+            (r"0[box][\da-f]+", NumberLexer),
+            (r"\d+", NumberLexer => :integers),
+            (r"\s", WHITESPACE),
         ],
     ),
 )
@@ -108,6 +128,42 @@ Highlights.definition(::Type{SelfLexer}) = Dict(
                 NUMBER => "1",
                 WHITESPACE => " ",
                 NAME => "word",
+                PUNCTUATION => ";",
+            )
+            tokentest(
+                SelfLexer,
+                "! '...';",
+                COMMENT => "!",
+                WHITESPACE => " ",
+                STRING => "'...'",
+                PUNCTUATION => ";",
+            )
+            tokentest(
+                SelfLexer,
+                "! 0b1010;",
+                COMMENT => "!",
+                WHITESPACE => " ",
+                NUMBER_BIN => "0b1010",
+                PUNCTUATION => ";",
+            )
+            tokentest(
+                SelfLexer,
+                "! 0b1010 0xacd1;",
+                COMMENT => "!",
+                WHITESPACE => " ",
+                NUMBER_BIN => "0b1010",
+                WHITESPACE => " ",
+                NUMBER_HEX => "0xacd1",
+                PUNCTUATION => ";",
+            )
+            tokentest(
+                SelfLexer,
+                "! 1234 0b01;",
+                COMMENT => "!",
+                WHITESPACE => " ",
+                NUMBER_INTEGER => "1234",
+                WHITESPACE => " ",
+                NUMBER_BIN => "0b01",
                 PUNCTUATION => ";",
             )
         end
