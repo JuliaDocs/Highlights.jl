@@ -94,6 +94,17 @@ Highlights.definition(::Type{SelfLexer}) = Dict(
     ),
 )
 
+abstract SelectiveInheritanceLexer <: Highlights.AbstractLexer
+Highlights.definition(::Type{SelectiveInheritanceLexer}) = Dict(
+    :tokens => Dict(
+        :root => [
+            NumberLexer,
+            (r"\w+", NAME),
+            (r"\s", WHITESPACE),
+        ],
+    ),
+)
+
 #
 # Testsets.
 #
@@ -186,6 +197,13 @@ Highlights.definition(::Type{SelfLexer}) = Dict(
                 NUMBER => "1",
                 TEXT => " ",
                 COMMENT => "# ...",
+            )
+            tokentest(
+                SelectiveInheritanceLexer,
+                "word 0b1010",
+                NAME => "word",
+                WHITESPACE => " ",
+                NUMBER_BIN => "0b1010",
             )
         end
         @testset "Errors" begin

@@ -295,6 +295,18 @@ definition(::Type{Child}) = Dict(
 In the above example `Parent` will tokenise `NUMBER`s and `Child` tokenise `NAME`s in
 addition to tokenising `NUMBER`s.
 
+### "Selective" Rules Inheritance
+
+A specific set of rules from another lexer, which does not need to be a super type of the
+current lexer, can be included using
+
+```julia
+OtherLexer
+```
+
+which, when used as a rule in a state `s`, will include all the rules from the state in
+lexer `OtherLexer` with the same name as `s`.
+
 !!! note
 
     For all the above *rules* a regular expression and custom matcher function can be
