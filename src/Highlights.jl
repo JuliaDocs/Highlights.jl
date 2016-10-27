@@ -88,7 +88,7 @@ end
 
 # Public interface.
 
-export Lexers, Themes, highlight, stylesheet
+export Lexers, Themes, Tokens, highlight, stylesheet
 
 """
 Highlight source code using a specific lexer, mimetype and theme.
