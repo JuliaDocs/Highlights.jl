@@ -6,50 +6,113 @@ pre.hljl {
     padding: 5px;
     overflow-x: auto;
     color: #444444; background-color: #fbfbfb; }
-pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
 pre.hljl > span.hljl-TEXT { }
-pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
-pre.hljl > span.hljl-STRING_INTERPOL { }
-pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
-pre.hljl > span.hljl-NAME { }
-pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
-pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
+pre.hljl > span.hljl-WHITESPACE { }
+pre.hljl > span.hljl-ESCAPE { }
+pre.hljl > span.hljl-ERROR { }
+pre.hljl > span.hljl-OTHER { }
 pre.hljl > span.hljl-KEYWORD { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-STRING { color: #c93d39; }
-pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
+pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_PSEUDO { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_RESERVED { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-KEYWORD_TYPE { color: #945bb0; font-weight: bold; }
+pre.hljl > span.hljl-NAME { }
+pre.hljl > span.hljl-NAME_ATTRIBUTE { }
+pre.hljl > span.hljl-NAME_BUILTIN { }
+pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { }
+pre.hljl > span.hljl-NAME_CLASS { }
+pre.hljl > span.hljl-NAME_CONSTANT { }
+pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
+pre.hljl > span.hljl-NAME_ENTITY { }
+pre.hljl > span.hljl-NAME_EXCEPTION { }
+pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
+pre.hljl > span.hljl-NAME_FUNCTION_MAGIC { color: #4266d5; }
+pre.hljl > span.hljl-NAME_PROPERTY { }
+pre.hljl > span.hljl-NAME_LABEL { }
+pre.hljl > span.hljl-NAME_NAMESPACE { }
+pre.hljl > span.hljl-NAME_OTHER { }
+pre.hljl > span.hljl-NAME_TAG { }
+pre.hljl > span.hljl-NAME_VARIABLE { }
+pre.hljl > span.hljl-NAME_VARIABLE_CLASS { }
+pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { }
+pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { }
+pre.hljl > span.hljl-NAME_VARIABLE_MAGIC { }
+pre.hljl > span.hljl-LITERAL { }
 pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
+pre.hljl > span.hljl-STRING { color: #c93d39; }
+pre.hljl > span.hljl-STRING_AFFIX { color: #c93d39; }
+pre.hljl > span.hljl-STRING_BACKTICK { color: #c93d39; }
+pre.hljl > span.hljl-STRING_CHAR { color: #c93d39; }
+pre.hljl > span.hljl-STRING_DELIMITER { color: #c93d39; }
+pre.hljl > span.hljl-STRING_DOC { color: #c93d39; }
+pre.hljl > span.hljl-STRING_DOUBLE { color: #c93d39; }
+pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
+pre.hljl > span.hljl-STRING_HEREDOC { color: #c93d39; }
+pre.hljl > span.hljl-STRING_INTERPOL { }
+pre.hljl > span.hljl-STRING_OTHER { color: #c93d39; }
+pre.hljl > span.hljl-STRING_REGEX { color: #c93d39; }
+pre.hljl > span.hljl-STRING_SINGLE { color: #c93d39; }
+pre.hljl > span.hljl-STRING_SYMBOL { color: #c93d39; }
 pre.hljl > span.hljl-NUMBER { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_BIN { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_FLOAT { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_HEX { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_INTEGER { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_INTEGER_LONG { color: #3b972e; }
+pre.hljl > span.hljl-NUMBER_OCT { color: #3b972e; }
+pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
+pre.hljl > span.hljl-OPERATOR_WORD { color: #666666; font-weight: bold; }
+pre.hljl > span.hljl-PUNCTUATION { }
+pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_HASHBANG { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_MULTILINE { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_PREPROC { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_PREPROCFILE { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_SINGLE { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-COMMENT_SPECIAL { color: #999977; font-style: italic; }
+pre.hljl > span.hljl-GENERIC { }
+pre.hljl > span.hljl-GENERIC_DELETED { }
+pre.hljl > span.hljl-GENERIC_EMPH { }
+pre.hljl > span.hljl-GENERIC_ERROR { }
+pre.hljl > span.hljl-GENERIC_HEADING { }
+pre.hljl > span.hljl-GENERIC_INSERTED { }
+pre.hljl > span.hljl-GENERIC_OUTPUT { }
+pre.hljl > span.hljl-GENERIC_PROMPT { }
+pre.hljl > span.hljl-GENERIC_STRONG { }
+pre.hljl > span.hljl-GENERIC_SUBHEADING { }
+pre.hljl > span.hljl-GENERIC_TRACEBACK { }
 </style>
 
 <pre class='hljl'>
-<span class='hljl-KEYWORD'>function</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>mandel</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+<span class='hljl-KEYWORD'>function</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>mandel</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>z</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
     </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>maxiter</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>80</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>for</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-NAME'>maxiter</span><span class='hljl-TEXT'>
-        </span><span class='hljl-KEYWORD'>if</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>abs</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>&gt;</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>2</span><span class='hljl-TEXT'>
-            </span><span class='hljl-KEYWORD'>return</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>n</span><span class='hljl-OPERATOR'>-</span><span class='hljl-NUMBER'>1</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>maxiter</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>80</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>for</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-NAME'>maxiter</span><span class='hljl-TEXT'>
+        </span><span class='hljl-KEYWORD'>if</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>abs</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>z</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>&gt;</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'>
+            </span><span class='hljl-KEYWORD'>return</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>n</span><span class='hljl-OPERATOR'>-</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-TEXT'>
         </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER'>2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'>
     </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
     </span><span class='hljl-KEYWORD'>return</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>maxiter</span><span class='hljl-TEXT'>
 </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 
-</span><span class='hljl-KEYWORD'>function</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randmatstat</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>5</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>zeros</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>zeros</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>for</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>,</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>,</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>,</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>d</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>,</span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>P</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>[</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>d</span><span class='hljl-TEXT'>]</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>Q</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-TEXT'>[</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>;</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>d</span><span class='hljl-TEXT'>]</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>[</span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'>]</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>trace</span><span class='hljl-TEXT'>((</span><span class='hljl-NAME'>P</span><span class='hljl-OPERATOR'>.</span><span class='hljl-TEXT'>&#39;</span><span class='hljl-OPERATOR'>*</span><span class='hljl-NAME'>P</span><span class='hljl-TEXT'>)</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER'>4</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
-        </span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'>[</span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'>]</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>trace</span><span class='hljl-TEXT'>((</span><span class='hljl-NAME'>Q</span><span class='hljl-OPERATOR'>.</span><span class='hljl-TEXT'>&#39;</span><span class='hljl-OPERATOR'>*</span><span class='hljl-NAME'>Q</span><span class='hljl-TEXT'>)</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER'>4</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+</span><span class='hljl-KEYWORD'>function</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randmatstat</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>t</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>n</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>zeros</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>t</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>zeros</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>t</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-KEYWORD'>for</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-OPERATOR'>:</span><span class='hljl-NAME'>t</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>d</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>randn</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-NAME'>n</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>P</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>d</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>Q</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>;</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>d</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>i</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>trace</span><span class='hljl-PUNCTUATION'>((</span><span class='hljl-NAME'>P</span><span class='hljl-OPERATOR'>.</span><span class='hljl-TEXT'>&#39;</span><span class='hljl-OPERATOR'>*</span><span class='hljl-NAME'>P</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+        </span><span class='hljl-NAME'>w</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>i</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>trace</span><span class='hljl-PUNCTUATION'>((</span><span class='hljl-NAME'>Q</span><span class='hljl-OPERATOR'>.</span><span class='hljl-TEXT'>&#39;</span><span class='hljl-OPERATOR'>*</span><span class='hljl-NAME'>Q</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-OPERATOR'>^</span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
     </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME_FUNCTION'>std</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>)</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME_FUNCTION'>mean</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'>),</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>std</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'>)</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME_FUNCTION'>mean</span><span class='hljl-TEXT'>(</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'>)</span><span class='hljl-TEXT'>
+    </span><span class='hljl-NAME_FUNCTION'>std</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME_FUNCTION'>mean</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>),</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_FUNCTION'>std</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>w</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME_FUNCTION'>mean</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>w</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
 </span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'>
 </span>
 </pre>
