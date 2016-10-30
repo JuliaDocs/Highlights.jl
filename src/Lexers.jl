@@ -8,7 +8,8 @@ module Lexers
 
 using DocStringExtensions
 
-import ..Highlights: AbstractLexer, definition
+import ..Highlights: AbstractLexer
+import ..Highlights.Compiler: @lexer
 
 
 # Utilities.

@@ -13,7 +13,8 @@ using Highlights
 ```
 
 ```@example 1
-import Highlights: AbstractLexer, definition
+import Highlights: AbstractLexer
+import Highlights.Compiler: @lexer
 ```
 
 Then we define a new type to represent our lexer.
@@ -33,7 +34,7 @@ We'll list the entire definition and then go over each part individually.
 ```@example 1
 using Highlights.Tokens
 
-definition(::Type{CommentLexer}) = Dict(
+@lexer CommentLexer Dict(
     :name => "Comments",
     :description => "A C-style comment lexer.",
     :tokens => Dict(
@@ -294,18 +295,6 @@ definition(::Type{Child}) = Dict(
 
 In the above example `Parent` will tokenise `NUMBER`s and `Child` tokenise `NAME`s in
 addition to tokenising `NUMBER`s.
-
-### "Selective" Rules Inheritance
-
-A specific set of rules from another lexer, which does not need to be a super type of the
-current lexer, can be included using
-
-```julia
-OtherLexer
-```
-
-which, when used as a rule in a state `s`, will include all the rules from the state in
-lexer `OtherLexer` with the same name as `s`.
 
 !!! note
 

@@ -1,4 +1,4 @@
-definition(::Type{TOMLLexer}) = Dict(
+@lexer TOMLLexer Dict(
     :name => "TOML",
     :description => "A lexer for TOML, a simple language for config files.",
     :aliases => ["TOML", "toml"],

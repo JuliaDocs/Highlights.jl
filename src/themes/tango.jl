@@ -1,4 +1,4 @@
-definition(::Type{TangoTheme}) = Dict(
+@theme TangoTheme Dict(
     :name => "Tango",
     :description => "A theme inspired by the Tango Icon Theme Guidelines.",
     :comments => "Based on Tango theme from Pygments.",

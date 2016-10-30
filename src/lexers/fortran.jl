@@ -1,4 +1,4 @@
-function definition(::Type{FortranLexer})
+@lexer FortranLexer let
     local keywords = [
         "ABSTRACT", "ACCEPT", "ALL", "ALLSTOP", "ALLOCATABLE", "ALLOCATE", "ARRAY",
         "ASSIGN", "ASSOCIATE", "ASYNCHRONOUS", "BACKSPACE", "BIND", "BLOCK", "BLOCKDATA",
@@ -71,7 +71,7 @@ function definition(::Type{FortranLexer})
         "EQ", "NE", "LT", "LE", "GT", "GE", "NOT", "AND", "OR", "EQV", "NEQV",
     ]
     local caseless = ws -> vcat(ws, map(lowercase, ws))
-    return Dict(
+    Dict(
         :name => "Fortran 90",
         :description => "A lexer for Fortran 90 source code.",
         :comments => "Based on the Pygments lexer definition.",

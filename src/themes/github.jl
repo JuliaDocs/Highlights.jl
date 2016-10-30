@@ -1,4 +1,4 @@
-definition(::Type{GitHubTheme}) = Dict(
+@theme GitHubTheme Dict(
     :name => "GitHub",
     :description => "Based on the Rouge 'GitHub' theme.",
     :style => S"bg: f8f8f8",

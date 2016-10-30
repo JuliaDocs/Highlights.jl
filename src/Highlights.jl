@@ -15,8 +15,6 @@ using Compat, DocStringExtensions
 const Str = all(s -> isdefined(Core, s), (:String, :AbstractString)) ? String : UTF8String
 
 
-# Lexer and Theme abstract interface.
-
 """
 $(TYPEDEF)
 
@@ -30,31 +28,6 @@ $(TYPEDEF)
 Represents a colour scheme used to highlight tokenised source code.
 """
 abstract AbstractTheme
-
-"""
-This function is extended by each new subtype of `AbstractLexer` and `AbstractTheme` to
-provide the data nessesary to compile lexer functions and colour schemes.
-
-# Examples
-
-```julia
-abstract CustomLexer <: AbstractLexer
-
-Highlights.definition(::Type{CustomLexer}) = Dict(
-    :name => "Custom",
-    :tokens => Dict(
-        :root => [
-            # Rules go here...
-        ],
-    ),
-)
-```
-"""
-function definition end
-
-definition{L <: AbstractLexer}(::Type{L}) = Dict{Symbol, Any}()
-definition{T <: AbstractTheme}(::Type{T}) = Dict{Symbol, Any}()
-
 
 # Submodules.
 
@@ -80,15 +53,16 @@ When no lexer matches the given `name` an `ArgumentError` is thrown.
 """
 function lexer(name::AbstractString)
     for each in subtypes(AbstractLexer)
-        local def = definition(each)
-        name in get(def, :aliases, []) && return each
+        local def = Compiler.metadata(each)
+        name in def.aliases && return each
     end
     throw(ArgumentError("no lexer found with name '$name'."))
 end
 
+
 # Public interface.
 
-export Lexers, Themes, Tokens, highlight, stylesheet
+export Lexers, Themes, Tokens, highlight, stylesheet, lexer
 
 """
 Highlight source code using a specific lexer, mimetype and theme.
@@ -107,12 +81,12 @@ julia> using Highlights
 
 julia> highlight(STDOUT, MIME("text/html"), "2x", Lexers.JuliaLexer)
 <pre class='hljl'>
-<span class='hljl-NUMBER'>2</span><span class='hljl-NAME'>x</span>
+<span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-NAME'>x</span>
 </pre>
 
 julia> highlight(STDOUT, MIME("text/latex"), "'x'", Lexers.JuliaLexer, Themes.VimTheme)
 \\begin{lstlisting}
-(*@\\HLJLSTRING{{\\textquotesingle}x{\\textquotesingle}}@*)
+(*@\\HLJLSTRINGCHAR{{\\textquotesingle}x{\\textquotesingle}}@*)
 \\end{lstlisting}
 
 ```
@@ -124,7 +98,7 @@ function highlight{
         io::IO, mime::MIME, src::AbstractString,
         lexer::Type{L}, theme::Type{T} = Themes.DefaultTheme,
     )
-    Format.render(io, mime, Compiler.lex(src, L), Themes.build_theme(T))
+    Format.render(io, mime, Compiler.lex(src, L), Themes.theme(T))
 end
 
 """
@@ -155,6 +129,6 @@ julia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything
 ```
 """
 stylesheet{T <: AbstractTheme}(io::IO, mime::MIME, theme::Type{T} = Themes.DefaultTheme) =
-    Format.render(io, mime, Themes.build_theme(T))
+    Format.render(io, mime, Themes.theme(T))
 
 end # module

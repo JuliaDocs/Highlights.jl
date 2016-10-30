@@ -8,8 +8,8 @@ To get started adding a new theme definition you will need to import the followi
 from the `Highlights` module and one from the `Highlights.Themes` module.
 
 ```@example 1
-import Highlights: AbstractTheme, definition
-import Highlights.Themes: @S_str
+import Highlights: AbstractTheme
+import Highlights.Themes: @S_str, @theme
 ```
 
 In the next two sections we'll explain the purpose of each of those imports.
@@ -36,7 +36,7 @@ parts of our source code to be highlighted in. We do this by defining a new `Met
 ```@example 1
 using Highlights.Tokens
 
-definition(::Type{CustomTheme}) = Dict(
+@theme CustomTheme Dict(
     :style => S"bg: f7f3ee; fg: 605b53",
     :tokens => Dict(
         TEXT    => S"",
@@ -86,14 +86,14 @@ using Highlights
 source =
 """
 # Required imports...
-import Highlights: AbstractTheme, definition
-import Highlights.Themes: @S_str
+import Highlights: AbstractTheme
+import Highlights.Themes: @S_str, @theme
 
 # ... the theme type...
 abstract CustomTheme <: AbstractTheme
 
 # ... and finally the theme definition.
-definition(::Type{CustomTheme}) = Dict(
+@theme CustomTheme Dict(
     :style => S"bg: f7f3ee; fg: 605b53",
     :tokens => Dict(
         TEXT    => S"",

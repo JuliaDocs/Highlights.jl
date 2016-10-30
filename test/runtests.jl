@@ -31,7 +31,7 @@ function print_all(lexer, file)
         mime = MIME("text/$m")
         for theme in subtypes(Themes.AbstractTheme)
             stylesheet(buffer, mime, theme)
-            highlight(buffer, mime, source, Lexers.JuliaLexer, theme)
+            highlight(buffer, mime, source, lexer, theme)
         end
     end
     return buffer
@@ -43,26 +43,24 @@ end
 
 using Highlights.Tokens
 
-@tokengroup CustomTokens [__a, __b, __c]
-
 # Error reporting for broken lexers.
 abstract BrokenLexer <: Highlights.AbstractLexer
-Highlights.definition(::Type{BrokenLexer}) = Dict(
+Highlights.Compiler.@lexer BrokenLexer Dict(
     :tokens => Dict(:root => [(r"\w+", TEXT, (:b, :a))], :a => [], :b => []),
 )
 
 # Lexer inheritance.
 abstract ParentLexer <: Highlights.AbstractLexer
 abstract ChildLexer <: ParentLexer
-Highlights.definition(::Type{ParentLexer}) = Dict(
+Highlights.Compiler.@lexer ParentLexer Dict(
     :tokens => Dict(:root => [(r"#.*$"m, COMMENT)])
 )
-Highlights.definition(::Type{ChildLexer}) = Dict(
+Highlights.Compiler.@lexer ChildLexer Dict(
     :tokens => Dict(:root => [:__inherit__, (r"\d+", NUMBER), (r".", TEXT)])
 )
 
 abstract NumberLexer <: Highlights.AbstractLexer
-Highlights.definition(::Type{NumberLexer}) = Dict(
+Highlights.Compiler.@lexer NumberLexer Dict(
     :tokens => Dict(
         :root => [
             (r"0b[0-1]+", NUMBER_BIN),
@@ -76,7 +74,7 @@ Highlights.definition(::Type{NumberLexer}) = Dict(
 )
 
 abstract SelfLexer <: Highlights.AbstractLexer
-Highlights.definition(::Type{SelfLexer}) = Dict(
+Highlights.Compiler.@lexer SelfLexer Dict(
     :tokens => Dict(
         :root => [
             (r"(#)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :root, PUNCTUATION)),
@@ -94,30 +92,11 @@ Highlights.definition(::Type{SelfLexer}) = Dict(
     ),
 )
 
-abstract SelectiveInheritanceLexer <: Highlights.AbstractLexer
-Highlights.definition(::Type{SelectiveInheritanceLexer}) = Dict(
-    :tokens => Dict(
-        :root => [
-            NumberLexer,
-            (r"\w+", NAME),
-            (r"\s", WHITESPACE),
-        ],
-    ),
-)
-
 #
 # Testsets.
 #
 
 @testset "Highlights" begin
-    @testset "Tokens" begin
-        @test string(__a) == "<__a>"
-        @test string(__b) == "<__b>"
-        @test string(__c) == "<__c>"
-        let f = getfield(Highlights.Tokens, Symbol("@tokengroup"))
-            @test_throws ErrorException f(:FAILS, :[a.b, c.d])
-        end
-    end
     @testset "Lexers" begin
         @testset for file in readdir(joinpath(__DIR__, "lexers"))
             include("lexers/$file")
@@ -198,13 +177,6 @@ Highlights.definition(::Type{SelectiveInheritanceLexer}) = Dict(
                 TEXT => " ",
                 COMMENT => "# ...",
             )
-            tokentest(
-                SelectiveInheritanceLexer,
-                "word 0b1010",
-                NAME => "word",
-                WHITESPACE => " ",
-                NUMBER_BIN => "0b1010",
-            )
         end
         @testset "Errors" begin
             tokentest(BrokenLexer, " ", ERROR => " ")
@@ -260,9 +232,6 @@ Highlights.definition(::Type{SelectiveInheritanceLexer}) = Dict(
         end
     end
     @testset "Miscellaneous" begin
-        @test Highlights.definition(Highlights.AbstractTheme) == Dict()
-        @test Highlights.definition(Highlights.AbstractLexer) == Dict()
-
         @test Highlights.lexer("julia") == Lexers.JuliaLexer
         @test Highlights.lexer("jl") == Lexers.JuliaLexer
         @test_throws ArgumentError Highlights.lexer("???")

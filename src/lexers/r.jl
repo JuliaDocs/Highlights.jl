@@ -1,4 +1,4 @@
-function definition(::Type{RLexer})
+@lexer RLexer let
     local keywords = [
         "if", "else", "for", "while", "repeat", "in", "next", "break", "return", "switch",
         "function"
@@ -11,7 +11,7 @@ function definition(::Type{RLexer})
         "NULL", "NA(_(integer|real|complex|character)_)?", "letters", "LETTERS", "Inf",
         "TRUE", "FALSE", "NaN", "pi", "\\.\\.(\\.|[0-9]+)"
     ]
-    return Dict(
+    Dict(
         :name => "R",
         :description => "A lexer for the R language for statistical computing.",
         :aliases => ["r", "rlang"],

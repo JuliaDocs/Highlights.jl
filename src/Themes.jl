@@ -7,7 +7,7 @@ module Themes
 
 using DocStringExtensions
 
-import ..Highlights: Str, AbstractTheme, AbstractLexer, definition
+import ..Highlights: Str, AbstractTheme, AbstractLexer
 
 
 # Style and Theme types.
@@ -71,21 +71,45 @@ macro S_str(spec)
     Style(spec)
 end
 
-import ..Highlights.Tokens: TokenValue
+import ..Highlights.Tokens
 
 """
 $(TYPEDEF)
 
-Represents a "compiled" colour scheme as constructed by [`build_theme`](@ref). Not a
-user-facing type.
+Represents a "compiled" colour scheme.
 """
 immutable Theme
     base::Style
-    style::Dict{TokenValue, Style}
-    tokens::Dict{TokenValue, Symbol}
-    defaults::Dict{TokenValue, TokenValue}
+    styles::Vector{Style}
+    Theme(base::Style, n::Integer) = new(base, Vector{Style}(n))
 end
 
+function metadata end
+function theme end
+
+function maketheme(T)
+    local dict = metadata(T)
+    local n = length(Tokens.__TOKENS__)
+    local theme = Theme(get(dict, :style, S""), n)
+    local styles = get(dict, :tokens, Dict{Tokens.TokenValue, Style}())
+    for (nth, t) in enumerate(Tokens.__TOKENS__)
+        theme.styles[nth] = fallback(Tokens.__FALLBACKS__, styles, Tokens.TokenValue(t))
+    end
+    return theme
+end
+
+fallback(mapping, styles, token) = haskey(styles, token) ? styles[token] :
+    fallback(mapping, styles, Tokens.TokenValue(mapping[token.value]))
+
+macro theme(T, dict)
+    tx, dx = map(esc, (T, dict))
+    quote
+        $(Themes).metadata(::Type{$tx}) = $dx
+        let data = $(Themes).maketheme($tx)
+            $(Themes).theme(::Type{$tx}) = data::Theme
+        end
+    end
+end
 
 # Theme names.
 
@@ -140,27 +164,5 @@ include("themes/trac.jl")
 include("themes/vim.jl")
 include("themes/vs.jl")
 include("themes/xcode.jl")
-
-
-# Theme builder.
-
-"""
-Build a colour scheme `Theme` object based on a user-defined theme and lexer.
-"""
-@generated function build_theme{T <: AbstractTheme}(::Type{T})
-    local def = definition(T)
-    local base = get(def, :style, S"")
-    local style = get(def, :tokens, Dict{TokenValue, Style}())
-    get!(style, TEXT, S"") # The default TEXT if it hasn't been provided.
-    local tokens = Tokens.tokens()
-    local defaults = Dict{TokenValue, TokenValue}()
-    for (t::TokenValue, s::Symbol) in tokens
-        defaults[t] = fallback(style, t, s)
-    end
-    return Theme(base, style, tokens, defaults)
-end
-
-fallback(sty, t, s) = haskey(sty, t) ? t :
-    (p = Tokens.parent(s); fallback(sty, Tokens.TokenValue(p), p))
 
 end # module

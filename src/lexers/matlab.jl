@@ -1,11 +1,11 @@
-function definition(::Type{MatlabLexer})
+@lexer MatlabLexer let
     local keywords = [
         "break", "case", "catch", "classdef", "continue", "else", "elseif",
         "end", "enumerated", "events", "for", "function", "global", "if",
         "methods", "otherwise", "parfor", "persistent", "properties",
         "return", "spmd", "switch", "try", "while",
     ]
-    return Dict(
+    Dict(
         :name => "Matlab",
         :description => "A lexer for Matlab source files.",
         :comments => "Based on the lexer from Pygments.",
@@ -38,7 +38,7 @@ function definition(::Type{MatlabLexer})
                 (r"[a-zA-Z_]\w*", NAME),
                 (r".", TEXT),
             ],
-            :blockcomment => [
+            :blockcomment => Any[
                 (r"^\s*%\}"ms, COMMENT_MULTILINE, :__pop__),
                 (r"."sm, COMMENT_MULTILINE),
             ],

@@ -1,4 +1,4 @@
-definition(::Type{PygmentsTheme}) = Dict(
+@theme PygmentsTheme Dict(
     :name => "Pygments",
     :description => "Based on the default theme provided by Pygments.",
     :tokens => Dict(

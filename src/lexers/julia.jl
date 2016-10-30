@@ -1,15 +1,61 @@
 import ..Highlights.Compiler: NULL_RANGE, Context, nullmatch
 
+# Utilities.
+
+function julia_is_identifier(ctx::Context, prefix = '\0')
+    s = ctx.source
+    i = ctx.pos[]
+    done(s, i) && return NULL_RANGE
+    (c, i) = next(s, i)
+    if prefix !== '\0'
+        (c === prefix && !done(s, i)) || return NULL_RANGE
+        (c, i) = next(s, i)
+    end
+    Base.is_id_start_char(c) || return NULL_RANGE
+    local prev_i = i
+    while !done(s, i)
+        prev_i = i
+        (c, i) = next(s, i)
+        Base.is_id_char(c) || break
+    end
+    return ctx.pos[]:prevind(s, prev_i)
+end
+julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
+julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
+
+function julia_is_method_call(ctx::Context)
+    local range = julia_is_identifier(ctx)
+    range === NULL_RANGE && return range
+    i = nextind(ctx.source, last(range))
+    done(ctx.source, i) && return NULL_RANGE
+    (c, i) = next(ctx.source, i)
+    return (c === '(' || c === '{') ? range : NULL_RANGE
+end
+
+function julia_is_string_macro(ctx::Context, count::Integer = 1)
+    local range = julia_is_identifier(ctx)
+    range == NULL_RANGE && return NULL_RANGE
+    local s = ctx.source
+    local i = prevind(s, ctx.pos[] + length(range) + 1)
+    local num = 0
+    while num < count && !done(s, i)
+        (c, i) = next(s, i)
+        c === '"' ? (num += 1) : break
+    end
+    num == count ? (ctx.pos[]:prevind(s, i)) : NULL_RANGE
+end
+julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
+
 # Julia Script Lexer.
 
-function definition(::Type{JuliaLexer})
+@lexer JuliaLexer let
     local keywords = Base.REPLCompletions.complete_keyword("")
     local char_regex = [
         raw"'(\\.|\\[0-7]{1,3}|\\x[a-fA-F0-9]{1,3}|",
         raw"\\u[a-fA-F0-9]{1,4}|\\U[a-fA-F0-9]{1,6}|",
         raw"[^\\\'\n])'",
     ]
-    return Dict(
+    Dict(
         :name => "Julia",
         :description => "A lexer for Julia source code.",
         :aliases => ["julia", "jl"],
@@ -104,53 +150,9 @@ function definition(::Type{JuliaLexer})
     )
 end
 
-function julia_is_identifier(ctx::Context, prefix = '\0')
-    s = ctx.source
-    i = ctx.pos[]
-    done(s, i) && return NULL_RANGE
-    (c, i) = next(s, i)
-    if prefix !== '\0'
-        (c === prefix && !done(s, i)) || return NULL_RANGE
-        (c, i) = next(s, i)
-    end
-    Base.is_id_start_char(c) || return NULL_RANGE
-    local prev_i = i
-    while !done(s, i)
-        prev_i = i
-        (c, i) = next(s, i)
-        Base.is_id_char(c) || break
-    end
-    return ctx.pos[]:prevind(s, prev_i)
-end
-julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
-julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
-
-function julia_is_method_call(ctx::Context)
-    local range = julia_is_identifier(ctx)
-    range === NULL_RANGE && return range
-    i = nextind(ctx.source, last(range))
-    done(ctx.source, i) && return NULL_RANGE
-    (c, i) = next(ctx.source, i)
-    return (c === '(' || c === '{') ? range : NULL_RANGE
-end
-
-function julia_is_string_macro(ctx::Context, count::Integer = 1)
-    local range = julia_is_identifier(ctx)
-    range == NULL_RANGE && return NULL_RANGE
-    local s = ctx.source
-    local i = prevind(s, ctx.pos[] + length(range) + 1)
-    local num = 0
-    while num < count && !done(s, i)
-        (c, i) = next(s, i)
-        c === '"' ? (num += 1) : break
-    end
-    num == count ? (ctx.pos[]:prevind(s, i)) : NULL_RANGE
-end
-julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
-
 # Julia Console Lexer.
 
-definition(::Type{JuliaConsoleLexer}) = Dict(
+@lexer JuliaConsoleLexer Dict(
     :name => "Julia Console",
     :description => "A lexer for Julia REPL sessions.",
     :aliases => ["jlcon"],
