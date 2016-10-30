@@ -1,6 +1,6 @@
 """
 An exported submodule that provides a selection of lexer definitions for tokenising source
-code. The following lexers are exported from the module:
+code. The following names are exported from the module:
 
 $(EXPORTS)
 """
@@ -9,8 +9,49 @@ module Lexers
 using DocStringExtensions
 
 import ..Highlights: AbstractLexer
-import ..Highlights.Compiler: @lexer
+import ..Highlights.Compiler
 
+# Public Interface.
+
+export  AbstractLexer, @lexer
+
+"""
+$(SIGNATURES)
+
+Declare the lexer definition for a custom lexer `T` using a `Dict` object `dict`. `dict`
+must either be a `Dict` literal or an expression that returns a `Dict` -- such as a `let`
+block.
+
+# Examples
+
+```jldoctest
+julia> using Highlights.Lexers
+
+julia> abstract CustomLexer <: AbstractLexer
+
+julia> @lexer CustomLexer Dict(
+           :name => "Custom",
+           :tokens => Dict(
+               # ...
+           )
+       );
+
+```
+"""
+macro lexer(T, dict)
+    tx, dx = map(esc, (T, dict))
+    quote
+        let data = $(Compiler).LexerData($dx)
+            $(Compiler).metadata(::Type{$tx}) = data
+        end
+        # let data = getdata($tx)
+        #     @generated $(Compiler).lex!{S}(ctx::Context, ::Type{$tx}, ::State{S}) =
+        #         compile($tx, S, data)
+        # end
+        $(Compiler).compile_lexer($(current_module()), $tx)
+        $tx
+    end
+end
 
 # Utilities.
 

@@ -9,6 +9,9 @@ using DocStringExtensions
 
 import ..Highlights: Str, AbstractTheme, AbstractLexer
 
+# Public interface.
+
+export AbstractTheme, @S_str, @theme
 
 # Style and Theme types.
 
@@ -92,6 +95,7 @@ function maketheme(T)
     local n = length(Tokens.__TOKENS__)
     local theme = Theme(get(dict, :style, S""), n)
     local styles = get(dict, :tokens, Dict{Tokens.TokenValue, Style}())
+    get!(styles, Tokens.TEXT, S"") # Set default TEXT if not already done.
     for (nth, t) in enumerate(Tokens.__TOKENS__)
         theme.styles[nth] = fallback(Tokens.__FALLBACKS__, styles, Tokens.TokenValue(t))
     end
@@ -101,6 +105,28 @@ end
 fallback(mapping, styles, token) = haskey(styles, token) ? styles[token] :
     fallback(mapping, styles, Tokens.TokenValue(mapping[token.value]))
 
+"""
+$(SIGNATURES)
+
+Declare the theme definition for theme `T` based on `dict`. `dict` must be a `Dict` and `T`
+must be a subtype of `AbstractTheme`.
+
+# Examples
+
+```jldoctest
+julia> using Highlights.Themes
+
+julia> abstract CustomTheme <: AbstractTheme
+
+julia> @theme CustomTheme Dict(
+           :name => "Custom",
+           :tokens => Dict(
+               # ...
+           )
+       );
+
+```
+"""
 macro theme(T, dict)
     tx, dx = map(esc, (T, dict))
     quote

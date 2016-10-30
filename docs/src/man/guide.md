@@ -13,6 +13,7 @@ This will make several names available to us for use:
 
   * `highlight` colourises and formats strings;
   * `stylesheet` prints out style definitions;
+  * `lexers` returns a lexer that matches a textual name;
   * the `Themes` module provides a selection of theme definitions;
   * and the `Lexers` module provides a collection of lexer definitions.
 
@@ -81,7 +82,7 @@ end
 *The highlighted version of `source` is available from [here](source.html).*
 
 `stylesheet` is passed most of the same information that `highlight` is aside from the
-`source`. 
+`source`.
 
 !!! note
 

@@ -37,13 +37,16 @@ include("Themes.jl")
 include("Lexers.jl")
 include("Format.jl")
 
+# Public interface.
+
+export Lexers, Themes, Tokens, highlight, stylesheet, lexer
 
 """
 $(SIGNATURES)
 
 Return the `AbstractLexer` associated with the lexer named `name`. `name` must be a string.
-Internally this checks the `:aliases` field in the `definition` of a lexer to see whether it
-is a match.
+Internally this checks the `:aliases` field in each lexer definition to see whether it is a
+match.
 
 !!! warning
 
@@ -59,11 +62,6 @@ function lexer(name::AbstractString)
     throw(ArgumentError("no lexer found with name '$name'."))
 end
 
-
-# Public interface.
-
-export Lexers, Themes, Tokens, highlight, stylesheet, lexer
-
 """
 Highlight source code using a specific lexer, mimetype and theme.
 
@@ -72,7 +70,7 @@ $(SIGNATURES)
 `src` is tokenised using the provided `lexer`, then colourised using `theme`, and finally
 output to `io` in the given format `mime`. `theme` defaults to `Themes.DefaultTheme` theme.
 
-`mime` can be either of `MIME("text/html")` or `MIME("text/latex")`.
+`mime` can be either `MIME("text/html")` or `MIME("text/latex")`.
 
 # Examples
 

@@ -6,34 +6,30 @@ multiline comments.
 
 ## A Basic Lexer
 
-First, we import the necessary names from `Highlights`.
-
-```@setup 1
-using Highlights
-```
+First, we import the necessary names from the `Tokens` and `Lexers` submodules.
 
 ```@example 1
-import Highlights: AbstractLexer
-import Highlights.Compiler: @lexer
+using Highlights.Tokens, Highlights.Lexers
 ```
 
-Then we define a new type to represent our lexer.
+`Tokens` provides all the named tokens, such as `COMMENT_SINGLE`, while `Lexers` provides
+the `AbstractLexer` type and `@lexer` macro.
+
+Next we define a new type to represent our lexer.
 
 ```@example 1
 abstract CommentLexer <: AbstractLexer
 ```
 
-Finally we add a method to the `definition` function.
-
 !!! note
 
-    `definition` here is the *same* function as used for themes in the previous section.
+    We define the type and the definition separately so that we are able to reference one
+    lexer from another definition without encountering `UndefVarError`s.
 
-We'll list the entire definition and then go over each part individually.
+Finally we add a definition for our new lexer using the `@lexer` macro. We'll list the
+entire definition and then go over each part individually.
 
 ```@example 1
-using Highlights.Tokens
-
 @lexer CommentLexer Dict(
     :name => "Comments",
     :description => "A C-style comment lexer.",
@@ -55,12 +51,14 @@ nothing # hide
 
 So how does it work?
 
-Firstly, we define a new method of `definition` in a similar way to the previous section
-on themes. This `definition` returns a `Dict` containing all the rules and metadata needed
-to lex a string of source code containing `/*`, `//`, and `*/`.
+The first line looks similar to the `@theme` macro usage in the previous section. The
+`@lexer` macro takes two arguments -- the lexer name and it's definition `Dict`. The `Dict`
+contains all the *rules* used to tokenise source code that gets passed to the generated
+lexer.
 
-`:name` is a metadata field that provides a human-readable name for the lexer.
-`:description` provides some basic details about the lexer and what it is for.
+Several *metadata* fields should also be provided. `:name` provides a human-readable name
+for the lexer. `:description` provides some basic details about the lexer and what it is
+for.
 
 `:tokens` is a `Dict` of different *states* that the lexer steps through while trying to
 determine what to do with each character of a string. In this lexer we have two states --
@@ -68,14 +66,15 @@ determine what to do with each character of a string. In this lexer we have two 
 
 !!! note
 
-    The lexer *always* starts in the `:root` *state*, so this is the only *state* that needs
-    to be provided. You may find that some lexer definitions can be written with only a
-    `:root` *state*, while others may need a significant number of different *states*
+    The lexer *always* starts in the `:root` *state*, so this is the only *state* that
+    **needs** to be provided. You may find that some lexer definitions can be written with
+    only a `:root` *state*, while others may need a significant number of different *states*
     to function correctly.
 
 Each *state* is a `Vector` of *rules* that are tested against sequentially until one matches
-the current position in the source code that we are trying to lex. On a successful match we
-move the current position forward and begin again at the first rule of the current state.
+the current position in the source code that we are trying to highlight. On a successful
+match we move the current position forward and start again at the first rule of the current
+state.
 
 In the `:root` state of our `CommentLexer` we begin with
 
@@ -110,10 +109,10 @@ comment such as
  */
 ```
 
-When this rule is successfully matched we, like in the previous example, create a new
-`COMMENT_MULTILINE` *token* and move passed the match. Instead of going back to the start
-of the current state though, we first enter a new state called `:multiline_comments`. Once
-that state returns then we jump back to the first rule of the `:root` state.
+When this rule is successfully matched, like in the previous example, we create a new
+`COMMENT_MULTILINE` *token* and move passed the match. Instead of going back to the start of
+the current state though, we first enter a new state called `:multiline_comments`. Once that
+state returns we then jump back to the first rule of the `:root` state.
 
 The last rule of the `:root` state isn't all that interesting:
 
@@ -121,7 +120,7 @@ The last rule of the `:root` state isn't all that interesting:
 (r"[^/]+", TEXT)
 ```
 
-This just matches any non-comment characters and assigns them to a `:text` *token*.
+This just matches any non-comment characters and assigns them to a `TEXT` *token*.
 
 Now lets look at the `:multiline_comments` state.
 
@@ -129,7 +128,7 @@ Now lets look at the `:multiline_comments` state.
 (r"/\*", COMMENT_MULTILINE, :__push__),
 ```
 
-When the above rule matches, i.e. the start of a multiline comment, then we enter a special
+When the above rule matches (i.e. the start of a multiline comment) then we enter a special
 state called `:__push__`. What `:__push__` does is just call the current *state* again, so
 internally we *push* a new function call onto the call stack.
 
@@ -140,7 +139,7 @@ A similar naming scheme is used for the `:__pop__` state, where we `return` from
 (r"\*/", COMMENT_MULTILINE, :__pop__),
 ```
 
-And the last rule, similar to the `:text` *rule* in `:root`, just matches all non multiline
+And the last rule, similar to the `TEXT` *rule* in `:root`, just matches all non multiline
 comment characters and assigns the result to a `COMMENT_MULTILINE` *token*:
 
 ```julia
@@ -158,6 +157,8 @@ of the manual. First, though, we'll `highlight` some text using this new lexer t
 whether it works correctly.
 
 ```@example 1
+using Highlights # Imports `stylesheet` and `highlight`.
+
 source =
     """
     // A single line comment.
@@ -174,6 +175,7 @@ source =
 
     // And another single line // comment.
     """
+
 open("comments-lexer.html", "w") do stream
     stylesheet(stream, MIME("text/html"))
     highlight(stream, MIME("text/html"), source, CommentLexer)
@@ -266,7 +268,11 @@ Push a tuple of *states* onto the lexer stack that will be called from right to 
 
 If a lexer is defined as a subtype of another lexer, say
 
-```julia
+```@setup inheriting-lexers
+using Highlights.Lexers, Highlights.Tokens
+```
+
+```@example inheriting-lexers
 abstract Parent <: AbstractLexer
 abstract Child <: Parent
 ```
@@ -274,8 +280,8 @@ abstract Child <: Parent
 Then `Child` can use `:__inherit__` to include the rules from an ancestor's state within the
 current rule set, i.e.
 
-```julia
-definition(::Type{Parent}) = Dict(
+```@example inheriting-lexers
+@lexer Parent Dict(
     :tokens => Dict(
         :root => [
             (r"\d+", NUMBER),
@@ -283,7 +289,7 @@ definition(::Type{Parent}) = Dict(
     ),
 )
 
-definition(::Type{Child}) = Dict(
+@lexer Child Dict(
     :tokens => Dict(
         :root => [
             :__inherit__,
@@ -291,10 +297,11 @@ definition(::Type{Child}) = Dict(
         ],
     ),
 )
+nothing # hide
 ```
 
-In the above example `Parent` will tokenise `NUMBER`s and `Child` tokenise `NAME`s in
-addition to tokenising `NUMBER`s.
+In the above example `Parent` will tokenise `NUMBER`s and `Child` will tokenise `NAME`s in
+addition to tokenising `NUMBER`s like it's parent lexer.
 
 !!! note
 

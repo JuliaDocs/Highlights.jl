@@ -41,26 +41,26 @@ end
 # Setup.
 #
 
-using Highlights.Tokens
+using Highlights.Tokens, Highlights.Themes, Highlights.Lexers
 
 # Error reporting for broken lexers.
 abstract BrokenLexer <: Highlights.AbstractLexer
-Highlights.Compiler.@lexer BrokenLexer Dict(
+@lexer BrokenLexer Dict(
     :tokens => Dict(:root => [(r"\w+", TEXT, (:b, :a))], :a => [], :b => []),
 )
 
 # Lexer inheritance.
 abstract ParentLexer <: Highlights.AbstractLexer
 abstract ChildLexer <: ParentLexer
-Highlights.Compiler.@lexer ParentLexer Dict(
+@lexer ParentLexer Dict(
     :tokens => Dict(:root => [(r"#.*$"m, COMMENT)])
 )
-Highlights.Compiler.@lexer ChildLexer Dict(
+@lexer ChildLexer Dict(
     :tokens => Dict(:root => [:__inherit__, (r"\d+", NUMBER), (r".", TEXT)])
 )
 
 abstract NumberLexer <: Highlights.AbstractLexer
-Highlights.Compiler.@lexer NumberLexer Dict(
+@lexer NumberLexer Dict(
     :tokens => Dict(
         :root => [
             (r"0b[0-1]+", NUMBER_BIN),
@@ -74,7 +74,7 @@ Highlights.Compiler.@lexer NumberLexer Dict(
 )
 
 abstract SelfLexer <: Highlights.AbstractLexer
-Highlights.Compiler.@lexer SelfLexer Dict(
+@lexer SelfLexer Dict(
     :tokens => Dict(
         :root => [
             (r"(#)( )(.+)(;)$"m, (COMMENT, WHITESPACE, :root, PUNCTUATION)),

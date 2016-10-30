@@ -4,21 +4,22 @@ This page outlines how to go about adding new theme definitions to `Highlights`.
 
 ## Required Imports
 
-To get started adding a new theme definition you will need to import the following two names
-from the `Highlights` module and one from the `Highlights.Themes` module.
+To get started adding a new theme definition you will need to import the following two
+submodules of `Highlights`.
 
 ```@example 1
-import Highlights: AbstractTheme
-import Highlights.Themes: @S_str, @theme
+using Highlights.Tokens, Highlights.Themes
 ```
 
-In the next two sections we'll explain the purpose of each of those imports.
+`Tokens` provides a collection of *tokens* that are used to label different parts of the
+tokenised source code -- such as `TEXT` or `STRING`. `Themes` provides the `AbstractTheme`
+type and `@theme` macro used to define new themes.
 
 ## The `AbstractTheme` Type
 
 `AbstractTheme` is the super type of all theme definitions in `Highlights`. A theme is just
-an `abstract` type that is a subtype of `Highlights.AbstractTheme`. For this example we will
-define a new theme called, very imaginatively, `CustomTheme`:
+an `abstract` type that is a subtype of `AbstractTheme`. For this example we will define a
+new theme called, very imaginatively, `CustomTheme`:
 
 ```@example 1
 abstract CustomTheme <: AbstractTheme
@@ -27,15 +28,13 @@ abstract CustomTheme <: AbstractTheme
 That's all there is to the type itself. Next we'll define what colours should be used for
 each token [^1] when we highlight source code using our new theme.
 
-## The `definition` Definition
+## The `@theme` Macro
 
-Now we'll use the `definition` function to tell `Highlights` what colours we want different
-parts of our source code to be highlighted in. We do this by defining a new `Method` of
-`definition` for our `CustomTheme` type as follows:
+Now we'll use the `@theme` macro to tell `Highlights` what colours we want different parts
+of our source code to be highlighted in. We do this by calling the `@theme` macro to define
+a set of rules that must be applied to each token.
 
 ```@example 1
-using Highlights.Tokens
-
 @theme CustomTheme Dict(
     :style => S"bg: f7f3ee; fg: 605b53",
     :tokens => Dict(
@@ -50,9 +49,8 @@ nothing # hide
 
 There's a couple of things going on up there, so let's split it into sections:
 
-  * The first line is our standard short-form method definition used in Julia. We define
-    a method `definition` that accepts the type `CustomTheme` as it's one argument and
-    returns a new `Dict` that contains our theme definition.
+  * The first line calls the `@theme` macro with two arguments. The first being the name of
+    the type, and the second a `Dict` literal which will contain the style rules.
 
   * Line two, i.e. `:style => ...`, defines the default style for code blocks styled with
     this theme. The `S"` string macro is used to write the nessecary style information. It
@@ -86,8 +84,7 @@ using Highlights
 source =
 """
 # Required imports...
-import Highlights: AbstractTheme
-import Highlights.Themes: @S_str, @theme
+using Highlights, Highlights.Tokens, Highlights.Themes
 
 # ... the theme type...
 abstract CustomTheme <: AbstractTheme

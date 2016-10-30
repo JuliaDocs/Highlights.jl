@@ -109,21 +109,6 @@ immutable LexerData
     end
 end
 
-macro lexer(T, dict)
-    tx, dx = map(esc, (T, dict))
-    quote
-        let data = $(Compiler).LexerData($dx)
-            $(Compiler).metadata(::Type{$tx}) = data
-        end
-        # let data = getdata($tx)
-        #     @generated $(Compiler).lex!{S}(ctx::Context, ::Type{$tx}, ::State{S}) =
-        #         compile($tx, S, data)
-        # end
-        $(Compiler).compile_lexer($(current_module()), $tx)
-        $tx
-    end
-end
-
 function compile_lexer(mod::Module, T)
     local data = metadata(T)
     for state in keys(data.tokens)
