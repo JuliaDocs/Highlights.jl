@@ -178,6 +178,20 @@ abstract SelfLexer <: Highlights.AbstractLexer
                 COMMENT => "# ...",
             )
         end
+        @testset "Utilities" begin
+            let w = Lexers.words(["if", "else"]; prefix = "\\b", suffix = "\\b")
+                @test ismatch(w, "if")
+                @test !ismatch(w, "for")
+                @test !ismatch(w, "ifelse")
+            end
+            let c = Highlights.Compiler.Context("@lexer CustomLexer dict(")
+                @test Lexers.julia_is_macro_identifier(c) == 1:6
+                @test Lexers.julia_is_iterp_identifier(c) == 0:0
+            end
+            let c = Highlights.Compiler.Context("raw\"\"\"...\"\"\"")
+                @test Lexers.julia_is_triple_string_macro(c) == 1:6
+            end
+        end
         @testset "Errors" begin
             tokentest(BrokenLexer, " ", ERROR => " ")
         end
@@ -196,6 +210,11 @@ abstract SelfLexer <: Highlights.AbstractLexer
             @test s.bold
             @test s.italic
             @test !s.underline
+        end
+        let t = Themes.maketheme(Themes.DefaultTheme),
+            m = Themes.metadata(Themes.DefaultTheme)
+            @test t.base == m[:style]
+            @test t.styles[1] == m[:tokens][TEXT]
         end
     end
     @testset "Format" begin
@@ -230,6 +249,12 @@ abstract SelfLexer <: Highlights.AbstractLexer
             # Should print nothing to STDOUT.
             Highlights.Compiler.debug("", Highlights.Lexers.JuliaLexer)
         end
+    end
+    @testset "Tokens" begin
+        @test Highlights.Tokens.TokenValue(:TEXT).value == 1
+        @test Highlights.Tokens.parent(:TEXT) == :TEXT
+        @test Highlights.Tokens.parent(:COMMENT) == :TEXT
+        @test Highlights.Tokens.parent(:COMMENT_SINGLE) == :COMMENT
     end
     @testset "Miscellaneous" begin
         @test Highlights.lexer("julia") == Lexers.JuliaLexer
