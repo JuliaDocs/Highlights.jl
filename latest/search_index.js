@@ -29,7 +29,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Installation",
     "category": "section",
-    "text": "Highlights is not yet a registered package and so must be installed viaPkg.clone(\"https://github.com/JuliaDocs/Highlights.jl\")The package has no dependencies other than Julia (0.4 and up) itself."
+    "text": "Highlights is a registered package and so can be installed viaPkg.add(\"Highlights\")The package has no dependencies other than Julia (0.4 and up) itself."
 },
 
 {
