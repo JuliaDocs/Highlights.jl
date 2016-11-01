@@ -2,17 +2,17 @@
 
 *A source code highlighter for Julia.*
 
-| **Documentation**                                                               | **Build Status**                                                                                |
-|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
+| **Documentation**                                                               | **PackageEvaluator**                                                                            | **Build Status**                                                                                |
+|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.4-img]][pkg-0.4-url] [![][pkg-0.5-img]][pkg-0.5-url] [![][pkg-0.6-img]][pkg-0.6-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
 
 
 ## Installation
 
-The package is not yet registered in `METADATA.jl` and so just be installed with `Pkg.clone`.
+The package is registered in `METADATA.jl` and so can be installed with `Pkg.add`.
 
 ```julia
-julia> Pkg.clone("https://github.com/JuliaDocs/Highlights.jl")
+julia> Pkg.add("Highlights")
 ```
 
 ## Documentation
@@ -53,3 +53,10 @@ then feel free to ask for help in the [Gitter chat room][gitter-url].
 [codecov-url]: https://codecov.io/gh/JuliaDocs/Highlights.jl
 
 [issues-url]: https://github.com/JuliaDocs/Highlights.jl/issues
+
+[pkg-0.4-img]: http://pkg.julialang.org/badges/Highlights_0.4.svg
+[pkg-0.4-url]: http://pkg.julialang.org/?pkg=Highlights
+[pkg-0.5-img]: http://pkg.julialang.org/badges/Highlights_0.5.svg
+[pkg-0.5-url]: http://pkg.julialang.org/?pkg=Highlights
+[pkg-0.6-img]: http://pkg.julialang.org/badges/Highlights_0.6.svg
+[pkg-0.6-url]: http://pkg.julialang.org/?pkg=Highlights

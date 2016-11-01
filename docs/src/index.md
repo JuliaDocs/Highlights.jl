@@ -11,10 +11,10 @@ regular expression lexing mechanism used by [Pygments](http://pygments.org/).
 
 ## Installation
 
-`Highlights` is not yet a registered package and so must be installed via
+`Highlights` is a registered package and so can be installed via
 
 ```julia
-Pkg.clone("https://github.com/JuliaDocs/Highlights.jl")
+Pkg.add("Highlights")
 ```
 
 The package has no dependencies other than Julia (`0.4` and up) itself.
