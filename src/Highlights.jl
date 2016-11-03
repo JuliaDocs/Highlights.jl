@@ -79,12 +79,12 @@ julia> using Highlights
 
 julia> highlight(STDOUT, MIME("text/html"), "2x", Lexers.JuliaLexer)
 <pre class='hljl'>
-<span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-NAME'>x</span>
+<span class='hljl-ni'>2</span><span class='hljl-n'>x</span>
 </pre>
 
 julia> highlight(STDOUT, MIME("text/latex"), "'x'", Lexers.JuliaLexer, Themes.VimTheme)
 \\begin{lstlisting}
-(*@\\HLJLSTRINGCHAR{{\\textquotesingle}x{\\textquotesingle}}@*)
+(*@\\HLJLsc{{\\textquotesingle}x{\\textquotesingle}}@*)
 \\end{lstlisting}
 
 ```
