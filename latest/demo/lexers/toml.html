@@ -1,302 +1,302 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>TOML · Highlights.jl documentation</title><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="toml.html">TOML</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="toml.html">TOML</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/80d2e78005706c9b952cc7d71d28b75ecabe2551/docs/src/demo/lexers/toml.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="TOML-1" href="#TOML-1">TOML</a></h1><p><code>Highlights.Lexers.TOMLLexer</code> – <em>A lexer for TOML, a simple language for config files.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>TOML · Highlights.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script></head><body><nav class="toc"><a href><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="toml.html">TOML</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="toml.html">TOML</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/bfefbb07fa07ca7145f8c1c00f7416dd8922df5e/docs/src/demo/lexers/toml.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="TOML-1" href="#TOML-1">TOML</a></h1><p><code>Highlights.Lexers.TOMLLexer</code> – <em>A lexer for TOML, a simple language for config files.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
     margin: 5px;
     padding: 5px;
     overflow-x: auto;
-    color: #444444; background-color: #fbfbfb; }
-pre.hljl > span.hljl-TEXT { }
-pre.hljl > span.hljl-WHITESPACE { }
-pre.hljl > span.hljl-ESCAPE { }
-pre.hljl > span.hljl-ERROR { }
-pre.hljl > span.hljl-OTHER { }
-pre.hljl > span.hljl-KEYWORD { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
-pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
-pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_PSEUDO { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_RESERVED { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_TYPE { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-NAME { }
-pre.hljl > span.hljl-NAME_ATTRIBUTE { }
-pre.hljl > span.hljl-NAME_BUILTIN { }
-pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { }
-pre.hljl > span.hljl-NAME_CLASS { }
-pre.hljl > span.hljl-NAME_CONSTANT { }
-pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
-pre.hljl > span.hljl-NAME_ENTITY { }
-pre.hljl > span.hljl-NAME_EXCEPTION { }
-pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
-pre.hljl > span.hljl-NAME_FUNCTION_MAGIC { color: #4266d5; }
-pre.hljl > span.hljl-NAME_PROPERTY { }
-pre.hljl > span.hljl-NAME_LABEL { }
-pre.hljl > span.hljl-NAME_NAMESPACE { }
-pre.hljl > span.hljl-NAME_OTHER { }
-pre.hljl > span.hljl-NAME_TAG { }
-pre.hljl > span.hljl-NAME_VARIABLE { }
-pre.hljl > span.hljl-NAME_VARIABLE_CLASS { }
-pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { }
-pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { }
-pre.hljl > span.hljl-NAME_VARIABLE_MAGIC { }
-pre.hljl > span.hljl-LITERAL { }
-pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
-pre.hljl > span.hljl-STRING { color: #c93d39; }
-pre.hljl > span.hljl-STRING_AFFIX { color: #c93d39; }
-pre.hljl > span.hljl-STRING_BACKTICK { color: #c93d39; }
-pre.hljl > span.hljl-STRING_CHAR { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DELIMITER { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DOC { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DOUBLE { color: #c93d39; }
-pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
-pre.hljl > span.hljl-STRING_HEREDOC { color: #c93d39; }
-pre.hljl > span.hljl-STRING_INTERPOL { }
-pre.hljl > span.hljl-STRING_OTHER { color: #c93d39; }
-pre.hljl > span.hljl-STRING_REGEX { color: #c93d39; }
-pre.hljl > span.hljl-STRING_SINGLE { color: #c93d39; }
-pre.hljl > span.hljl-STRING_SYMBOL { color: #c93d39; }
-pre.hljl > span.hljl-NUMBER { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_BIN { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_FLOAT { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_HEX { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_INTEGER { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_INTEGER_LONG { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_OCT { color: #3b972e; }
-pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-OPERATOR_WORD { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-PUNCTUATION { }
-pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_HASHBANG { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_MULTILINE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_PREPROC { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_PREPROCFILE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_SINGLE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_SPECIAL { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-GENERIC { }
-pre.hljl > span.hljl-GENERIC_DELETED { }
-pre.hljl > span.hljl-GENERIC_EMPH { }
-pre.hljl > span.hljl-GENERIC_ERROR { }
-pre.hljl > span.hljl-GENERIC_HEADING { }
-pre.hljl > span.hljl-GENERIC_INSERTED { }
-pre.hljl > span.hljl-GENERIC_OUTPUT { }
-pre.hljl > span.hljl-GENERIC_PROMPT { }
-pre.hljl > span.hljl-GENERIC_STRONG { }
-pre.hljl > span.hljl-GENERIC_SUBHEADING { }
-pre.hljl > span.hljl-GENERIC_TRACEBACK { }
+    color: rgb(68,68,68); background-color: rgb(251,251,251); }
+pre.hljl > span.hljl-t { }
+pre.hljl > span.hljl-w { }
+pre.hljl > span.hljl-e { }
+pre.hljl > span.hljl-eB { }
+pre.hljl > span.hljl-o { }
+pre.hljl > span.hljl-k { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kc { color: rgb(59,151,46); font-style: italic; }
+pre.hljl > span.hljl-kd { color: rgb(214,102,97); font-style: italic; }
+pre.hljl > span.hljl-kn { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kp { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kr { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kt { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-n { }
+pre.hljl > span.hljl-na { }
+pre.hljl > span.hljl-nb { }
+pre.hljl > span.hljl-nbp { }
+pre.hljl > span.hljl-nc { }
+pre.hljl > span.hljl-ncB { }
+pre.hljl > span.hljl-nd { color: rgb(214,102,97); }
+pre.hljl > span.hljl-ne { }
+pre.hljl > span.hljl-neB { }
+pre.hljl > span.hljl-nf { color: rgb(66,102,213); }
+pre.hljl > span.hljl-nfm { color: rgb(66,102,213); }
+pre.hljl > span.hljl-np { }
+pre.hljl > span.hljl-nl { }
+pre.hljl > span.hljl-nn { }
+pre.hljl > span.hljl-no { }
+pre.hljl > span.hljl-nt { }
+pre.hljl > span.hljl-nv { }
+pre.hljl > span.hljl-nvc { }
+pre.hljl > span.hljl-nvg { }
+pre.hljl > span.hljl-nvi { }
+pre.hljl > span.hljl-nvm { }
+pre.hljl > span.hljl-l { }
+pre.hljl > span.hljl-ld { color: rgb(148,91,176); font-style: italic; }
+pre.hljl > span.hljl-s { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sa { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sb { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sc { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sd { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdC { color: rgb(201,61,57); }
+pre.hljl > span.hljl-se { color: rgb(59,151,46); }
+pre.hljl > span.hljl-sh { color: rgb(201,61,57); }
+pre.hljl > span.hljl-si { }
+pre.hljl > span.hljl-so { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sr { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ss { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ssB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-nB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nbB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nfB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nh { color: rgb(59,151,46); }
+pre.hljl > span.hljl-ni { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nil { color: rgb(59,151,46); }
+pre.hljl > span.hljl-noB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-oB { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-ow { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-p { }
+pre.hljl > span.hljl-c { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-ch { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cm { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cp { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cpB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cs { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-csB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-g { }
+pre.hljl > span.hljl-gd { }
+pre.hljl > span.hljl-ge { }
+pre.hljl > span.hljl-geB { }
+pre.hljl > span.hljl-gh { }
+pre.hljl > span.hljl-gi { }
+pre.hljl > span.hljl-go { }
+pre.hljl > span.hljl-gp { }
+pre.hljl > span.hljl-gs { }
+pre.hljl > span.hljl-gsB { }
+pre.hljl > span.hljl-gt { }
 </style>
 
 <pre class='hljl'>
-<span class='hljl-COMMENT'># This is a TOML document.</span><span class='hljl-TEXT'>
-</span><span class='hljl-COMMENT'># All examples are taken from https://github.com/toml-lang/toml/blob/master/README.md</span><span class='hljl-TEXT'>
-</span><span class='hljl-COMMENT'># with MIT licence.</span><span class='hljl-TEXT'>
+<span class='hljl-c'># This is a TOML document.</span><span class='hljl-t'>
+</span><span class='hljl-c'># All examples are taken from https://github.com/toml-lang/toml/blob/master/README.md</span><span class='hljl-t'>
+</span><span class='hljl-c'># with MIT licence.</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>title</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;TOML Example&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>title</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;TOML Example&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>owner</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Tom Preston-Werner&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>dob</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-LITERAL_DATE'>1979-05-27T07:32:00-08:00</span><span class='hljl-TEXT'> </span><span class='hljl-COMMENT'># First class dates</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>owner</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Tom Preston-Werner&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>dob</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ld'>1979-05-27T07:32:00-08:00</span><span class='hljl-t'> </span><span class='hljl-c'># First class dates</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>database</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>server</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;192.168.1.1&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>ports</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>8001</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>8001</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>8002</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>connection_max</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5000</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>enabled</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_CONSTANT'>true</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>database</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>server</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;192.168.1.1&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>ports</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-ni'>8001</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>8001</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>8002</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>connection_max</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5000</span><span class='hljl-t'>
+</span><span class='hljl-n'>enabled</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>servers</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>servers</span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-  </span><span class='hljl-COMMENT'># Indentation (tabs and/or spaces) is allowed but not required</span><span class='hljl-TEXT'>
-  </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>servers</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>alpha</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>ip</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;10.0.0.1&quot;</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>dc</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;eqdc10&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-c'># Indentation (tabs and/or spaces) is allowed but not required</span><span class='hljl-t'>
+  </span><span class='hljl-p'>[</span><span class='hljl-n'>servers</span><span class='hljl-p'>.</span><span class='hljl-n'>alpha</span><span class='hljl-p'>]</span><span class='hljl-t'>
+  </span><span class='hljl-n'>ip</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;10.0.0.1&quot;</span><span class='hljl-t'>
+  </span><span class='hljl-n'>dc</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;eqdc10&quot;</span><span class='hljl-t'>
 
-  </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>servers</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>beta</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>ip</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;10.0.0.2&quot;</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>dc</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;eqdc10&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-p'>[</span><span class='hljl-n'>servers</span><span class='hljl-p'>.</span><span class='hljl-n'>beta</span><span class='hljl-p'>]</span><span class='hljl-t'>
+  </span><span class='hljl-n'>ip</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;10.0.0.2&quot;</span><span class='hljl-t'>
+  </span><span class='hljl-n'>dc</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;eqdc10&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>clients</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>data</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-STRING'>&quot;gamma&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;delta&quot;</span><span class='hljl-PUNCTUATION'>],</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>clients</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>data</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-s'>&quot;gamma&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;delta&quot;</span><span class='hljl-p'>],</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># Line breaks are OK when inside arrays</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>hosts</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'>
-  </span><span class='hljl-STRING'>&quot;alpha&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'>
-  </span><span class='hljl-STRING'>&quot;omega&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># Line breaks are OK when inside arrays</span><span class='hljl-t'>
+</span><span class='hljl-n'>hosts</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'>
+  </span><span class='hljl-s'>&quot;alpha&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'>
+  </span><span class='hljl-s'>&quot;omega&quot;</span><span class='hljl-t'>
+</span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># This is a full-line comment</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>key</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-COMMENT'># This is a comment at the end of a line</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># This is a full-line comment</span><span class='hljl-t'>
+</span><span class='hljl-n'>key</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'> </span><span class='hljl-c'># This is a comment at the end of a line</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>key</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>key</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>key</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>bare_key</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>bare-key</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NUMBER_INTEGER'>1234</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>key</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>bare_key</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>bare-key</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-ni'>1234</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-STRING'>&quot;127.0.0.1&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-STRING'>&quot;character encoding&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-STRING'>&quot;ʎǝʞ&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-STRING'>&#39;key2&#39;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-STRING'>&#39;quoted &quot;value&quot;&#39;</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;value&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-s'>&quot;127.0.0.1&quot;</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;character encoding&quot;</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;ʎǝʞ&quot;</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&#39;key2&#39;</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&#39;quoted &quot;value&quot;&#39;</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;value&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>str</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;I&#39;m a string. </span><span class='hljl-STRING_ESCAPE'>\&quot;</span><span class='hljl-STRING'>You can quote me</span><span class='hljl-STRING_ESCAPE'>\&quot;</span><span class='hljl-STRING'>. Name</span><span class='hljl-STRING_ESCAPE'>\t</span><span class='hljl-STRING'>Jos</span><span class='hljl-STRING_ESCAPE'>\u00E9\n</span><span class='hljl-STRING'>Location</span><span class='hljl-STRING_ESCAPE'>\t</span><span class='hljl-STRING'>SF.&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>str</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;I&#39;m a string. </span><span class='hljl-se'>\&quot;</span><span class='hljl-s'>You can quote me</span><span class='hljl-se'>\&quot;</span><span class='hljl-s'>. Name</span><span class='hljl-se'>\t</span><span class='hljl-s'>Jos</span><span class='hljl-se'>\u00E9\n</span><span class='hljl-s'>Location</span><span class='hljl-se'>\t</span><span class='hljl-s'>SF.&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>str1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;&quot;&quot;
+</span><span class='hljl-n'>str1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;&quot;&quot;
 Roses are red
-Violets are blue&quot;&quot;&quot;</span><span class='hljl-TEXT'>
+Violets are blue&quot;&quot;&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># On a Unix system, the above multi-line string will most likely be the same as:</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>str2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Roses are red</span><span class='hljl-STRING_ESCAPE'>\n</span><span class='hljl-STRING'>Violets are blue&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># On a Unix system, the above multi-line string will most likely be the same as:</span><span class='hljl-t'>
+</span><span class='hljl-n'>str2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Roses are red</span><span class='hljl-se'>\n</span><span class='hljl-s'>Violets are blue&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># On a Windows system, it will most likely be equivalent to:</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>str3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Roses are red</span><span class='hljl-STRING_ESCAPE'>\r\n</span><span class='hljl-STRING'>Violets are blue&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># On a Windows system, it will most likely be equivalent to:</span><span class='hljl-t'>
+</span><span class='hljl-n'>str3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Roses are red</span><span class='hljl-se'>\r\n</span><span class='hljl-s'>Violets are blue&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># The following strings are byte-for-byte equivalent:</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>str1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;The quick brown fox jumps over the lazy dog.&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># The following strings are byte-for-byte equivalent:</span><span class='hljl-t'>
+</span><span class='hljl-n'>str1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;The quick brown fox jumps over the lazy dog.&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>str2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;&quot;&quot;
+</span><span class='hljl-n'>str2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;&quot;&quot;
 The quick brown \
 
 
   fox jumps over \
-    the lazy dog.&quot;&quot;&quot;</span><span class='hljl-TEXT'>
+    the lazy dog.&quot;&quot;&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>key3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;&quot;&quot;\
+</span><span class='hljl-n'>key3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;&quot;&quot;\
        The quick brown \
        fox jumps over \
        the lazy dog.\
-       &quot;&quot;&quot;</span><span class='hljl-TEXT'>
+       &quot;&quot;&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># What you see is what you get.</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>winpath</span><span class='hljl-TEXT'>  </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;C:\Users\nodejs\templates&#39;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>winpath2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;\\ServerX\admin$\system32\&#39;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>quoted</span><span class='hljl-TEXT'>   </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;Tom &quot;Dubs&quot; Preston-Werner&#39;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>regex</span><span class='hljl-TEXT'>    </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;&lt;\i\c*\s*&gt;&#39;</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># What you see is what you get.</span><span class='hljl-t'>
+</span><span class='hljl-n'>winpath</span><span class='hljl-t'>  </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;C:\Users\nodejs\templates&#39;</span><span class='hljl-t'>
+</span><span class='hljl-n'>winpath2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;\\ServerX\admin$\system32\&#39;</span><span class='hljl-t'>
+</span><span class='hljl-n'>quoted</span><span class='hljl-t'>   </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;Tom &quot;Dubs&quot; Preston-Werner&#39;</span><span class='hljl-t'>
+</span><span class='hljl-n'>regex</span><span class='hljl-t'>    </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;&lt;\i\c*\s*&gt;&#39;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>regex2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;&#39;&#39;I [dw]on&#39;t need \d{2} apples&#39;&#39;&#39;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>lines</span><span class='hljl-TEXT'>  </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;&#39;&#39;
+</span><span class='hljl-n'>regex2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;&#39;&#39;I [dw]on&#39;t need \d{2} apples&#39;&#39;&#39;</span><span class='hljl-t'>
+</span><span class='hljl-n'>lines</span><span class='hljl-t'>  </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;&#39;&#39;
 The first newline is
 trimmed in raw strings.
    All other whitespace
    is preserved.
-&#39;&#39;&#39;</span><span class='hljl-TEXT'>
+&#39;&#39;&#39;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>int1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>+99</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>int2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>42</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>int3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>0</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>int4</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>-17</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>int1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>+99</span><span class='hljl-t'>
+</span><span class='hljl-n'>int2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>42</span><span class='hljl-t'>
+</span><span class='hljl-n'>int3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>0</span><span class='hljl-t'>
+</span><span class='hljl-n'>int4</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>-17</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>int5</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1_000</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>int6</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5_349_221</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>int7</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1_2_3_4_5</span><span class='hljl-TEXT'>     </span><span class='hljl-COMMENT'># valid but inadvisable</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>int5</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1_000</span><span class='hljl-t'>
+</span><span class='hljl-n'>int6</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5_349_221</span><span class='hljl-t'>
+</span><span class='hljl-n'>int7</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1_2_3_4_5</span><span class='hljl-t'>     </span><span class='hljl-c'># valid but inadvisable</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># fractional</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>+1.0</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>3.1415</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>-0.01</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># fractional</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>+1.0</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>3.1415</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>-0.01</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># exponent</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt4</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>5e+22</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt5</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1e6</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt6</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>-2E-2</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># exponent</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt4</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>5e+22</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt5</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>1e6</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt6</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>-2E-2</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'># both</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flt7</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>6.626e-34</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'># both</span><span class='hljl-t'>
+</span><span class='hljl-n'>flt7</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>6.626e-34</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>flt8</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>9_224_617.445_991_228_313</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>flt8</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nfB'>9_224_617.445_991_228_313</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>bool1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_CONSTANT'>true</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>bool2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_CONSTANT'>false</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>bool1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+</span><span class='hljl-n'>bool2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-kc'>false</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>date1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-LITERAL_DATE'>1979-05-27T07:32:00Z</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>date2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-LITERAL_DATE'>1979-05-27T00:32:00-07:00</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>date3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-LITERAL_DATE'>1979-05-27T00:32:00.999999-07:00</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>date1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ld'>1979-05-27T07:32:00Z</span><span class='hljl-t'>
+</span><span class='hljl-n'>date2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ld'>1979-05-27T00:32:00-07:00</span><span class='hljl-t'>
+</span><span class='hljl-n'>date3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ld'>1979-05-27T00:32:00.999999-07:00</span><span class='hljl-t'>
 
-</span><span class='hljl-LITERAL_DATE'>1979-05-27T07:32:00</span><span class='hljl-TEXT'>
-</span><span class='hljl-LITERAL_DATE'>1979-05-27T00:32:00.999999</span><span class='hljl-TEXT'>
+</span><span class='hljl-ld'>1979-05-27T07:32:00</span><span class='hljl-t'>
+</span><span class='hljl-ld'>1979-05-27T00:32:00.999999</span><span class='hljl-t'>
 
-</span><span class='hljl-LITERAL_DATE'>1979-05-27</span><span class='hljl-TEXT'>
+</span><span class='hljl-ld'>1979-05-27</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>arr1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>arr2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;red&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;yellow&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;green&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>arr3</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>],</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>arr4</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;all&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;strings&#39;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;&quot;&quot;are the same&quot;&quot;&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;&#39;&#39;type&#39;&#39;&#39;</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>arr5</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>],</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-STRING'>&quot;a&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;b&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;c&quot;</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>arr1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>arr2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;red&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;yellow&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;green&quot;</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>arr3</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-p'>],</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-ni'>3</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>arr4</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;all&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;strings&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;&quot;&quot;are the same&quot;&quot;&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;&#39;&#39;type&#39;&#39;&#39;</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>arr5</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-p'>],</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-s'>&quot;a&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;b&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;c&quot;</span><span class='hljl-p'>]</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>arr7</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>arr7</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'>
+  </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-t'>
+</span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>arr8</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-COMMENT'># this is ok</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>arr8</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'>
+  </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'>
+  </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-c'># this is ok</span><span class='hljl-t'>
+</span><span class='hljl-p'>]</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>table-1</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>key1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;some string&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>key2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>123</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>table-1</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>key1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;some string&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>key2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>123</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>table-2</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>key1</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;another string&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>key2</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>456</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>table-2</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>key1</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;another string&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>key2</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>456</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>dog</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-STRING'>&quot;tater.man&quot;</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>type</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;pug&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>dog</span><span class='hljl-p'>.</span><span class='hljl-s'>&quot;tater.man&quot;</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>type</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;pug&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>c</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>            </span><span class='hljl-COMMENT'># this is best practice</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>d</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>e</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>f</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>          </span><span class='hljl-COMMENT'># same as [d.e.f]</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>g</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-TEXT'>  </span><span class='hljl-NAME'>h</span><span class='hljl-TEXT'>  </span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>    </span><span class='hljl-COMMENT'># same as [g.h.i]</span><span class='hljl-TEXT'>
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>j</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;ʞ&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&#39;l&#39;</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>  </span><span class='hljl-COMMENT'># same as [j.&quot;ʞ&quot;.&#39;l&#39;]</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>a</span><span class='hljl-p'>.</span><span class='hljl-n'>b</span><span class='hljl-p'>.</span><span class='hljl-n'>c</span><span class='hljl-p'>]</span><span class='hljl-t'>            </span><span class='hljl-c'># this is best practice</span><span class='hljl-t'>
+</span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-n'>d</span><span class='hljl-p'>.</span><span class='hljl-n'>e</span><span class='hljl-p'>.</span><span class='hljl-n'>f</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>          </span><span class='hljl-c'># same as [d.e.f]</span><span class='hljl-t'>
+</span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-n'>g</span><span class='hljl-t'> </span><span class='hljl-p'>.</span><span class='hljl-t'>  </span><span class='hljl-n'>h</span><span class='hljl-t'>  </span><span class='hljl-p'>.</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>    </span><span class='hljl-c'># same as [g.h.i]</span><span class='hljl-t'>
+</span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-n'>j</span><span class='hljl-t'> </span><span class='hljl-p'>.</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;ʞ&quot;</span><span class='hljl-t'> </span><span class='hljl-p'>.</span><span class='hljl-t'> </span><span class='hljl-s'>&#39;l&#39;</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>  </span><span class='hljl-c'># same as [j.&quot;ʞ&quot;.&#39;l&#39;]</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>a</span><span class='hljl-p'>.</span><span class='hljl-n'>b</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>c</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>d</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>a</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>d</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>first</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Tom&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>last</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Preston-Werner&quot;</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>}</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>point</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>}</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>{</span><span class='hljl-t'> </span><span class='hljl-n'>first</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Tom&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>last</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Preston-Werner&quot;</span><span class='hljl-t'> </span><span class='hljl-p'>}</span><span class='hljl-t'>
+</span><span class='hljl-n'>point</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>{</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'> </span><span class='hljl-p'>}</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>name</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>first</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Tom&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>last</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Preston-Werner&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>name</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>first</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Tom&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>last</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Preston-Werner&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>point</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[</span><span class='hljl-n'>point</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>
+</span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>products</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Hammer&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>sku</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>738594937</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[[</span><span class='hljl-n'>products</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+</span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Hammer&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>sku</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>738594937</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>products</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[[</span><span class='hljl-n'>products</span><span class='hljl-p'>]]</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>products</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;Nail&quot;</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>sku</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>284758393</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>color</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;gray&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[[</span><span class='hljl-n'>products</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+</span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;Nail&quot;</span><span class='hljl-t'>
+</span><span class='hljl-n'>sku</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>284758393</span><span class='hljl-t'>
+</span><span class='hljl-n'>color</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;gray&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;apple&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+  </span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;apple&quot;</span><span class='hljl-t'>
 
-  </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>physical</span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>color</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;red&quot;</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>shape</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;round&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-p'>[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>.</span><span class='hljl-n'>physical</span><span class='hljl-p'>]</span><span class='hljl-t'>
+    </span><span class='hljl-n'>color</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;red&quot;</span><span class='hljl-t'>
+    </span><span class='hljl-n'>shape</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;round&quot;</span><span class='hljl-t'>
 
-  </span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>variety</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;red delicious&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-p'>[[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>.</span><span class='hljl-n'>variety</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+    </span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;red delicious&quot;</span><span class='hljl-t'>
 
-  </span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>variety</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;granny smith&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-p'>[[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>.</span><span class='hljl-n'>variety</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+    </span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;granny smith&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-  </span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;banana&quot;</span><span class='hljl-TEXT'>
+</span><span class='hljl-p'>[[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+  </span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;banana&quot;</span><span class='hljl-t'>
 
-  </span><span class='hljl-PUNCTUATION'>[[</span><span class='hljl-NAME'>fruit</span><span class='hljl-PUNCTUATION'>.</span><span class='hljl-NAME'>variety</span><span class='hljl-PUNCTUATION'>]]</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>name</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-STRING'>&quot;plantain&quot;</span><span class='hljl-TEXT'>
+  </span><span class='hljl-p'>[[</span><span class='hljl-n'>fruit</span><span class='hljl-p'>.</span><span class='hljl-n'>variety</span><span class='hljl-p'>]]</span><span class='hljl-t'>
+    </span><span class='hljl-n'>name</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;plantain&quot;</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>points</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>[</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>},</span><span class='hljl-TEXT'>
-           </span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>7</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>8</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>9</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>},</span><span class='hljl-TEXT'>
-           </span><span class='hljl-PUNCTUATION'>{</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>x</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>y</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>z</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>8</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>}</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>]</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>points</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-p'>[</span><span class='hljl-t'> </span><span class='hljl-p'>{</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-t'> </span><span class='hljl-p'>},</span><span class='hljl-t'>
+           </span><span class='hljl-p'>{</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>7</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>8</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>9</span><span class='hljl-t'> </span><span class='hljl-p'>},</span><span class='hljl-t'>
+           </span><span class='hljl-p'>{</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>z</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>8</span><span class='hljl-t'> </span><span class='hljl-p'>}</span><span class='hljl-t'> </span><span class='hljl-p'>]</span><span class='hljl-t'>
 </span>
 </pre><footer><hr/><a class="previous" href="r.html"><span class="direction">Previous</span><span class="title">R</span></a><a class="next" href="../themes.html"><span class="direction">Next</span><span class="title">Themes</span></a></footer></article></body></html>
