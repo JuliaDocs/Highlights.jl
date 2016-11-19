@@ -517,7 +517,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Public Interface",
     "title": "Highlights.stylesheet",
     "category": "Function",
-    "text": "Generate a \"stylesheet\" for the given theme.\n\nstylesheet(io, mime)\nstylesheet(io, mime, theme)\n\n\nPrints out the style information needed to colourise source code in the given theme. Note that theme defaults to Themes.DefaultTheme. Output is printed to io in the format mime. mine can be one of\n\nMIME(\"text/html\")\nMIME(\"text/css\")\nMIME(\"text/latex\")\n\nExamples\n\njulia> using Highlights\n\njulia> buf = IOBuffer();\n\njulia> stylesheet(buf, MIME(\"text/css\"), Themes.EmacsTheme)\n\njulia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.\n\"pre.hljl {\"\n\n\n\n\n"
+    "text": "Generate a \"stylesheet\" for the given theme.\n\nstylesheet(io, mime, theme)\nstylesheet(io, mime)\n\n\nPrints out the style information needed to colourise source code in the given theme. Note that theme defaults to Themes.DefaultTheme. Output is printed to io in the format mime. mine can be one of\n\nMIME(\"text/html\")\nMIME(\"text/css\")\nMIME(\"text/latex\")\n\nExamples\n\njulia> using Highlights\n\njulia> buf = IOBuffer();\n\njulia> stylesheet(buf, MIME(\"text/css\"), Themes.EmacsTheme)\n\njulia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.\n\"pre.hljl {\"\n\n\n\n\n"
 },
 
 {
