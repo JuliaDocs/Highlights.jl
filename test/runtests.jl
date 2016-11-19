@@ -236,7 +236,7 @@ abstract SelfLexer <: Highlights.AbstractLexer
         local render = function(mime, style)
             local buffer = IOBuffer()
             Highlights.Format.render(buffer, mime, style)
-            return takebuf_string(buffer)
+            return Highlights.takebuf_str(buffer)
         end
         @testset "CSS" begin
             let mime = MIME("text/css")
@@ -260,7 +260,7 @@ abstract SelfLexer <: Highlights.AbstractLexer
     @testset "Compiler" begin
         let buf = IOBuffer()
             Highlights.Compiler.debug(buf, "x", Highlights.Lexers.JuliaLexer)
-            @test takebuf_string(buf) == "<NAME> := \"x\"\n"
+            @test Highlights.takebuf_str(buf) == "<NAME> := \"x\"\n"
             # Should print nothing to STDOUT.
             Highlights.Compiler.debug("", Highlights.Lexers.JuliaLexer)
         end

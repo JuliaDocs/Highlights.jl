@@ -7,6 +7,8 @@ $(TABLE)
 """
 module Tokens
 
+import ..Highlights
+
 const __TOKENS__ = [
     :TEXT
     :WHITESPACE
@@ -149,7 +151,7 @@ const TABLE =
         for (long, short) in zip(__TOKENS__, __SHORTNAMES__)
             println(buffer, "| ", rpad("`$long`", col_1), " | ", rpad("`$short`", col_2), " |")
         end
-        takebuf_string(buffer)
+        Highlights.takebuf_str(buffer)
     end
 
 end

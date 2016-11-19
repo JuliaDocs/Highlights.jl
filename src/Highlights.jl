@@ -14,6 +14,11 @@ module Highlights
 using Compat, DocStringExtensions
 const Str = all(s -> isdefined(Core, s), (:String, :AbstractString)) ? String : UTF8String
 
+if VERSION < v"0.6.0-dev.1254"
+    takebuf_str(b) = takebuf_string(b)
+else
+    takebuf_str(b) = String(take!(b))
+end
 
 """
 $(TYPEDEF)
@@ -120,9 +125,6 @@ julia> using Highlights
 julia> buf = IOBuffer();
 
 julia> stylesheet(buf, MIME("text/css"), Themes.EmacsTheme)
-
-julia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.
-"pre.hljl {"
 
 ```
 """
