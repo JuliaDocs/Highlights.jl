@@ -1,141 +1,141 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Fortran 90 · Highlights.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../../versions.js"></script></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><select id="version-selector" onChange="window.location.href=this.value"><option value="#" selected="selected" disabled="disabled">Version</option></select><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="fortran.html">Fortran 90</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="fortran.html">Fortran 90</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/84d115a7bf07e9566a98ec96fb87f114f5b20c0c/docs/src/demo/lexers/fortran.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Fortran-90-1" href="#Fortran-90-1">Fortran 90</a></h1><p><code>Highlights.Lexers.FortranLexer</code> – <em>A lexer for Fortran 90 source code.</em></p>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Fortran 90 · Highlights.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../../versions.js"></script></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><form class="search" action="../../search.html"><select id="version-selector" onChange="window.location.href=this.value"><option value="#" selected="selected" disabled="disabled">Version</option></select><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../index.html">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../man/guide.html">User Guide</a></li><li><a class="toctext" href="../../man/theme.html">Theme Guide</a></li><li><a class="toctext" href="../../man/lexer.html">Lexer Guide</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../lexers.html">Lexers</a><ul><li class="current"><a class="toctext" href="fortran.html">Fortran 90</a><ul class="internal"></ul></li></ul></li><li><a class="toctext" href="../themes.html">Themes</a></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../lib/public.html">Public Interface</a></li><li><a class="toctext" href="../../lib/internals.html">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../lexers.html">Lexers</a></li><li><a href="fortran.html">Fortran 90</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/tree/e10d831fe214ae9b268233b63e5b498ebfe980c6/docs/src/demo/lexers/fortran.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/></header><h1><a class="nav-anchor" id="Fortran-90-1" href="#Fortran-90-1">Fortran 90</a></h1><p><code>Highlights.Lexers.FortranLexer</code> – <em>A lexer for Fortran 90 source code.</em></p>
 <style>
 pre.hljl {
     border: 1px solid #ccc;
     margin: 5px;
     padding: 5px;
     overflow-x: auto;
-    color: #444444; background-color: #fbfbfb; }
-pre.hljl > span.hljl-TEXT { }
-pre.hljl > span.hljl-WHITESPACE { }
-pre.hljl > span.hljl-ESCAPE { }
-pre.hljl > span.hljl-ERROR { }
-pre.hljl > span.hljl-OTHER { }
-pre.hljl > span.hljl-KEYWORD { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_CONSTANT { color: #3b972e; font-style: italic; }
-pre.hljl > span.hljl-KEYWORD_DECLARATION { color: #d66661; font-style: italic; }
-pre.hljl > span.hljl-KEYWORD_NAMESPACE { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_PSEUDO { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_RESERVED { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-KEYWORD_TYPE { color: #945bb0; font-weight: bold; }
-pre.hljl > span.hljl-NAME { }
-pre.hljl > span.hljl-NAME_ATTRIBUTE { }
-pre.hljl > span.hljl-NAME_BUILTIN { }
-pre.hljl > span.hljl-NAME_BUILTIN_PSEUDO { }
-pre.hljl > span.hljl-NAME_CLASS { }
-pre.hljl > span.hljl-NAME_CONSTANT { }
-pre.hljl > span.hljl-NAME_DECORATOR { color: #d66661; }
-pre.hljl > span.hljl-NAME_ENTITY { }
-pre.hljl > span.hljl-NAME_EXCEPTION { }
-pre.hljl > span.hljl-NAME_FUNCTION { color: #4266d5; }
-pre.hljl > span.hljl-NAME_FUNCTION_MAGIC { color: #4266d5; }
-pre.hljl > span.hljl-NAME_PROPERTY { }
-pre.hljl > span.hljl-NAME_LABEL { }
-pre.hljl > span.hljl-NAME_NAMESPACE { }
-pre.hljl > span.hljl-NAME_OTHER { }
-pre.hljl > span.hljl-NAME_TAG { }
-pre.hljl > span.hljl-NAME_VARIABLE { }
-pre.hljl > span.hljl-NAME_VARIABLE_CLASS { }
-pre.hljl > span.hljl-NAME_VARIABLE_GLOBAL { }
-pre.hljl > span.hljl-NAME_VARIABLE_INSTANCE { }
-pre.hljl > span.hljl-NAME_VARIABLE_MAGIC { }
-pre.hljl > span.hljl-LITERAL { }
-pre.hljl > span.hljl-LITERAL_DATE { color: #945bb0; font-style: italic; }
-pre.hljl > span.hljl-STRING { color: #c93d39; }
-pre.hljl > span.hljl-STRING_AFFIX { color: #c93d39; }
-pre.hljl > span.hljl-STRING_BACKTICK { color: #c93d39; }
-pre.hljl > span.hljl-STRING_CHAR { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DELIMITER { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DOC { color: #c93d39; }
-pre.hljl > span.hljl-STRING_DOUBLE { color: #c93d39; }
-pre.hljl > span.hljl-STRING_ESCAPE { color: #3b972e; }
-pre.hljl > span.hljl-STRING_HEREDOC { color: #c93d39; }
-pre.hljl > span.hljl-STRING_INTERPOL { }
-pre.hljl > span.hljl-STRING_OTHER { color: #c93d39; }
-pre.hljl > span.hljl-STRING_REGEX { color: #c93d39; }
-pre.hljl > span.hljl-STRING_SINGLE { color: #c93d39; }
-pre.hljl > span.hljl-STRING_SYMBOL { color: #c93d39; }
-pre.hljl > span.hljl-NUMBER { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_BIN { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_FLOAT { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_HEX { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_INTEGER { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_INTEGER_LONG { color: #3b972e; }
-pre.hljl > span.hljl-NUMBER_OCT { color: #3b972e; }
-pre.hljl > span.hljl-OPERATOR { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-OPERATOR_WORD { color: #666666; font-weight: bold; }
-pre.hljl > span.hljl-PUNCTUATION { }
-pre.hljl > span.hljl-COMMENT { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_HASHBANG { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_MULTILINE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_PREPROC { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_PREPROCFILE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_SINGLE { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-COMMENT_SPECIAL { color: #999977; font-style: italic; }
-pre.hljl > span.hljl-GENERIC { }
-pre.hljl > span.hljl-GENERIC_DELETED { }
-pre.hljl > span.hljl-GENERIC_EMPH { }
-pre.hljl > span.hljl-GENERIC_ERROR { }
-pre.hljl > span.hljl-GENERIC_HEADING { }
-pre.hljl > span.hljl-GENERIC_INSERTED { }
-pre.hljl > span.hljl-GENERIC_OUTPUT { }
-pre.hljl > span.hljl-GENERIC_PROMPT { }
-pre.hljl > span.hljl-GENERIC_STRONG { }
-pre.hljl > span.hljl-GENERIC_SUBHEADING { }
-pre.hljl > span.hljl-GENERIC_TRACEBACK { }
+    color: rgb(68,68,68); background-color: rgb(251,251,251); }
+pre.hljl > span.hljl-t { }
+pre.hljl > span.hljl-w { }
+pre.hljl > span.hljl-e { }
+pre.hljl > span.hljl-eB { }
+pre.hljl > span.hljl-o { }
+pre.hljl > span.hljl-k { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kc { color: rgb(59,151,46); font-style: italic; }
+pre.hljl > span.hljl-kd { color: rgb(214,102,97); font-style: italic; }
+pre.hljl > span.hljl-kn { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kp { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kr { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-kt { color: rgb(148,91,176); font-weight: bold; }
+pre.hljl > span.hljl-n { }
+pre.hljl > span.hljl-na { }
+pre.hljl > span.hljl-nb { }
+pre.hljl > span.hljl-nbp { }
+pre.hljl > span.hljl-nc { }
+pre.hljl > span.hljl-ncB { }
+pre.hljl > span.hljl-nd { color: rgb(214,102,97); }
+pre.hljl > span.hljl-ne { }
+pre.hljl > span.hljl-neB { }
+pre.hljl > span.hljl-nf { color: rgb(66,102,213); }
+pre.hljl > span.hljl-nfm { color: rgb(66,102,213); }
+pre.hljl > span.hljl-np { }
+pre.hljl > span.hljl-nl { }
+pre.hljl > span.hljl-nn { }
+pre.hljl > span.hljl-no { }
+pre.hljl > span.hljl-nt { }
+pre.hljl > span.hljl-nv { }
+pre.hljl > span.hljl-nvc { }
+pre.hljl > span.hljl-nvg { }
+pre.hljl > span.hljl-nvi { }
+pre.hljl > span.hljl-nvm { }
+pre.hljl > span.hljl-l { }
+pre.hljl > span.hljl-ld { color: rgb(148,91,176); font-style: italic; }
+pre.hljl > span.hljl-s { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sa { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sb { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sc { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sd { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sdC { color: rgb(201,61,57); }
+pre.hljl > span.hljl-se { color: rgb(59,151,46); }
+pre.hljl > span.hljl-sh { color: rgb(201,61,57); }
+pre.hljl > span.hljl-si { }
+pre.hljl > span.hljl-so { color: rgb(201,61,57); }
+pre.hljl > span.hljl-sr { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ss { color: rgb(201,61,57); }
+pre.hljl > span.hljl-ssB { color: rgb(201,61,57); }
+pre.hljl > span.hljl-nB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nbB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nfB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nh { color: rgb(59,151,46); }
+pre.hljl > span.hljl-ni { color: rgb(59,151,46); }
+pre.hljl > span.hljl-nil { color: rgb(59,151,46); }
+pre.hljl > span.hljl-noB { color: rgb(59,151,46); }
+pre.hljl > span.hljl-oB { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-ow { color: rgb(102,102,102); font-weight: bold; }
+pre.hljl > span.hljl-p { }
+pre.hljl > span.hljl-c { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-ch { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cm { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cp { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cpB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-cs { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-csB { color: rgb(153,153,119); font-style: italic; }
+pre.hljl > span.hljl-g { }
+pre.hljl > span.hljl-gd { }
+pre.hljl > span.hljl-ge { }
+pre.hljl > span.hljl-geB { }
+pre.hljl > span.hljl-gh { }
+pre.hljl > span.hljl-gi { }
+pre.hljl > span.hljl-go { }
+pre.hljl > span.hljl-gp { }
+pre.hljl > span.hljl-gs { }
+pre.hljl > span.hljl-gsB { }
+pre.hljl > span.hljl-gt { }
 </style>
 
 <pre class='hljl'>
-<span class='hljl-COMMENT'>! Based on code samples from https://en.wikipedia.org/wiki/Fortran</span><span class='hljl-TEXT'>
-</span><span class='hljl-COMMENT'>! and https://learnxinyminutes.com/docs/fortran95/.</span><span class='hljl-TEXT'>
+<span class='hljl-c'>! Based on code samples from https://en.wikipedia.org/wiki/Fortran</span><span class='hljl-t'>
+</span><span class='hljl-c'>! and https://learnxinyminutes.com/docs/fortran95/.</span><span class='hljl-t'>
 
-</span><span class='hljl-KEYWORD'>PROGRAM</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>test</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>CALL</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>PROGRAM</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>test</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>SUBROUTINE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>PRINT</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>*</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_SINGLE'>&#39;Hello world!&#39;</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>SUBROUTINE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>print_message</span><span class='hljl-TEXT'>
+</span><span class='hljl-k'>PROGRAM</span><span class='hljl-t'> </span><span class='hljl-n'>test</span><span class='hljl-t'>
+    </span><span class='hljl-k'>CALL</span><span class='hljl-t'> </span><span class='hljl-n'>print_message</span><span class='hljl-t'>
+</span><span class='hljl-k'>END</span><span class='hljl-t'> </span><span class='hljl-k'>PROGRAM</span><span class='hljl-t'> </span><span class='hljl-n'>test</span><span class='hljl-t'>
+</span><span class='hljl-k'>SUBROUTINE</span><span class='hljl-t'> </span><span class='hljl-n'>print_message</span><span class='hljl-t'>
+    </span><span class='hljl-k'>PRINT</span><span class='hljl-t'> </span><span class='hljl-oB'>*</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ss'>&#39;Hello world!&#39;</span><span class='hljl-t'>
+</span><span class='hljl-k'>END</span><span class='hljl-t'> </span><span class='hljl-k'>SUBROUTINE</span><span class='hljl-t'> </span><span class='hljl-n'>print_message</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT_PREPROC'># a preprocessor comment</span><span class='hljl-TEXT'>
+</span><span class='hljl-cp'># a preprocessor comment</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME_BUILTIN'>.true.</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>==</span><span class='hljl-TEXT'> </span><span class='hljl-NAME_BUILTIN'>.FALSE.</span><span class='hljl-TEXT'>
+</span><span class='hljl-nb'>.true.</span><span class='hljl-t'> </span><span class='hljl-oB'>==</span><span class='hljl-t'> </span><span class='hljl-nb'>.FALSE.</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>&lt;</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR_WORD'>.AND.</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>/=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>j</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>flag</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>==</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>a</span><span class='hljl-t'> </span><span class='hljl-oB'>&lt;</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-t'> </span><span class='hljl-ow'>.AND.</span><span class='hljl-t'> </span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>/=</span><span class='hljl-t'> </span><span class='hljl-n'>j</span><span class='hljl-t'>
+</span><span class='hljl-n'>flag</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>a</span><span class='hljl-t'> </span><span class='hljl-oB'>==</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-t'>
 
-</span><span class='hljl-KEYWORD'>print</span><span class='hljl-TEXT'> </span><span class='hljl-STRING_DOUBLE'>&quot;(F6.3)&quot;</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>4.32</span><span class='hljl-TEXT'>
+</span><span class='hljl-k'>print</span><span class='hljl-t'> </span><span class='hljl-sdC'>&quot;(F6.3)&quot;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nfB'>4.32</span><span class='hljl-t'>
 
-</span><span class='hljl-COMMENT'>! A comment...</span><span class='hljl-TEXT'>
+</span><span class='hljl-c'>! A comment...</span><span class='hljl-t'>
 
-</span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>string80</span><span class='hljl-TEXT'>            </span><span class='hljl-COMMENT'>! ... and other comment.</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD_TYPE'>INTEGER</span><span class='hljl-TEXT'>       </span><span class='hljl-NAME'>length</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD_TYPE'>CHARACTER</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>80</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>value</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>END</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>string80</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD_TYPE'>CHARACTER</span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>char3</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>TYPE</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>string80</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>str1</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'>  </span><span class='hljl-NAME'>str2</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'>  </span><span class='hljl-NAME'>str3</span><span class='hljl-TEXT'>
+</span><span class='hljl-k'>TYPE</span><span class='hljl-t'> </span><span class='hljl-n'>string80</span><span class='hljl-t'>            </span><span class='hljl-c'>! ... and other comment.</span><span class='hljl-t'>
+    </span><span class='hljl-kt'>INTEGER</span><span class='hljl-t'>       </span><span class='hljl-n'>length</span><span class='hljl-t'>
+    </span><span class='hljl-kt'>CHARACTER</span><span class='hljl-p'>(</span><span class='hljl-ni'>80</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-k'>value</span><span class='hljl-t'>
+</span><span class='hljl-k'>END</span><span class='hljl-t'> </span><span class='hljl-k'>TYPE</span><span class='hljl-t'> </span><span class='hljl-n'>string80</span><span class='hljl-t'>
+</span><span class='hljl-kt'>CHARACTER</span><span class='hljl-kd'>::</span><span class='hljl-t'> </span><span class='hljl-n'>char1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>char2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>char3</span><span class='hljl-t'>
+</span><span class='hljl-k'>TYPE</span><span class='hljl-p'>(</span><span class='hljl-n'>string80</span><span class='hljl-p'>)</span><span class='hljl-kd'>::</span><span class='hljl-t'> </span><span class='hljl-n'>str1</span><span class='hljl-p'>,</span><span class='hljl-t'>  </span><span class='hljl-n'>str2</span><span class='hljl-p'>,</span><span class='hljl-t'>  </span><span class='hljl-n'>str3</span><span class='hljl-t'>
 
-</span><span class='hljl-KEYWORD_TYPE'>REAL</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>DIMENSION</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>10</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>20</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD_TYPE'>REAL</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>DIMENSION</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>      </span><span class='hljl-KEYWORD_DECLARATION'>::</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD_TYPE'>LOGICAL</span><span class='hljl-TEXT'>                    </span><span class='hljl-NAME'>flag</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>10</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>20</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+</span><span class='hljl-kt'>REAL</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-k'>DIMENSION</span><span class='hljl-p'>(</span><span class='hljl-ni'>10</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>20</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-kd'>::</span><span class='hljl-t'> </span><span class='hljl-n'>a</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>c</span><span class='hljl-t'>
+</span><span class='hljl-kt'>REAL</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-k'>DIMENSION</span><span class='hljl-p'>(</span><span class='hljl-ni'>5</span><span class='hljl-p'>)</span><span class='hljl-t'>      </span><span class='hljl-kd'>::</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>w</span><span class='hljl-t'>
+</span><span class='hljl-kt'>LOGICAL</span><span class='hljl-t'>                    </span><span class='hljl-n'>flag</span><span class='hljl-p'>(</span><span class='hljl-ni'>10</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>20</span><span class='hljl-p'>)</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>a</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>c</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME'>b</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_FLOAT'>1.2</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>w</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-OPERATOR'>/</span><span class='hljl-NAME'>v</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>c</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>8</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>10</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>a</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>9</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>10</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>+</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>b</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>8</span><span class='hljl-PUNCTUATION'>,</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>15</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>20</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
-</span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>v</span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>4</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>a</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-t'>
+</span><span class='hljl-n'>c</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>a</span><span class='hljl-oB'>/</span><span class='hljl-n'>b</span><span class='hljl-t'>
+</span><span class='hljl-n'>w</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-nfB'>1.2</span><span class='hljl-t'>
+</span><span class='hljl-n'>w</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-oB'>/</span><span class='hljl-n'>v</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>a</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>:</span><span class='hljl-ni'>5</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-n'>c</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>:</span><span class='hljl-ni'>8</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-p'>:</span><span class='hljl-ni'>10</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>a</span><span class='hljl-p'>(</span><span class='hljl-ni'>2</span><span class='hljl-p'>:</span><span class='hljl-ni'>9</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>5</span><span class='hljl-p'>:</span><span class='hljl-ni'>10</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>:</span><span class='hljl-ni'>8</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>15</span><span class='hljl-p'>:</span><span class='hljl-ni'>20</span><span class='hljl-p'>)</span><span class='hljl-t'>
+</span><span class='hljl-n'>v</span><span class='hljl-p'>(</span><span class='hljl-ni'>2</span><span class='hljl-p'>:</span><span class='hljl-ni'>5</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>v</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>:</span><span class='hljl-ni'>4</span><span class='hljl-p'>)</span><span class='hljl-t'>
 
-</span><span class='hljl-NAME'>i</span><span class='hljl-TEXT'> </span><span class='hljl-OPERATOR'>=</span><span class='hljl-TEXT'> </span><span class='hljl-NUMBER_INTEGER'>10</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>select</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NAME'>i</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>0</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'> </span><span class='hljl-COMMENT'>! case i == 0</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER_INTEGER'>0</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-PUNCTUATION'>:</span><span class='hljl-NUMBER_INTEGER'>5</span><span class='hljl-PUNCTUATION'>)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER_INTEGER'>1</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-PUNCTUATION'>(</span><span class='hljl-NUMBER_INTEGER'>6</span><span class='hljl-PUNCTUATION'>:)</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-TEXT'>
-    </span><span class='hljl-KEYWORD'>case</span><span class='hljl-TEXT'> </span><span class='hljl-NAME'>default</span><span class='hljl-TEXT'>
-    </span><span class='hljl-NAME'>j</span><span class='hljl-OPERATOR'>=</span><span class='hljl-NUMBER_INTEGER'>3</span><span class='hljl-TEXT'>
-</span><span class='hljl-KEYWORD'>end</span><span class='hljl-TEXT'> </span><span class='hljl-KEYWORD'>select</span><span class='hljl-TEXT'>
+</span><span class='hljl-n'>i</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>10</span><span class='hljl-t'>
+</span><span class='hljl-k'>select</span><span class='hljl-t'> </span><span class='hljl-k'>case</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-n'>i</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>case</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-ni'>0</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-c'>! case i == 0</span><span class='hljl-t'>
+    </span><span class='hljl-n'>j</span><span class='hljl-oB'>=</span><span class='hljl-ni'>0</span><span class='hljl-t'>
+    </span><span class='hljl-k'>case</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>:</span><span class='hljl-ni'>5</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>j</span><span class='hljl-oB'>=</span><span class='hljl-ni'>1</span><span class='hljl-t'>
+    </span><span class='hljl-k'>case</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-ni'>6</span><span class='hljl-p'>:)</span><span class='hljl-t'>
+    </span><span class='hljl-n'>j</span><span class='hljl-oB'>=</span><span class='hljl-ni'>2</span><span class='hljl-t'>
+    </span><span class='hljl-k'>case</span><span class='hljl-t'> </span><span class='hljl-n'>default</span><span class='hljl-t'>
+    </span><span class='hljl-n'>j</span><span class='hljl-oB'>=</span><span class='hljl-ni'>3</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'> </span><span class='hljl-k'>select</span><span class='hljl-t'>
 </span>
 </pre><footer><hr/><a class="previous" href="../lexers.html"><span class="direction">Previous</span><span class="title">Lexers</span></a><a class="next" href="jlcon.html"><span class="direction">Next</span><span class="title">Julia Console</span></a></footer></article></body></html>
