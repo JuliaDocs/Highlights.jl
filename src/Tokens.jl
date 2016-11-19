@@ -1,10 +1,13 @@
 """
 This submodule provides a collection of *token* names for use in lexer and theme
-definitions. Exports the following list of tokens:
+definitions. The table shown below lists all the exported tokens as well as the
+abbreviations used when printing stylesheets and highlighted source code.
 
-$(join(["  * `$n`" for n in __TOKENS__], "\n"))
+$(TABLE)
 """
 module Tokens
+
+import ..Highlights
 
 const __TOKENS__ = [
     :TEXT
@@ -115,5 +118,40 @@ for (n, each) in enumerate(__TOKENS__)
     @eval export $each
     @eval const $each = TokenValue($n)
 end
+
+# Shortnames.
+
+const __SHORTNAMES__ = Symbol[]
+
+let cache = Dict{Symbol, Int}()
+    for (nth, each) in enumerate(__TOKENS__)
+        local short = Symbol(join(map(first, split(lowercase(string(each)), '_'))))
+        if haskey(cache, short)
+            cache[short] += 1
+            push!(__SHORTNAMES__, Symbol(string(short, Char(cache[short] + Int('A') - 1))))
+        else
+            cache[short] = 1
+            push!(__SHORTNAMES__, short)
+        end
+    end
+    # Check that we've actually got a unique set of shortnames.
+    @assert unique(__SHORTNAMES__) == __SHORTNAMES__
+end
+
+# Make a table to include in the module's docstring.
+
+const TABLE =
+    let buffer = IOBuffer(),
+        col_1_label = "Token",
+        col_2_label = "Abbreviation",
+        col_1 = mapreduce(s -> length(string(s)), max, length(col_1_label), __TOKENS__) + 2,
+        col_2 = mapreduce(s -> length(string(s)), max, length(col_2_label), __SHORTNAMES__) + 2
+        println(buffer, "| ", rpad(col_1_label, col_1), " | ", rpad(col_2_label, col_2), " |")
+        println(buffer, "|:", rpad("-", col_1, "-"),    " | ", rpad("-", col_2, "-"),    ":|")
+        for (long, short) in zip(__TOKENS__, __SHORTNAMES__)
+            println(buffer, "| ", rpad("`$long`", col_1), " | ", rpad("`$short`", col_2), " |")
+        end
+        Highlights.takebuf_str(buffer)
+    end
 
 end

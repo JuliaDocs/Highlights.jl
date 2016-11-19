@@ -13,9 +13,49 @@ import ..Highlights: Str, AbstractTheme, AbstractLexer
 
 export AbstractTheme, @S_str, @theme
 
-# Style and Theme types.
 
-const NULL_STRING = Str("")
+# Colour, Style, Theme types.
+
+"""
+$(TYPEDEF)
+
+Represents a single RGB colour value that can be 'active' or 'inactive'.
+"""
+immutable RGB
+    r::UInt8
+    g::UInt8
+    b::UInt8
+    active::Bool
+
+    function RGB(str::AbstractString)
+        n = length(str)
+        r, g, b = n == 3 ? rgb3(str) : n == 6 ? rgb6(str) :
+            error("invalid colour code. Must be a 3 or 6 digit hex value.")
+        return new(r, g, b, true)
+    end
+
+    RGB() = new(0x00, 0x00, 0x00, false)
+end
+
+"Convert a three digit hex string to a 3-tuple of `UInt8`s."
+function rgb3(str)
+    r = parse(UInt8, str[1])
+    g = parse(UInt8, str[2])
+    b = parse(UInt8, str[3])
+    return (r << 4 + r, g << 4 + g, b << 4 + b)
+end
+
+"Convert a six digit hex string to a 3-tuple of `UInt8`s."
+function rgb6(str)
+    r1 = parse(UInt8, str[1])
+    r2 = parse(UInt8, str[2])
+    g1 = parse(UInt8, str[3])
+    g2 = parse(UInt8, str[4])
+    b1 = parse(UInt8, str[5])
+    b2 = parse(UInt8, str[6])
+    return (r1 << 4 + r2, g1 << 4 + g2, b1 << 4 + b2)
+end
+
 
 """
 $(TYPEDEF)
@@ -24,46 +64,25 @@ An internal type used to track colour scheme definition information such as fore
 background colours as well as bold, italic, and underlining.
 """
 immutable Style
-    fg::Str
-    bg::Str
+    fg::RGB
+    bg::RGB
     bold::Bool
     italic::Bool
     underline::Bool
 
     function Style(spec::AbstractString)
-        fg = bg = NULL_STRING
+        fg = bg = RGB()
         bold = italics = underline = false
         for part in split(spec, r"\s*;\s*")
-            startswith(part, "fg:") && (fg = strip(part[4:end]))
-            startswith(part, "bg:") && (bg = strip(part[4:end]))
+            startswith(part, "fg:") && (fg = RGB(strip(part[4:end])))
+            startswith(part, "bg:") && (bg = RGB(strip(part[4:end])))
             part == "bold" && (bold = true)
             part == "italic" && (italics = true)
             part == "underline" && (underline = true)
         end
-        return new(expand_html(fg), expand_html(bg), bold, italics, underline)
+        return new(fg, bg, bold, italics, underline)
     end
 end
-
-"""
-$(SIGNATURES)
-
-Expands an HTML colour code `s` from 3 digits to 6.
-"""
-expand_html(s::AbstractString) = length(s) == 3 ? join(map(join, zip(s, s))) : s
-
-"""
-$(SIGNATURES)
-
-Does the [`Style`](@ref) `s` have a foreground colour set?
-"""
-has_fg(s::Style) = s.fg !== NULL_STRING
-
-"""
-$(SIGNATURES)
-
-Does the [`Style`](@ref) `s` have a background colour set?
-"""
-has_bg(s::Style) = s.bg !== NULL_STRING
 
 """
 $(SIGNATURES)

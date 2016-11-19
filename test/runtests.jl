@@ -198,15 +198,30 @@ abstract SelfLexer <: Highlights.AbstractLexer
     end
     @testset "Themes" begin
         let s = Themes.Style("fg: 111")
-            @test s.fg == "111111"
-            @test s.bg == Themes.NULL_STRING
+            @test s.fg.r == 0x11
+            @test s.fg.g == 0x11
+            @test s.fg.b == 0x11
+            @test s.fg.active == true
+
+            @test s.bg.r == 0x00
+            @test s.bg.g == 0x00
+            @test s.bg.b == 0x00
+            @test s.bg.active == false
+
             @test !s.bold
             @test !s.italic
             @test !s.underline
         end
         let s = Themes.Style("bg: f8c; italic; bold")
-            @test s.fg == Themes.NULL_STRING
-            @test s.bg == "ff88cc"
+            @test s.fg.r == 0x00
+            @test s.fg.g == 0x00
+            @test s.fg.b == 0x00
+            @test s.fg.active == false
+
+            @test s.bg.r == 0xff
+            @test s.bg.g == 0x88
+            @test s.bg.b == 0xcc
+            @test s.bg.active == true
             @test s.bold
             @test s.italic
             @test !s.underline
@@ -221,12 +236,12 @@ abstract SelfLexer <: Highlights.AbstractLexer
         local render = function(mime, style)
             local buffer = IOBuffer()
             Highlights.Format.render(buffer, mime, style)
-            return takebuf_string(buffer)
+            return Highlights.takebuf_str(buffer)
         end
         @testset "CSS" begin
             let mime = MIME("text/css")
-                @test render(mime, Themes.Style("fg: 111"))   == "color: #111111; "
-                @test render(mime, Themes.Style("bg: 111"))   == "background-color: #111111; "
+                @test render(mime, Themes.Style("fg: 111"))   == "color: rgb(17,17,17); "
+                @test render(mime, Themes.Style("bg: 111"))   == "background-color: rgb(17,17,17); "
                 @test render(mime, Themes.Style("bold"))      == "font-weight: bold; "
                 @test render(mime, Themes.Style("italic"))    == "font-style: italic; "
                 @test render(mime, Themes.Style("underline")) == "text-decoration: underline; "
@@ -234,8 +249,8 @@ abstract SelfLexer <: Highlights.AbstractLexer
         end
         @testset "LaTeX" begin
             let mime = MIME("text/latex")
-                @test render(mime, Themes.Style("fg: 111"))   == "[1]{\\textcolor[HTML]{111111}{#1}}"
-                @test render(mime, Themes.Style("bg: 111"))   == "[1]{\\colorbox[HTML]{111111}{#1}}"
+                @test render(mime, Themes.Style("fg: 111"))   == "[1]{\\textcolor[RGB]{17,17,17}{#1}}"
+                @test render(mime, Themes.Style("bg: 111"))   == "[1]{\\colorbox[RGB]{17,17,17}{#1}}"
                 @test render(mime, Themes.Style("bold"))      == "[1]{\\textbf{#1}}"
                 @test render(mime, Themes.Style("italic"))    == "[1]{\\textit{#1}}"
                 @test render(mime, Themes.Style("underline")) == "[1]{\\underline{#1}}"
@@ -245,7 +260,7 @@ abstract SelfLexer <: Highlights.AbstractLexer
     @testset "Compiler" begin
         let buf = IOBuffer()
             Highlights.Compiler.debug(buf, "x", Highlights.Lexers.JuliaLexer)
-            @test takebuf_string(buf) == "<NAME> := \"x\"\n"
+            @test Highlights.takebuf_str(buf) == "<NAME> := \"x\"\n"
             # Should print nothing to STDOUT.
             Highlights.Compiler.debug("", Highlights.Lexers.JuliaLexer)
         end
