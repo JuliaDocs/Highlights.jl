@@ -501,7 +501,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Public Interface",
     "title": "Highlights.highlight",
     "category": "Function",
-    "text": "Highlight source code using a specific lexer, mimetype and theme.\n\nhighlight(io, mime, src, lexer)\nhighlight(io, mime, src, lexer, theme)\n\n\nsrc is tokenised using the provided lexer, then colourised using theme, and finally output to io in the given format mime. theme defaults to Themes.DefaultTheme theme.\n\nmime can be either MIME(\"text/html\") or MIME(\"text/latex\").\n\nExamples\n\njulia> using Highlights\n\njulia> highlight(STDOUT, MIME(\"text/html\"), \"2x\", Lexers.JuliaLexer)\n<pre class='hljl'>\n<span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-NAME'>x</span>\n</pre>\n\njulia> highlight(STDOUT, MIME(\"text/latex\"), \"'x'\", Lexers.JuliaLexer, Themes.VimTheme)\n\\begin{lstlisting}\n(*@\\HLJLSTRINGCHAR{{\\textquotesingle}x{\\textquotesingle}}@*)\n\\end{lstlisting}\n\n\n\n\n"
+    "text": "Highlight source code using a specific lexer, mimetype and theme.\n\nhighlight(io, mime, src, lexer, theme)\nhighlight(io, mime, src, lexer)\n\n\nsrc is tokenised using the provided lexer, then colourised using theme, and finally output to io in the given format mime. theme defaults to Themes.DefaultTheme theme.\n\nmime can be either MIME(\"text/html\") or MIME(\"text/latex\").\n\nExamples\n\njulia> using Highlights\n\njulia> highlight(STDOUT, MIME(\"text/html\"), \"2x\", Lexers.JuliaLexer)\n<pre class='hljl'>\n<span class='hljl-NUMBER_INTEGER'>2</span><span class='hljl-NAME'>x</span>\n</pre>\n\njulia> highlight(STDOUT, MIME(\"text/latex\"), \"'x'\", Lexers.JuliaLexer, Themes.VimTheme)\n\\begin{lstlisting}\n(*@\\HLJLSTRINGCHAR{{\\textquotesingle}x{\\textquotesingle}}@*)\n\\end{lstlisting}\n\n\n\n\n"
 },
 
 {
@@ -517,7 +517,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Public Interface",
     "title": "Highlights.stylesheet",
     "category": "Function",
-    "text": "Generate a \"stylesheet\" for the given theme.\n\nstylesheet(io, mime)\nstylesheet(io, mime, theme)\n\n\nPrints out the style information needed to colourise source code in the given theme. Note that theme defaults to Themes.DefaultTheme. Output is printed to io in the format mime. mine can be one of\n\nMIME(\"text/html\")\nMIME(\"text/css\")\nMIME(\"text/latex\")\n\nExamples\n\njulia> using Highlights\n\njulia> buf = IOBuffer();\n\njulia> stylesheet(buf, MIME(\"text/css\"), Themes.EmacsTheme)\n\njulia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.\n\"pre.hljl {\"\n\n\n\n\n"
+    "text": "Generate a \"stylesheet\" for the given theme.\n\nstylesheet(io, mime, theme)\nstylesheet(io, mime)\n\n\nPrints out the style information needed to colourise source code in the given theme. Note that theme defaults to Themes.DefaultTheme. Output is printed to io in the format mime. mine can be one of\n\nMIME(\"text/html\")\nMIME(\"text/css\")\nMIME(\"text/latex\")\n\nExamples\n\njulia> using Highlights\n\njulia> buf = IOBuffer();\n\njulia> stylesheet(buf, MIME(\"text/css\"), Themes.EmacsTheme)\n\njulia> split(takebuf_string(buf), '\\n')[1] # Too much output to show everything.\n\"pre.hljl {\"\n\n\n\n\n"
 },
 
 {
