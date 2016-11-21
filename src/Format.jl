@@ -1,9 +1,43 @@
+"""
+The `Format` module provides a public interface that can be used to define custom formatters
+aside from the predefined HTML and LaTeX outputs supported by `Highlights`.
+
+The [Formatting](@ref) section of the manual provides a example of how to go about extending
+`Highlights` to support additional output formats.
+
+The following functions and types are exported from the module for public use:
+
+$(EXPORTS)
+"""
 module Format
 
+using DocStringExtensions
+
+import ..Highlights
 import ..Highlights.Compiler: Context
 import ..Highlights.Themes: RGB, Style, Theme
 import ..Highlights.Tokens
 
+export TokenIterator, render
+
+"""
+The `render` function is used to define custom output formats for tokenised source code.
+Methods with signatures of the form
+
+```julia
+function Format.render(io::IO, mime::MIME, tokens::Format.TokenIterator)
+    # ...
+    for (str, id, style) in tokens
+        # ...
+    end
+    # ...
+end
+```
+
+can be defined for any `mime` type to allow the [`highlight`](@ref Highlights.highlight)
+function to support new output formats.
+"""
+function render end
 
 # RGB colours.
 
@@ -113,30 +147,62 @@ function render(io::IO, mime::MIME"text/latex", theme::Theme)
     end
 end
 
+# Token Iterator.
+
+"""
+$(TYPEDEF)
+
+An iterator type used in user-defined [`render`](@ref) methods to provide custom output
+formats. This type supports the basic Julia iterator protocol: namely `start`, `next`,
+and `done` which enables `for`-loop interation over tokenised text.
+
+The iterator returns a 3-tuple of `str`, `id`, and `style` where
+
+  * `str` is the `SubString` covered by the token;
+  * `id` is the shorthand name of the token type as a `Symbol`;
+  * `style` is the `Style` applied to the token.
+
+"""
+immutable TokenIterator
+    ctx::Context
+    theme::Theme
+end
+
+Base.start(::TokenIterator) = 1
+Base.done(t::TokenIterator, state::Int) = length(t.ctx.tokens) < state
+
+function Base.next(t::TokenIterator, state::Int)
+    local token = t.ctx.tokens[state]
+    local result = (
+        SubString(t.ctx.source, token.first, token.last),
+        Tokens.__SHORTNAMES__[token.value.value],
+        t.theme.styles[token.value.value],
+    )
+    return result, state + 1
+end
 
 # Code blocks.
 
-function render(io::IO, mime::MIME"text/html", ctx::Context, theme::Theme)
+render(io::IO, mime::MIME, ctx::Context, theme::Theme) =
+    render(io, mime, TokenIterator(ctx, theme))
+
+function render(io::IO, mime::MIME"text/html", tokens::TokenIterator)
     println(io, "<pre class='hljl'>")
-    for token in ctx.tokens
+    for (str, id, style) in tokens
         print(io, "<span class='hljl-")
-        print(io, Tokens.__SHORTNAMES__[token.value.value], "'>")
-        escape(io, mime, SubString(ctx.source, token.first, token.last))
+        print(io, id, "'>")
+        escape(io, mime, str)
         print(io, "</span>")
     end
     println(io, "\n</pre>")
 end
 
-function render(io::IO, mime::MIME"text/latex", ctx::Context, theme::Theme)
+function render(io::IO, mime::MIME"text/latex", tokens::TokenIterator)
     println(io, "\\begin{lstlisting}")
-    for token in ctx.tokens
-        if Tokens.__TOKENS__[token.value.value] === :TEXT
-            print(io, SubString(ctx.source, token.first, token.last))
-        else
-            print(io, "(*@\\HLJL", Tokens.__SHORTNAMES__[token.value.value], "{")
-            escape(io, mime, SubString(ctx.source, token.first, token.last))
-            print(io, "}@*)")
-        end
+    for (str, id, style) in tokens
+        id === :t || print(io, "(*@\\HLJL", id, "{")
+        escape(io, mime, str)
+        id === :t || print(io, "}@*)")
     end
     println(io, "\n\\end{lstlisting}")
 end
