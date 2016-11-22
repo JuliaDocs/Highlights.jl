@@ -52,6 +52,7 @@ makedocs(
             "man/guide.md",
             "man/theme.md",
             "man/lexer.md",
+            "man/formatting.md",
         ],
         "Demos" => [
             hide("demo/lexers.md", ["demo/lexers/$f" for f in LEXERS])

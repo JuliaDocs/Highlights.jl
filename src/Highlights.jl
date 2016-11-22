@@ -44,7 +44,7 @@ include("Format.jl")
 
 # Public interface.
 
-export Lexers, Themes, Tokens, highlight, stylesheet, lexer
+export Lexers, Themes, Tokens, Format, highlight, stylesheet, lexer
 
 """
 $(SIGNATURES)

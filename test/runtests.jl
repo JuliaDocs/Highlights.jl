@@ -92,6 +92,24 @@ abstract SelfLexer <: Highlights.AbstractLexer
     ),
 )
 
+# Custom output format. A DOM-like node "buffer".
+
+immutable Node
+    name::Symbol
+    text::Highlights.Str
+    class::Highlights.Str
+end
+
+immutable NodeBuffer <: IO
+    nodes::Vector{Node}
+end
+
+function Format.render(io::IO, ::MIME"ast/dom", tokens::Format.TokenIterator)
+    for (str, id, style) in tokens
+        push!(io.nodes, Node(:span, str, "hljl-$id"))
+    end
+end
+
 #
 # Testsets.
 #
@@ -254,6 +272,17 @@ abstract SelfLexer <: Highlights.AbstractLexer
                 @test render(mime, Themes.Style("bold"))      == "[1]{\\textbf{#1}}"
                 @test render(mime, Themes.Style("italic"))    == "[1]{\\textit{#1}}"
                 @test render(mime, Themes.Style("underline")) == "[1]{\\underline{#1}}"
+            end
+        end
+        @testset "Custom Nodes" begin
+            let buf = NodeBuffer([]),
+                eq = (a, b) -> a.name == b.name && a.text == b.text && a.class == b.class
+                highlight(buf, MIME("ast/dom"), "x = 1", Lexers.JuliaLexer)
+                @test eq(buf.nodes[1], Node(:span, "x", "hljl-n"))
+                @test eq(buf.nodes[2], Node(:span, " ", "hljl-t"))
+                @test eq(buf.nodes[3], Node(:span, "=", "hljl-oB"))
+                @test eq(buf.nodes[4], Node(:span, " ", "hljl-t"))
+                @test eq(buf.nodes[5], Node(:span, "1", "hljl-ni"))
             end
         end
     end

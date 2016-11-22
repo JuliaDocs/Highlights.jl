@@ -21,9 +21,16 @@ Modules = [Highlights.Lexers]
 Private = false
 ```
 
-## `Tokens` Subtype
+## `Tokens` Submodule
 
 ```@autodocs
 Modules = [Highlights.Tokens]
+Private = false
+```
+
+## `Format` Submodule
+
+```@autodocs
+Modules = [Highlights.Format]
 Private = false
 ```
