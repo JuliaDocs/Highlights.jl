@@ -185,6 +185,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "man/formatting.html#",
+    "page": "Formatting",
+    "title": "Formatting",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "man/formatting.html#Formatting-1",
+    "page": "Formatting",
+    "title": "Formatting",
+    "category": "section",
+    "text": "Highlights provides two output formats for highlighted source code, namely text/html and text/latex – both of which have been shown in previous sections of this manual. In this section we'll be describing how to go about extending Highlights formatting to support user-defined formats.To begin we will need to import the Format module from Highlights.using Highlights.FormatNow we need to decide on a format the we'd like to add. We'll be adding an ANSI formatter that can be used to display highlighted source code in the terminal. For that we'll need to install the Crayons package.Pkg.add(\"Crayons\")\nusing CrayonsNext we'll define a Format.render method that will be used to highlight tokenised source code using a user-provided theme.function Format.render(io::IO, ::MIME\"text/ansi\", tokens::Format.TokenIterator)\n    for (str, id, style) in tokens\n        fg = style.fg.active ? map(Int, (style.fg.r, style.fg.g, style.fg.b)) : :nothing\n        bg = style.bg.active ? map(Int, (style.bg.r, style.bg.g, style.bg.b)) : :nothing\n        crayon = Crayon(\n            foreground = fg,\n            background = bg,\n            bold       = style.bold,\n            italics    = style.italic,\n            underline  = style.underline,\n        )\n        print(io, crayon, str, inv(crayon))\n    end\nendnote: Note\nThe io argument to render needs to be a subtype of IO. To allow for more exotic \"buffer\"-like objects, such as push!ing rendered tokens to a vector one can use a custom wrapper type such asimmutable BufferWrapper <: IO\n    buffer::IOBuffer\n    data::Vector{RGBA{Float32}}\nendwhere the source needs to be written to a buffer while the colour data has to be pushed to a separate vector of colours.To view highlighted source code in the terminal we can then just calljulia> highlight(STDOUT, MIME(\"text/ansi\"), source, Lexers.JuliaLexer)"
+},
+
+{
     "location": "demo/lexers.html#",
     "page": "Lexers",
     "title": "Lexers",
@@ -493,7 +509,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Public Interface",
     "title": "Highlights",
     "category": "Module",
-    "text": "Highlights.jl is a Julia package for source code highlighting. It provides a regular expression based mechanism for creating lexers in a similar way to Pygments.\n\nThe following names are exported from the root module, Highlights, and are available for external use. Note that unexported names are considered unstable and subject to change.\n\nLexers\nThemes\nTokens\nhighlight\nlexer\nstylesheet\n\n\n\n"
+    "text": "Highlights.jl is a Julia package for source code highlighting. It provides a regular expression based mechanism for creating lexers in a similar way to Pygments.\n\nThe following names are exported from the root module, Highlights, and are available for external use. Note that unexported names are considered unstable and subject to change.\n\nFormat\nLexers\nThemes\nTokens\nhighlight\nlexer\nstylesheet\n\n\n\n"
 },
 
 {
@@ -501,7 +517,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Public Interface",
     "title": "Highlights.highlight",
     "category": "Function",
-    "text": "Highlight source code using a specific lexer, mimetype and theme.\n\nhighlight(io, mime, src, lexer, theme)\nhighlight(io, mime, src, lexer)\n\n\nsrc is tokenised using the provided lexer, then colourised using theme, and finally output to io in the given format mime. theme defaults to Themes.DefaultTheme theme.\n\nmime can be either MIME(\"text/html\") or MIME(\"text/latex\").\n\nExamples\n\njulia> using Highlights\n\njulia> highlight(STDOUT, MIME(\"text/html\"), \"2x\", Lexers.JuliaLexer)\n<pre class='hljl'>\n<span class='hljl-ni'>2</span><span class='hljl-n'>x</span>\n</pre>\n\njulia> highlight(STDOUT, MIME(\"text/latex\"), \"'x'\", Lexers.JuliaLexer, Themes.VimTheme)\n\\begin{lstlisting}\n(*@\\HLJLsc{{\\textquotesingle}x{\\textquotesingle}}@*)\n\\end{lstlisting}\n\n\n\n\n"
+    "text": "Highlight source code using a specific lexer, mimetype and theme.\n\nhighlight(io, mime, src, lexer)\nhighlight(io, mime, src, lexer, theme)\n\n\nsrc is tokenised using the provided lexer, then colourised using theme, and finally output to io in the given format mime. theme defaults to Themes.DefaultTheme theme.\n\nmime can be either MIME(\"text/html\") or MIME(\"text/latex\").\n\nExamples\n\njulia> using Highlights\n\njulia> highlight(STDOUT, MIME(\"text/html\"), \"2x\", Lexers.JuliaLexer)\n<pre class='hljl'>\n<span class='hljl-ni'>2</span><span class='hljl-n'>x</span>\n</pre>\n\njulia> highlight(STDOUT, MIME(\"text/latex\"), \"'x'\", Lexers.JuliaLexer, Themes.VimTheme)\n\\begin{lstlisting}\n(*@\\HLJLsc{{\\textquotesingle}x{\\textquotesingle}}@*)\n\\end{lstlisting}\n\n\n\n\n"
 },
 
 {
@@ -721,11 +737,43 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "lib/public.html#Tokens-Subtype-1",
+    "location": "lib/public.html#Tokens-Submodule-1",
     "page": "Public Interface",
-    "title": "Tokens Subtype",
+    "title": "Tokens Submodule",
     "category": "section",
     "text": "Modules = [Highlights.Tokens]\nPrivate = false"
+},
+
+{
+    "location": "lib/public.html#Highlights.Format",
+    "page": "Public Interface",
+    "title": "Highlights.Format",
+    "category": "Module",
+    "text": "The Format module provides a public interface that can be used to define custom formatters aside from the predefined HTML and LaTeX outputs supported by Highlights.\n\nThe Formatting section of the manual provides a example of how to go about extending Highlights to support additional output formats.\n\nThe following functions and types are exported from the module for public use:\n\nTokenIterator\nrender\n\n\n\n"
+},
+
+{
+    "location": "lib/public.html#Highlights.Format.TokenIterator",
+    "page": "Public Interface",
+    "title": "Highlights.Format.TokenIterator",
+    "category": "Type",
+    "text": "immutable TokenIterator\n\nAn iterator type used in user-defined render methods to provide custom output formats. This type supports the basic Julia iterator protocol: namely start, next, and done which enables for-loop interation over tokenised text.\n\nThe iterator returns a 3-tuple of str, id, and style where\n\nstr is the SubString covered by the token;\nid is the shorthand name of the token type as a Symbol;\nstyle is the Style applied to the token.\n\n\n\n"
+},
+
+{
+    "location": "lib/public.html#Highlights.Format.render",
+    "page": "Public Interface",
+    "title": "Highlights.Format.render",
+    "category": "Function",
+    "text": "The render function is used to define custom output formats for tokenised source code. Methods with signatures of the form\n\nfunction Format.render(io::IO, mime::MIME, tokens::Format.TokenIterator)\n    # ...\n    for (str, id, style) in tokens\n        # ...\n    end\n    # ...\nend\n\ncan be defined for any mime type to allow the highlight function to support new output formats.\n\n\n\n"
+},
+
+{
+    "location": "lib/public.html#Format-Submodule-1",
+    "page": "Public Interface",
+    "title": "Format Submodule",
+    "category": "section",
+    "text": "Modules = [Highlights.Format]\nPrivate = false"
 },
 
 {
