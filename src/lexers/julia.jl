@@ -18,10 +18,26 @@ function julia_is_identifier(ctx::Context, prefix = '\0')
         (c, i) = next(s, i)
         Base.is_id_char(c) || break
     end
-    return ctx.pos[]:prevind(s, prev_i)
+    return ctx.pos[]:prevind(s, Base.is_id_char(c) ? i : prev_i)
 end
 julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
 julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
+
+function julia_is_operator(ctx::Context)
+    local success = 0
+    while !done(ctx.source, ctx.pos[] + success)
+        local str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
+        ccall(:jl_is_operator, Bool, (Cstring,), str) ? (success += 1) : break
+    end
+    return success > 0 ? (ctx.pos[]:(ctx.pos[] + success - 1)) : NULL_RANGE
+end
+
+function julia_is_symbol(ctx::Context)
+    local s = ctx.source
+    local i = ctx.pos[]
+    local valid = i > 1 ? next(s, prevind(s, i))[1] in ('(', '{', '[', ' ', '\n') : true
+    return valid ? julia_is_identifier(ctx, ':') : NULL_RANGE
+end
 
 function julia_is_method_call(ctx::Context)
     local range = julia_is_identifier(ctx)
@@ -69,11 +85,12 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
                 (r"#.*$"m, COMMENT_SINGLE),
                 (r"[\[\]{}(),;]", PUNCTUATION),
 
-                (r"\b(?<![:_.])in\b", KEYWORD_PSEUDO),
+                (julia_is_symbol, STRING_CHAR),
+                (r"\b(?<![_.])in\b", KEYWORD_PSEUDO),
                 (r"\b(?<![_.])end\b", KEYWORD),
-                (r"\b(?<![:_.])(true|false)\b", KEYWORD_CONSTANT),
-                (r"\b(?<![:_.])(local|global|const)\b", KEYWORD_DECLARATION),
-                (words(keywords, prefix = "\\b(?<![:_.])", suffix = "\\b"), KEYWORD),
+                (r"\b(?<![_.])(true|false)\b", KEYWORD_CONSTANT),
+                (r"\b(?<![_.])(local|global|const)\b", KEYWORD_DECLARATION),
+                (words(keywords, prefix = "\\b(?<![_.])", suffix = "\\b"), KEYWORD),
 
                 (Regex(join(char_regex)), STRING_CHAR),
 
@@ -102,7 +119,7 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
                 (r"\d+(_\d+)+", NUMBER_INTEGER),
                 (r"\d+", NUMBER_INTEGER),
 
-                (r"[^[:alnum:]\s()\[\]{},;@_\"\']+", OPERATOR),
+                (julia_is_operator, OPERATOR),
 
                 (r"."ms, TEXT),
             ],
@@ -152,6 +169,34 @@ end
 
 # Julia Console Lexer.
 
+function julia_repl_splitter(ctx::Context)
+    local s = ctx.source
+    local i = ctx.pos[]
+    while !done(s, i)
+        (c, i) = next(s, i)
+        if c == '\n'
+            @label NEWLINE
+            local count = 0
+            while !done(s, i)
+                (c, i) = next(s, i)
+                if c == '\n'
+                    # Multiple blank lines in a row.
+                    @goto NEWLINE
+                elseif c == ' '
+                    # Leading indent.
+                    count += 1
+                else
+                    # When 7-space indented (width of `julia> `) we are still in the input,
+                    # but when the indent is less than that we are now in the output.
+                    count > 6 ? break : @goto FINISHED
+                end
+            end
+        end
+    end
+    @label FINISHED
+    return ctx.pos[]:prevind(s, i - 1)
+end
+
 @lexer JuliaConsoleLexer Dict(
     :name => "Julia Console",
     :description => "A lexer for Julia REPL sessions.",
@@ -162,13 +207,7 @@ end
             (r"."ms, TEXT),
         ],
         :source => [
-            # Here we separate input from output using the following rule. Match everything
-            # from the start of the string until we encounter a line that starts with less
-            # than 7 space indent and where no subsequent lines start with a 7 space indent.
-            #
-            # NOTE: this is unlikely to capture input/output perfectly.
-            #
-            (r".+?(?=(^\s{0,6}[^\s]*$(?!^\s*$\s{7})))"ms, JuliaLexer, :__pop__)
+            (julia_repl_splitter, JuliaLexer, :__pop__)
         ],
     ),
 )
