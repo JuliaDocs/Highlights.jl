@@ -152,6 +152,34 @@ end
 
 # Julia Console Lexer.
 
+function julia_repl_splitter(ctx::Context)
+    local s = ctx.source
+    local i = ctx.pos[]
+    while !done(s, i)
+        (c, i) = next(s, i)
+        if c == '\n'
+            @label NEWLINE
+            local count = 0
+            while !done(s, i)
+                (c, i) = next(s, i)
+                if c == '\n'
+                    # Multiple blank lines in a row.
+                    @goto NEWLINE
+                elseif c == ' '
+                    # Leading indent.
+                    count += 1
+                else
+                    # When 7-space indented (width of `julia> `) we are still in the input,
+                    # but when the indent is less than that we are now in the output.
+                    count > 6 ? break : @goto FINISHED
+                end
+            end
+        end
+    end
+    @label FINISHED
+    return ctx.pos[]:prevind(s, i - 1)
+end
+
 @lexer JuliaConsoleLexer Dict(
     :name => "Julia Console",
     :description => "A lexer for Julia REPL sessions.",
@@ -162,13 +190,7 @@ end
             (r"."ms, TEXT),
         ],
         :source => [
-            # Here we separate input from output using the following rule. Match everything
-            # from the start of the string until we encounter a line that starts with less
-            # than 7 space indent and where no subsequent lines start with a 7 space indent.
-            #
-            # NOTE: this is unlikely to capture input/output perfectly.
-            #
-            (r".+?(?=(^\s{0,6}[^\s]*$(?!^\s*$\s{7})))"ms, JuliaLexer, :__pop__)
+            (julia_repl_splitter, JuliaLexer, :__pop__)
         ],
     ),
 )
