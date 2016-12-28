@@ -50,6 +50,45 @@ tokentest(
 
 tokentest(
     Lexers.JuliaLexer,
+    ":symbol",
+    STRING_CHAR => ":symbol",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    " :symbol",
+    TEXT => " ",
+    STRING_CHAR => ":symbol",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "(:symbol,",
+    PUNCTUATION => "(",
+    STRING_CHAR => ":symbol",
+    PUNCTUATION => ",",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    ":type",
+    STRING_CHAR => ":type",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "[:_1, :2]",
+    PUNCTUATION => "[",
+    STRING_CHAR => ":_1",
+    PUNCTUATION => ",",
+    TEXT => " ",
+    OPERATOR => ":",
+    NUMBER_INTEGER => "2",
+    PUNCTUATION => "]",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
     "if x in y",
     KEYWORD => "if",
     TEXT => " ",

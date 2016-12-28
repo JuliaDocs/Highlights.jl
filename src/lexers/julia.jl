@@ -18,10 +18,17 @@ function julia_is_identifier(ctx::Context, prefix = '\0')
         (c, i) = next(s, i)
         Base.is_id_char(c) || break
     end
-    return ctx.pos[]:prevind(s, prev_i)
+    return ctx.pos[]:prevind(s, Base.is_id_char(c) ? i : prev_i)
 end
 julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
 julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
+
+function julia_is_symbol(ctx::Context)
+    local s = ctx.source
+    local i = ctx.pos[]
+    local valid = i > 1 ? next(s, prevind(s, i))[1] in ('(', '{', '[', ' ', '\n') : true
+    return valid ? julia_is_identifier(ctx, ':') : NULL_RANGE
+end
 
 function julia_is_method_call(ctx::Context)
     local range = julia_is_identifier(ctx)
@@ -69,11 +76,12 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
                 (r"#.*$"m, COMMENT_SINGLE),
                 (r"[\[\]{}(),;]", PUNCTUATION),
 
-                (r"\b(?<![:_.])in\b", KEYWORD_PSEUDO),
+                (julia_is_symbol, STRING_CHAR),
+                (r"\b(?<![_.])in\b", KEYWORD_PSEUDO),
                 (r"\b(?<![_.])end\b", KEYWORD),
-                (r"\b(?<![:_.])(true|false)\b", KEYWORD_CONSTANT),
-                (r"\b(?<![:_.])(local|global|const)\b", KEYWORD_DECLARATION),
-                (words(keywords, prefix = "\\b(?<![:_.])", suffix = "\\b"), KEYWORD),
+                (r"\b(?<![_.])(true|false)\b", KEYWORD_CONSTANT),
+                (r"\b(?<![_.])(local|global|const)\b", KEYWORD_DECLARATION),
+                (words(keywords, prefix = "\\b(?<![_.])", suffix = "\\b"), KEYWORD),
 
                 (Regex(join(char_regex)), STRING_CHAR),
 
