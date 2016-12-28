@@ -50,6 +50,25 @@ tokentest(
 
 tokentest(
     Lexers.JuliaLexer,
+    "1 .+ 2 // 3 × !1",
+    NUMBER_INTEGER => "1",
+    TEXT => " ",
+    OPERATOR => ".+",
+    TEXT => " ",
+    NUMBER_INTEGER => "2",
+    TEXT => " ",
+    OPERATOR => "//",
+    TEXT => " ",
+    NUMBER_INTEGER => "3",
+    TEXT => " ",
+    OPERATOR => "×",
+    TEXT => " ",
+    OPERATOR => "!",
+    NUMBER_INTEGER => "1",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
     ":symbol",
     STRING_CHAR => ":symbol",
 )

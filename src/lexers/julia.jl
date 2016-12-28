@@ -23,6 +23,15 @@ end
 julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
 julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
 
+function julia_is_operator(ctx::Context)
+    local success = 0
+    while !done(ctx.source, ctx.pos[] + success)
+        local str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
+        ccall(:jl_is_operator, Bool, (Cstring,), str) ? (success += 1) : break
+    end
+    return success > 0 ? (ctx.pos[]:(ctx.pos[] + success - 1)) : NULL_RANGE
+end
+
 function julia_is_symbol(ctx::Context)
     local s = ctx.source
     local i = ctx.pos[]
@@ -110,7 +119,7 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
                 (r"\d+(_\d+)+", NUMBER_INTEGER),
                 (r"\d+", NUMBER_INTEGER),
 
-                (r"[^[:alnum:]\s()\[\]{},;@_\"\']+", OPERATOR),
+                (julia_is_operator, OPERATOR),
 
                 (r"."ms, TEXT),
             ],
