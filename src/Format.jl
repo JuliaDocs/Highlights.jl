@@ -163,7 +163,7 @@ The iterator returns a 3-tuple of `str`, `id`, and `style` where
   * `style` is the `Style` applied to the token.
 
 """
-immutable TokenIterator
+struct TokenIterator
     ctx::Context
     theme::Theme
 end

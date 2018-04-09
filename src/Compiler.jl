@@ -5,20 +5,20 @@ using Compat
 import ..Highlights: Str, AbstractLexer
 import ..Highlights.Tokens: Tokens, TokenValue, ERROR
 
-type Mut{T}
+mutable struct Mut{T}
     value::T
 end
 
 Base.getindex(m::Mut) = m.value
 Base.setindex!(m::Mut, v) = m.value = v
 
-immutable Token
+struct Token
     value::TokenValue
     first::Int
     last::Int
 end
 
-immutable Context
+struct Context
     source::Str
     pos::Mut{Int}
     length::Int
@@ -30,7 +30,7 @@ end
 
 isdone(ctx::Context) = ctx.pos[] > ctx.length
 
-immutable State{s} end
+struct State{s} end
 
 const NULL_RANGE = 0:0
 valid(r::Range) = r !== NULL_RANGE
@@ -80,7 +80,7 @@ function error!(ctx::Context)
     return ctx
 end
 
-lex{T <: AbstractLexer}(s::AbstractString, l::Type{T}) = lex!(Context(s), l, State{:root}())
+lex(s::AbstractString, l::Type{T}) where {T <: AbstractLexer} = lex!(Context(s), l, State{:root}())
 
 function metadata end
 function lex! end
@@ -90,7 +90,7 @@ getdata(T) = getdata!(ObjectIdDict(), T)
 getdata!(d, ::Type{AbstractLexer}) = d
 getdata!(d, lxr) = (getdata!(d, supertype(lxr)); d[lxr] = metadata(lxr); d)
 
-immutable LexerData
+struct LexerData
     name::Str
     aliases::Vector{Str}
     filenames::Vector{Str}
@@ -187,7 +187,7 @@ prepare_bindings(other) = prepare_binding(other, :range)
 # A token such as `TEXT` or `NUMBER`.
 prepare_binding(t::TokenValue, range) = :($(Compiler).update!(ctx, $range, $t))
 # Call different lexer's `:root` state.
-prepare_binding{L}(::Type{L}, range) = :($(Compiler).update!(ctx, $range, $L, $(State{:root}())))
+prepare_binding(::Type{L}, range) where {L} = :($(Compiler).update!(ctx, $range, $L, $(State{:root}())))
 # Call current lexer in state `S`.
 prepare_binding(S::Symbol, range) = :($(Compiler).update!(ctx, $range, T, $(State{S}())))
 # Call different lexer's state `p.second`.

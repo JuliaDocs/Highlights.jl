@@ -27,7 +27,7 @@ block.
 ```jldoctest
 julia> using Highlights.Lexers
 
-julia> abstract CustomLexer <: AbstractLexer
+julia> abstract type CustomLexer <: AbstractLexer end
 
 julia> @lexer CustomLexer Dict(
            :name => "Custom",
@@ -95,17 +95,17 @@ export
     TOMLLexer
 
 "A FORTRAN 90 source code lexer."
-abstract FortranLexer <: AbstractLexer
+abstract type FortranLexer <: AbstractLexer end
 "A lexer for Julia source code."
-abstract JuliaLexer <: AbstractLexer
+abstract type JuliaLexer <: AbstractLexer end
 "A lexer for Julia REPL sessions."
-abstract JuliaConsoleLexer <: AbstractLexer
+abstract type JuliaConsoleLexer <: AbstractLexer end
 "A lexer for MATLAB source code."
-abstract MatlabLexer <: AbstractLexer
+abstract type MatlabLexer <: AbstractLexer end
 "A lexer for the R language."
-abstract RLexer <: AbstractLexer
+abstract type RLexer <: AbstractLexer end
 "TOML (Tom's Obvious, Minimal Language) lexer."
-abstract TOMLLexer <: AbstractLexer
+abstract type TOMLLexer <: AbstractLexer end
 
 
 # Definitions.
