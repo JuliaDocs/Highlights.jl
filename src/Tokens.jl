@@ -101,7 +101,7 @@ const __TOKENS__ = [
 const __INDICES__ = Dict([(s, n) for (n, s) in enumerate(__TOKENS__)])
 const __FALLBACKS__ = zeros(Int, length(__TOKENS__))
 
-immutable TokenValue
+struct TokenValue
     value::Int
 end
 TokenValue(s::Symbol) = TokenValue(__INDICES__[s])

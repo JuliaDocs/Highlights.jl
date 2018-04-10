@@ -14,25 +14,21 @@ module Highlights
 using Compat, DocStringExtensions
 const Str = all(s -> isdefined(Core, s), (:String, :AbstractString)) ? String : UTF8String
 
-if VERSION < v"0.6.0-dev.1254"
-    takebuf_str(b) = takebuf_string(b)
-else
-    takebuf_str(b) = String(take!(b))
-end
+takebuf_str(b) = String(take!(b))
 
 """
 $(TYPEDEF)
 
 Represents a source code lexer used to tokenise text.
 """
-abstract AbstractLexer
+abstract type AbstractLexer end
 
 """
 $(TYPEDEF)
 
 Represents a colour scheme used to highlight tokenised source code.
 """
-abstract AbstractTheme
+abstract type AbstractTheme end
 
 # Submodules.
 
@@ -82,25 +78,25 @@ output to `io` in the given format `mime`. `theme` defaults to `Themes.DefaultTh
 ```jldoctest
 julia> using Highlights
 
-julia> highlight(STDOUT, MIME("text/html"), "2x", Lexers.JuliaLexer)
+julia> highlight(stdout, MIME("text/html"), "2x", Lexers.JuliaLexer)
 <pre class='hljl'>
 <span class='hljl-ni'>2</span><span class='hljl-n'>x</span>
 </pre>
 
-julia> highlight(STDOUT, MIME("text/latex"), "'x'", Lexers.JuliaLexer, Themes.VimTheme)
+julia> highlight(stdout, MIME("text/latex"), "'x'", Lexers.JuliaLexer, Themes.VimTheme)
 \\begin{lstlisting}
 (*@\\HLJLsc{{\\textquotesingle}x{\\textquotesingle}}@*)
 \\end{lstlisting}
 
 ```
 """
-function highlight{
-        L <: AbstractLexer,
-        T <: AbstractTheme,
-    }(
+function highlight(
         io::IO, mime::MIME, src::AbstractString,
         lexer::Type{L}, theme::Type{T} = Themes.DefaultTheme,
-    )
+    ) where {
+        L <: AbstractLexer,
+  T <: AbstractTheme,
+}
     Format.render(io, mime, Compiler.lex(src, L), Themes.theme(T))
 end
 
@@ -128,7 +124,7 @@ julia> stylesheet(buf, MIME("text/css"), Themes.EmacsTheme)
 
 ```
 """
-stylesheet{T <: AbstractTheme}(io::IO, mime::MIME, theme::Type{T} = Themes.DefaultTheme) =
+stylesheet(io::IO, mime::MIME, theme::Type{T} = Themes.DefaultTheme) where {T <: AbstractTheme} =
     Format.render(io, mime, Themes.theme(T))
 
 end # module
