@@ -17,7 +17,7 @@ regular expression lexing mechanism used by [Pygments](http://pygments.org/).
 Pkg.add("Highlights")
 ```
 
-The package has no dependencies other than Julia (`0.4` and up) itself.
+The package has no dependencies other than Julia (`0.6` and up) itself.
 
 ## Usage
 
