@@ -4,7 +4,7 @@
 
 | **Documentation**                                                               | **PackageEvaluator**                                                                            | **Build Status**                                                                                |
 |:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [[![][pkg-0.6-img]][pkg-0.6-url] [![][pkg-0.7-img]][pkg-0.7-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.7-img]][pkg-0.7-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
 
 
 ## Installation
@@ -22,7 +22,7 @@ julia> Pkg.add("Highlights")
 
 ## Project Status
 
-The package is tested against Julia `0.6` and `0.7-dev` on Linux, OS X, and Windows.
+The package is tested against Julia `0.7` on Linux, OS X, and Windows.
 
 ## Contributing and Questions
 
@@ -54,7 +54,5 @@ then feel free to ask for help in the [Gitter chat room][gitter-url].
 
 [issues-url]: https://github.com/JuliaDocs/Highlights.jl/issues
 
-[pkg-0.6-img]: http://pkg.julialang.org/badges/Highlights_0.6.svg
-[pkg-0.6-url]: http://pkg.julialang.org/?pkg=Highlights&ver=0.6
 [pkg-0.7-img]: http://pkg.julialang.org/badges/Highlights_0.7.svg
 [pkg-0.7-url]: http://pkg.julialang.org/?pkg=Highlights&ver=0.7
