@@ -13,7 +13,6 @@ module Highlights
 
 using Compat, DocStringExtensions
 using InteractiveUtils
-const Str = all(s -> isdefined(Core, s), (:String, :AbstractString)) ? String : UTF8String
 
 takebuf_str(b) = String(take!(b))
 

@@ -91,8 +91,8 @@ abstract type SelfLexer <: Highlights.AbstractLexer end
 
 struct Node
     name::Symbol
-    text::Highlights.Str
-    class::Highlights.Str
+    text::String
+    class::String
 end
 
 struct NodeBuffer <: IO

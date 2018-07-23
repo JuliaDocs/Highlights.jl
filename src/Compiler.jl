@@ -3,7 +3,7 @@ module Compiler
 using Compat
 using InteractiveUtils
 
-import ..Highlights: Str, AbstractLexer
+import ..Highlights: AbstractLexer
 import ..Highlights.Tokens: Tokens, TokenValue, ERROR
 
 mutable struct Mut{T}
@@ -20,7 +20,7 @@ struct Token
 end
 
 struct Context
-    source::Str
+    source::String
     pos::Mut{Int}
     length::Int
     tokens::Vector{Token}
@@ -92,17 +92,17 @@ getdata!(d, ::Type{AbstractLexer}) = d
 getdata!(d, lxr) = (getdata!(d, supertype(lxr)); d[lxr] = metadata(lxr); d)
 
 struct LexerData
-    name::Str
-    aliases::Vector{Str}
-    filenames::Vector{Str}
-    description::Str
-    comments::Str
+    name::String
+    aliases::Vector{String}
+    filenames::Vector{String}
+    description::String
+    comments::String
     tokens::Dict{Symbol, Vector{Any}}
 
     function LexerData(dict::Dict)
         local name = get(dict, :name, "")
-        local aliases = get(dict, :aliases, Str[])
-        local filenames = get(dict, :filenames, Str[])
+        local aliases = get(dict, :aliases, String[])
+        local filenames = get(dict, :filenames, String[])
         local description = get(dict, :description, "")
         local comments = get(dict, :comments, "")
         local tokens = get(dict, :tokens, Dict{Symbol, Vector{Any}}())

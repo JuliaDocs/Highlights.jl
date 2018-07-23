@@ -7,7 +7,7 @@ module Themes
 
 using DocStringExtensions
 
-import ..Highlights: Str, AbstractTheme, AbstractLexer
+import ..Highlights: AbstractTheme, AbstractLexer
 
 # Public interface.
 
