@@ -109,8 +109,6 @@ end
 # Testsets.
 #
 
-tokentest
-
 @testset "Highlights" begin
     @testset "Lexers" begin
         @testset for file in readdir(joinpath(__DIR__, "lexers"))
