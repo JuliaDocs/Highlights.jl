@@ -1,21 +1,22 @@
 import ..Highlights.Compiler: NULL_RANGE, Context, nullmatch
-
+using REPL
 # Utilities.
 
 function julia_is_identifier(ctx::Context, prefix = '\0')
     s = ctx.source
     i = ctx.pos[]
-    done(s, i) && return NULL_RANGE
-    (c, i) = next(s, i)
+    (i > ncodeunits(s)) && return NULL_RANGE
+    (c, i) = iterate(s, i)
     if prefix !== '\0'
-        (c === prefix && !done(s, i)) || return NULL_RANGE
-        (c, i) = next(s, i)
+        (c === prefix && !(i > ncodeunits(s))) || return NULL_RANGE
+        (c, i) = iterate(s, i)
     end
     Base.is_id_start_char(c) || return NULL_RANGE
     local prev_i = i
-    while !done(s, i)
+    
+    while !(i > ncodeunits(s))
         prev_i = i
-        (c, i) = next(s, i)
+        (c, i) = iterate(s, i)
         Base.is_id_char(c) || break
     end
     return ctx.pos[]:prevind(s, Base.is_id_char(c) ? i : prev_i)
@@ -25,7 +26,7 @@ julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
 
 function julia_is_operator(ctx::Context)
     local success = 0
-    while !done(ctx.source, ctx.pos[] + success)
+    while !((ctx.pos[] + success) > ncodeunits(ctx.source))
         local str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
         ccall(:jl_is_operator, Bool, (Cstring,), str) ? (success += 1) : break
     end
@@ -35,7 +36,7 @@ end
 function julia_is_symbol(ctx::Context)
     local s = ctx.source
     local i = ctx.pos[]
-    local valid = i > 1 ? next(s, prevind(s, i))[1] in ('(', '{', '[', ' ', '\n') : true
+    local valid = i > 1 ? iterate(s, prevind(s, i))[1] in ('(', '{', '[', ' ', '\n') : true
     return valid ? julia_is_identifier(ctx, ':') : NULL_RANGE
 end
 
@@ -43,8 +44,8 @@ function julia_is_method_call(ctx::Context)
     local range = julia_is_identifier(ctx)
     range === NULL_RANGE && return range
     i = nextind(ctx.source, last(range))
-    done(ctx.source, i) && return NULL_RANGE
-    (c, i) = next(ctx.source, i)
+    (i > ncodeunits(ctx.source)) && return NULL_RANGE
+    (c, i) = iterate(ctx.source, i)
     return (c === '(' || c === '{') ? range : NULL_RANGE
 end
 
@@ -52,10 +53,11 @@ function julia_is_string_macro(ctx::Context, count::Integer = 1)
     local range = julia_is_identifier(ctx)
     range == NULL_RANGE && return NULL_RANGE
     local s = ctx.source
-    local i = prevind(s, ctx.pos[] + length(range) + 1)
+    local epos = min(ctx.pos[] + length(range), length(s))
+    local i = prevind(s, epos + 1)
     local num = 0
-    while num < count && !done(s, i)
-        (c, i) = next(s, i)
+    while num < count && !(i > ncodeunits(s))
+        (c, i) = iterate(s, i)
         c === '"' ? (num += 1) : break
     end
     num == count ? (ctx.pos[]:prevind(s, i)) : NULL_RANGE
@@ -65,7 +67,7 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
 # Julia Script Lexer.
 
 @lexer JuliaLexer let
-    local keywords = Base.REPLCompletions.complete_keyword("")
+    local keywords = REPL.REPLCompletions.complete_keyword("")
     local char_regex = [
         raw"'(\\.|\\[0-7]{1,3}|\\x[a-fA-F0-9]{1,3}|",
         raw"\\u[a-fA-F0-9]{1,4}|\\U[a-fA-F0-9]{1,6}|",
@@ -172,13 +174,13 @@ end
 function julia_repl_splitter(ctx::Context)
     local s = ctx.source
     local i = ctx.pos[]
-    while !done(s, i)
-        (c, i) = next(s, i)
+    while !(i > ncodeunits(s))
+        (c, i) = iterate(s, i)
         if c == '\n'
             @label NEWLINE
             local count = 0
-            while !done(s, i)
-                (c, i) = next(s, i)
+            while !(i > ncodeunits(s))
+                (c, i) = iterate(s, i)
                 if c == '\n'
                     # Multiple blank lines in a row.
                     @goto NEWLINE

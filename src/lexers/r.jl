@@ -29,16 +29,16 @@
                 (r"(\[{1,2}|\]{1,2}|\(|\)|;|,)", PUNCTUATION),
             ],
             :keywords => [
-                (words(keywords; suffix = "\\b(?![\w.])"), KEYWORD_RESERVED),
-                (words(types; suffix = "\\b(?![\w.])"), KEYWORD_TYPE),
-                (r"(library|require|attach|detach|source)\b(?![\w.])", KEYWORD_NAMESPACE),
+                (words(keywords; suffix = "\\b(?![\\w.])"), KEYWORD_RESERVED),
+                (words(types; suffix = "\\b(?![\\w.])"), KEYWORD_TYPE),
+                (r"(library|require|attach|detach|source)\b(?![\\w.])", KEYWORD_NAMESPACE),
             ],
             :operators => [
                 (r"(<<?-|->>?|-|==|<=|>=|<|>|&&?|!=|\|\|?|\?)", OPERATOR),
                 (r"(\*|\+|\^|/|!|%[^%]*%|=|~|\$|@|:{1,3})", OPERATOR)
             ],
             :builtin_symbols => [
-                (words(builtin_symbols; suffix = "(?![\w.])"), KEYWORD_CONSTANT),
+                (words(builtin_symbols; suffix = "(?![\\w.])"), KEYWORD_CONSTANT),
                 (r"(T|F)\b", NAME_BUILTIN_PSEUDO),
             ],
             :numbers => [

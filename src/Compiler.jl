@@ -1,6 +1,7 @@
 module Compiler
 
 using Compat
+using InteractiveUtils
 
 import ..Highlights: Str, AbstractLexer
 import ..Highlights.Tokens: Tokens, TokenValue, ERROR
@@ -25,7 +26,7 @@ struct Context
     tokens::Vector{Token}
     captures::Vector{UnitRange{Int}}
     Context(c::Context, len::Int) = new(c.source, c.pos, len, c.tokens, c.captures)
-    Context(s::AbstractString) = new(s, Mut(1), endof(s), [], [])
+    Context(s::AbstractString) = new(s, Mut(1), lastindex(s), [], [])
 end
 
 isdone(ctx::Context) = ctx.pos[] > ctx.length
@@ -33,7 +34,7 @@ isdone(ctx::Context) = ctx.pos[] > ctx.length
 struct State{s} end
 
 const NULL_RANGE = 0:0
-valid(r::Range) = r !== NULL_RANGE
+valid(r::AbstractRange) = r !== NULL_RANGE
 
 function nullmatch(r::Regex, ctx::Context)
     local source = ctx.source
@@ -56,7 +57,7 @@ function nullmatch(r::Regex, ctx::Context)
 end
 nullmatch(f::Function, ctx::Context) = f(ctx)
 
-function update!(ctx::Context, range::Range, token::TokenValue)
+function update!(ctx::Context, range::AbstractRange, token::TokenValue)
     local pos = prevind(ctx.source, ctx.pos[] + length(range))
     if !isempty(ctx.tokens) && ctx.tokens[end].value == token
         ctx.tokens[end] = Token(token, ctx.tokens[end].first, pos)
@@ -67,7 +68,7 @@ function update!(ctx::Context, range::Range, token::TokenValue)
     return ctx
 end
 
-function update!(ctx::Context, range::Range, lexer::Type, state = State{:root}())
+function update!(ctx::Context, range::AbstractRange, lexer::Type, state = State{:root}())
     local pos = ctx.pos[] + length(range)
     lex!(Context(ctx, last(range)), lexer, state)
     ctx.pos[] = pos
@@ -86,7 +87,7 @@ function metadata end
 function lex! end
 
 # Load all supertypes' metadata.
-getdata(T) = getdata!(ObjectIdDict(), T)
+getdata(T) = getdata!(IdDict(), T)
 getdata!(d, ::Type{AbstractLexer}) = d
 getdata!(d, lxr) = (getdata!(d, supertype(lxr)); d[lxr] = metadata(lxr); d)
 
@@ -114,24 +115,24 @@ function compile_lexer(mod::Module, T)
     for state in keys(data.tokens)
         local func = quote
             function $(Compiler).lex!(ctx::$(Context), ::Type{$T}, ::$(State{state}))
-                const S = $(Meta.quot(state))
+                S = $(Meta.quot(state))
                 $(compile(T, state, getdata(T)))
             end
         end
-        eval(mod, func)
+        Core.eval(mod, func)
         Base.precompile(lex!, (Context, Type{T}, State{state}))
     end
 end
 
-function getrules(T::Type, S::Symbol, data::ObjectIdDict)
+function getrules(T::Type, S::Symbol, data::IdDict)
     haskey(data, T) || return Any[]
     local lexer = data[T]
     haskey(lexer.tokens, S) ? lexer.tokens[S] : return Any[]
 end
 
-function compile(T::Type, S::Symbol, data::ObjectIdDict)
+function compile(T::Type, S::Symbol, data::IdDict)
     quote
-        const T = $T
+        T = $T
         while !$(Compiler).isdone(ctx)
             $(compile_rules(T, S, data, getrules(T, S, data)))
             $(Compiler).error!(ctx)
@@ -140,7 +141,7 @@ function compile(T::Type, S::Symbol, data::ObjectIdDict)
     end
 end
 
-function compile_rules(T::Type, S::Symbol, data::ObjectIdDict, rules::Vector)
+function compile_rules(T::Type, S::Symbol, data::IdDict, rules::Vector)
     local ex = Expr(:block)
     for each in getrules(T, S, data)
         push!(ex.args, compile_rule(T, S, data, each))
@@ -205,7 +206,7 @@ end
 function prepare_target(T, s::Symbol, ts::Tuple)
     local out = Expr(:block)
     for t in ts
-        unshift!(out.args, prepare_target(T, s, t))
+        pushfirst!(out.args, prepare_target(T, s, t))
     end
     return out
 end

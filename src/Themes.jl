@@ -39,20 +39,20 @@ end
 
 "Convert a three digit hex string to a 3-tuple of `UInt8`s."
 function rgb3(str)
-    r = parse(UInt8, str[1])
-    g = parse(UInt8, str[2])
-    b = parse(UInt8, str[3])
+    r = parse(UInt8, str[1], base=16)
+    g = parse(UInt8, str[2], base=16)
+    b = parse(UInt8, str[3], base=16)
     return (r << 4 + r, g << 4 + g, b << 4 + b)
 end
 
 "Convert a six digit hex string to a 3-tuple of `UInt8`s."
 function rgb6(str)
-    r1 = parse(UInt8, str[1])
-    r2 = parse(UInt8, str[2])
-    g1 = parse(UInt8, str[3])
-    g2 = parse(UInt8, str[4])
-    b1 = parse(UInt8, str[5])
-    b2 = parse(UInt8, str[6])
+    r1 = parse(UInt8, str[1], base=16)
+    r2 = parse(UInt8, str[2], base=16)
+    g1 = parse(UInt8, str[3], base=16)
+    g2 = parse(UInt8, str[4], base=16)
+    b1 = parse(UInt8, str[5], base=16)
+    b2 = parse(UInt8, str[6], base=16)
     return (r1 << 4 + r2, g1 << 4 + g2, b1 << 4 + b2)
 end
 
@@ -103,7 +103,7 @@ Represents a "compiled" colour scheme.
 struct Theme
     base::Style
     styles::Vector{Style}
-    Theme(base::Style, n::Integer) = new(base, Vector{Style}(n))
+    Theme(base::Style, n::Integer) = new(base, Vector{Style}(undef, n))
 end
 
 function metadata end
