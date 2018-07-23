@@ -13,7 +13,7 @@ function julia_is_identifier(ctx::Context, prefix = '\0')
     end
     Base.is_id_start_char(c) || return NULL_RANGE
     local prev_i = i
-    
+
     while !(i > ncodeunits(s))
         prev_i = i
         (c, i) = iterate(s, i)
@@ -26,8 +26,15 @@ julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
 
 function julia_is_operator(ctx::Context)
     local success = 0
+    local str = SubString("")
     while !((ctx.pos[] + success) > ncodeunits(ctx.source))
-        local str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
+        epos =  ctx.pos[] + success
+        try
+            str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
+        catch
+            str = SubString(ctx.source, ctx.pos[], nextind(ctx.source, ctx.pos[] + success))
+        end
+
         ccall(:jl_is_operator, Bool, (Cstring,), str) ? (success += 1) : break
     end
     return success > 0 ? (ctx.pos[]:(ctx.pos[] + success - 1)) : NULL_RANGE
@@ -67,7 +74,7 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
 # Julia Script Lexer.
 
 @lexer JuliaLexer let
-    local keywords = REPL.REPLCompletions.complete_keyword("")
+    local keywords = [kw.keyword for kw in REPL.REPLCompletions.complete_keyword("")]
     local char_regex = [
         raw"'(\\.|\\[0-7]{1,3}|\\x[a-fA-F0-9]{1,3}|",
         raw"\\u[a-fA-F0-9]{1,4}|\\U[a-fA-F0-9]{1,6}|",

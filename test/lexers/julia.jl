@@ -172,7 +172,6 @@ tokentest(
     NAME => "c",
 )
 
-
 tokentest(
     Lexers.JuliaLexer,
     "module M end",
@@ -195,30 +194,22 @@ tokentest(
 
 tokentest(
     Lexers.JuliaLexer,
-    "typealias T A",
-    KEYWORD => "typealias",
-    TEXT => " ",
-    NAME => "T",
-    TEXT => " ",
-    NAME => "A",
-)
-
-tokentest(
-    Lexers.JuliaLexer,
-    "abstract A <: T",
-    KEYWORD => "abstract",
+    "abstract type A <: T end",
+    KEYWORD => "abstract type",
     TEXT => " ",
     NAME => "A",
     TEXT => " ",
     OPERATOR => "<:",
     TEXT => " ",
     NAME => "T",
+    TEXT => " ",
+    KEYWORD => "end"
 )
 
 tokentest(
     Lexers.JuliaLexer,
-    "type Point{T}\n    x::T\nend",
-    KEYWORD => "type",
+    "mutable struct Point{T}\n    x::T\nend",
+    KEYWORD => "mutable struct",
     TEXT => " ",
     NAME_FUNCTION => "Point",
     PUNCTUATION => "{",
@@ -252,8 +243,8 @@ tokentest(
 
 tokentest(
     Lexers.JuliaLexer,
-    "immutable Empty{T} end",
-    KEYWORD => "immutable",
+    "struct Empty{T} end",
+    KEYWORD => "struct",
     TEXT => " ",
     NAME_FUNCTION => "Empty",
     PUNCTUATION => "{",
