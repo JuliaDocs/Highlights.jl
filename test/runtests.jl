@@ -1,6 +1,7 @@
 using Highlights, Compat
 
-using Base.Test
+using Test
+using InteractiveUtils
 
 
 #
@@ -20,7 +21,7 @@ function tokentest(lexer, source, expects...)
 end
 
 function print_all(lexer, file)
-    local source = readstring(joinpath(__DIR__, "samples", file))
+    local source = read(joinpath(__DIR__, "samples", file), String)
     local buffer = IOBuffer()
     for m in ["html", "latex"]
         mime = MIME("text/$m")
