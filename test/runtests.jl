@@ -3,7 +3,6 @@ using Highlights, Compat
 using Test
 using InteractiveUtils
 
-
 #
 # Utilities.
 #
@@ -196,9 +195,9 @@ tokentest
         end
         @testset "Utilities" begin
             let w = Lexers.words(["if", "else"]; prefix = "\\b", suffix = "\\b")
-                @test ismatch(w, "if")
-                @test !ismatch(w, "for")
-                @test !ismatch(w, "ifelse")
+                @test occursin(w, "if")
+                @test !occursin(w, "for")
+                @test !occursin(w, "ifelse")
             end
             let c = Highlights.Compiler.Context("@lexer CustomLexer dict(")
                 @test Lexers.julia_is_macro_identifier(c) == 1:6

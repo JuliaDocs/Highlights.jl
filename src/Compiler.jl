@@ -214,12 +214,12 @@ end
 # Useful function for checking tokens.
 function debug(io::IO, src::AbstractString, lexer)
     local tokens = lex(src, lexer).tokens
-    local padding = mapreduce(t -> length(string(t.value)), max, 0, tokens)
+    local padding = mapreduce(t -> length(string(t.value)), max, tokens, init=0)
     for each in tokens
         print(io, lpad(string(each.value), padding), " := ")
         println(io, repr(SubString(src, each.first, each.last)))
     end
 end
-debug(src::AbstractString, lexer) = debug(STDOUT, src, lexer)
+debug(src::AbstractString, lexer) = debug(stdout, src, lexer)
 
 end # module
