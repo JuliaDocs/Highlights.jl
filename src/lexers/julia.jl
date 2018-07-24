@@ -146,14 +146,14 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
             ],
             :strings => [
                 (r"\"", STRING, :__pop__),
-                (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
+                (r"\\([\\\"\\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
                 (julia_is_iterp_identifier, STRING_INTERPOL),
                 (r"(\$)(\()", (STRING_INTERPOL, PUNCTUATION), :in_interpol),
                 (r".|\s"ms, STRING),
             ],
             :triple_strings => [
                 (r"\"\"\"", STRING, :__pop__),
-                (r"\\([\\\"\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
+                (r"\\([\\\"\\'\$nrbtfav]|(x|u|U)[a-fA-F0-9]+|\d+)", STRING_ESCAPE),
                 (julia_is_iterp_identifier, STRING_INTERPOL),
                 (r"(\$)(\()", (STRING_INTERPOL, PUNCTUATION), :in_interpol),
                 (r".|\s"ms, STRING),
