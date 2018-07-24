@@ -365,6 +365,17 @@ tokentest(
 tokentest(
     Lexers.JuliaLexer,
     """
+    "\\\\"
+    """,
+    STRING => "\"",
+    STRING_ESCAPE => "\\\\",
+    STRING => "\"",
+    TEXT => "\n",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    """
     1_000_000_000 + 1.0e-9 * .121 / 1121.
     1f0 - 1E-12
     0b100_101_111
