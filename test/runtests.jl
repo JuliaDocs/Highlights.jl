@@ -1,4 +1,4 @@
-using Highlights, Compat
+using Highlights
 
 using Test
 using InteractiveUtils

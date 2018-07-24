@@ -11,7 +11,7 @@ $(EXPORTS)
 """
 module Highlights
 
-using Compat, DocStringExtensions
+using DocStringExtensions
 using InteractiveUtils
 
 takebuf_str(b) = String(take!(b))
