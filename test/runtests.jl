@@ -1,12 +1,7 @@
 using Highlights, Compat
 
-if VERSION >= v"0.5.0-dev+7720"
-    using Base.Test
-else
-    using BaseTestNext
-    const Test = BaseTestNext
-end
-
+using Test
+using InteractiveUtils
 
 #
 # Utilities.
@@ -25,7 +20,7 @@ function tokentest(lexer, source, expects...)
 end
 
 function print_all(lexer, file)
-    local source = readstring(joinpath(__DIR__, "samples", file))
+    local source = read(joinpath(__DIR__, "samples", file), String)
     local buffer = IOBuffer()
     for m in ["html", "latex"]
         mime = MIME("text/$m")
@@ -44,14 +39,14 @@ end
 using Highlights.Tokens, Highlights.Themes, Highlights.Lexers
 
 # Error reporting for broken lexers.
-abstract BrokenLexer <: Highlights.AbstractLexer
+abstract type BrokenLexer <: Highlights.AbstractLexer end
 @lexer BrokenLexer Dict(
     :tokens => Dict(:root => [(r"\w+", TEXT, (:b, :a))], :a => [], :b => []),
 )
 
 # Lexer inheritance.
-abstract ParentLexer <: Highlights.AbstractLexer
-abstract ChildLexer <: ParentLexer
+abstract type ParentLexer <: Highlights.AbstractLexer end
+abstract type ChildLexer <: ParentLexer end
 @lexer ParentLexer Dict(
     :tokens => Dict(:root => [(r"#.*$"m, COMMENT)])
 )
@@ -59,7 +54,7 @@ abstract ChildLexer <: ParentLexer
     :tokens => Dict(:root => [:__inherit__, (r"\d+", NUMBER), (r".", TEXT)])
 )
 
-abstract NumberLexer <: Highlights.AbstractLexer
+abstract type NumberLexer <: Highlights.AbstractLexer end
 @lexer NumberLexer Dict(
     :tokens => Dict(
         :root => [
@@ -73,7 +68,7 @@ abstract NumberLexer <: Highlights.AbstractLexer
     ),
 )
 
-abstract SelfLexer <: Highlights.AbstractLexer
+abstract type SelfLexer <: Highlights.AbstractLexer end
 @lexer SelfLexer Dict(
     :tokens => Dict(
         :root => [
@@ -94,13 +89,13 @@ abstract SelfLexer <: Highlights.AbstractLexer
 
 # Custom output format. A DOM-like node "buffer".
 
-immutable Node
+struct Node
     name::Symbol
-    text::Highlights.Str
-    class::Highlights.Str
+    text::String
+    class::String
 end
 
-immutable NodeBuffer <: IO
+struct NodeBuffer <: IO
     nodes::Vector{Node}
 end
 
@@ -198,9 +193,9 @@ end
         end
         @testset "Utilities" begin
             let w = Lexers.words(["if", "else"]; prefix = "\\b", suffix = "\\b")
-                @test ismatch(w, "if")
-                @test !ismatch(w, "for")
-                @test !ismatch(w, "ifelse")
+                @test occursin(w, "if")
+                @test !occursin(w, "for")
+                @test !occursin(w, "ifelse")
             end
             let c = Highlights.Compiler.Context("@lexer CustomLexer dict(")
                 @test Lexers.julia_is_macro_identifier(c) == 1:6

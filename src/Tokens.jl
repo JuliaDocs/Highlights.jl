@@ -101,7 +101,7 @@ const __TOKENS__ = [
 const __INDICES__ = Dict([(s, n) for (n, s) in enumerate(__TOKENS__)])
 const __FALLBACKS__ = zeros(Int, length(__TOKENS__))
 
-immutable TokenValue
+struct TokenValue
     value::Int
 end
 TokenValue(s::Symbol) = TokenValue(__INDICES__[s])
@@ -144,8 +144,8 @@ const TABLE =
     let buffer = IOBuffer(),
         col_1_label = "Token",
         col_2_label = "Abbreviation",
-        col_1 = mapreduce(s -> length(string(s)), max, length(col_1_label), __TOKENS__) + 2,
-        col_2 = mapreduce(s -> length(string(s)), max, length(col_2_label), __SHORTNAMES__) + 2
+        col_1 = mapreduce(s -> length(string(s)), max, __TOKENS__, init =  length(col_1_label) ) + 2,
+        col_2 = mapreduce(s -> length(string(s)), max, __SHORTNAMES__, init = length(col_2_label)) + 2
         println(buffer, "| ", rpad(col_1_label, col_1), " | ", rpad(col_2_label, col_2), " |")
         println(buffer, "|:", rpad("-", col_1, "-"),    " | ", rpad("-", col_2, "-"),    ":|")
         for (long, short) in zip(__TOKENS__, __SHORTNAMES__)

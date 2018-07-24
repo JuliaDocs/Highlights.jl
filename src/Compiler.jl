@@ -1,39 +1,40 @@
 module Compiler
 
 using Compat
+using InteractiveUtils
 
-import ..Highlights: Str, AbstractLexer
+import ..Highlights: AbstractLexer
 import ..Highlights.Tokens: Tokens, TokenValue, ERROR
 
-type Mut{T}
+mutable struct Mut{T}
     value::T
 end
 
 Base.getindex(m::Mut) = m.value
 Base.setindex!(m::Mut, v) = m.value = v
 
-immutable Token
+struct Token
     value::TokenValue
     first::Int
     last::Int
 end
 
-immutable Context
-    source::Str
+struct Context
+    source::String
     pos::Mut{Int}
     length::Int
     tokens::Vector{Token}
     captures::Vector{UnitRange{Int}}
     Context(c::Context, len::Int) = new(c.source, c.pos, len, c.tokens, c.captures)
-    Context(s::AbstractString) = new(s, Mut(1), endof(s), [], [])
+    Context(s::AbstractString) = new(s, Mut(1), lastindex(s), [], [])
 end
 
 isdone(ctx::Context) = ctx.pos[] > ctx.length
 
-immutable State{s} end
+struct State{s} end
 
 const NULL_RANGE = 0:0
-valid(r::Range) = r !== NULL_RANGE
+valid(r::AbstractRange) = r !== NULL_RANGE
 
 function nullmatch(r::Regex, ctx::Context)
     local source = ctx.source
@@ -56,7 +57,7 @@ function nullmatch(r::Regex, ctx::Context)
 end
 nullmatch(f::Function, ctx::Context) = f(ctx)
 
-function update!(ctx::Context, range::Range, token::TokenValue)
+function update!(ctx::Context, range::AbstractRange, token::TokenValue)
     local pos = prevind(ctx.source, ctx.pos[] + length(range))
     if !isempty(ctx.tokens) && ctx.tokens[end].value == token
         ctx.tokens[end] = Token(token, ctx.tokens[end].first, pos)
@@ -67,7 +68,7 @@ function update!(ctx::Context, range::Range, token::TokenValue)
     return ctx
 end
 
-function update!(ctx::Context, range::Range, lexer::Type, state = State{:root}())
+function update!(ctx::Context, range::AbstractRange, lexer::Type, state = State{:root}())
     local pos = ctx.pos[] + length(range)
     lex!(Context(ctx, last(range)), lexer, state)
     ctx.pos[] = pos
@@ -80,28 +81,28 @@ function error!(ctx::Context)
     return ctx
 end
 
-lex{T <: AbstractLexer}(s::AbstractString, l::Type{T}) = lex!(Context(s), l, State{:root}())
+lex(s::AbstractString, l::Type{T}) where {T <: AbstractLexer} = lex!(Context(s), l, State{:root}())
 
 function metadata end
 function lex! end
 
 # Load all supertypes' metadata.
-getdata(T) = getdata!(ObjectIdDict(), T)
+getdata(T) = getdata!(IdDict(), T)
 getdata!(d, ::Type{AbstractLexer}) = d
 getdata!(d, lxr) = (getdata!(d, supertype(lxr)); d[lxr] = metadata(lxr); d)
 
-immutable LexerData
-    name::Str
-    aliases::Vector{Str}
-    filenames::Vector{Str}
-    description::Str
-    comments::Str
+struct LexerData
+    name::String
+    aliases::Vector{String}
+    filenames::Vector{String}
+    description::String
+    comments::String
     tokens::Dict{Symbol, Vector{Any}}
 
     function LexerData(dict::Dict)
         local name = get(dict, :name, "")
-        local aliases = get(dict, :aliases, Str[])
-        local filenames = get(dict, :filenames, Str[])
+        local aliases = get(dict, :aliases, String[])
+        local filenames = get(dict, :filenames, String[])
         local description = get(dict, :description, "")
         local comments = get(dict, :comments, "")
         local tokens = get(dict, :tokens, Dict{Symbol, Vector{Any}}())
@@ -114,24 +115,24 @@ function compile_lexer(mod::Module, T)
     for state in keys(data.tokens)
         local func = quote
             function $(Compiler).lex!(ctx::$(Context), ::Type{$T}, ::$(State{state}))
-                const S = $(Meta.quot(state))
+                S = $(Meta.quot(state))
                 $(compile(T, state, getdata(T)))
             end
         end
-        eval(mod, func)
+        Core.eval(mod, func)
         Base.precompile(lex!, (Context, Type{T}, State{state}))
     end
 end
 
-function getrules(T::Type, S::Symbol, data::ObjectIdDict)
+function getrules(T::Type, S::Symbol, data::IdDict)
     haskey(data, T) || return Any[]
     local lexer = data[T]
     haskey(lexer.tokens, S) ? lexer.tokens[S] : return Any[]
 end
 
-function compile(T::Type, S::Symbol, data::ObjectIdDict)
+function compile(T::Type, S::Symbol, data::IdDict)
     quote
-        const T = $T
+        T = $T
         while !$(Compiler).isdone(ctx)
             $(compile_rules(T, S, data, getrules(T, S, data)))
             $(Compiler).error!(ctx)
@@ -140,7 +141,7 @@ function compile(T::Type, S::Symbol, data::ObjectIdDict)
     end
 end
 
-function compile_rules(T::Type, S::Symbol, data::ObjectIdDict, rules::Vector)
+function compile_rules(T::Type, S::Symbol, data::IdDict, rules::Vector)
     local ex = Expr(:block)
     for each in getrules(T, S, data)
         push!(ex.args, compile_rule(T, S, data, each))
@@ -187,7 +188,7 @@ prepare_bindings(other) = prepare_binding(other, :range)
 # A token such as `TEXT` or `NUMBER`.
 prepare_binding(t::TokenValue, range) = :($(Compiler).update!(ctx, $range, $t))
 # Call different lexer's `:root` state.
-prepare_binding{L}(::Type{L}, range) = :($(Compiler).update!(ctx, $range, $L, $(State{:root}())))
+prepare_binding(::Type{L}, range) where {L} = :($(Compiler).update!(ctx, $range, $L, $(State{:root}())))
 # Call current lexer in state `S`.
 prepare_binding(S::Symbol, range) = :($(Compiler).update!(ctx, $range, T, $(State{S}())))
 # Call different lexer's state `p.second`.
@@ -205,7 +206,7 @@ end
 function prepare_target(T, s::Symbol, ts::Tuple)
     local out = Expr(:block)
     for t in ts
-        unshift!(out.args, prepare_target(T, s, t))
+        pushfirst!(out.args, prepare_target(T, s, t))
     end
     return out
 end
@@ -213,12 +214,12 @@ end
 # Useful function for checking tokens.
 function debug(io::IO, src::AbstractString, lexer)
     local tokens = lex(src, lexer).tokens
-    local padding = mapreduce(t -> length(string(t.value)), max, 0, tokens)
+    local padding = mapreduce(t -> length(string(t.value)), max, tokens, init=0)
     for each in tokens
         print(io, lpad(string(each.value), padding), " := ")
         println(io, repr(SubString(src, each.first, each.last)))
     end
 end
-debug(src::AbstractString, lexer) = debug(STDOUT, src, lexer)
+debug(src::AbstractString, lexer) = debug(stdout, src, lexer)
 
 end # module
