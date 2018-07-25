@@ -1,6 +1,5 @@
 module Compiler
 
-using Compat
 using InteractiveUtils
 
 import ..Highlights: AbstractLexer
