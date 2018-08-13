@@ -153,8 +153,7 @@ end
 $(TYPEDEF)
 
 An iterator type used in user-defined [`render`](@ref) methods to provide custom output
-formats. This type supports the basic Julia iterator protocol: namely `start`, `next`,
-and `done` which enables `for`-loop interation over tokenised text.
+formats. This type supports the basic Julia iterator protocol: namely `iterate` which enables `for`-loop interation over tokenised text.
 
 The iterator returns a 3-tuple of `str`, `id`, and `style` where
 
@@ -168,16 +167,19 @@ struct TokenIterator
     theme::Theme
 end
 
-Base.start(::TokenIterator) = 1
-Base.done(t::TokenIterator, state::Int) = length(t.ctx.tokens) < state
+Base.iterate(t::TokenIterator) = isempty(t.ctx.tokens) ? nothing : iterate(t::TokenIterator, 1)
+Base.length(t::TokenIterator) = length(t.ctx.tokens)
 
-function Base.next(t::TokenIterator, state::Int)
+function Base.iterate(t::TokenIterator, state)
+    (state > length(t)) && return nothing
+
     local token = t.ctx.tokens[state]
     local result = (
         SubString(t.ctx.source, token.first, token.last),
         Tokens.__SHORTNAMES__[token.value.value],
         t.theme.styles[token.value.value],
     )
+
     return result, state + 1
 end
 
