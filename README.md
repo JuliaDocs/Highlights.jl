@@ -22,7 +22,7 @@ julia> Pkg.add("Highlights")
 
 ## Project Status
 
-The package is tested against Julia `0.7` on Linux, OS X, and Windows.
+The package is tested against Julia `0.7` and `1.0` on Linux, OS X, and Windows.
 
 ## Contributing and Questions
 
