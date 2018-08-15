@@ -10,10 +10,10 @@
 ## Installation
 
 The package is registered and can be installed using the package manager.
+In the Julia REPL type `]` to enter the package manager REPL mode and run
 
-```julia
-julia> using Pkg
-julia> Pkg.add("Highlights")
+```
+pkg> add Highlights
 ```
 
 ## Documentation
