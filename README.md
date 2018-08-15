@@ -2,17 +2,18 @@
 
 *A source code highlighter for Julia.*
 
-| **Documentation**                                                               | **PackageEvaluator**                                                                            | **Build Status**                                                                                |
-|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][pkg-0.7-img]][pkg-0.7-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
+| **Documentation**                                                               | **Build Status**                                                                                |
+|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
 
 
 ## Installation
 
-The package is registered in `METADATA.jl` and so can be installed with `Pkg.add`.
+The package is registered and can be installed using the package manager.
+In the Julia REPL type `]` to enter the package manager REPL mode and run
 
-```julia
-julia> Pkg.add("Highlights")
+```
+pkg> add Highlights
 ```
 
 ## Documentation
@@ -22,7 +23,7 @@ julia> Pkg.add("Highlights")
 
 ## Project Status
 
-The package is tested against Julia `0.7` and `1.0` on Linux, OS X, and Windows.
+The package is tested against Julia `0.7`, `1.0` and the nightly builds on Linux, OS X, and Windows.
 
 ## Contributing and Questions
 
@@ -53,6 +54,3 @@ then feel free to ask for help in the [Gitter chat room][gitter-url].
 [codecov-url]: https://codecov.io/gh/JuliaDocs/Highlights.jl
 
 [issues-url]: https://github.com/JuliaDocs/Highlights.jl/issues
-
-[pkg-0.7-img]: http://pkg.julialang.org/badges/Highlights_0.7.svg
-[pkg-0.7-url]: http://pkg.julialang.org/?pkg=Highlights&ver=0.7
