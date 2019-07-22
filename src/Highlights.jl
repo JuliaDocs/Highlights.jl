@@ -57,7 +57,7 @@ When no lexer matches the given `name` an `ArgumentError` is thrown.
 """
 function lexer(name::AbstractString)
     for each in subtypes(AbstractLexer)
-        local def = Compiler.metadata(each)
+        def = Compiler.metadata(each)
         name in def.aliases && return each
     end
     throw(ArgumentError("no lexer found with name '$name'."))

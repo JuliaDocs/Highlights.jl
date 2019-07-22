@@ -36,12 +36,12 @@ const NULL_RANGE = 0:0
 valid(r::AbstractRange) = r !== NULL_RANGE
 
 function nullmatch(r::Regex, ctx::Context)
-    local source = ctx.source
-    local index = ctx.pos[]
+    source = ctx.source
+    index = ctx.pos[]
     Base.compile(r)
     if Base.PCRE.exec(r.regex, source, index - 1, r.match_options, r.match_data)
-        local range = Int(r.ovec[1] + 1):Int(r.ovec[2])
-        local count = div(length(r.ovec), 2) - 1
+        range = Int(r.ovec[1] + 1):Int(r.ovec[2])
+        count = div(length(r.ovec), 2) - 1
         if count > 0
             length(ctx.captures) < count && resize!(ctx.captures, count)
             for i = 1:count
@@ -57,7 +57,7 @@ end
 nullmatch(f::Function, ctx::Context) = f(ctx)
 
 function update!(ctx::Context, range::AbstractRange, token::TokenValue)
-    local pos = prevind(ctx.source, ctx.pos[] + length(range))
+    pos = prevind(ctx.source, ctx.pos[] + length(range))
     if !isempty(ctx.tokens) && ctx.tokens[end].value == token
         ctx.tokens[end] = Token(token, ctx.tokens[end].first, pos)
     else
@@ -68,7 +68,7 @@ function update!(ctx::Context, range::AbstractRange, token::TokenValue)
 end
 
 function update!(ctx::Context, range::AbstractRange, lexer::Type, state = State{:root}())
-    local pos = ctx.pos[] + length(range)
+    pos = ctx.pos[] + length(range)
     lex!(Context(ctx, last(range)), lexer, state)
     ctx.pos[] = pos
     return ctx
@@ -99,20 +99,20 @@ struct LexerData
     tokens::Dict{Symbol, Vector{Any}}
 
     function LexerData(dict::Dict)
-        local name = get(dict, :name, "")
-        local aliases = get(dict, :aliases, String[])
-        local filenames = get(dict, :filenames, String[])
-        local description = get(dict, :description, "")
-        local comments = get(dict, :comments, "")
-        local tokens = get(dict, :tokens, Dict{Symbol, Vector{Any}}())
+        name = get(dict, :name, "")
+        aliases = get(dict, :aliases, String[])
+        filenames = get(dict, :filenames, String[])
+        description = get(dict, :description, "")
+        comments = get(dict, :comments, "")
+        tokens = get(dict, :tokens, Dict{Symbol, Vector{Any}}())
         return new(name, aliases, filenames, description, comments, tokens)
     end
 end
 
 function compile_lexer(mod::Module, T)
-    local data = metadata(T)
+    data = metadata(T)
     for state in keys(data.tokens)
-        local func = quote
+        func = quote
             function $(Compiler).lex!(ctx::$(Context), ::Type{$T}, ::$(State{state}))
                 S = $(Meta.quot(state))
                 $(compile(T, state, getdata(T)))
@@ -125,7 +125,7 @@ end
 
 function getrules(T::Type, S::Symbol, data::IdDict)
     haskey(data, T) || return Any[]
-    local lexer = data[T]
+    lexer = data[T]
     haskey(lexer.tokens, S) ? lexer.tokens[S] : return Any[]
 end
 
@@ -141,7 +141,7 @@ function compile(T::Type, S::Symbol, data::IdDict)
 end
 
 function compile_rules(T::Type, S::Symbol, data::IdDict, rules::Vector)
-    local ex = Expr(:block)
+    ex = Expr(:block)
     for each in getrules(T, S, data)
         push!(ex.args, compile_rule(T, S, data, each))
     end
@@ -151,7 +151,7 @@ end
 function compile_rule(T, S, data, rule::Symbol)
     ty, st = rule === :__inherit__ ? (supertype(T), S) : (T, rule)
     # return compile_rules(T, S, data, getrules(ty, st, data))
-    local ex = Expr(:block)
+    ex = Expr(:block)
     for each in getrules(ty, st, data)
         push!(ex.args, compile_rule(T, S, data, each))
     end
@@ -176,7 +176,7 @@ prepare_match(r::Regex) = Regex("\\G$(r.pattern)", r.compile_options, r.match_op
 prepare_match(f::Function) = f
 
 function prepare_bindings(tuple::Tuple)
-    local block = Expr(:block)
+    block = Expr(:block)
     for (nth, element) in enumerate(tuple)
         push!(block.args, prepare_binding(element, :(ctx.captures[$(nth)])))
     end
@@ -197,13 +197,13 @@ prepare_binding(p::Pair, range) = :($(Compiler).update!(ctx, $range, $(first(p))
 function prepare_target(T, s::Symbol, target::Symbol)
     target === :__none__ && return Expr(:block)
     target === :__pop__  && return Expr(:break)
-    local state = target === :__push__ ? s : target
+    state = target === :__push__ ? s : target
     return :($(Compiler).lex!(ctx, $(T), $(State{state}())))
 end
 
 # A tuple of states to enter must be done in 'reverse' order.
 function prepare_target(T, s::Symbol, ts::Tuple)
-    local out = Expr(:block)
+    out = Expr(:block)
     for t in ts
         pushfirst!(out.args, prepare_target(T, s, t))
     end
@@ -212,8 +212,8 @@ end
 
 # Useful function for checking tokens.
 function debug(io::IO, src::AbstractString, lexer)
-    local tokens = lex(src, lexer).tokens
-    local padding = mapreduce(t -> length(string(t.value)), max, tokens, init=0)
+    tokens = lex(src, lexer).tokens
+    padding = mapreduce(t -> length(string(t.value)), max, tokens, init=0)
     for each in tokens
         print(io, lpad(string(each.value), padding), " := ")
         println(io, repr(SubString(src, each.first, each.last)))

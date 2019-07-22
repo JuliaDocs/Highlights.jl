@@ -10,7 +10,7 @@ using InteractiveUtils
 const __DIR__ = dirname(@__FILE__)
 
 function tokentest(lexer, source, expects...)
-    local tokens = Highlights.Compiler.lex(source, lexer).tokens
+    tokens = Highlights.Compiler.lex(source, lexer).tokens
     @test length(tokens) == length(expects)
     @test join([s for (n, s) in expects]) == source
     for (token, (name, str)) in zip(tokens, expects)
@@ -20,8 +20,8 @@ function tokentest(lexer, source, expects...)
 end
 
 function print_all(lexer, file)
-    local source = read(joinpath(__DIR__, "samples", file), String)
-    local buffer = IOBuffer()
+    source = read(joinpath(__DIR__, "samples", file), String)
+    buffer = IOBuffer()
     for m in ["html", "latex"]
         mime = MIME("text/$m")
         for theme in subtypes(Themes.AbstractTheme)
@@ -246,8 +246,8 @@ end
         end
     end
     @testset "Format" begin
-        local render = function(mime, style)
-            local buffer = IOBuffer()
+        render = function(mime, style)
+            buffer = IOBuffer()
             Highlights.Format.render(buffer, mime, style)
             return Highlights.takebuf_str(buffer)
         end

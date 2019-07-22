@@ -107,7 +107,7 @@ end
 TokenValue(s::Symbol) = TokenValue(__INDICES__[s])
 
 function parent(s::Symbol)
-    local p = join(split(string(s), '_')[1:end-1], '_')
+    p = join(split(string(s), '_')[1:end-1], '_')
     return isempty(p) ? :TEXT : Symbol(p)
 end
 
@@ -125,7 +125,7 @@ const __SHORTNAMES__ = Symbol[]
 
 let cache = Dict{Symbol, Int}()
     for (nth, each) in enumerate(__TOKENS__)
-        local short = Symbol(join(map(first, split(lowercase(string(each)), '_'))))
+        short = Symbol(join(map(first, split(lowercase(string(each)), '_'))))
         if haskey(cache, short)
             cache[short] += 1
             push!(__SHORTNAMES__, Symbol(string(short, Char(cache[short] + Int('A') - 1))))

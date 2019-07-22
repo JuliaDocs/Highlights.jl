@@ -3,13 +3,13 @@ using Documenter, Highlights
 # Generate demo pages.
 
 let dir = joinpath(dirname(@__FILE__), "..", "test", "samples")
-    local destination = joinpath(dirname(@__FILE__), "src", "demo", "lexers")
+    destination = joinpath(dirname(@__FILE__), "src", "demo", "lexers")
     ispath(destination) && rm(destination, recursive = true)
     mkpath(destination)
     for file in readdir(dir)
-        local source = readstring(joinpath(dir, file))
-        local lexer = Highlights.lexer(file)
-        local def = Highlights.Compiler.metadata(lexer)
+        source = readstring(joinpath(dir, file))
+        lexer = Highlights.lexer(file)
+        def = Highlights.Compiler.metadata(lexer)
         open(joinpath(destination, file * ".md"), "w") do buf
             println(buf, "# ", def.name, "\n")
             println(buf, "`$lexer` -- *", def.description, "*", "\n")
@@ -19,12 +19,12 @@ let dir = joinpath(dirname(@__FILE__), "..", "test", "samples")
             println(buf, "```")
         end
     end
-    local source = readstring(joinpath(dir, "julia"))
+    source = readstring(joinpath(dir, "julia"))
     destination = joinpath(dirname(@__FILE__), "src", "demo", "themes")
     ispath(destination) && rm(destination, recursive = true)
     mkpath(destination)
     for theme in subtypes(Highlights.AbstractTheme)
-        local def = Highlights.Themes.metadata(theme)
+        def = Highlights.Themes.metadata(theme)
         open(joinpath(destination, replace(lowercase(def[:name]), " ", "-") * ".md"), "w") do buf
             println(buf, "# ", def[:name], "\n")
             println(buf, "`$theme` -- *", def[:description], "*", "\n")

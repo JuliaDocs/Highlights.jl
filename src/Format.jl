@@ -173,8 +173,8 @@ Base.length(t::TokenIterator) = length(t.ctx.tokens)
 function Base.iterate(t::TokenIterator, state)
     (state > length(t)) && return nothing
 
-    local token = t.ctx.tokens[state]
-    local result = (
+    token = t.ctx.tokens[state]
+    result = (
         SubString(t.ctx.source, token.first, token.last),
         Tokens.__SHORTNAMES__[token.value.value],
         t.theme.styles[token.value.value],
