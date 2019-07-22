@@ -143,7 +143,6 @@ julia> @theme CustomTheme Dict(
                # ...
            )
        );
-
 ```
 """
 macro theme(T, dict)

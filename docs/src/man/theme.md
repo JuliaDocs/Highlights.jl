@@ -22,7 +22,7 @@ an `abstract` type that is a subtype of `AbstractTheme`. For this example we wil
 new theme called, very imaginatively, `CustomTheme`:
 
 ```@example 1
-abstract CustomTheme <: AbstractTheme
+abstract type CustomTheme <: AbstractTheme end
 ```
 
 That's all there is to the type itself. Next we'll define what colours should be used for

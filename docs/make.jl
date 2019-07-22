@@ -7,7 +7,7 @@ let dir = joinpath(dirname(@__FILE__), "..", "test", "samples")
     ispath(destination) && rm(destination, recursive = true)
     mkpath(destination)
     for file in readdir(dir)
-        source = readstring(joinpath(dir, file))
+        source = read(joinpath(dir, file), String)
         lexer = Highlights.lexer(file)
         def = Highlights.Compiler.metadata(lexer)
         open(joinpath(destination, file * ".md"), "w") do buf
@@ -19,13 +19,13 @@ let dir = joinpath(dirname(@__FILE__), "..", "test", "samples")
             println(buf, "```")
         end
     end
-    source = readstring(joinpath(dir, "julia"))
+    source = read(joinpath(dir, "julia"), String)
     destination = joinpath(dirname(@__FILE__), "src", "demo", "themes")
     ispath(destination) && rm(destination, recursive = true)
     mkpath(destination)
     for theme in subtypes(Highlights.AbstractTheme)
         def = Highlights.Themes.metadata(theme)
-        open(joinpath(destination, replace(lowercase(def[:name]), " ", "-") * ".md"), "w") do buf
+        open(joinpath(destination, replace(lowercase(def[:name]), " " => "-") * ".md"), "w") do buf
             println(buf, "# ", def[:name], "\n")
             println(buf, "`$theme` -- *", def[:description], "*", "\n")
             println(buf, "```@raw html")
@@ -42,7 +42,7 @@ const THEMES = readdir(joinpath(dirname(@__FILE__), "src", "demo", "themes"))
 # Build docs.
 
 makedocs(
-    format = :html,
+    format = Documenter.HTML(),
     modules = [Highlights],
     sitename = "Highlights.jl",
     authors = "Michael Hatherly",
