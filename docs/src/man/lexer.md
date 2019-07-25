@@ -18,7 +18,7 @@ the `AbstractLexer` type and `@lexer` macro.
 Next we define a new type to represent our lexer.
 
 ```@example 1
-abstract CommentLexer <: AbstractLexer
+abstract type CommentLexer <: AbstractLexer end
 ```
 
 !!! note
@@ -273,8 +273,8 @@ using Highlights.Lexers, Highlights.Tokens
 ```
 
 ```@example inheriting-lexers
-abstract Parent <: AbstractLexer
-abstract Child <: Parent
+abstract type Parent <: AbstractLexer end
+abstract type Child <: Parent end
 ```
 
 Then `Child` can use `:__inherit__` to include the rules from an ancestor's state within the

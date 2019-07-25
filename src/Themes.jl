@@ -110,10 +110,10 @@ function metadata end
 function theme end
 
 function maketheme(T)
-    local dict = metadata(T)
-    local n = length(Tokens.__TOKENS__)
-    local theme = Theme(get(dict, :style, S""), n)
-    local styles = get(dict, :tokens, Dict{Tokens.TokenValue, Style}())
+    dict = metadata(T)
+    n = length(Tokens.__TOKENS__)
+    theme = Theme(get(dict, :style, S""), n)
+    styles = get(dict, :tokens, Dict{Tokens.TokenValue, Style}())
     get!(styles, Tokens.TEXT, S"") # Set default TEXT if not already done.
     for (nth, t) in enumerate(Tokens.__TOKENS__)
         theme.styles[nth] = fallback(Tokens.__FALLBACKS__, styles, Tokens.TokenValue(t))
@@ -143,7 +143,6 @@ julia> @theme CustomTheme Dict(
                # ...
            )
        );
-
 ```
 """
 macro theme(T, dict)

@@ -23,7 +23,7 @@ pkg> add Highlights
 
 ## Project Status
 
-The package is tested against Julia `0.7`, `1.0` and the nightly builds on Linux, OS X, and Windows.
+The package is tested against the released Julia `1.x` versions and the nightly builds on Linux, OS X, and Windows.
 
 ## Contributing and Questions
 

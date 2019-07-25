@@ -1,13 +1,13 @@
 @lexer RLexer let
-    local keywords = [
+    keywords = [
         "if", "else", "for", "while", "repeat", "in", "next", "break", "return", "switch",
         "function"
     ]
-    local types = [
+    types = [
         "array", "category", "character", "complex", "double", "function", "integer",
         "list", "logical", "matrix", "numeric", "vector", "data.frame", "c"
     ]
-    local builtin_symbols = [
+    builtin_symbols = [
         "NULL", "NA(_(integer|real|complex|character)_)?", "letters", "LETTERS", "Inf",
         "TRUE", "FALSE", "NaN", "pi", "\\.\\.(\\.|[0-9]+)"
     ]

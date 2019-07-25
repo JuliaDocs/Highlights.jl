@@ -1,5 +1,5 @@
 @lexer FortranLexer let
-    local keywords = [
+    keywords = [
         "ABSTRACT", "ACCEPT", "ALL", "ALLSTOP", "ALLOCATABLE", "ALLOCATE", "ARRAY",
         "ASSIGN", "ASSOCIATE", "ASYNCHRONOUS", "BACKSPACE", "BIND", "BLOCK", "BLOCKDATA",
         "BYTE", "CALL", "CASE", "CLASS", "CLOSE", "CODIMENSION", "COMMON", "CONCURRRENT",
@@ -16,7 +16,7 @@
         "SYNCIMAGES", "SYNCMEMORY", "TARGET", "THEN", "TYPE", "UNLOCK", "USE", "VALUE",
         "VOLATILE", "WHERE", "WRITE", "WHILE"
     ]
-    local datatypes =[
+    datatypes =[
         "CHARACTER", "COMPLEX", "DOUBLE PRECISION", "DOUBLE COMPLEX", "INTEGER", "LOGICAL",
         "REAL", "C_INT", "C_SHORT", "C_LONG", "C_LONG_LONG", "C_SIGNED_CHAR", "C_SIZE_T",
         "C_INT8_T", "C_INT16_T", "C_INT32_T", "C_INT64_T", "C_INT_LEAST8_T",
@@ -25,7 +25,7 @@
         "C_FLOAT", "C_DOUBLE", "C_LONG_DOUBLE", "C_FLOAT_COMPLEX", "C_DOUBLE_COMPLEX",
         "C_LONG_DOUBLE_COMPLEX", "C_BOOL", "C_CHAR", "C_PTR", "C_FUNPTR"
     ]
-    local builtins = [
+    builtins = [
         "Abort", "Abs", "Access", "AChar", "ACos", "ACosH", "AdjustL", "AdjustR", "AImag",
         "AInt", "Alarm", "All", "Allocated", "ALog", "AMax", "AMin", "AMod", "And", "ANInt",
         "Any", "ASin", "ASinH", "Associated", "ATan", "ATanH", "Atomic_Define",
@@ -67,10 +67,10 @@
         "UMask", "Unlink", "Unpack", "Verify", "XOr", "ZAbs", "ZCos", "ZExp", "ZLog",
         "ZSin", "ZSqRt"
     ]
-    local logical_operators = [
+    logical_operators = [
         "EQ", "NE", "LT", "LE", "GT", "GE", "NOT", "AND", "OR", "EQV", "NEQV",
     ]
-    local caseless = ws -> vcat(ws, map(lowercase, ws))
+    caseless = ws -> vcat(ws, map(lowercase, ws))
     Dict(
         :name => "Fortran 90",
         :description => "A lexer for Fortran 90 source code.",
