@@ -1,4 +1,5 @@
 using Documenter, Highlights
+using InteractiveUtils
 
 # Generate demo pages.
 
