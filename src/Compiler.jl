@@ -38,20 +38,18 @@ valid(r::AbstractRange) = r !== NULL_RANGE
 function nullmatch(r::Regex, ctx::Context)
     source = ctx.source
     index = ctx.pos[]
-    Base.compile(r)
-    if Base.PCRE.exec(r.regex, source, index - 1, r.match_options, r.match_data)
-        range = Int(r.ovec[1] + 1):Int(r.ovec[2])
-        count = div(length(r.ovec), 2) - 1
-        if count > 0
-            length(ctx.captures) < count && resize!(ctx.captures, count)
-            for i = 1:count
-                ctx.captures[i] = r.ovec[2i + 1] == Base.PCRE.UNSET ?
-                    NULL_RANGE : (Int(r.ovec[2i + 1] + 1):Int(r.ovec[2i + 2]))
+    m = match(r, source[index:end])
+    if m === nothing
+        return NULL_RANGE
+    else
+        if length(m.captures) > 0
+            length(ctx.captures) < length(m.captures) && resize!(ctx.captures, length(m.captures))
+            for i = 1:length(m.captures)
+                ctx.captures[i] = (m.captures[i] === nothing) ? NULL_RANGE :
+                    (index + m.offsets[i] - 1 : index + m.offsets[i] + ncodeunits(m.captures[i]) - 2)
             end
         end
-        return range
-    else
-        return NULL_RANGE
+        return index : index + ncodeunits(m.match) - 1
     end
 end
 nullmatch(f::Function, ctx::Context) = f(ctx)
