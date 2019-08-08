@@ -203,7 +203,7 @@ function render(io::IO, mime::MIME"text/latex", tokens::TokenIterator)
     println(io, "\\begin{lstlisting}")
     for (str, id, style) in tokens
         id === :t || print(io, "(*@\\HLJL", id, "{")
-        escape(io, mime, str)
+        escape(io, mime, str; charescape=(id === :t))
         id === :t || print(io, "}@*)")
     end
     println(io, "\n\\end{lstlisting}")
@@ -223,22 +223,28 @@ function escape(io::IO, ::MIME"text/html", str::AbstractString)
     end
 end
 
-function escape(io::IO, ::MIME"text/latex", str::AbstractString)
+function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=false)
     for char in str
-        char === '`'  ? print(io, "{\\textasciigrave}") :
-        char === '\'' ? print(io, "{\\textquotesingle}") :
-        char === '$'  ? print(io, "{\\\$}") :
-        char === '%'  ? print(io, "{\\%}") :
-        char === '#'  ? print(io, "{\\#}") :
-        char === '&'  ? print(io, "{\\&}") :
-        char === '\\' ? print(io, "{\\textbackslash}") :
-        char === '^'  ? print(io, "{\\textasciicircum}") :
-        char === '_'  ? print(io, "{\\_}") :
-        char === '{'  ? print(io, "{\\{}") :
-        char === '}'  ? print(io, "{\\}}") :
-        char === '~'  ? print(io, "{\\textasciitilde}") :
+        char === '`'  ? printe(io, charescape, "{\\textasciigrave}") :
+        char === '\'' ? printe(io, charescape, "{\\textquotesingle}") :
+        char === '$'  ? printe(io, charescape, "{\\\$}") :
+        char === '%'  ? printe(io, charescape, "{\\%}") :
+        char === '#'  ? printe(io, charescape, "{\\#}") :
+        char === '&'  ? printe(io, charescape, "{\\&}") :
+        char === '\\' ? printe(io, charescape, "{\\textbackslash}") :
+        char === '^'  ? printe(io, charescape, "{\\textasciicircum}") :
+        char === '_'  ? printe(io, charescape, "{\\_}") :
+        char === '{'  ? printe(io, charescape, "{\\{}") :
+        char === '}'  ? printe(io, charescape, "{\\}}") :
+        char === '~'  ? printe(io, charescape, "{\\textasciitilde}") :
             print(io, char)
     end
+end
+
+function printe(io::IO, charescape::Bool, s)
+    charescape && print(io, "(*@{")
+    print(io, s)
+    charescape && print(io, "}@*)")
 end
 
 end # module
