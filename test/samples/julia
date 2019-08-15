@@ -81,4 +81,3 @@ run(`foo $bar --baz $([a, b, c])`)
 0x4312afAfabC
 1234
 1_2_3_4
-

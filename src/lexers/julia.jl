@@ -25,19 +25,13 @@ julia_is_macro_identifier(ctx::Context) = julia_is_identifier(ctx, '@')
 julia_is_iterp_identifier(ctx::Context) = julia_is_identifier(ctx, '$')
 
 function julia_is_operator(ctx::Context)
-    success = 0
-    str = SubString("")
-    while !((ctx.pos[] + success) > ncodeunits(ctx.source))
-        epos =  ctx.pos[] + success
-        try
-            str = SubString(ctx.source, ctx.pos[], ctx.pos[] + success)
-        catch
-            str = SubString(ctx.source, ctx.pos[], nextind(ctx.source, ctx.pos[] + success))
-        end
-
-        ccall(:jl_is_operator, Bool, (Cstring,), str) ? (success += 1) : break
+    ind = ctx.pos[]
+    while ind <= ncodeunits(ctx.source)
+        str = SubString(ctx.source, ctx.pos[], ind)
+        Base.isoperator(Symbol(str)) || break
+        ind = nextind(ctx.source, ind)
     end
-    return success > 0 ? (ctx.pos[]:(ctx.pos[] + success - 1)) : NULL_RANGE
+    return ind == ctx.pos[] ? NULL_RANGE : (ctx.pos[]:(ind - 1))
 end
 
 function julia_is_symbol(ctx::Context)

@@ -415,3 +415,16 @@ tokentest(
     NUMBER_INTEGER => "1_2_3_4",
     TEXT => "\n",
 )
+
+tokentest(
+    Lexers.JuliaLexer,
+    "√",
+    OPERATOR => "√",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "√α",
+    OPERATOR => "√",
+    NAME => "α",
+)
