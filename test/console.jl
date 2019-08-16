@@ -21,6 +21,6 @@ function Format.render(io::IO, ::MIME"text/ansi", tokens::Format.TokenIterator)
     end
 end
 
-test(text, lexer) = Highlights.highlight(STDOUT, MIME("text/ansi"), text, lexer)
+test(text, lexer) = Highlights.highlight(stdout, MIME("text/ansi"), text, lexer)
 
 end

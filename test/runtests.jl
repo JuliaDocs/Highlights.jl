@@ -7,8 +7,6 @@ using InteractiveUtils
 # Utilities.
 #
 
-const __DIR__ = dirname(@__FILE__)
-
 function tokentest(lexer, source, expects...)
     tokens = Highlights.Compiler.lex(source, lexer).tokens
     @test length(tokens) == length(expects)
@@ -20,7 +18,7 @@ function tokentest(lexer, source, expects...)
 end
 
 function print_all(lexer, file)
-    source = read(joinpath(__DIR__, "samples", file), String)
+    source = read(joinpath(@__DIR__, "samples", file), String)
     buffer = IOBuffer()
     for m in ["html", "latex"]
         mime = MIME("text/$m")
@@ -111,7 +109,7 @@ end
 
 @testset "Highlights" begin
     @testset "Lexers" begin
-        @testset for file in readdir(joinpath(__DIR__, "lexers"))
+        @testset for file in readdir(joinpath(@__DIR__, "lexers"))
             include("lexers/$file")
         end
         @testset "Self-referencing" begin
