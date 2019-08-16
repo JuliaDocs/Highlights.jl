@@ -1,6 +1,6 @@
 name = "Highlights"
 uuid = "eafb193a-b7ab-5a9e-9068-77385905fa72"
-version = "0.4.0"
+version = "0.4.1"
 
 [deps]
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
