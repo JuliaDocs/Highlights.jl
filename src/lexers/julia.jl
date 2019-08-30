@@ -197,7 +197,7 @@ function julia_repl_splitter(ctx::Context)
         end
     end
     @label FINISHED
-    return ctx.pos[]:prevind(s, i - 1)
+    return ctx.pos[]:prevind(s, i, 2)
 end
 
 @lexer JuliaConsoleLexer Dict(

@@ -140,3 +140,15 @@ tokentest(
     NAME => "b",
     TEXT => "\n7\n",
 )
+
+tokentest(
+    Lexers.JuliaConsoleLexer,
+    """
+    julia> @show β
+    β = 10""",
+    NUMBER => "julia> ",
+    NAME_DECORATOR => "@show",
+    TEXT => " ",
+    NAME => "β",
+    TEXT => "\nβ = 10",
+)
