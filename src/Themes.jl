@@ -163,6 +163,7 @@ export
     EmacsTheme,
     GitHubTheme,
     MonokaiTheme,
+    MonokaiMiniTheme,
     PygmentsTheme,
     TangoTheme,
     TracTheme,
@@ -179,6 +180,8 @@ abstract type EmacsTheme <: AbstractTheme end
 abstract type GitHubTheme <: AbstractTheme end
 "A colour scheme similar to the Monokai theme."
 abstract type MonokaiTheme <: AbstractTheme end
+"A colour scheme similar to the Monokai theme that works on both light and dark backgrounds."
+abstract type MonokaiMiniTheme <: AbstractTheme end
 "Based on the default colour scheme used by the Pygments highlighter."
 abstract type PygmentsTheme <: AbstractTheme end
 "A Tango-inspired colour scheme."
@@ -203,6 +206,7 @@ include("themes/pygments.jl")
 include("themes/emacs.jl")
 include("themes/github.jl")
 include("themes/monokai.jl")
+include("themes/monokaimini.jl")
 include("themes/tango.jl")
 include("themes/trac.jl")
 include("themes/vim.jl")
