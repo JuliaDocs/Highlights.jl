@@ -225,18 +225,19 @@ end
 
 function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=false)
     for char in str
-        char === '`'  ? printe(io, charescape, "{\\textasciigrave}") :
-        char === '\'' ? printe(io, charescape, "{\\textquotesingle}") :
-        char === '$'  ? printe(io, charescape, "{\\\$}") :
-        char === '%'  ? printe(io, charescape, "{\\%}") :
-        char === '#'  ? printe(io, charescape, "{\\#}") :
-        char === '&'  ? printe(io, charescape, "{\\&}") :
-        char === '\\' ? printe(io, charescape, "{\\textbackslash}") :
-        char === '^'  ? printe(io, charescape, "{\\textasciicircum}") :
-        char === '_'  ? printe(io, charescape, "{\\_}") :
-        char === '{'  ? printe(io, charescape, "{\\{}") :
-        char === '}'  ? printe(io, charescape, "{\\}}") :
-        char === '~'  ? printe(io, charescape, "{\\textasciitilde}") :
+        char === '`'   ? printe(io, charescape, "{\\textasciigrave}") :
+        char === '\''  ? printe(io, charescape, "{\\textquotesingle}") :
+        char === '$'   ? printe(io, charescape, "{\\\$}") :
+        char === '%'   ? printe(io, charescape, "{\\%}") :
+        char === '#'   ? printe(io, charescape, "{\\#}") :
+        char === '&'   ? printe(io, charescape, "{\\&}") :
+        char === '\\'  ? printe(io, charescape, "{\\textbackslash}") :
+        char === '^'   ? printe(io, charescape, "{\\textasciicircum}") :
+        char === '_'   ? printe(io, charescape, "{\\_}") :
+        char === '{'   ? printe(io, charescape, "{\\{}") :
+        char === '}'   ? printe(io, charescape, "{\\}}") :
+        char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
+        char === '"'   ? printe(io, charescape, "\"{}") :
             print(io, char)
     end
 end
