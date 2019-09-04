@@ -119,8 +119,6 @@ function render(io::IO, ::MIME"text/html", theme::Theme)
 end
 
 function render(io::IO, mime::MIME"text/latex", theme::Theme)
-    println(io, "\\usepackage[T1]{fontenc}")
-    println(io, "\\usepackage{textcomp}")
     println(io, "\\usepackage{upquote}")
     println(io, "\\usepackage{listings}")
     println(io, "\\usepackage{xcolor}")
