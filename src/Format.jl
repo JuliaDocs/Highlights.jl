@@ -128,6 +128,7 @@ function render(io::IO, mime::MIME"text/latex", theme::Theme)
             basicstyle=\\ttfamily\\footnotesize,
             upquote=true,
             breaklines=true,
+            breakindent=0pt,
             keepspaces=true,
             showspaces=false,
             columns=fullflexible,
@@ -236,6 +237,11 @@ function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=fals
         char === '}'   ? printe(io, charescape, "{\\}}") :
         char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
         char === '"'   ? printe(io, charescape, "\"{}") :
+        # Linebreaks within an escapeinside don't occour if not replaced by proper
+        # LaTeX linebreaks. Also to preserve spaces outside of verbatim they need to
+        # be explicity placed inside an mbox (or hphantom).
+        (char === '\n' && !charescape) ? printe(io, charescape, "{\\newline}") :
+        (char === ' ' && !charescape) ? printe(io, charescape, "{\\mbox{\\space}}") :
             print(io, char)
     end
 end
