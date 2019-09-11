@@ -237,7 +237,7 @@ function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=fals
         char === '}'   ? printe(io, charescape, "{\\}}") :
         char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
         char === '"'   ? printe(io, charescape, "\"{}") :
-        # Linebreaks within an escapeinside don't occour if not replaced by proper
+        # Linebreaks within an escapeinside do not occur if not replaced by proper
         # LaTeX linebreaks. Also to preserve spaces outside of verbatim they need to
         # be explicity placed inside an mbox (or hphantom).
         (char === '\n' && !charescape) ? printe(io, charescape, "{\\newline}") :
