@@ -259,12 +259,35 @@ end
             end
         end
         @testset "LaTeX" begin
+            escape = function(mime,str;charescape=false)
+                buffer = IOBuffer()
+                Highlights.Format.escape(buffer,mime,str,charescape=charescape)
+                return Highlights.takebuf_str(buffer)
+            end
+            escapeinside(str) = "(*@{"*str*"}@*)"
             let mime = MIME("text/latex")
                 @test render(mime, Themes.Style("fg: 111"))   == "[1]{\\textcolor[RGB]{17,17,17}{#1}}"
                 @test render(mime, Themes.Style("bg: 111"))   == "[1]{\\colorbox[RGB]{17,17,17}{#1}}"
                 @test render(mime, Themes.Style("bold"))      == "[1]{\\textbf{#1}}"
                 @test render(mime, Themes.Style("italic"))    == "[1]{\\textit{#1}}"
                 @test render(mime, Themes.Style("underline")) == "[1]{\\underline{#1}}"
+                mime = MIME("text/latex")
+                ebrace_L = escape(mime,"{")
+                ebrace_R = escape(mime,"}")
+                # This is placed in a verbatim env. so there must be an additional charescape
+                @test escape(mime,"{}",charescape=true) == escapeinside(ebrace_L)*escapeinside(ebrace_R)
+                # This is already escaped so now charescape
+                @test escape(mime,"{}",charescape=false) == ebrace_L*ebrace_R
+                # This is placed in a verbatim so whitespace is already handled by the verbatim env.
+                # Only special characters need to be escaped
+                @test escape(mime,"   some text\n next line{}",charescape=true) ==
+                    "   some text\n next line"*escapeinside(ebrace_L)*escapeinside(ebrace_R)
+                # This is escaped so LaTeX automatically removes whitespace characters.
+                # Also no additional escapeinside for special characters needed.
+                n = escape(mime,"\n",charescape=false)
+                s = escape(mime," ",charescape=false)
+                @test escape(mime,"   some text\n next line{}",charescape=false) ==
+                    "$(s)$(s)$(s)some$(s)text$(n)$(s)next$(s)line"*ebrace_L*ebrace_R
             end
         end
         @testset "Custom Nodes" begin
