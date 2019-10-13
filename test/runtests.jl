@@ -284,10 +284,9 @@ end
                     "   some text\n next line"*escapeinside(ebrace_L)*escapeinside(ebrace_R)
                 # This is escaped so LaTeX automatically removes whitespace characters.
                 # Also no additional escapeinside for special characters needed.
-                n = escape(mime,"\n",charescape=false)
                 s = escape(mime," ",charescape=false)
                 @test escape(mime,"   some text\n next line{}",charescape=false) ==
-                    "$(s)$(s)$(s)some$(s)text$(n)$(s)next$(s)line"*ebrace_L*ebrace_R
+                    "$(s)$(s)$(s)some$(s)text\n$(s)next$(s)line"*ebrace_L*ebrace_R
             end
         end
         @testset "Custom Nodes" begin

@@ -201,9 +201,17 @@ end
 function render(io::IO, mime::MIME"text/latex", tokens::TokenIterator)
     println(io, "\\begin{lstlisting}")
     for (str, id, style) in tokens
-        id === :t || print(io, "(*@\\HLJL", id, "{")
-        escape(io, mime, str; charescape=(id === :t))
-        id === :t || print(io, "}@*)")
+        # Linebreaks within an escapeinside do not occur as such in a
+        # lstlisting env. So in order to have the correct highlighting
+        # and linebreaks, that are recognized by listings, they need to be
+        # added as \n outside of the escapeinside.
+        str_parts = split(str,"\n")
+        for (idx,str_part) in enumerate(str_parts)
+            id === :t || print(io, "(*@\\HLJL", id, "{")
+            escape(io, mime, str_part; charescape=(id === :t))
+            id === :t || print(io, "}@*)")
+            idx < length(str_parts) && print(io,"\n")
+        end
     end
     println(io, "\n\\end{lstlisting}")
 end
@@ -237,10 +245,8 @@ function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=fals
         char === '}'   ? printe(io, charescape, "{\\}}") :
         char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
         char === '"'   ? printe(io, charescape, "\"{}") :
-        # Linebreaks within an escapeinside do not occur if not replaced by proper
-        # LaTeX linebreaks. Also to preserve spaces outside of verbatim they need to
-        # be explicity placed inside an mbox (or hphantom).
-        (char === '\n' && !charescape) ? printe(io, charescape, "{\\newline}") :
+        # In order to preserve indentation inside escapeinside they are
+        # explicitly added inside an mbox.
         (char === ' ' && !charescape) ? printe(io, charescape, "{\\mbox{\\space}}") :
             print(io, char)
     end
