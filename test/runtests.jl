@@ -293,9 +293,12 @@ end
                 @test escape(mime,"   some text\n next line{}",charescape=false) ==
                     "$(s)$(s)$(s)some$(s)text\n$(s)next$(s)line"*ebrace_L*ebrace_R
                 r(x) = "(*@\\HLJL0{$x}@*)"
-                @test render_nonwhitespace(MIME("text/latex"),"\tfoo  \nbar\t") == "\t$(r("foo"))  \n$(r("bar"))\t"
+                @test render_nonwhitespace(MIME("text/latex"),"\tfoo  \nbar\t") == "\t"*r("foo")*"  \n"*r("bar")*"\t"
                 @test render_nonwhitespace(MIME("text/latex"),"foo") == r("foo")
                 @test render_nonwhitespace(MIME("text/latex"),"\t") == "\t"
+                @test render_nonwhitespace(MIME("text/latex"),"α") == r("α")
+                @test render_nonwhitespace(MIME("text/latex")," α\tβfoo ") == " "*r("α")*"\t"*r("βfoo")*" "
+                @test render_nonwhitespace(MIME("text/latex")," α ") == " "*r("α")*" "
             end
         end
         @testset "Custom Nodes" begin
