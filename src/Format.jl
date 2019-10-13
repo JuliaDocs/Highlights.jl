@@ -245,7 +245,7 @@ function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=fals
         char === '}'   ? printe(io, charescape, "{\\}}") :
         char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
         char === '"'   ? printe(io, charescape, "\"{}") :
-        # In order to preserve indentation inside escapeinside they are
+        # In order to preserve indentation inside escapeinside spaces are
         # explicitly added inside an mbox.
         (char === ' ' && !charescape) ? printe(io, charescape, "{\\mbox{\\space}}") :
             print(io, char)
