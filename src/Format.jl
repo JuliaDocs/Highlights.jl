@@ -198,16 +198,38 @@ function render(io::IO, mime::MIME"text/html", tokens::TokenIterator)
     println(io, "\n</pre>")
 end
 
+const CONSECUTIVE_WHITESPACE = r"\s+"
+
+function print_formatted(io::IO,mime::MIME"text/latex",str,id,style)
+    id === :t || print(io, "(*@\\HLJL", id, "{")
+    escape(io, mime, str; charescape=(id === :t))
+    id === :t || print(io, "}@*)")
+end
+
+function render_nonwhitespace(io::IO,mime::MIME"text/latex",str,id,style)
+    # Whitespace chars within an escapeinside are not correctly printed in a
+    # lstlisting env. So in order to have the correct highlighting
+    # and correct characters, that are recognized by listings, they need to be
+    # added outside of the escapeinside.
+    offset = 1
+    for m in eachmatch(CONSECUTIVE_WHITESPACE,str)
+        whitespace = m.match
+        nonwhitespace = str[offset:prevind(str,m.offset)]
+        offset = nextind(str,m.offset,length(whitespace))
+        length(nonwhitespace) > 0 && print_formatted(io,mime,nonwhitespace,id,style)
+        print(io,whitespace)
+    end
+    nonwhitespace = str[offset:end]
+    length(nonwhitespace) > 0 && print_formatted(io,mime,str[offset:end],id,style)
+end
+
 function render(io::IO, mime::MIME"text/latex", tokens::TokenIterator)
     println(io, "\\begin{lstlisting}")
     for (str, id, style) in tokens
-        id === :t || print(io, "(*@\\HLJL", id, "{")
-        escape(io, mime, str; charescape=(id === :t))
-        id === :t || print(io, "}@*)")
+        render_nonwhitespace(io,mime,str,id,style)
     end
     println(io, "\n\\end{lstlisting}")
 end
-
 
 # Character escapes.
 
@@ -237,11 +259,6 @@ function escape(io::IO, ::MIME"text/latex", str::AbstractString; charescape=fals
         char === '}'   ? printe(io, charescape, "{\\}}") :
         char === '~'   ? printe(io, charescape, "{\\textasciitilde}") :
         char === '"'   ? printe(io, charescape, "\"{}") :
-        # Linebreaks within an escapeinside do not occur if not replaced by proper
-        # LaTeX linebreaks. Also to preserve spaces outside of verbatim they need to
-        # be explicity placed inside an mbox (or hphantom).
-        (char === '\n' && !charescape) ? printe(io, charescape, "{\\newline}") :
-        (char === ' ' && !charescape) ? printe(io, charescape, "{\\mbox{\\space}}") :
             print(io, char)
     end
 end

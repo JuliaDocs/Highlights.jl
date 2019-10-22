@@ -264,6 +264,11 @@ end
                 Highlights.Format.escape(buffer,mime,str,charescape=charescape)
                 return Highlights.takebuf_str(buffer)
             end
+            render_nonwhitespace = function(mime,str)
+                buffer = IOBuffer()
+                Highlights.Format.render_nonwhitespace(buffer,mime,str,0,nothing)
+                return Highlights.takebuf_str(buffer)
+            end
             escapeinside(str) = "(*@{"*str*"}@*)"
             let mime = MIME("text/latex")
                 @test render(mime, Themes.Style("fg: 111"))   == "[1]{\\textcolor[RGB]{17,17,17}{#1}}"
@@ -284,10 +289,16 @@ end
                     "   some text\n next line"*escapeinside(ebrace_L)*escapeinside(ebrace_R)
                 # This is escaped so LaTeX automatically removes whitespace characters.
                 # Also no additional escapeinside for special characters needed.
-                n = escape(mime,"\n",charescape=false)
                 s = escape(mime," ",charescape=false)
                 @test escape(mime,"   some text\n next line{}",charescape=false) ==
-                    "$(s)$(s)$(s)some$(s)text$(n)$(s)next$(s)line"*ebrace_L*ebrace_R
+                    "$(s)$(s)$(s)some$(s)text\n$(s)next$(s)line"*ebrace_L*ebrace_R
+                r(x) = "(*@\\HLJL0{$x}@*)"
+                @test render_nonwhitespace(MIME("text/latex"),"\tfoo  \nbar\t") == "\t"*r("foo")*"  \n"*r("bar")*"\t"
+                @test render_nonwhitespace(MIME("text/latex"),"foo") == r("foo")
+                @test render_nonwhitespace(MIME("text/latex"),"\t") == "\t"
+                @test render_nonwhitespace(MIME("text/latex"),"α") == r("α")
+                @test render_nonwhitespace(MIME("text/latex")," α\tβfoo ") == " "*r("α")*"\t"*r("βfoo")*" "
+                @test render_nonwhitespace(MIME("text/latex")," α ") == " "*r("α")*" "
             end
         end
         @testset "Custom Nodes" begin
