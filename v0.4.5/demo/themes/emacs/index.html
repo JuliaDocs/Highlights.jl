@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Emacs · Highlights.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../../assets/documenter.js"></script><script src="../../../siteinfo.js"></script><script src="../../../../versions.js"></script><link href="../../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../../../"><img class="logo" src="../../../assets/logo.png" alt="Highlights.jl logo"/></a><h1>Highlights.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../../">Home</a></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../../../man/guide/">User Guide</a></li><li><a class="toctext" href="../../../man/theme/">Theme Guide</a></li><li><a class="toctext" href="../../../man/lexer/">Lexer Guide</a></li><li><a class="toctext" href="../../../man/formatting/">Formatting</a></li></ul></li><li><span class="toctext">Demos</span><ul><li><a class="toctext" href="../../lexers/">Lexers</a></li><li><a class="toctext" href="../">Themes</a><ul><li class="current"><a class="toctext" href>Emacs</a><ul class="internal"></ul></li></ul></li></ul></li><li><span class="toctext">Library</span><ul><li><a class="toctext" href="../../../lib/public/">Public Interface</a></li><li><a class="toctext" href="../../../lib/internals/">Package Internals</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Demos</li><li><a href="../">Themes</a></li><li><a href>Emacs</a></li></ul><a class="edit-page" href="https://github.com/JuliaDocs/Highlights.jl/blob/master/docs/src/demo/themes/emacs.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Emacs</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Emacs-1" href="#Emacs-1">Emacs</a></h1><p><code>Highlights.Themes.EmacsTheme</code> – <em>A theme inspired by Emacs 22.</em></p>
+<style>
+pre.hljl {
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 5px;
+    overflow-x: auto;
+    background-color: rgb(248,248,248); }
+pre.hljl > span.hljl-t { }
+pre.hljl > span.hljl-w { color: rgb(187,187,187); }
+pre.hljl > span.hljl-e { }
+pre.hljl > span.hljl-eB { color: rgb(255,51,0); background-color: rgb(255,0,0); }
+pre.hljl > span.hljl-o { }
+pre.hljl > span.hljl-k { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-kc { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-kd { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-kn { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-kp { }
+pre.hljl > span.hljl-kr { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-kt { color: rgb(0,187,0); font-weight: bold; }
+pre.hljl > span.hljl-n { }
+pre.hljl > span.hljl-na { color: rgb(187,68,68); }
+pre.hljl > span.hljl-nb { color: rgb(170,34,255); }
+pre.hljl > span.hljl-nbp { color: rgb(170,34,255); }
+pre.hljl > span.hljl-nc { color: rgb(0,0,255); }
+pre.hljl > span.hljl-ncB { color: rgb(136,0,0); }
+pre.hljl > span.hljl-nd { color: rgb(170,34,255); }
+pre.hljl > span.hljl-ne { color: rgb(153,153,153); font-weight: bold; }
+pre.hljl > span.hljl-neB { color: rgb(210,65,58); font-weight: bold; }
+pre.hljl > span.hljl-nf { color: rgb(0,160,0); }
+pre.hljl > span.hljl-nfm { color: rgb(0,160,0); }
+pre.hljl > span.hljl-np { }
+pre.hljl > span.hljl-nl { color: rgb(160,160,0); }
+pre.hljl > span.hljl-nn { color: rgb(0,0,255); font-weight: bold; }
+pre.hljl > span.hljl-no { }
+pre.hljl > span.hljl-nt { color: rgb(0,128,0); font-weight: bold; }
+pre.hljl > span.hljl-nv { color: rgb(184,134,11); }
+pre.hljl > span.hljl-nvc { color: rgb(184,134,11); }
+pre.hljl > span.hljl-nvg { color: rgb(184,134,11); }
+pre.hljl > span.hljl-nvi { color: rgb(184,134,11); }
+pre.hljl > span.hljl-nvm { color: rgb(184,134,11); }
+pre.hljl > span.hljl-l { }
+pre.hljl > span.hljl-ld { }
+pre.hljl > span.hljl-s { color: rgb(187,68,68); }
+pre.hljl > span.hljl-sa { color: rgb(187,68,68); }
+pre.hljl > span.hljl-sb { color: rgb(187,68,68); }
+pre.hljl > span.hljl-sc { color: rgb(187,68,68); }
+pre.hljl > span.hljl-sd { color: rgb(187,68,68); }
+pre.hljl > span.hljl-sdB { font-style: italic; }
+pre.hljl > span.hljl-sdC { color: rgb(187,68,68); }
+pre.hljl > span.hljl-se { color: rgb(187,102,34); font-weight: bold; }
+pre.hljl > span.hljl-sh { color: rgb(187,68,68); }
+pre.hljl > span.hljl-si { color: rgb(187,102,136); font-weight: bold; }
+pre.hljl > span.hljl-so { color: rgb(0,128,0); }
+pre.hljl > span.hljl-sr { color: rgb(187,102,136); }
+pre.hljl > span.hljl-ss { color: rgb(187,68,68); }
+pre.hljl > span.hljl-ssB { color: rgb(184,134,11); }
+pre.hljl > span.hljl-nB { color: rgb(102,102,102); }
+pre.hljl > span.hljl-nbB { color: rgb(102,102,102); }
+pre.hljl > span.hljl-nfB { color: rgb(102,102,102); }
+pre.hljl > span.hljl-nh { color: rgb(102,102,102); }
+pre.hljl > span.hljl-ni { color: rgb(102,102,102); }
+pre.hljl > span.hljl-nil { color: rgb(102,102,102); }
+pre.hljl > span.hljl-noB { color: rgb(102,102,102); }
+pre.hljl > span.hljl-oB { color: rgb(102,102,102); }
+pre.hljl > span.hljl-ow { color: rgb(170,34,255); font-weight: bold; }
+pre.hljl > span.hljl-p { }
+pre.hljl > span.hljl-c { color: rgb(0,136,0); font-style: italic; }
+pre.hljl > span.hljl-ch { color: rgb(0,136,0); font-style: italic; }
+pre.hljl > span.hljl-cm { color: rgb(0,136,0); font-style: italic; }
+pre.hljl > span.hljl-cp { }
+pre.hljl > span.hljl-cpB { color: rgb(0,136,0); font-style: italic; }
+pre.hljl > span.hljl-cs { color: rgb(0,136,0); font-style: italic; }
+pre.hljl > span.hljl-csB { font-weight: bold; }
+pre.hljl > span.hljl-g { }
+pre.hljl > span.hljl-gd { color: rgb(160,0,0); }
+pre.hljl > span.hljl-ge { font-style: italic; }
+pre.hljl > span.hljl-geB { color: rgb(255,0,0); }
+pre.hljl > span.hljl-gh { color: rgb(0,0,128); font-weight: bold; }
+pre.hljl > span.hljl-gi { color: rgb(0,160,0); }
+pre.hljl > span.hljl-go { color: rgb(136,136,136); }
+pre.hljl > span.hljl-gp { color: rgb(0,0,128); font-weight: bold; }
+pre.hljl > span.hljl-gs { font-weight: bold; }
+pre.hljl > span.hljl-gsB { color: rgb(128,0,128); font-weight: bold; }
+pre.hljl > span.hljl-gt { color: rgb(0,68,221); }
+</style>
+
+<pre class='hljl'>
+<span class='hljl-cm'>#=
+Multiline comments...
+    can be...
+    #= nested #= to =# any depth. =#
+=#</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># A single line comment.</span><span class='hljl-t'>
+    </span><span class='hljl-cs'># And another one.</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># Array and tuple literals.</span><span class='hljl-t'>
+</span><span class='hljl-p'>[</span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>][</span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-k'>end</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-p'>(</span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-nfB'>1.0</span><span class='hljl-p'>)[</span><span class='hljl-ni'>1</span><span class='hljl-oB'>:</span><span class='hljl-ni'>2</span><span class='hljl-p'>]</span><span class='hljl-t'>
+</span><span class='hljl-p'>[(</span><span class='hljl-ni'>1</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>3</span><span class='hljl-p'>),</span><span class='hljl-t'> </span><span class='hljl-p'>(</span><span class='hljl-ni'>3</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>4</span><span class='hljl-p'>)][</span><span class='hljl-k'>end</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>]</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># Keywords.</span><span class='hljl-t'>
+</span><span class='hljl-k'>if</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'>
+    </span><span class='hljl-cs'># ...</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-kp'>in</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>?</span><span class='hljl-t'> </span><span class='hljl-kc'>false</span><span class='hljl-t'> </span><span class='hljl-oB'>:</span><span class='hljl-t'> </span><span class='hljl-kc'>true</span><span class='hljl-t'>
+
+</span><span class='hljl-k'>let</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-t'>
+    </span><span class='hljl-kd'>local</span><span class='hljl-t'> </span><span class='hljl-n'>t</span><span class='hljl-t'>
+    </span><span class='hljl-kd'>global</span><span class='hljl-t'> </span><span class='hljl-n'>s</span><span class='hljl-t'>
+    </span><span class='hljl-n'>t</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
+    </span><span class='hljl-n'>s</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-k'>module</span><span class='hljl-t'> </span><span class='hljl-n'>M</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>baremodule</span><span class='hljl-t'> </span><span class='hljl-n'>M</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>typealias</span><span class='hljl-t'> </span><span class='hljl-n'>T</span><span class='hljl-t'> </span><span class='hljl-n'>A</span><span class='hljl-t'>
+</span><span class='hljl-n'>abstract</span><span class='hljl-t'> </span><span class='hljl-n'>A</span><span class='hljl-t'> </span><span class='hljl-oB'>&lt;:</span><span class='hljl-t'> </span><span class='hljl-n'>T</span><span class='hljl-t'>
+</span><span class='hljl-n'>type</span><span class='hljl-t'> </span><span class='hljl-nf'>Point</span><span class='hljl-p'>{</span><span class='hljl-n'>T</span><span class='hljl-p'>}</span><span class='hljl-t'>
+    </span><span class='hljl-n'>x</span><span class='hljl-oB'>::</span><span class='hljl-n'>T</span><span class='hljl-t'>
+    </span><span class='hljl-n'>y</span><span class='hljl-oB'>::</span><span class='hljl-n'>T</span><span class='hljl-t'>
+
+    </span><span class='hljl-nf'>Point</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-nf'>new</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-ni'>2</span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+    </span><span class='hljl-nd'>@inline</span><span class='hljl-t'> </span><span class='hljl-k'>function</span><span class='hljl-t'> </span><span class='hljl-nf'>Point</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-p'>)</span><span class='hljl-t'>
+        </span><span class='hljl-k'>return</span><span class='hljl-t'> </span><span class='hljl-nf'>new</span><span class='hljl-p'>(</span><span class='hljl-n'>y</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-k'>end</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>immutable</span><span class='hljl-t'> </span><span class='hljl-nf'>Empty</span><span class='hljl-p'>{</span><span class='hljl-n'>T</span><span class='hljl-p'>}</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-k'>macro</span><span class='hljl-t'> </span><span class='hljl-nf'>something</span><span class='hljl-p'>(</span><span class='hljl-n'>x</span><span class='hljl-oB'>...</span><span class='hljl-p'>)</span><span class='hljl-t'>
+    </span><span class='hljl-cs'># ...</span><span class='hljl-t'>
+</span><span class='hljl-k'>end</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># Character literals.</span><span class='hljl-t'>
+</span><span class='hljl-sc'>&#39; &#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;\n&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;\&#39;&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;&quot;&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;\u1234&#39;</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-sc'>&#39;⻆&#39;</span><span class='hljl-t'>
+
+</span><span class='hljl-cs'># String literals.</span><span class='hljl-t'>
+
+</span><span class='hljl-n'>⻪</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-s'>&quot;    &quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;&#39;&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;</span><span class='hljl-se'>\&quot;\&quot;</span><span class='hljl-s'> ...&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;
+a
+&quot;</span><span class='hljl-t'>
+</span><span class='hljl-s'>&quot;&quot;&quot;
+...
+    &quot;&quot;&quot;</span><span class='hljl-t'>
+
+</span><span class='hljl-s'>&quot; </span><span class='hljl-si'>$x</span><span class='hljl-s'> </span><span class='hljl-si'>$</span><span class='hljl-p'>(</span><span class='hljl-k'>let</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-t'> </span><span class='hljl-oB'>=</span><span class='hljl-t'> </span><span class='hljl-n'>y</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-ni'>1</span><span class='hljl-p'>;</span><span class='hljl-t'> </span><span class='hljl-n'>x</span><span class='hljl-oB'>^</span><span class='hljl-ni'>2</span><span class='hljl-p'>;</span><span class='hljl-t'> </span><span class='hljl-k'>end</span><span class='hljl-p'>)</span><span class='hljl-s'> ... </span><span class='hljl-se'>\n</span><span class='hljl-s'>&quot;</span><span class='hljl-t'>
+
+</span><span class='hljl-so'>r&quot;[a-z]+$xyz&quot;</span><span class='hljl-n'>m</span><span class='hljl-t'>
+
+</span><span class='hljl-so'>raw&quot;\n\n\r\t...\b&quot;</span><span class='hljl-t'>
+</span><span class='hljl-so'>raw&quot;&quot;&quot;\n\n\r\t...\b&quot;&quot;&quot;</span><span class='hljl-n'>abc</span><span class='hljl-t'>
+
+</span><span class='hljl-so'>v&quot;0.0.2&quot;</span><span class='hljl-t'> </span><span class='hljl-oB'>≥</span><span class='hljl-t'> </span><span class='hljl-so'>v&quot;0.0.1&quot;</span><span class='hljl-t'>
+
+</span><span class='hljl-nf'>run</span><span class='hljl-p'>(</span><span class='hljl-sb'>`foo </span><span class='hljl-si'>$bar</span><span class='hljl-sb'> --baz </span><span class='hljl-si'>$</span><span class='hljl-p'>([</span><span class='hljl-n'>a</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>b</span><span class='hljl-p'>,</span><span class='hljl-t'> </span><span class='hljl-n'>c</span><span class='hljl-p'>])</span><span class='hljl-sb'>`</span><span class='hljl-p'>)</span><span class='hljl-t'>
+
+</span><span class='hljl-ni'>1_000_000_000</span><span class='hljl-t'> </span><span class='hljl-oB'>+</span><span class='hljl-t'> </span><span class='hljl-nfB'>1.0e-9</span><span class='hljl-t'> </span><span class='hljl-oB'>*</span><span class='hljl-t'> </span><span class='hljl-nfB'>.121</span><span class='hljl-t'> </span><span class='hljl-oB'>/</span><span class='hljl-t'> </span><span class='hljl-nfB'>1121.</span><span class='hljl-t'>
+</span><span class='hljl-nfB'>1f0</span><span class='hljl-t'> </span><span class='hljl-oB'>-</span><span class='hljl-t'> </span><span class='hljl-nfB'>1E-12</span><span class='hljl-t'>
+</span><span class='hljl-nbB'>0b100_101_111</span><span class='hljl-t'>
+</span><span class='hljl-noB'>0o12123535252</span><span class='hljl-t'>
+</span><span class='hljl-nh'>0x4312afAfabC</span><span class='hljl-t'>
+</span><span class='hljl-ni'>1234</span><span class='hljl-t'>
+</span><span class='hljl-ni'>1_2_3_4</span><span class='hljl-t'>
+</span>
+</pre><footer><hr/><a class="previous" href="../default/"><span class="direction">Previous</span><span class="title">Default</span></a><a class="next" href="../github/"><span class="direction">Next</span><span class="title">GitHub</span></a></footer></article></body></html>
