@@ -8,7 +8,7 @@ user-defined formats.
 To begin we will need to import the `Format` module from `Highlights`.
 
 ```julia
-using Highlights.Format
+using Highlights: Format, highlight
 ```
 
 Now we need to decide on a format the we'd like to add. We'll be adding an ANSI
@@ -59,5 +59,5 @@ end
 To view highlighted source code in the terminal we can then just call
 
 ```
-julia> highlight(STDOUT, MIME("text/ansi"), source, Lexers.JuliaLexer)
+julia> highlight(stdout, MIME("text/ansi"), source, Lexers.JuliaLexer)
 ```
