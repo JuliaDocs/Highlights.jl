@@ -40,6 +40,37 @@ tokentest(
 
 tokentest(
     Lexers.JuliaLexer,
+    "a[begin]",
+    NAME => "a",
+    PUNCTUATION => "[",
+    KEYWORD => "begin",
+    PUNCTUATION => "]",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "a[begin:end]",
+    NAME => "a",
+    PUNCTUATION => "[",
+    KEYWORD => "begin",
+    OPERATOR => ":",
+    KEYWORD => "end",
+    PUNCTUATION => "]",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "a[begin-1]",
+    NAME => "a",
+    PUNCTUATION => "[",
+    KEYWORD => "begin",
+    OPERATOR => "-",
+    NUMBER_INTEGER => "1",
+    PUNCTUATION => "]",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
     "(1,2.0)",
     PUNCTUATION => "(",
     NUMBER_INTEGER => "1",
@@ -250,6 +281,43 @@ tokentest(
     PUNCTUATION => "{",
     NAME => "T",
     PUNCTUATION => "}",
+    TEXT => " ",
+    KEYWORD => "end",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "struct Empty{T} where T <: S end",
+    KEYWORD => "struct",
+    TEXT => " ",
+    NAME_FUNCTION => "Empty",
+    PUNCTUATION => "{",
+    NAME => "T",
+    PUNCTUATION => "}",
+    TEXT => " ",
+    KEYWORD_PSEUDO => "where",
+    TEXT => " ",
+    NAME => "T",
+    TEXT => " ",
+    OPERATOR => "<:",
+    TEXT => " ",
+    NAME => "S",
+    TEXT => " ",
+    KEYWORD => "end",
+)
+
+tokentest(
+    Lexers.JuliaLexer,
+    "primitive type Float16 <: AbstractFloat 16 end",
+    KEYWORD => "primitive type",
+    TEXT => " ",
+    NAME => "Float16",
+    TEXT => " ",
+    OPERATOR => "<:",
+    TEXT => " ",
+    NAME => "AbstractFloat",
+    TEXT => " ",
+    NUMBER_INTEGER => "16",
     TEXT => " ",
     KEYWORD => "end",
 )

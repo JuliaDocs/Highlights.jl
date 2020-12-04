@@ -90,7 +90,8 @@ julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
 
                 (julia_is_symbol, STRING_CHAR),
                 (r"\b(?<![_.])in\b", KEYWORD_PSEUDO),
-                (r"\b(?<![_.])end\b", KEYWORD),
+                (r"\b(?<![_.])where\b", KEYWORD_PSEUDO),
+                (r"\b(?<![_.])(begin|end)\b", KEYWORD),
                 (r"\b(?<![_.])(true|false)\b", KEYWORD_CONSTANT),
                 (r"\b(?<![_.])(local|global|const)\b", KEYWORD_DECLARATION),
                 (words(keywords, prefix = "\\b(?<![_.])", suffix = "\\b"), KEYWORD),

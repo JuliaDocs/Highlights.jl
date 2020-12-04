@@ -2,9 +2,10 @@
 
 *A source code highlighter for Julia.*
 
-| **Documentation**                                                               | **Build Status**                                                                                |
-|:-------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------:|
-| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | [![][travis-img]][travis-url] [![][appveyor-img]][appveyor-url] [![][codecov-img]][codecov-url] |
+| **Documentation**                                                               | **Build Status**                                                                                         |
+|:-------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|
+| [![][docs-stable-img]][docs-stable-url] [![][docs-latest-img]][docs-latest-url] | ![CI](https://github.com/JuliaDocs/Highlights.jl/workflows/CI/badge.svg) [![][codecov-img]][codecov-url] |
+
 
 
 ## Installation
@@ -43,12 +44,6 @@ then feel free to ask for help in the [Gitter chat room][gitter-url].
 
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-stable-url]: https://juliadocs.github.io/Highlights.jl/stable
-
-[travis-img]: https://travis-ci.org/JuliaDocs/Highlights.jl.svg?branch=master
-[travis-url]: https://travis-ci.org/JuliaDocs/Highlights.jl
-
-[appveyor-img]: https://ci.appveyor.com/api/projects/status/qnphq3a8eph3o979/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/MichaelHatherly/highlights-jl/branch/master
 
 [codecov-img]: https://codecov.io/gh/JuliaDocs/Highlights.jl/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/JuliaDocs/Highlights.jl
