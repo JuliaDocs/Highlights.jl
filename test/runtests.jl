@@ -1,5 +1,13 @@
 using Highlights
 
+# Hack to make the test in External actually usable...
+using Pkg
+current = Base.active_project()
+Pkg.activate(joinpath(@__DIR__, "External"))
+Pkg.develop(path = dirname(@__DIR__))
+using External
+Pkg.activate(dirname(current))
+
 using Test
 using InteractiveUtils
 
@@ -35,6 +43,7 @@ end
 #
 
 using Highlights.Tokens, Highlights.Themes, Highlights.Lexers
+
 
 # Error reporting for broken lexers.
 abstract type BrokenLexer <: Highlights.AbstractLexer end

@@ -48,7 +48,7 @@ macro lexer(T, dict)
         #     @generated $(Compiler).lex!{S}(ctx::Context, ::Type{$tx}, ::State{S}) =
         #         compile($tx, S, data)
         # end
-        $(Compiler).compile_lexer($(@__MODULE__), $tx)
+        $(Compiler).compile_lexer($(__module__), $tx)
         $tx
     end
 end

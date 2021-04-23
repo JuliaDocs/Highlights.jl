@@ -1,0 +1,7 @@
+name = "External"
+uuid = "70b8d2fa-6676-4f7e-a9c0-39247896dc73"
+authors = ["Mike <michaelhatherly@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Highlights = "eafb193a-b7ab-5a9e-9068-77385905fa72"
