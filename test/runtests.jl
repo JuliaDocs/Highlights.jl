@@ -4,7 +4,7 @@ using Highlights
 using Pkg
 current = Base.active_project()
 Pkg.activate(joinpath(@__DIR__, "External"))
-Pkg.develop(path = dirname(@__DIR__))
+Pkg.develop("Highlights")
 using External
 Pkg.activate(dirname(current))
 
