@@ -44,7 +44,6 @@ end
 
 using Highlights.Tokens, Highlights.Themes, Highlights.Lexers
 
-
 # Error reporting for broken lexers.
 abstract type BrokenLexer <: Highlights.AbstractLexer end
 @lexer BrokenLexer Dict(
