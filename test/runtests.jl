@@ -1,13 +1,5 @@
 using Highlights
 
-# Hack to make the test in External actually usable...
-using Pkg
-current = Base.active_project()
-Pkg.activate(joinpath(@__DIR__, "External"))
-Pkg.develop("Highlights")
-using External
-Pkg.activate(dirname(current))
-
 using Test
 using InteractiveUtils
 
@@ -341,3 +333,9 @@ end
         @test_throws ArgumentError Highlights.lexer("???")
     end
 end
+
+# Hack to make the test in External actually usable...
+using Pkg
+Pkg.activate(joinpath(@__DIR__, "External"))
+Pkg.develop("Highlights")
+using External
