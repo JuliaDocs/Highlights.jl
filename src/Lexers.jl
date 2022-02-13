@@ -92,7 +92,8 @@ export
     JuliaConsoleLexer,
     MatlabLexer,
     RLexer,
-    TOMLLexer
+    TOMLLexer,
+    PTXLexer
 
 "A FORTRAN 90 source code lexer."
 abstract type FortranLexer <: AbstractLexer end
@@ -106,6 +107,8 @@ abstract type MatlabLexer <: AbstractLexer end
 abstract type RLexer <: AbstractLexer end
 "TOML (Tom's Obvious, Minimal Language) lexer."
 abstract type TOMLLexer <: AbstractLexer end
+"PTX ISA(NVIDIA GPU) Lexer"
+abstract type PTXLexer <: AbstractLexer end
 
 
 # Definitions.
