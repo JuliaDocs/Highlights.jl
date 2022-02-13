@@ -1,3 +1,5 @@
+include("./ptx-constants.jl")
+
 @lexer PTXLexer Dict(
     :name => "PTX Lexer",
     :description => "A PTX(Parallel Thread Execution) lexer. Virtual ISA for NVIDIA GPU's",
