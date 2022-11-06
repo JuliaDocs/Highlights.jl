@@ -37,13 +37,13 @@ then feel free to ask for help in the [Gitter chat room][gitter-url].
 
 [gitter-url]: https://gitter.im/juliadocs/users
 
-[contrib-url]: https://juliadocs.github.io/Documenter.jl/latest/man/contributing/
+[contrib-url]: https://documenter.juliadocs.org/latest/man/contributing/
 
 [docs-latest-img]: https://img.shields.io/badge/docs-latest-blue.svg
-[docs-latest-url]: https://juliadocs.github.io/Highlights.jl/latest
+[docs-latest-url]: https://highlights.juliadocs.org/latest
 
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
-[docs-stable-url]: https://juliadocs.github.io/Highlights.jl/stable
+[docs-stable-url]: https://highlights.juliadocs.org/stable
 
 [codecov-img]: https://codecov.io/gh/JuliaDocs/Highlights.jl/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/JuliaDocs/Highlights.jl
