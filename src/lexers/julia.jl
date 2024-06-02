@@ -66,9 +66,8 @@ end
 julia_is_triple_string_macro(ctx::Context) = julia_is_string_macro(ctx, 3)
 
 # Julia Script Lexer.
-
 @lexer JuliaLexer let
-    keywords = [kw.keyword for kw in REPL.REPLCompletions.complete_keyword("")]
+    keywords = [kw.keyword for kw in REPL.REPLCompletions.sorted_keywords]
     char_regex = [
         raw"'(\\.|\\[0-7]{1,3}|\\x[a-fA-F0-9]{1,3}|",
         raw"\\u[a-fA-F0-9]{1,4}|\\U[a-fA-F0-9]{1,6}|",

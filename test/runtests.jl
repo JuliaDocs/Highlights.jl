@@ -337,5 +337,5 @@ end
 # Hack to make the test in External actually usable...
 using Pkg
 Pkg.activate(joinpath(@__DIR__, "External"))
-Pkg.develop("Highlights")
+Pkg.develop(Pkg.PackageSpec(;path=dirname(@__DIR__)))
 using External
