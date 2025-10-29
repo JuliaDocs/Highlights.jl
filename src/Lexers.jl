@@ -91,8 +91,9 @@ export
     JuliaLexer,
     JuliaConsoleLexer,
     MatlabLexer,
+    PTXLexer,
     RLexer,
-    TOMLLexer
+    TOMLLexer,
 
 "A FORTRAN 90 source code lexer."
 abstract type FortranLexer <: AbstractLexer end
@@ -102,6 +103,8 @@ abstract type JuliaLexer <: AbstractLexer end
 abstract type JuliaConsoleLexer <: AbstractLexer end
 "A lexer for MATLAB source code."
 abstract type MatlabLexer <: AbstractLexer end
+"PTX ISA(NVIDIA GPU) Lexer"
+abstract type PTXLexer <: AbstractLexer end
 "A lexer for the R language."
 abstract type RLexer <: AbstractLexer end
 "TOML (Tom's Obvious, Minimal Language) lexer."
@@ -115,6 +118,7 @@ using ..Highlights.Tokens
 include("lexers/fortran.jl")
 include("lexers/julia.jl")
 include("lexers/matlab.jl")
+include("lexers/ptx.jl")
 include("lexers/r.jl")
 include("lexers/toml.jl")
 
