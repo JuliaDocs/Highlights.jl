@@ -1,0 +1,15 @@
+[comment:# Quick sort implementation]
+[keyword:from] [variable:typing] [keyword:import] [constructor:List]
+
+[keyword:def] [function:quicksort]([variable:arr]: [constructor:List][[type:int]]) [operator:->] [constructor:List][[type:int]]:
+    [string:"""Sort array using quicksort algorithm."""]
+    [keyword:if] [function:len]([variable:arr]) [operator:<=] [number:1]:
+        [keyword:return] [variable:arr]
+    [variable:pivot] [operator:=] [variable:arr][[function:len]([variable:arr]) [operator://] [number:2]]
+    [variable:left] [operator:=] [[variable:x] [keyword:for] [variable:x] [operator:in] [variable:arr] [keyword:if] [variable:x] [operator:<] [variable:pivot]]
+    [variable:middle] [operator:=] [[variable:x] [keyword:for] [variable:x] [operator:in] [variable:arr] [keyword:if] [variable:x] [operator:==] [variable:pivot]]
+    [variable:right] [operator:=] [[variable:x] [keyword:for] [variable:x] [operator:in] [variable:arr] [keyword:if] [variable:x] [operator:>] [variable:pivot]]
+    [keyword:return] [function:quicksort]([variable:left]) [operator:+] [variable:middle] [operator:+] [function:quicksort]([variable:right])
+
+[variable:numbers] [operator:=] [[number:3], [number:6], [number:8], [number:10], [number:1], [number:2], [number:1]]
+[function:print]([string:f"Sorted: ][punctuation.special:{][function:quicksort][embedded:(][variable:numbers][embedded:)][punctuation.special:}][string:"])

@@ -1,0 +1,17 @@
+[comment:// Generic Result handling]
+[keyword:use] std[punctuation.delimiter:::]fs[punctuation.delimiter:::][constructor:File][punctuation.delimiter:;]
+[keyword:use] std[punctuation.delimiter:::]io[punctuation.delimiter:::][punctuation.bracket:{][keyword:self][punctuation.delimiter:,] [constructor:Read][punctuation.bracket:}][punctuation.delimiter:;]
+
+[keyword:fn] [function:read_file][punctuation.bracket:(][variable.parameter:path][punctuation.delimiter::] [operator:&][type.builtin:str][punctuation.bracket:)] -> io[punctuation.delimiter:::][type:Result][punctuation.bracket:<][type:String][punctuation.bracket:>] [punctuation.bracket:{]
+    [keyword:let] [keyword:mut] file = [constructor:File][punctuation.delimiter:::][function:open][punctuation.bracket:(]path[punctuation.bracket:)]?[punctuation.delimiter:;]
+    [keyword:let] [keyword:mut] contents = [constructor:String][punctuation.delimiter:::][function:new][punctuation.bracket:(][punctuation.bracket:)][punctuation.delimiter:;]
+    file[punctuation.delimiter:.][function.method:read_to_string][punctuation.bracket:(][operator:&][keyword:mut] contents[punctuation.bracket:)]?[punctuation.delimiter:;]
+    [function:Ok][punctuation.bracket:(]contents[punctuation.bracket:)]
+[punctuation.bracket:}]
+
+[keyword:fn] [function:main][punctuation.bracket:(][punctuation.bracket:)] [punctuation.bracket:{]
+    [keyword:match] [function:read_file][punctuation.bracket:(][string:"example.txt"][punctuation.bracket:)] [punctuation.bracket:{]
+        [constructor:Ok][punctuation.bracket:(]s[punctuation.bracket:)] => [function.macro:println][function.macro:!][punctuation.bracket:(][string:"Contents: {}"][punctuation.delimiter:,] s[punctuation.bracket:)][punctuation.delimiter:,]
+        [constructor:Err][punctuation.bracket:(]e[punctuation.bracket:)] => [function.macro:eprintln][function.macro:!][punctuation.bracket:(][string:"Error: {}"][punctuation.delimiter:,] e[punctuation.bracket:)][punctuation.delimiter:,]
+    [punctuation.bracket:}]
+[punctuation.bracket:}]

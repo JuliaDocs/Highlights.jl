@@ -1,0 +1,83 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A"># Fibonacci with memoization</span>
+<span style="color: #E64747">module</span> <span style="color: #F8F8F2">Fib</span>
+
+<span style="color: #E64747">const</span> <span style="color: #F8F8F2">cache</span> <span style="color: #F8F8F2">=</span> <span style="color: #75D7EC">Dict</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">Int</span><span style="color: #F8F8F2">,</span><span style="color: #75D7EC">BigInt</span><span style="color: #F8F8F2">}</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #42E66C">&quot;&quot;&quot;Calculate the nth Fibonacci number.&quot;&quot;&quot;</span>
+<span style="color: #E64747">function</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">Int</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">BigInt</span>
+    <span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">&lt;=</span> <span style="color: #E4F34A">1</span> <span style="color: #F8F8F2">&amp;&amp;</span> <span style="color: #E64747">return</span> <span style="color: #9B6BDF">BigInt</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #9B6BDF">get!</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">cache</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">)</span> <span style="color: #E64747">do</span>
+        <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">-</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">+</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">-</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #E64747">end</span>
+<span style="color: #E64747">end</span>
+
+<span style="color: #E64747">for</span> <span style="color: #F8F8F2">i</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span><span style="color: #E4F34A">10</span>
+    <span style="color: #F8F8F2">Base</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">println</span><span style="color: #F8F8F2">(</span><span style="color: #42E66C">&quot;fib(</span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">i</span><span style="color: #42E66C">) = </span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">(</span><span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">i</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">)</span><span style="color: #42E66C">&quot;</span><span style="color: #F8F8F2">)</span>
+<span style="color: #E64747">end</span>
+
+<span style="color: #7A7A7A"># Demonstrate qualified calls</span>
+<span style="color: #F8F8F2">Base</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">length</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">cache</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">Core</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">typeof</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">cache</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">Base</span><span style="color: #F8F8F2">.</span><span style="color: #F8F8F2">Iterators</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">take</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span><span style="color: #E4F34A">10</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #E64747">end</span> <span style="color: #7A7A7A"># module</span>
+
+<span style="color: #7A7A7A">#=
+Additional syntax coverage from old julia sample:
+Nested comments #= can be #= deeply =# nested =#
+=#</span>
+
+<span style="color: #7A7A7A"># Array and tuple literals</span>
+<span style="color: #F8F8F2">[</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">[</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span><span style="color: #FF79C6">end</span><span style="color: #F8F8F2">]</span>
+<span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">1.0</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">[</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">]</span>
+<span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">[</span><span style="color: #FF79C6">end</span><span style="color: #F8F8F2">-</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">]</span>
+<span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">[</span><span style="color: #FF79C6">begin</span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #7A7A7A"># Control flow</span>
+<span style="color: #E64747">if</span> <span style="color: #F8F8F2">x</span> <span style="color: #E64747">in</span> <span style="color: #F8F8F2">y</span>
+    <span style="color: #F1FA8C">nothing</span>
+<span style="color: #E64747">end</span>
+<span style="color: #F8F8F2">x</span> <span style="color: #E64747">in</span> <span style="color: #F8F8F2">y</span> <span style="color: #E64747">?</span> <span style="color: #E4F34A">false</span> <span style="color: #E64747">:</span> <span style="color: #E4F34A">true</span>
+
+<span style="color: #E64747">let</span> <span style="color: #F8F8F2">x</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">1</span>
+    <span style="color: #E64747">local</span> <span style="color: #F8F8F2">t</span>
+    <span style="color: #E64747">global</span> <span style="color: #F8F8F2">s</span>
+    <span style="color: #F8F8F2">t</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">x</span>
+<span style="color: #E64747">end</span>
+
+<span style="color: #7A7A7A"># Type definitions</span>
+<span style="color: #E64747">abstract</span> <span style="color: #E64747">type</span> <span style="color: #75D7EC">AbstractPoint</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC"> </span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC"> </span><span style="color: #75D7EC">Number</span> <span style="color: #E64747">end</span>
+<span style="color: #E64747">mutable</span> <span style="color: #E64747">struct</span> <span style="color: #75D7EC">Point</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span> <span style="color: #E64747">where</span> <span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC">Number</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC">
+    x</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T</span><span style="color: #75D7EC">
+    y</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T
+    </span><span style="color: #9B6BDF">Point</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">)</span><span style="color: #75D7EC"> </span><span style="color: #F8F8F2">=</span><span style="color: #75D7EC"> new</span><span style="color: #F8F8F2">(</span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2">,</span><span style="color: #75D7EC"> 2x</span><span style="color: #F8F8F2">)</span><span style="color: #75D7EC">
+end
+struct Empty</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC"> end
+primitive type Float16Custom </span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC"> </span><span style="color: #8BE9FD">AbstractFloat</span><span style="color: #75D7EC"> 16 end
+
+</span><span style="color: #7A7A7A"># Macros</span><span style="color: #75D7EC">
+macro something</span><span style="color: #F8F8F2">(</span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2">...</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #75D7EC">nothing</span>
+<span style="color: #E64747">end</span>
+
+<span style="color: #7A7A7A"># Character literals</span>
+<span style="color: #42E66C">&#39; &#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;\n&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;\&#39;&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;&quot;&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;\u1234&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;⻆&#39;</span>
+
+<span style="color: #7A7A7A"># String literals</span>
+<span style="color: #42E66C">&quot;&quot;&quot;Multiline
+string&quot;&quot;&quot;</span>
+<span style="color: #42E66C">&quot; </span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">x</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">(</span><span style="color: #E64747">let</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">x</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">=</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">y</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">+</span><span style="color: #42E66C"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">;</span><span style="color: #42E66C"> </span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">^</span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">;</span><span style="color: #42E66C"> </span><span style="color: #E64747">end</span><span style="color: #F8F8F2">)</span><span style="color: #42E66C"> &quot;</span>
+<span style="color: #E356A7">r</span><span style="color: #42E66C">&quot;[a-z]+$xyz&quot;</span><span style="color: #F8F8F2">m</span>
+<span style="color: #E356A7">raw</span><span style="color: #42E66C">&quot;\n\n\r\t...\b&quot;</span>
+<span style="color: #E356A7">v</span><span style="color: #42E66C">&quot;0.0.2&quot;</span> <span style="color: #F8F8F2">≥</span> <span style="color: #E356A7">v</span><span style="color: #42E66C">&quot;0.0.1&quot;</span>
+
+<span style="color: #7A7A7A"># Command literals</span>
+<span style="color: #50FA7B">`echo </span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">bar</span><span style="color: #50FA7B">`</span>
+
+<span style="color: #7A7A7A"># Number formats</span>
+<span style="color: #E4F34A">1_000_000</span> <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">1.0e-9</span> <span style="color: #F8F8F2">*</span> <span style="color: #E4F34A">0.121</span> <span style="color: #F8F8F2">/</span> <span style="color: #E4F34A">1121.0</span>
+<span style="color: #E4F34A">1.0f0</span> <span style="color: #F8F8F2">-</span> <span style="color: #E4F34A">1E-12</span>
+<span style="color: #E4F34A">0b100_101_111</span>
+<span style="color: #E4F34A">0o12123535</span>
+<span style="color: #E4F34A">0x4312afAF</span>
+</pre>

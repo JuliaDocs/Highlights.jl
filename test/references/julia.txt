@@ -1,0 +1,82 @@
+[comment:# Fibonacci with memoization]
+[keyword.import:module] [variable:Fib]
+
+[keyword.modifier:const] [variable:cache] [operator:=] [type:Dict][punctuation.bracket:{][type:Int][punctuation.delimiter:,][type:BigInt][punctuation.bracket:}][punctuation.bracket:(][punctuation.bracket:)]
+
+[string:"""Calculate the nth Fibonacci number."""]
+[keyword.function:function] [function.call:fib][punctuation.bracket:(][variable:n][operator:::][type:Int][punctuation.bracket:)][operator:::][type:BigInt]
+    [variable:n] [operator:<=] [number:1] [operator:&&] [keyword.return:return] [function.call:BigInt][punctuation.bracket:(][variable:n][punctuation.bracket:)]
+    [function.call:get!][punctuation.bracket:(][variable:cache][punctuation.delimiter:,] [variable:n][punctuation.bracket:)] [keyword.function:do]
+        [function.call:fib][punctuation.bracket:(][variable:n] [operator:-] [number:1][punctuation.bracket:)] [operator:+] [function.call:fib][punctuation.bracket:(][variable:n] [operator:-] [number:2][punctuation.bracket:)]
+    [keyword.function:end]
+[keyword.function:end]
+
+[keyword.repeat:for] [variable:i] [operator:=] [number:1][operator::][number:10]
+    [variable:Base][punctuation.special:.][function.call:println][punctuation.bracket:(][string:"fib(][punctuation.special:$][variable:i][string:) = ][punctuation.special:$][punctuation.bracket:(][function.call:fib][punctuation.bracket:(][variable:i][punctuation.bracket:)][punctuation.bracket:)][string:"][punctuation.bracket:)]
+[keyword.repeat:end]
+
+[comment:# Demonstrate qualified calls]
+[variable:Base][punctuation.special:.][function.call:length][punctuation.bracket:(][variable:cache][punctuation.bracket:)]
+[variable:Core][punctuation.special:.][function.call:typeof][punctuation.bracket:(][variable:cache][punctuation.bracket:)]
+[variable:Base][punctuation.special:.][variable.member:Iterators][punctuation.special:.][function.call:take][punctuation.bracket:(][number:1][operator::][number:10][punctuation.delimiter:,] [number:3][punctuation.bracket:)]
+
+[keyword.import:end] [comment:# module]
+
+[comment:#=
+Additional syntax coverage from old julia sample:
+Nested comments #= can be #= deeply =# nested =#
+=#]
+
+[comment:# Array and tuple literals]
+[punctuation.bracket:[][number:1][punctuation.delimiter:,] [number:3][punctuation.delimiter:,] [number:3][punctuation.delimiter:,] [number:4][punctuation.bracket:]][punctuation.bracket:[][number:1][operator::][variable.builtin:end][punctuation.bracket:]]
+[punctuation.bracket:(][number:1][punctuation.delimiter:,] [number:2][punctuation.delimiter:,] [number.float:1.0][punctuation.bracket:)][punctuation.bracket:[][number:1][operator::][number:2][punctuation.bracket:]]
+[punctuation.bracket:[][punctuation.bracket:(][number:1][punctuation.delimiter:,] [number:3][punctuation.bracket:)][punctuation.delimiter:,] [punctuation.bracket:(][number:3][punctuation.delimiter:,] [number:4][punctuation.bracket:)][punctuation.bracket:]][punctuation.bracket:[][variable.builtin:end][operator:-][number:1][punctuation.bracket:]]
+[punctuation.bracket:[][punctuation.bracket:(][number:1][punctuation.delimiter:,] [number:3][punctuation.bracket:)][punctuation.delimiter:,] [punctuation.bracket:(][number:3][punctuation.delimiter:,] [number:4][punctuation.bracket:)][punctuation.bracket:]][punctuation.bracket:[][variable.builtin:begin][punctuation.bracket:]]
+
+[comment:# Control flow]
+[keyword.conditional:if] [variable:x] [keyword.operator:in] [variable:y]
+    [constant.builtin:nothing]
+[keyword.conditional:end]
+[variable:x] [keyword.operator:in] [variable:y] [keyword.conditional.ternary:?] [boolean:false] [keyword.conditional.ternary::] [boolean:true]
+
+[keyword:let] [variable:x] [operator:=] [number:1]
+    [keyword:local] [variable:t]
+    [keyword:global] [variable:s]
+    [variable:t] [operator:=] [variable:x]
+[keyword:end]
+
+[comment:# Type definitions]
+[keyword.type:abstract] [keyword.type:type] [type:AbstractPoint][punctuation.bracket:{][type:T][punctuation.bracket:}][type.definition: ][operator:<:][type.definition: ][type:Number] [keyword.type:end]
+[keyword.type:mutable] [keyword.type:struct] [type:Point][punctuation.bracket:{][type:T][punctuation.bracket:}] [keyword.operator:where] [punctuation.bracket:{][type:T][operator:<:][type:Number][punctuation.bracket:}][type:
+    x][operator:::][type:T][type:
+    y][operator:::][type:T
+    ][function.call:Point][punctuation.bracket:(][variable:x][punctuation.bracket:)][type: ][operator:=][type: new][punctuation.bracket:(][type:x][punctuation.delimiter:,][type: 2x][punctuation.bracket:)][type:
+end
+struct Empty][punctuation.bracket:{][type:T][punctuation.bracket:}][type: end
+primitive type Float16Custom ][operator:<:][type: ][type.builtin:AbstractFloat][type: 16 end
+
+][comment:# Macros][type:
+macro something][punctuation.bracket:(][type:x][punctuation.special:...][punctuation.bracket:)]
+    [type.definition:nothing]
+[keyword.type:end]
+
+[comment:# Character literals]
+[character:' '][punctuation.delimiter:,] [character:'\n'][punctuation.delimiter:,] [character:'\''][punctuation.delimiter:,] [character:'"'][punctuation.delimiter:,] [character:'\u1234'][punctuation.delimiter:,] [character:'⻆']
+
+[comment:# String literals]
+[string:"""Multiline
+string"""]
+[string:" ][punctuation.special:$][variable:x][string: ][punctuation.special:$][punctuation.bracket:(][keyword:let][string: ][variable:x][string: ][operator:=][string: ][variable:y][string: ][operator:+][string: ][number:1][punctuation.delimiter:;][string: ][variable:x][operator:^][number:2][punctuation.delimiter:;][string: ][keyword:end][punctuation.bracket:)][string: "]
+[function.macro:r][string:"[a-z]+$xyz"][variable:m]
+[function.macro:raw][string:"\n\n\r\t...\b"]
+[function.macro:v][string:"0.0.2"] [operator:≥] [function.macro:v][string:"0.0.1"]
+
+[comment:# Command literals]
+[string.special:`echo ][punctuation.special:$][variable:bar][string.special:`]
+
+[comment:# Number formats]
+[number:1_000_000] [operator:+] [number.float:1.0e-9] [operator:*] [number.float:0.121] [operator:/] [number.float:1121.0]
+[number.float:1.0f0] [operator:-] [number.float:1E-12]
+[number:0b100_101_111]
+[number:0o12123535]
+[number:0x4312afAF]

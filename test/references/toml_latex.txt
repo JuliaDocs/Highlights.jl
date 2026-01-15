@@ -1,0 +1,236 @@
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\begin{tcblisting}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}
+(*@\textcolor[RGB]{122,122,122}{\# This is a TOML document.}@*)
+(*@\textcolor[RGB]{122,122,122}{\# All examples are taken from https://github.com/toml-lang/toml/blob/master/README.md}@*)
+(*@\textcolor[RGB]{122,122,122}{\# with MIT licence.}@*)
+
+(*@\textcolor[RGB]{117,215,236}{title}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"TOML Example"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{owner}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Tom Preston-Werner"}@*)
+(*@\textcolor[RGB]{117,215,236}{dob}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{80,250,123}{1979-05-27T07:32:00-08:00}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{122,122,122}{\# First class dates}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{database}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{server}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"192.168.1.1"}@*)
+(*@\textcolor[RGB]{117,215,236}{ports}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{8001}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{8001}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{8002}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{connection\_max}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{5000}@*)
+(*@\textcolor[RGB]{117,215,236}{enabled}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{true}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{servers}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+  (*@\textcolor[RGB]{122,122,122}{\# Indentation (tabs and/or spaces) is allowed but not required}@*)
+  (*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{servers}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{alpha}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+  (*@\textcolor[RGB]{117,215,236}{ip}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"10.0.0.1"}@*)
+  (*@\textcolor[RGB]{117,215,236}{dc}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"eqdc10"}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{servers}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{beta}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+  (*@\textcolor[RGB]{117,215,236}{ip}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"10.0.0.2"}@*)
+  (*@\textcolor[RGB]{117,215,236}{dc}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"eqdc10"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{clients}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{data}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{66,230,108}{"gamma"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"delta"}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Line breaks are OK when inside arrays}@*)
+(*@\textcolor[RGB]{117,215,236}{hosts}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{
+  }@*)(*@\textcolor[RGB]{66,230,108}{"alpha"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{
+  }@*)(*@\textcolor[RGB]{66,230,108}{"omega"}@*)(*@\textcolor[RGB]{248,248,242}{
+}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# This is a full-line comment}@*)
+(*@\textcolor[RGB]{117,215,236}{key}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{122,122,122}{\# This is a comment at the end of a line}@*)
+
+(*@\textcolor[RGB]{117,215,236}{key}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)
+
+(*@\textcolor[RGB]{117,215,236}{key}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{117,215,236}{bare\_key}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{117,215,236}{bare-key}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{117,215,236}{1234}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"value"}@*)
+
+(*@\textcolor[RGB]{66,230,108}{"127.0.0.1"}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{66,230,108}{"character encoding"}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{66,230,108}{"ʎǝʞ"}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}key2\textquotesingle{}}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{66,230,108}{"value"}@*)
+(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}quoted "value"\textquotesingle{}}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{66,230,108}{"value"}@*)
+
+(*@\textcolor[RGB]{117,215,236}{str}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"I\textquotesingle{}m a string. \textbackslash{}"You can quote me\textbackslash{}". Name\textbackslash{}tJos\textbackslash{}u00E9\textbackslash{}nLocation\textbackslash{}tSF."}@*)
+
+(*@\textcolor[RGB]{117,215,236}{str1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"""
+Roses are red
+Violets are blue"""}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# On a Unix system, the above multi-line string will most likely be the same as:}@*)
+(*@\textcolor[RGB]{117,215,236}{str2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Roses are red\textbackslash{}nViolets are blue"}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# On a Windows system, it will most likely be equivalent to:}@*)
+(*@\textcolor[RGB]{117,215,236}{str3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Roses are red\textbackslash{}r\textbackslash{}nViolets are blue"}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# The following strings are byte-for-byte equivalent:}@*)
+(*@\textcolor[RGB]{117,215,236}{str1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"The quick brown fox jumps over the lazy dog."}@*)
+
+(*@\textcolor[RGB]{117,215,236}{str2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"""
+The quick brown \textbackslash{}
+
+
+  fox jumps over \textbackslash{}
+    the lazy dog."""}@*)
+
+(*@\textcolor[RGB]{117,215,236}{key3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"""\textbackslash{}
+       The quick brown \textbackslash{}
+       fox jumps over \textbackslash{}
+       the lazy dog.\textbackslash{}
+       """}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# What you see is what you get.}@*)
+(*@\textcolor[RGB]{117,215,236}{winpath}@*)(*@\textcolor[RGB]{248,248,242}{  }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}C:\textbackslash{}Users\textbackslash{}nodejs\textbackslash{}templates\textquotesingle{}}@*)
+(*@\textcolor[RGB]{117,215,236}{winpath2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textbackslash{}\textbackslash{}ServerX\textbackslash{}admin\$\textbackslash{}system32\textbackslash{}\textquotesingle{}}@*)
+(*@\textcolor[RGB]{117,215,236}{quoted}@*)(*@\textcolor[RGB]{248,248,242}{   }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}Tom "Dubs" Preston-Werner\textquotesingle{}}@*)
+(*@\textcolor[RGB]{117,215,236}{regex}@*)(*@\textcolor[RGB]{248,248,242}{    }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}<\textbackslash{}i\textbackslash{}c*\textbackslash{}s*>\textquotesingle{}}@*)
+
+(*@\textcolor[RGB]{117,215,236}{regex2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textquotesingle{}\textquotesingle{}I [dw]on\textquotesingle{}t need \textbackslash{}d\{2\} apples\textquotesingle{}\textquotesingle{}\textquotesingle{}}@*)
+(*@\textcolor[RGB]{117,215,236}{lines}@*)(*@\textcolor[RGB]{248,248,242}{  }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textquotesingle{}\textquotesingle{}
+The first newline is
+trimmed in raw strings.
+   All other whitespace
+   is preserved.
+\textquotesingle{}\textquotesingle{}\textquotesingle{}}@*)
+
+(*@\textcolor[RGB]{117,215,236}{int1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{+99}@*)
+(*@\textcolor[RGB]{117,215,236}{int2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{42}@*)
+(*@\textcolor[RGB]{117,215,236}{int3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{0}@*)
+(*@\textcolor[RGB]{117,215,236}{int4}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{-17}@*)
+
+(*@\textcolor[RGB]{117,215,236}{int5}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1\_000}@*)
+(*@\textcolor[RGB]{117,215,236}{int6}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{5\_349\_221}@*)
+(*@\textcolor[RGB]{117,215,236}{int7}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1\_2\_3\_4\_5}@*)(*@\textcolor[RGB]{248,248,242}{     }@*)(*@\textcolor[RGB]{122,122,122}{\# valid but inadvisable}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# fractional}@*)
+(*@\textcolor[RGB]{117,215,236}{flt1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{+1.0}@*)
+(*@\textcolor[RGB]{117,215,236}{flt2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{3.1415}@*)
+(*@\textcolor[RGB]{117,215,236}{flt3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{-0.01}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# exponent}@*)
+(*@\textcolor[RGB]{117,215,236}{flt4}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{5e+22}@*)
+(*@\textcolor[RGB]{117,215,236}{flt5}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1e6}@*)
+(*@\textcolor[RGB]{117,215,236}{flt6}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{-2E-2}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# both}@*)
+(*@\textcolor[RGB]{117,215,236}{flt7}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{6.626e-34}@*)
+
+(*@\textcolor[RGB]{117,215,236}{flt8}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{9\_224\_617.445\_991\_228\_313}@*)
+
+(*@\textcolor[RGB]{117,215,236}{bool1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{true}@*)
+(*@\textcolor[RGB]{117,215,236}{bool2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{false}@*)
+
+(*@\textcolor[RGB]{117,215,236}{date1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{80,250,123}{1979-05-27T07:32:00Z}@*)
+(*@\textcolor[RGB]{117,215,236}{date2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{80,250,123}{1979-05-27T00:32:00-07:00}@*)
+(*@\textcolor[RGB]{117,215,236}{date3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{80,250,123}{1979-05-27T00:32:00.999999-07:00}@*)
+
+(*@\textcolor[RGB]{117,215,236}{1979-05-27T07}@*):(*@\textcolor[RGB]{117,215,236}{32}@*):(*@\textcolor[RGB]{117,215,236}{00}@*)
+(*@\textcolor[RGB]{117,215,236}{1979-05-27T00}@*):(*@\textcolor[RGB]{117,215,236}{32}@*):(*@\textcolor[RGB]{117,215,236}{00}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{999999}@*)
+
+(*@\textcolor[RGB]{117,215,236}{1979-05-27}@*)
+
+(*@\textcolor[RGB]{117,215,236}{arr1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{arr2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"red"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"yellow"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"green"}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{arr3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{5}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{arr4}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"all"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}strings\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"""are the same"""}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textquotesingle{}\textquotesingle{}type\textquotesingle{}\textquotesingle{}\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{arr5}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{66,230,108}{"a"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"b"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"c"}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{117,215,236}{arr7}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{
+  }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{
+}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{117,215,236}{arr8}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{
+  }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{
+  }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{122,122,122}{\# this is ok}@*)(*@\textcolor[RGB]{248,248,242}{
+}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{table-1}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{key1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"some string"}@*)
+(*@\textcolor[RGB]{117,215,236}{key2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{123}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{table-2}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{key1}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"another string"}@*)
+(*@\textcolor[RGB]{117,215,236}{key2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{456}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{dog}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{66,230,108}{"tater.man"}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{type}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"pug"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{a}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{b}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{c}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)            (*@\textcolor[RGB]{122,122,122}{\# this is best practice}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*) (*@\textcolor[RGB]{117,215,236}{d}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{e}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{f}@*) (*@\textcolor[RGB]{248,248,242}{]}@*)          (*@\textcolor[RGB]{122,122,122}{\# same as [d.e.f]}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*) (*@\textcolor[RGB]{117,215,236}{g}@*) (*@\textcolor[RGB]{248,248,242}{.}@*)  (*@\textcolor[RGB]{117,215,236}{h}@*)  (*@\textcolor[RGB]{248,248,242}{.}@*) (*@\textcolor[RGB]{117,215,236}{i}@*) (*@\textcolor[RGB]{248,248,242}{]}@*)    (*@\textcolor[RGB]{122,122,122}{\# same as [g.h.i]}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*) (*@\textcolor[RGB]{117,215,236}{j}@*) (*@\textcolor[RGB]{248,248,242}{.}@*) (*@\textcolor[RGB]{66,230,108}{"ʞ"}@*) (*@\textcolor[RGB]{248,248,242}{.}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}l\textquotesingle{}}@*) (*@\textcolor[RGB]{248,248,242}{]}@*)  (*@\textcolor[RGB]{122,122,122}{\# same as [j."ʞ".\textquotesingle{}l\textquotesingle{}]}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{a}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{b}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{c}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{a}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{d}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)
+
+(*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{first}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Tom"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{last}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Preston-Werner"}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)
+(*@\textcolor[RGB]{117,215,236}{point}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{y}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{first}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Tom"}@*)
+(*@\textcolor[RGB]{117,215,236}{last}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Preston-Werner"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{point}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)
+(*@\textcolor[RGB]{117,215,236}{y}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{products}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+(*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Hammer"}@*)
+(*@\textcolor[RGB]{117,215,236}{sku}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{738594937}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{products}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{products}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+(*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"Nail"}@*)
+(*@\textcolor[RGB]{117,215,236}{sku}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{284758393}@*)
+(*@\textcolor[RGB]{117,215,236}{color}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"gray"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+  (*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"apple"}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{physical}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+    (*@\textcolor[RGB]{117,215,236}{color}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"red"}@*)
+    (*@\textcolor[RGB]{117,215,236}{shape}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"round"}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{variety}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+    (*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"red delicious"}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{variety}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+    (*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"granny smith"}@*)
+
+(*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+  (*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"banana"}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{[[}@*)(*@\textcolor[RGB]{117,215,236}{fruit}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{117,215,236}{variety}@*)(*@\textcolor[RGB]{248,248,242}{]]}@*)
+    (*@\textcolor[RGB]{117,215,236}{name}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{66,230,108}{"plantain"}@*)
+
+(*@\textcolor[RGB]{117,215,236}{points}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{y}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{z}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{
+           }@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{7}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{y}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{8}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{z}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{9}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{
+           }@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{y}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{117,215,236}{z}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{228,243,74}{8}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+\end{tcblisting}

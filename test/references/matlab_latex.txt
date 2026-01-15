@@ -1,0 +1,67 @@
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\begin{tcblisting}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}
+(*@\textcolor[RGB]{122,122,122}{\% A single line comment.}@*)
+
+(*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+(*@\textcolor[RGB]{248,248,242}{y}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{X}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{ }@*)(*@\textcolor[RGB]{248,248,242}{Y}@*)(*@\textcolor[RGB]{248,248,242}{]}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{155,107,223}{func}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1.0}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{2.3e-9}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3j}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\%\{
+    Multiline comments here,
+
+  and here.
+
+    ... and again here.
+\%\}}@*)
+
+(*@\textcolor[RGB]{248,248,242}{s}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{248,248,242}{\textquotesingle{}}@*)(*@\textcolor[RGB]{66,230,108}{abc ... xyz}@*)(*@\textcolor[RGB]{248,248,242}{\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+
+(*@\textcolor[RGB]{230,71,71}{function}@*) result (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{155,107,223}{func}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{y}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{122,122,122}{\% ...}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\% External shell commands.}@*)
+(*@\textcolor[RGB]{227,86,167}{!ping}@*) (*@\textcolor[RGB]{66,230,108}{julialang.org}@*)
+
+(*@\textcolor[RGB]{230,71,71}{classdef}@*) (*@\textcolor[RGB]{230,71,71}{ClassName}@*)
+    (*@\textcolor[RGB]{230,71,71}{properties}@*)
+        (*@\textcolor[RGB]{248,248,242}{x}@*)
+        (*@\textcolor[RGB]{248,248,242}{y}@*)
+        (*@\textcolor[RGB]{248,248,242}{z}@*)
+    (*@\textcolor[RGB]{230,71,71}{end}@*)
+    (*@\textcolor[RGB]{230,71,71}{methods}@*)
+        (*@\textcolor[RGB]{230,71,71}{function}@*) (*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{s}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{t}@*)(*@\textcolor[RGB]{248,248,242}{]}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{155,107,223}{method\_1}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x\_1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{y\_2}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+            (*@\textcolor[RGB]{230,71,71}{if}@*) x_1 (*@\textcolor[RGB]{248,248,242}{<}@*) y_2
+                (*@\textcolor[RGB]{248,248,242}{s}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+                (*@\textcolor[RGB]{248,248,242}{t}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) n (*@\textcolor[RGB]{248,248,242}{*}@*) A (*@\textcolor[RGB]{248,248,242}{+}@*) B (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+            (*@\textcolor[RGB]{230,71,71}{else}@*)
+                (*@\textcolor[RGB]{230,71,71}{for}@*) i (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)x_1
+                    (*@\textcolor[RGB]{155,107,223}{A}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{i}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) i(*@\textcolor[RGB]{248,248,242}{\textasciicircum{}}@*)(*@\textcolor[RGB]{228,243,74}{2}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)
+                (*@\textcolor[RGB]{230,71,71}{end}@*)
+            (*@\textcolor[RGB]{230,71,71}{end}@*)
+        (*@\textcolor[RGB]{230,71,71}{end}@*)
+    (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+\end{tcblisting}

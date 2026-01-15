@@ -1,0 +1,41 @@
+[comment:# Comments start with the `#` character.]
+
+[variable:x] [operator:<-] [number:1] [operator:+] [number:2]
+
+[function:hist][punctuation.bracket:(][variable:thing][punctuation.delimiter:,] [variable.parameter:col][operator:=][string:"#ff3300"][punctuation.delimiter:,] [variable.parameter:border][operator:=][string:"pink"][punctuation.delimiter:,] [variable.parameter:breaks][operator:=][number:5][punctuation.bracket:)]
+
+[function:round][punctuation.bracket:(][function:runif][punctuation.bracket:(][number:3][punctuation.delimiter:,] [variable.parameter:min][operator:=][number:.1][punctuation.delimiter:,] [variable.parameter:max][operator:=][number:2.0][punctuation.bracket:)][punctuation.bracket:)]
+
+[function:c][punctuation.bracket:(][number:3][punctuation.delimiter:,] [number:4][punctuation.delimiter:,] [number:1][punctuation.delimiter:,] [number:3][punctuation.bracket:)]
+[function:length][punctuation.bracket:(][function:c][punctuation.bracket:(][number:3L][punctuation.delimiter:,] [number:4L][punctuation.delimiter:,] [number:1L][punctuation.bracket:)][punctuation.bracket:)]
+
+[operator:-][constant.builtin:Inf] [operator:<] [punctuation.bracket:(][number:1e9] [operator:+] [number:61.4e-12] [operator:*] [number:1.2e2][punctuation.bracket:)] [operator:==] [boolean:TRUE]
+
+[variable:a.long.variable.name] [operator:==] [boolean:FALSE]
+
+[number:4] [operator:%%] [number:3]
+
+[variable:A] [operator:%*%] [function:t][punctuation.bracket:(][variable:A][punctuation.bracket:)]
+
+[variable:arr][punctuation.bracket:[][variable:foo][operator:$][variable:bar] [operator:==] [string:"X"][punctuation.delimiter:,][punctuation.bracket:]]
+
+[function:c][punctuation.bracket:(][string:'foo'][punctuation.delimiter:,] [string:'bar'][punctuation.delimiter:,] [string:'baz'][punctuation.delimiter:,] [string:'"'][punctuation.bracket:)]
+[string:"...' ][string.escape:\"][string: ..."]
+
+[repeat:while] [punctuation.bracket:(][variable:num] [operator:<=] [number:3][punctuation.bracket:)] [punctuation.bracket:{]
+    [comment:# ...]
+    [conditional:if] [punctuation.bracket:(][variable:foo] [operator:==] [variable:T][punctuation.bracket:)] [punctuation.bracket:{]
+        [comment:# ...]
+    [punctuation.bracket:}] [conditional:else] [punctuation.bracket:{]
+        [comment:# ...]
+    [punctuation.bracket:}]
+[punctuation.bracket:}]
+
+[function:func] [operator:<-] [keyword.function:function][punctuation.bracket:(][variable.parameter:x][punctuation.delimiter:,] [variable.parameter:y][punctuation.delimiter:,] [variable.parameter:z][punctuation.bracket:)] [punctuation.bracket:{]
+    [comment:# ...]
+    [keyword:return][punctuation.bracket:(][variable:something][punctuation.bracket:)]
+[punctuation.bracket:}]
+
+[repeat:for] [punctuation.bracket:(][variable:x] [keyword:in] [number:1][operator::][number:10][punctuation.bracket:)] [punctuation.bracket:{]
+    [function:print][punctuation.bracket:(][variable:x][punctuation.bracket:)]
+[punctuation.bracket:}]

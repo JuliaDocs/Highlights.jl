@@ -1,0 +1,212 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A"># This is a TOML document.</span>
+<span style="color: #7A7A7A"># All examples are taken from https://github.com/toml-lang/toml/blob/master/README.md</span>
+<span style="color: #7A7A7A"># with MIT licence.</span>
+
+<span style="color: #75D7EC">title</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;TOML Example&quot;</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">owner</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Tom Preston-Werner&quot;</span>
+<span style="color: #75D7EC">dob</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">1979-05-27T07:32:00-08:00</span><span style="color: #F8F8F2"> </span><span style="color: #7A7A7A"># First class dates</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">database</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">server</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;192.168.1.1&quot;</span>
+<span style="color: #75D7EC">ports</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">8001</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">8001</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">8002</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">connection_max</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">5000</span>
+<span style="color: #75D7EC">enabled</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">true</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">servers</span><span style="color: #F8F8F2">]</span>
+
+  <span style="color: #7A7A7A"># Indentation (tabs and/or spaces) is allowed but not required</span>
+  <span style="color: #F8F8F2">[</span><span style="color: #75D7EC">servers</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">alpha</span><span style="color: #F8F8F2">]</span>
+  <span style="color: #75D7EC">ip</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;10.0.0.1&quot;</span>
+  <span style="color: #75D7EC">dc</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;eqdc10&quot;</span>
+
+  <span style="color: #F8F8F2">[</span><span style="color: #75D7EC">servers</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">beta</span><span style="color: #F8F8F2">]</span>
+  <span style="color: #75D7EC">ip</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;10.0.0.2&quot;</span>
+  <span style="color: #75D7EC">dc</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;eqdc10&quot;</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">clients</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">data</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #42E66C">&quot;gamma&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;delta&quot;</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #7A7A7A"># Line breaks are OK when inside arrays</span>
+<span style="color: #75D7EC">hosts</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">
+  </span><span style="color: #42E66C">&quot;alpha&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2">
+  </span><span style="color: #42E66C">&quot;omega&quot;</span><span style="color: #F8F8F2">
+</span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #7A7A7A"># This is a full-line comment</span>
+<span style="color: #75D7EC">key</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #7A7A7A"># This is a comment at the end of a line</span>
+
+<span style="color: #75D7EC">key</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span>
+
+<span style="color: #75D7EC">key</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #75D7EC">bare_key</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #75D7EC">bare-key</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #75D7EC">1234</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;value&quot;</span>
+
+<span style="color: #42E66C">&quot;127.0.0.1&quot;</span> <span style="color: #F8F8F2">=</span> <span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #42E66C">&quot;character encoding&quot;</span> <span style="color: #F8F8F2">=</span> <span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #42E66C">&quot;ʎǝʞ&quot;</span> <span style="color: #F8F8F2">=</span> <span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #42E66C">&#39;key2&#39;</span> <span style="color: #F8F8F2">=</span> <span style="color: #42E66C">&quot;value&quot;</span>
+<span style="color: #42E66C">&#39;quoted &quot;value&quot;&#39;</span> <span style="color: #F8F8F2">=</span> <span style="color: #42E66C">&quot;value&quot;</span>
+
+<span style="color: #75D7EC">str</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;I&#39;m a string. \&quot;You can quote me\&quot;. Name\tJos\u00E9\nLocation\tSF.&quot;</span>
+
+<span style="color: #75D7EC">str1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;&quot;&quot;
+Roses are red
+Violets are blue&quot;&quot;&quot;</span>
+
+<span style="color: #7A7A7A"># On a Unix system, the above multi-line string will most likely be the same as:</span>
+<span style="color: #75D7EC">str2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Roses are red\nViolets are blue&quot;</span>
+
+<span style="color: #7A7A7A"># On a Windows system, it will most likely be equivalent to:</span>
+<span style="color: #75D7EC">str3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Roses are red\r\nViolets are blue&quot;</span>
+
+<span style="color: #7A7A7A"># The following strings are byte-for-byte equivalent:</span>
+<span style="color: #75D7EC">str1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;The quick brown fox jumps over the lazy dog.&quot;</span>
+
+<span style="color: #75D7EC">str2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;&quot;&quot;
+The quick brown \
+
+
+  fox jumps over \
+    the lazy dog.&quot;&quot;&quot;</span>
+
+<span style="color: #75D7EC">key3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;&quot;&quot;\
+       The quick brown \
+       fox jumps over \
+       the lazy dog.\
+       &quot;&quot;&quot;</span>
+
+<span style="color: #7A7A7A"># What you see is what you get.</span>
+<span style="color: #75D7EC">winpath</span><span style="color: #F8F8F2">  </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;C:\Users\nodejs\templates&#39;</span>
+<span style="color: #75D7EC">winpath2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;\\ServerX\admin$\system32\&#39;</span>
+<span style="color: #75D7EC">quoted</span><span style="color: #F8F8F2">   </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;Tom &quot;Dubs&quot; Preston-Werner&#39;</span>
+<span style="color: #75D7EC">regex</span><span style="color: #F8F8F2">    </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;&lt;\i\c*\s*&gt;&#39;</span>
+
+<span style="color: #75D7EC">regex2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;&#39;&#39;I [dw]on&#39;t need \d{2} apples&#39;&#39;&#39;</span>
+<span style="color: #75D7EC">lines</span><span style="color: #F8F8F2">  </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;&#39;&#39;
+The first newline is
+trimmed in raw strings.
+   All other whitespace
+   is preserved.
+&#39;&#39;&#39;</span>
+
+<span style="color: #75D7EC">int1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">+99</span>
+<span style="color: #75D7EC">int2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">42</span>
+<span style="color: #75D7EC">int3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">0</span>
+<span style="color: #75D7EC">int4</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">-17</span>
+
+<span style="color: #75D7EC">int5</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1_000</span>
+<span style="color: #75D7EC">int6</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">5_349_221</span>
+<span style="color: #75D7EC">int7</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1_2_3_4_5</span><span style="color: #F8F8F2">     </span><span style="color: #7A7A7A"># valid but inadvisable</span>
+
+<span style="color: #7A7A7A"># fractional</span>
+<span style="color: #75D7EC">flt1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">+1.0</span>
+<span style="color: #75D7EC">flt2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">3.1415</span>
+<span style="color: #75D7EC">flt3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">-0.01</span>
+
+<span style="color: #7A7A7A"># exponent</span>
+<span style="color: #75D7EC">flt4</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">5e+22</span>
+<span style="color: #75D7EC">flt5</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1e6</span>
+<span style="color: #75D7EC">flt6</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">-2E-2</span>
+
+<span style="color: #7A7A7A"># both</span>
+<span style="color: #75D7EC">flt7</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">6.626e-34</span>
+
+<span style="color: #75D7EC">flt8</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">9_224_617.445_991_228_313</span>
+
+<span style="color: #75D7EC">bool1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">true</span>
+<span style="color: #75D7EC">bool2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">false</span>
+
+<span style="color: #75D7EC">date1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">1979-05-27T07:32:00Z</span>
+<span style="color: #75D7EC">date2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">1979-05-27T00:32:00-07:00</span>
+<span style="color: #75D7EC">date3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #50FA7B">1979-05-27T00:32:00.999999-07:00</span>
+
+<span style="color: #75D7EC">1979-05-27T07</span>:<span style="color: #75D7EC">32</span>:<span style="color: #75D7EC">00</span>
+<span style="color: #75D7EC">1979-05-27T00</span>:<span style="color: #75D7EC">32</span>:<span style="color: #75D7EC">00</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">999999</span>
+
+<span style="color: #75D7EC">1979-05-27</span>
+
+<span style="color: #75D7EC">arr1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">arr2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;red&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;yellow&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;green&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">arr3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">4</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">5</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">arr4</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;all&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;strings&#39;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;&quot;&quot;are the same&quot;&quot;&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&#39;&#39;&#39;type&#39;&#39;&#39;</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">arr5</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #42E66C">&quot;a&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;b&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;c&quot;</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #75D7EC">arr7</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">
+  </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">
+</span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #75D7EC">arr8</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">
+  </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2">
+  </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #7A7A7A"># this is ok</span><span style="color: #F8F8F2">
+</span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">table-1</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">key1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;some string&quot;</span>
+<span style="color: #75D7EC">key2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">123</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">table-2</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">key1</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;another string&quot;</span>
+<span style="color: #75D7EC">key2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">456</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">dog</span><span style="color: #F8F8F2">.</span><span style="color: #42E66C">&quot;tater.man&quot;</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">type</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;pug&quot;</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">a</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">b</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">c</span><span style="color: #F8F8F2">]</span>            <span style="color: #7A7A7A"># this is best practice</span>
+<span style="color: #F8F8F2">[</span> <span style="color: #75D7EC">d</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">e</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">f</span> <span style="color: #F8F8F2">]</span>          <span style="color: #7A7A7A"># same as [d.e.f]</span>
+<span style="color: #F8F8F2">[</span> <span style="color: #75D7EC">g</span> <span style="color: #F8F8F2">.</span>  <span style="color: #75D7EC">h</span>  <span style="color: #F8F8F2">.</span> <span style="color: #75D7EC">i</span> <span style="color: #F8F8F2">]</span>    <span style="color: #7A7A7A"># same as [g.h.i]</span>
+<span style="color: #F8F8F2">[</span> <span style="color: #75D7EC">j</span> <span style="color: #F8F8F2">.</span> <span style="color: #42E66C">&quot;ʞ&quot;</span> <span style="color: #F8F8F2">.</span> <span style="color: #42E66C">&#39;l&#39;</span> <span style="color: #F8F8F2">]</span>  <span style="color: #7A7A7A"># same as [j.&quot;ʞ&quot;.&#39;l&#39;]</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">a</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">b</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">c</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">a</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">d</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span>
+
+<span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">{</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">first</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Tom&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">last</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Preston-Werner&quot;</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">}</span>
+<span style="color: #75D7EC">point</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">{</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">y</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">}</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">name</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">first</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Tom&quot;</span>
+<span style="color: #75D7EC">last</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Preston-Werner&quot;</span>
+
+<span style="color: #F8F8F2">[</span><span style="color: #75D7EC">point</span><span style="color: #F8F8F2">]</span>
+<span style="color: #75D7EC">x</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span>
+<span style="color: #75D7EC">y</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span>
+
+<span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">products</span><span style="color: #F8F8F2">]]</span>
+<span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Hammer&quot;</span>
+<span style="color: #75D7EC">sku</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">738594937</span>
+
+<span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">products</span><span style="color: #F8F8F2">]]</span>
+
+<span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">products</span><span style="color: #F8F8F2">]]</span>
+<span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;Nail&quot;</span>
+<span style="color: #75D7EC">sku</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">284758393</span>
+<span style="color: #75D7EC">color</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;gray&quot;</span>
+
+<span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">]]</span>
+  <span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;apple&quot;</span>
+
+  <span style="color: #F8F8F2">[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">physical</span><span style="color: #F8F8F2">]</span>
+    <span style="color: #75D7EC">color</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;red&quot;</span>
+    <span style="color: #75D7EC">shape</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;round&quot;</span>
+
+  <span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">variety</span><span style="color: #F8F8F2">]]</span>
+    <span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;red delicious&quot;</span>
+
+  <span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">variety</span><span style="color: #F8F8F2">]]</span>
+    <span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;granny smith&quot;</span>
+
+<span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">]]</span>
+  <span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;banana&quot;</span>
+
+  <span style="color: #F8F8F2">[[</span><span style="color: #75D7EC">fruit</span><span style="color: #F8F8F2">.</span><span style="color: #75D7EC">variety</span><span style="color: #F8F8F2">]]</span>
+    <span style="color: #75D7EC">name</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #42E66C">&quot;plantain&quot;</span>
+
+<span style="color: #75D7EC">points</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">{</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">y</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">z</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">}</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2">
+           </span><span style="color: #F8F8F2">{</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">7</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">y</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">8</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">z</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">9</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">}</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2">
+           </span><span style="color: #F8F8F2">{</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">y</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">4</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #75D7EC">z</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">=</span><span style="color: #F8F8F2"> </span><span style="color: #E4F34A">8</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">}</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">]</span>
+</pre>

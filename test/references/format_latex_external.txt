@@ -1,0 +1,85 @@
+\begin{hlcode}
+(*@\HLCa{\# Fibonacci with memoization}@*)
+(*@\HLCb{module}@*) (*@\HLCh{Fib}@*)
+
+(*@\HLCb{const}@*) (*@\HLCh{cache}@*) (*@\HLCh{=}@*) (*@\HLCg{Dict}@*)(*@\HLCh{\{}@*)(*@\HLCg{Int}@*)(*@\HLCh{,}@*)(*@\HLCg{BigInt}@*)(*@\HLCh{\}}@*)(*@\HLCh{(}@*)(*@\HLCh{)}@*)
+
+(*@\HLCc{"""Calculate the nth Fibonacci number."""}@*)
+(*@\HLCb{function}@*) (*@\HLCe{fib}@*)(*@\HLCh{(}@*)(*@\HLCh{n}@*)(*@\HLCh{::}@*)(*@\HLCg{Int}@*)(*@\HLCh{)}@*)(*@\HLCh{::}@*)(*@\HLCg{BigInt}@*)
+    (*@\HLCh{n}@*) (*@\HLCh{<=}@*) (*@\HLCd{1}@*) (*@\HLCh{\&\&}@*) (*@\HLCb{return}@*) (*@\HLCe{BigInt}@*)(*@\HLCh{(}@*)(*@\HLCh{n}@*)(*@\HLCh{)}@*)
+    (*@\HLCe{get!}@*)(*@\HLCh{(}@*)(*@\HLCh{cache}@*)(*@\HLCh{,}@*) (*@\HLCh{n}@*)(*@\HLCh{)}@*) (*@\HLCb{do}@*)
+        (*@\HLCe{fib}@*)(*@\HLCh{(}@*)(*@\HLCh{n}@*) (*@\HLCh{-}@*) (*@\HLCd{1}@*)(*@\HLCh{)}@*) (*@\HLCh{+}@*) (*@\HLCe{fib}@*)(*@\HLCh{(}@*)(*@\HLCh{n}@*) (*@\HLCh{-}@*) (*@\HLCd{2}@*)(*@\HLCh{)}@*)
+    (*@\HLCb{end}@*)
+(*@\HLCb{end}@*)
+
+(*@\HLCb{for}@*) (*@\HLCh{i}@*) (*@\HLCh{=}@*) (*@\HLCd{1}@*)(*@\HLCh{:}@*)(*@\HLCd{10}@*)
+    (*@\HLCh{Base}@*)(*@\HLCh{.}@*)(*@\HLCe{println}@*)(*@\HLCh{(}@*)(*@\HLCc{"fib(}@*)(*@\HLCh{\$}@*)(*@\HLCh{i}@*)(*@\HLCc{) = }@*)(*@\HLCh{\$}@*)(*@\HLCh{(}@*)(*@\HLCe{fib}@*)(*@\HLCh{(}@*)(*@\HLCh{i}@*)(*@\HLCh{)}@*)(*@\HLCh{)}@*)(*@\HLCc{"}@*)(*@\HLCh{)}@*)
+(*@\HLCb{end}@*)
+
+(*@\HLCa{\# Demonstrate qualified calls}@*)
+(*@\HLCh{Base}@*)(*@\HLCh{.}@*)(*@\HLCe{length}@*)(*@\HLCh{(}@*)(*@\HLCh{cache}@*)(*@\HLCh{)}@*)
+(*@\HLCh{Core}@*)(*@\HLCh{.}@*)(*@\HLCe{typeof}@*)(*@\HLCh{(}@*)(*@\HLCh{cache}@*)(*@\HLCh{)}@*)
+(*@\HLCh{Base}@*)(*@\HLCh{.}@*)(*@\HLCh{Iterators}@*)(*@\HLCh{.}@*)(*@\HLCe{take}@*)(*@\HLCh{(}@*)(*@\HLCd{1}@*)(*@\HLCh{:}@*)(*@\HLCd{10}@*)(*@\HLCh{,}@*) (*@\HLCd{3}@*)(*@\HLCh{)}@*)
+
+(*@\HLCb{end}@*) (*@\HLCa{\# module}@*)
+
+(*@\HLCa{\#=
+Additional syntax coverage from old julia sample:
+Nested comments \#= can be \#= deeply =\# nested =\#
+=\#}@*)
+
+(*@\HLCa{\# Array and tuple literals}@*)
+(*@\HLCh{[}@*)(*@\HLCd{1}@*)(*@\HLCh{,}@*) (*@\HLCd{3}@*)(*@\HLCh{,}@*) (*@\HLCd{3}@*)(*@\HLCh{,}@*) (*@\HLCd{4}@*)(*@\HLCh{]}@*)(*@\HLCh{[}@*)(*@\HLCd{1}@*)(*@\HLCh{:}@*)(*@\HLCn{end}@*)(*@\HLCh{]}@*)
+(*@\HLCh{(}@*)(*@\HLCd{1}@*)(*@\HLCh{,}@*) (*@\HLCd{2}@*)(*@\HLCh{,}@*) (*@\HLCd{1.0}@*)(*@\HLCh{)}@*)(*@\HLCh{[}@*)(*@\HLCd{1}@*)(*@\HLCh{:}@*)(*@\HLCd{2}@*)(*@\HLCh{]}@*)
+(*@\HLCh{[}@*)(*@\HLCh{(}@*)(*@\HLCd{1}@*)(*@\HLCh{,}@*) (*@\HLCd{3}@*)(*@\HLCh{)}@*)(*@\HLCh{,}@*) (*@\HLCh{(}@*)(*@\HLCd{3}@*)(*@\HLCh{,}@*) (*@\HLCd{4}@*)(*@\HLCh{)}@*)(*@\HLCh{]}@*)(*@\HLCh{[}@*)(*@\HLCn{end}@*)(*@\HLCh{-}@*)(*@\HLCd{1}@*)(*@\HLCh{]}@*)
+(*@\HLCh{[}@*)(*@\HLCh{(}@*)(*@\HLCd{1}@*)(*@\HLCh{,}@*) (*@\HLCd{3}@*)(*@\HLCh{)}@*)(*@\HLCh{,}@*) (*@\HLCh{(}@*)(*@\HLCd{3}@*)(*@\HLCh{,}@*) (*@\HLCd{4}@*)(*@\HLCh{)}@*)(*@\HLCh{]}@*)(*@\HLCh{[}@*)(*@\HLCn{begin}@*)(*@\HLCh{]}@*)
+
+(*@\HLCa{\# Control flow}@*)
+(*@\HLCb{if}@*) (*@\HLCh{x}@*) (*@\HLCb{in}@*) (*@\HLCh{y}@*)
+    (*@\HLCl{nothing}@*)
+(*@\HLCb{end}@*)
+(*@\HLCh{x}@*) (*@\HLCb{in}@*) (*@\HLCh{y}@*) (*@\HLCb{?}@*) (*@\HLCd{false}@*) (*@\HLCb{:}@*) (*@\HLCd{true}@*)
+
+(*@\HLCb{let}@*) (*@\HLCh{x}@*) (*@\HLCh{=}@*) (*@\HLCd{1}@*)
+    (*@\HLCb{local}@*) (*@\HLCh{t}@*)
+    (*@\HLCb{global}@*) (*@\HLCh{s}@*)
+    (*@\HLCh{t}@*) (*@\HLCh{=}@*) (*@\HLCh{x}@*)
+(*@\HLCb{end}@*)
+
+(*@\HLCa{\# Type definitions}@*)
+(*@\HLCb{abstract}@*) (*@\HLCb{type}@*) (*@\HLCg{AbstractPoint}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*)(*@\HLCg{ }@*)(*@\HLCh{<:}@*)(*@\HLCg{ }@*)(*@\HLCg{Number}@*) (*@\HLCb{end}@*)
+(*@\HLCb{mutable}@*) (*@\HLCb{struct}@*) (*@\HLCg{Point}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*) (*@\HLCb{where}@*) (*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{<:}@*)(*@\HLCg{Number}@*)(*@\HLCh{\}}@*)(*@\HLCg{
+    x}@*)(*@\HLCh{::}@*)(*@\HLCg{T}@*)(*@\HLCg{
+    y}@*)(*@\HLCh{::}@*)(*@\HLCg{T
+    }@*)(*@\HLCe{Point}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*)(*@\HLCg{ }@*)(*@\HLCh{=}@*)(*@\HLCg{ new}@*)(*@\HLCh{(}@*)(*@\HLCg{x}@*)(*@\HLCh{,}@*)(*@\HLCg{ 2x}@*)(*@\HLCh{)}@*)(*@\HLCg{
+end
+struct Empty}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*)(*@\HLCg{ end
+primitive type Float16Custom }@*)(*@\HLCh{<:}@*)(*@\HLCg{ }@*)(*@\HLCo{AbstractFloat}@*)(*@\HLCg{ 16 end
+
+}@*)(*@\HLCa{\# Macros}@*)(*@\HLCg{
+macro something}@*)(*@\HLCh{(}@*)(*@\HLCg{x}@*)(*@\HLCh{...}@*)(*@\HLCh{)}@*)
+    (*@\HLCg{nothing}@*)
+(*@\HLCb{end}@*)
+
+(*@\HLCa{\# Character literals}@*)
+(*@\HLCc{\textquotesingle{} \textquotesingle{}}@*)(*@\HLCh{,}@*) (*@\HLCc{\textquotesingle{}\textbackslash{}n\textquotesingle{}}@*)(*@\HLCh{,}@*) (*@\HLCc{\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{}}@*)(*@\HLCh{,}@*) (*@\HLCc{\textquotesingle{}"\textquotesingle{}}@*)(*@\HLCh{,}@*) (*@\HLCc{\textquotesingle{}\textbackslash{}u1234\textquotesingle{}}@*)(*@\HLCh{,}@*) (*@\HLCc{\textquotesingle{}⻆\textquotesingle{}}@*)
+
+(*@\HLCa{\# String literals}@*)
+(*@\HLCc{"""Multiline
+string"""}@*)
+(*@\HLCc{" }@*)(*@\HLCh{\$}@*)(*@\HLCh{x}@*)(*@\HLCc{ }@*)(*@\HLCh{\$}@*)(*@\HLCh{(}@*)(*@\HLCb{let}@*)(*@\HLCc{ }@*)(*@\HLCh{x}@*)(*@\HLCc{ }@*)(*@\HLCh{=}@*)(*@\HLCc{ }@*)(*@\HLCh{y}@*)(*@\HLCc{ }@*)(*@\HLCh{+}@*)(*@\HLCc{ }@*)(*@\HLCd{1}@*)(*@\HLCh{;}@*)(*@\HLCc{ }@*)(*@\HLCh{x}@*)(*@\HLCh{\textasciicircum{}}@*)(*@\HLCd{2}@*)(*@\HLCh{;}@*)(*@\HLCc{ }@*)(*@\HLCb{end}@*)(*@\HLCh{)}@*)(*@\HLCc{ "}@*)
+(*@\HLCf{r}@*)(*@\HLCc{"[a-z]+\$xyz"}@*)(*@\HLCh{m}@*)
+(*@\HLCf{raw}@*)(*@\HLCc{"\textbackslash{}n\textbackslash{}n\textbackslash{}r\textbackslash{}t...\textbackslash{}b"}@*)
+(*@\HLCf{v}@*)(*@\HLCc{"0.0.2"}@*) (*@\HLCh{≥}@*) (*@\HLCf{v}@*)(*@\HLCc{"0.0.1"}@*)
+
+(*@\HLCa{\# Command literals}@*)
+(*@\HLCk{\textasciigrave{}echo }@*)(*@\HLCh{\$}@*)(*@\HLCh{bar}@*)(*@\HLCk{\textasciigrave{}}@*)
+
+(*@\HLCa{\# Number formats}@*)
+(*@\HLCd{1\_000\_000}@*) (*@\HLCh{+}@*) (*@\HLCd{1.0e-9}@*) (*@\HLCh{*}@*) (*@\HLCd{0.121}@*) (*@\HLCh{/}@*) (*@\HLCd{1121.0}@*)
+(*@\HLCd{1.0f0}@*) (*@\HLCh{-}@*) (*@\HLCd{1E-12}@*)
+(*@\HLCd{0b100\_101\_111}@*)
+(*@\HLCd{0o12123535}@*)
+(*@\HLCd{0x4312afAF}@*)
+
+\end{hlcode}

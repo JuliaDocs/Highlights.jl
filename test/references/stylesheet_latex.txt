@@ -1,0 +1,60 @@
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[listings,breakable]{tcolorbox}
+
+\definecolor{hlc1}{RGB}{122,122,122}
+\definecolor{hlc2}{RGB}{230,71,71}
+\definecolor{hlc3}{RGB}{66,230,108}
+\definecolor{hlc4}{RGB}{228,243,74}
+\definecolor{hlc5}{RGB}{155,107,223}
+\definecolor{hlc6}{RGB}{227,86,167}
+\definecolor{hlc7}{RGB}{117,215,236}
+\definecolor{hlc8}{RGB}{248,248,242}
+\definecolor{hlc9}{RGB}{122,122,122}
+\definecolor{hlc10}{RGB}{255,85,85}
+\definecolor{hlc11}{RGB}{80,250,123}
+\definecolor{hlc12}{RGB}{241,250,140}
+\definecolor{hlc13}{RGB}{189,147,249}
+\definecolor{hlc14}{RGB}{255,121,198}
+\definecolor{hlc15}{RGB}{139,233,253}
+\definecolor{hlc16}{RGB}{249,249,251}
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\newcommand{\HLCa}[1]{\textcolor{hlc1}{#1}}
+\newcommand{\HLCb}[1]{\textcolor{hlc2}{#1}}
+\newcommand{\HLCc}[1]{\textcolor{hlc3}{#1}}
+\newcommand{\HLCd}[1]{\textcolor{hlc4}{#1}}
+\newcommand{\HLCe}[1]{\textcolor{hlc5}{#1}}
+\newcommand{\HLCf}[1]{\textcolor{hlc6}{#1}}
+\newcommand{\HLCg}[1]{\textcolor{hlc7}{#1}}
+\newcommand{\HLCh}[1]{\textcolor{hlc8}{#1}}
+\newcommand{\HLCi}[1]{\textcolor{hlc9}{#1}}
+\newcommand{\HLCj}[1]{\textcolor{hlc10}{#1}}
+\newcommand{\HLCk}[1]{\textcolor{hlc11}{#1}}
+\newcommand{\HLCl}[1]{\textcolor{hlc12}{#1}}
+\newcommand{\HLCm}[1]{\textcolor{hlc13}{#1}}
+\newcommand{\HLCn}[1]{\textcolor{hlc14}{#1}}
+\newcommand{\HLCo}[1]{\textcolor{hlc15}{#1}}
+\newcommand{\HLCp}[1]{\textcolor{hlc16}{#1}}
+
+\newtcblisting{hlcode}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}

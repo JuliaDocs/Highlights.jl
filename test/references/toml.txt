@@ -1,0 +1,211 @@
+[comment:# This is a TOML document.]
+[comment:# All examples are taken from https://github.com/toml-lang/toml/blob/master/README.md]
+[comment:# with MIT licence.]
+
+[type:title][property: ][operator:=][property: ][string:"TOML Example"]
+
+[punctuation.bracket:[][type:owner][punctuation.bracket:]]
+[type:name][property: ][operator:=][property: ][string:"Tom Preston-Werner"]
+[type:dob][property: ][operator:=][property: ][string.special:1979-05-27T07:32:00-08:00][property: ][comment:# First class dates]
+
+[punctuation.bracket:[][type:database][punctuation.bracket:]]
+[type:server][property: ][operator:=][property: ][string:"192.168.1.1"]
+[type:ports][property: ][operator:=][property: ][punctuation.bracket:[][property: ][number:8001][punctuation.delimiter:,][property: ][number:8001][punctuation.delimiter:,][property: ][number:8002][property: ][punctuation.bracket:]]
+[type:connection_max][property: ][operator:=][property: ][number:5000]
+[type:enabled][property: ][operator:=][property: ][boolean:true]
+
+[punctuation.bracket:[][type:servers][punctuation.bracket:]]
+
+  [comment:# Indentation (tabs and/or spaces) is allowed but not required]
+  [punctuation.bracket:[][type:servers][punctuation.delimiter:.][type:alpha][punctuation.bracket:]]
+  [type:ip][property: ][operator:=][property: ][string:"10.0.0.1"]
+  [type:dc][property: ][operator:=][property: ][string:"eqdc10"]
+
+  [punctuation.bracket:[][type:servers][punctuation.delimiter:.][type:beta][punctuation.bracket:]]
+  [type:ip][property: ][operator:=][property: ][string:"10.0.0.2"]
+  [type:dc][property: ][operator:=][property: ][string:"eqdc10"]
+
+[punctuation.bracket:[][type:clients][punctuation.bracket:]]
+[type:data][property: ][operator:=][property: ][punctuation.bracket:[][property: ][punctuation.bracket:[][string:"gamma"][punctuation.delimiter:,][property: ][string:"delta"][punctuation.bracket:]][punctuation.delimiter:,][property: ][punctuation.bracket:[][number:1][punctuation.delimiter:,][property: ][number:2][punctuation.bracket:]][property: ][punctuation.bracket:]]
+
+[comment:# Line breaks are OK when inside arrays]
+[type:hosts][property: ][operator:=][property: ][punctuation.bracket:[][property:
+  ][string:"alpha"][punctuation.delimiter:,][property:
+  ][string:"omega"][property:
+][punctuation.bracket:]]
+
+[comment:# This is a full-line comment]
+[type:key][property: ][operator:=][property: ][string:"value"][property: ][comment:# This is a comment at the end of a line]
+
+[type:key][property: ][operator:=][property: ][string:"value"]
+
+[type:key][property: ][operator:=][property: ][string:"value"]
+[type:bare_key][property: ][operator:=][property: ][string:"value"]
+[type:bare-key][property: ][operator:=][property: ][string:"value"]
+[type:1234][property: ][operator:=][property: ][string:"value"]
+
+[string:"127.0.0.1"] [operator:=] [string:"value"]
+[string:"character encoding"] [operator:=] [string:"value"]
+[string:"ʎǝʞ"] [operator:=] [string:"value"]
+[string:'key2'] [operator:=] [string:"value"]
+[string:'quoted "value"'] [operator:=] [string:"value"]
+
+[type:str][property: ][operator:=][property: ][string:"I'm a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF."]
+
+[type:str1][property: ][operator:=][property: ][string:"""
+Roses are red
+Violets are blue"""]
+
+[comment:# On a Unix system, the above multi-line string will most likely be the same as:]
+[type:str2][property: ][operator:=][property: ][string:"Roses are red\nViolets are blue"]
+
+[comment:# On a Windows system, it will most likely be equivalent to:]
+[type:str3][property: ][operator:=][property: ][string:"Roses are red\r\nViolets are blue"]
+
+[comment:# The following strings are byte-for-byte equivalent:]
+[type:str1][property: ][operator:=][property: ][string:"The quick brown fox jumps over the lazy dog."]
+
+[type:str2][property: ][operator:=][property: ][string:"""
+The quick brown \
+
+
+  fox jumps over \
+    the lazy dog."""]
+
+[type:key3][property: ][operator:=][property: ][string:"""\
+       The quick brown \
+       fox jumps over \
+       the lazy dog.\
+       """]
+
+[comment:# What you see is what you get.]
+[type:winpath][property:  ][operator:=][property: ][string:'C:\Users\nodejs\templates']
+[type:winpath2][property: ][operator:=][property: ][string:'\\ServerX\admin$\system32\']
+[type:quoted][property:   ][operator:=][property: ][string:'Tom "Dubs" Preston-Werner']
+[type:regex][property:    ][operator:=][property: ][string:'<\i\c*\s*>']
+
+[type:regex2][property: ][operator:=][property: ][string:'''I [dw]on't need \d{2} apples''']
+[type:lines][property:  ][operator:=][property: ][string:'''
+The first newline is
+trimmed in raw strings.
+   All other whitespace
+   is preserved.
+''']
+
+[type:int1][property: ][operator:=][property: ][number:+99]
+[type:int2][property: ][operator:=][property: ][number:42]
+[type:int3][property: ][operator:=][property: ][number:0]
+[type:int4][property: ][operator:=][property: ][number:-17]
+
+[type:int5][property: ][operator:=][property: ][number:1_000]
+[type:int6][property: ][operator:=][property: ][number:5_349_221]
+[type:int7][property: ][operator:=][property: ][number:1_2_3_4_5][property:     ][comment:# valid but inadvisable]
+
+[comment:# fractional]
+[type:flt1][property: ][operator:=][property: ][number:+1.0]
+[type:flt2][property: ][operator:=][property: ][number:3.1415]
+[type:flt3][property: ][operator:=][property: ][number:-0.01]
+
+[comment:# exponent]
+[type:flt4][property: ][operator:=][property: ][number:5e+22]
+[type:flt5][property: ][operator:=][property: ][number:1e6]
+[type:flt6][property: ][operator:=][property: ][number:-2E-2]
+
+[comment:# both]
+[type:flt7][property: ][operator:=][property: ][number:6.626e-34]
+
+[type:flt8][property: ][operator:=][property: ][number:9_224_617.445_991_228_313]
+
+[type:bool1][property: ][operator:=][property: ][boolean:true]
+[type:bool2][property: ][operator:=][property: ][boolean:false]
+
+[type:date1][property: ][operator:=][property: ][string.special:1979-05-27T07:32:00Z]
+[type:date2][property: ][operator:=][property: ][string.special:1979-05-27T00:32:00-07:00]
+[type:date3][property: ][operator:=][property: ][string.special:1979-05-27T00:32:00.999999-07:00]
+
+[type:1979-05-27T07]:[type:32]:[type:00]
+[type:1979-05-27T00]:[type:32]:[type:00][punctuation.delimiter:.][type:999999]
+
+[type:1979-05-27]
+
+[type:arr1][property: ][operator:=][property: ][punctuation.bracket:[][property: ][number:1][punctuation.delimiter:,][property: ][number:2][punctuation.delimiter:,][property: ][number:3][property: ][punctuation.bracket:]]
+[type:arr2][property: ][operator:=][property: ][punctuation.bracket:[][property: ][string:"red"][punctuation.delimiter:,][property: ][string:"yellow"][punctuation.delimiter:,][property: ][string:"green"][property: ][punctuation.bracket:]]
+[type:arr3][property: ][operator:=][property: ][punctuation.bracket:[][property: ][punctuation.bracket:[][property: ][number:1][punctuation.delimiter:,][property: ][number:2][property: ][punctuation.bracket:]][punctuation.delimiter:,][property: ][punctuation.bracket:[][number:3][punctuation.delimiter:,][property: ][number:4][punctuation.delimiter:,][property: ][number:5][punctuation.bracket:]][property: ][punctuation.bracket:]]
+[type:arr4][property: ][operator:=][property: ][punctuation.bracket:[][property: ][string:"all"][punctuation.delimiter:,][property: ][string:'strings'][punctuation.delimiter:,][property: ][string:"""are the same"""][punctuation.delimiter:,][property: ][string:'''type'''][punctuation.bracket:]]
+[type:arr5][property: ][operator:=][property: ][punctuation.bracket:[][property: ][punctuation.bracket:[][property: ][number:1][punctuation.delimiter:,][property: ][number:2][property: ][punctuation.bracket:]][punctuation.delimiter:,][property: ][punctuation.bracket:[][string:"a"][punctuation.delimiter:,][property: ][string:"b"][punctuation.delimiter:,][property: ][string:"c"][punctuation.bracket:]][property: ][punctuation.bracket:]]
+
+[type:arr7][property: ][operator:=][property: ][punctuation.bracket:[][property:
+  ][number:1][punctuation.delimiter:,][property: ][number:2][punctuation.delimiter:,][property: ][number:3][property:
+][punctuation.bracket:]]
+
+[type:arr8][property: ][operator:=][property: ][punctuation.bracket:[][property:
+  ][number:1][punctuation.delimiter:,][property:
+  ][number:2][punctuation.delimiter:,][property: ][comment:# this is ok][property:
+][punctuation.bracket:]]
+
+[punctuation.bracket:[][type:table-1][punctuation.bracket:]]
+[type:key1][property: ][operator:=][property: ][string:"some string"]
+[type:key2][property: ][operator:=][property: ][number:123]
+
+[punctuation.bracket:[][type:table-2][punctuation.bracket:]]
+[type:key1][property: ][operator:=][property: ][string:"another string"]
+[type:key2][property: ][operator:=][property: ][number:456]
+
+[punctuation.bracket:[][type:dog][punctuation.delimiter:.][string:"tater.man"][punctuation.bracket:]]
+[type:type][property: ][operator:=][property: ][string:"pug"]
+
+[punctuation.bracket:[][type:a][punctuation.delimiter:.][type:b][punctuation.delimiter:.][type:c][punctuation.bracket:]]            [comment:# this is best practice]
+[punctuation.bracket:[] [type:d][punctuation.delimiter:.][type:e][punctuation.delimiter:.][type:f] [punctuation.bracket:]]          [comment:# same as [d.e.f]]
+[punctuation.bracket:[] [type:g] [punctuation.delimiter:.]  [type:h]  [punctuation.delimiter:.] [type:i] [punctuation.bracket:]]    [comment:# same as [g.h.i]]
+[punctuation.bracket:[] [type:j] [punctuation.delimiter:.] [string:"ʞ"] [punctuation.delimiter:.] [string:'l'] [punctuation.bracket:]]  [comment:# same as [j."ʞ".'l']]
+
+[punctuation.bracket:[][type:a][punctuation.delimiter:.][type:b][punctuation.bracket:]]
+[type:c][property: ][operator:=][property: ][number:1]
+
+[punctuation.bracket:[][type:a][punctuation.bracket:]]
+[type:d][property: ][operator:=][property: ][number:2]
+
+[type:name][property: ][operator:=][property: ][punctuation.bracket:{][property: ][type:first][property: ][operator:=][property: ][string:"Tom"][punctuation.delimiter:,][property: ][type:last][property: ][operator:=][property: ][string:"Preston-Werner"][property: ][punctuation.bracket:}]
+[type:point][property: ][operator:=][property: ][punctuation.bracket:{][property: ][type:x][property: ][operator:=][property: ][number:1][punctuation.delimiter:,][property: ][type:y][property: ][operator:=][property: ][number:2][property: ][punctuation.bracket:}]
+
+[punctuation.bracket:[][type:name][punctuation.bracket:]]
+[type:first][property: ][operator:=][property: ][string:"Tom"]
+[type:last][property: ][operator:=][property: ][string:"Preston-Werner"]
+
+[punctuation.bracket:[][type:point][punctuation.bracket:]]
+[type:x][property: ][operator:=][property: ][number:1]
+[type:y][property: ][operator:=][property: ][number:2]
+
+[punctuation.bracket:[[][type:products][punctuation.bracket:]]]
+[type:name][property: ][operator:=][property: ][string:"Hammer"]
+[type:sku][property: ][operator:=][property: ][number:738594937]
+
+[punctuation.bracket:[[][type:products][punctuation.bracket:]]]
+
+[punctuation.bracket:[[][type:products][punctuation.bracket:]]]
+[type:name][property: ][operator:=][property: ][string:"Nail"]
+[type:sku][property: ][operator:=][property: ][number:284758393]
+[type:color][property: ][operator:=][property: ][string:"gray"]
+
+[punctuation.bracket:[[][type:fruit][punctuation.bracket:]]]
+  [type:name][property: ][operator:=][property: ][string:"apple"]
+
+  [punctuation.bracket:[][type:fruit][punctuation.delimiter:.][type:physical][punctuation.bracket:]]
+    [type:color][property: ][operator:=][property: ][string:"red"]
+    [type:shape][property: ][operator:=][property: ][string:"round"]
+
+  [punctuation.bracket:[[][type:fruit][punctuation.delimiter:.][type:variety][punctuation.bracket:]]]
+    [type:name][property: ][operator:=][property: ][string:"red delicious"]
+
+  [punctuation.bracket:[[][type:fruit][punctuation.delimiter:.][type:variety][punctuation.bracket:]]]
+    [type:name][property: ][operator:=][property: ][string:"granny smith"]
+
+[punctuation.bracket:[[][type:fruit][punctuation.bracket:]]]
+  [type:name][property: ][operator:=][property: ][string:"banana"]
+
+  [punctuation.bracket:[[][type:fruit][punctuation.delimiter:.][type:variety][punctuation.bracket:]]]
+    [type:name][property: ][operator:=][property: ][string:"plantain"]
+
+[type:points][property: ][operator:=][property: ][punctuation.bracket:[][property: ][punctuation.bracket:{][property: ][type:x][property: ][operator:=][property: ][number:1][punctuation.delimiter:,][property: ][type:y][property: ][operator:=][property: ][number:2][punctuation.delimiter:,][property: ][type:z][property: ][operator:=][property: ][number:3][property: ][punctuation.bracket:}][punctuation.delimiter:,][property:
+           ][punctuation.bracket:{][property: ][type:x][property: ][operator:=][property: ][number:7][punctuation.delimiter:,][property: ][type:y][property: ][operator:=][property: ][number:8][punctuation.delimiter:,][property: ][type:z][property: ][operator:=][property: ][number:9][property: ][punctuation.bracket:}][punctuation.delimiter:,][property:
+           ][punctuation.bracket:{][property: ][type:x][property: ][operator:=][property: ][number:2][punctuation.delimiter:,][property: ][type:y][property: ][operator:=][property: ][number:4][punctuation.delimiter:,][property: ][type:z][property: ][operator:=][property: ][number:8][property: ][punctuation.bracket:}][property: ][punctuation.bracket:]]
