@@ -1,0 +1,33 @@
+name: Update Gogh Themes
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          ref: artifacts
+          path: artifacts
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+
+      - run: julia --project=scripts/gogh -e 'using Pkg; Pkg.instantiate()'
+
+      - run: julia --project=scripts/gogh scripts/gogh/gogh.jl artifacts
+
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: Artifacts.toml
+          commit-message: "Update Gogh themes artifact"
+          title: "Update Gogh themes"
+          branch: update-gogh-artifact
+          delete-branch: true

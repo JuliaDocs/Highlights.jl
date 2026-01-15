@@ -1,33 +1,44 @@
 name: CI
 on:
-  - push
-  - pull_request
+  push:
+    branches: [master]
+  pull_request:
 jobs:
+  format:
+    name: Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+      - uses: julia-actions/cache@v2
+      - run: julia --project=scripts/format -e 'using Pkg; Pkg.instantiate()'
+      - run: julia --project=scripts/format scripts/format/format.jl
+      - run: git diff --exit-code --color
+
   test:
-    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }}
+    needs: format
+    name: Julia ${{ matrix.version }} - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         version:
-          - '1.0'
+          - '1.6'
           - '1'
           - 'nightly'
         os:
           - ubuntu-latest
           - windows-latest
           - macos-latest
-        arch:
-          - x64
-        include:
-          - os: ubuntu-latest
-            version: '1'
-            arch: x86
+        exclude:
+          - version: '1.6'
+            os: macos-latest
     steps:
       - uses: actions/checkout@v6
       - uses: julia-actions/setup-julia@v2
         with:
           version: ${{ matrix.version }}
-          arch: ${{ matrix.arch }}
           show-versioninfo: true
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-runtest@v1

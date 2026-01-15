@@ -4,4 +4,8 @@
 docs/build/
 docs/src/demo/lexers/
 docs/src/demo/themes/
+docs/src/gallery.html
+docs/src/demo.typ
+docs/src/demo.pdf
+demo/
 Manifest.toml
