@@ -8,6 +8,12 @@ This file provides guidance to AI coding assistants working with this repository
 # Run all tests
 julia --project -e 'using Pkg; Pkg.test()'
 
+# Format code
+just format
+
+# Update changelog
+just changelog
+
 # Update Gogh themes to latest release
 julia --project scripts/update_gogh.jl
 ```

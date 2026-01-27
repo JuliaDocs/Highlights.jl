@@ -17,6 +17,19 @@ jobs:
       - run: julia --project=scripts/format scripts/format/format.jl
       - run: git diff --exit-code --color
 
+  changelog:
+    name: Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+      - uses: julia-actions/cache@v2
+      - run: julia --project=scripts/changelog -e 'using Pkg; Pkg.instantiate()'
+      - run: julia --project=scripts/changelog scripts/changelog/changelog.jl
+      - run: git diff --exit-code --color
+
   test:
     needs: format
     name: Julia ${{ matrix.version }} - ${{ matrix.os }}
