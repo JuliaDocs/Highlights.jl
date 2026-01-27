@@ -1,6 +1,6 @@
 name = "Highlights"
 uuid = "eafb193a-b7ab-5a9e-9068-77385905fa72"
-version = "0.5.3"
+version = "0.6.0"
 
 [deps]
 Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
