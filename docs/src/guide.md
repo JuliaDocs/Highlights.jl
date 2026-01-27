@@ -286,3 +286,21 @@ css = stylesheet("Dracula"; classprefix="syntax")
 
 code = highlight("text/html", src, :julia, "Dracula"; stylesheet=true, classprefix="syntax")
 ```
+
+## Notebook Display
+
+The `Highlight` type wraps highlighted code for automatic display in Pluto, Jupyter, and other rich environments:
+
+```julia
+using Highlights
+
+code = Highlight("println(1)", :julia, "Dracula")
+# Displays as: ANSI in terminal, HTML in notebooks
+```
+
+Constructor arguments match `highlight()`. The `Theme` type also supports rich display:
+
+```julia
+theme = Highlights.load_theme("Dracula")
+# Displays color swatches in notebooks, ANSI preview in terminal
+```
