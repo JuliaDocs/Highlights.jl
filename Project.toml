@@ -9,7 +9,9 @@ Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 TreeSitter = "f42328cb-ece0-4cf2-995f-9e7abb27d006"
 
 [compat]
+Artifacts = "1.6"
 JSON = "0.21, 1"
+Pkg = "1.6"
 TreeSitter = "0.2"
 julia = "1.6"
 
