@@ -910,4 +910,87 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
             @test success(run(`$(Typst_jll.typst()) compile $typ $pdf`))
         end
     end
+
+    @testset "Highlight type" begin
+        code = "x = 1"
+
+        # Construction
+        h = Highlights.Highlight(code, :julia, "Dracula")
+        @test h.source == code
+        @test h.language === tree_sitter_julia_jll
+        @test h.language_sym === :julia
+        @test h.theme.name == "Dracula"
+
+        # Construction with Theme object
+        theme = Highlights.load_theme("Nord")
+        h2 = Highlights.Highlight(code, :julia, theme)
+        @test h2.theme === theme
+
+        # Construction with kwargs
+        h3 = Highlights.Highlight(
+            code,
+            :julia,
+            "Dracula";
+            stylesheet = true,
+            classprefix = "my",
+        )
+        @test h3.stylesheet == true
+        @test h3.classprefix == "my"
+
+        # show text/plain (renders ANSI)
+        buf = IOBuffer()
+        show(buf, MIME("text/plain"), h)
+        plain_out = String(take!(buf))
+        @test plain_out == Highlights.highlight(code, :julia, "Dracula")
+
+        # show text/html
+        buf = IOBuffer()
+        show(buf, MIME("text/html"), h)
+        html_out = String(take!(buf))
+        @test html_out == Highlights.highlight("text/html", code, :julia, "Dracula")
+
+        # show text/latex
+        buf = IOBuffer()
+        show(buf, MIME("text/latex"), h)
+        latex_out = String(take!(buf))
+        @test latex_out == Highlights.highlight("text/latex", code, :julia, "Dracula")
+
+        # show text/typst
+        buf = IOBuffer()
+        show(buf, MIME("text/typst"), h)
+        typst_out = String(take!(buf))
+        @test typst_out == Highlights.highlight("text/typst", code, :julia, "Dracula")
+
+        # show text/ansi (explicit)
+        buf = IOBuffer()
+        show(buf, MIME("text/ansi"), h)
+        ansi_out = String(take!(buf))
+        @test ansi_out == Highlights.highlight(code, :julia, "Dracula")
+    end
+
+    @testset "Theme show methods" begin
+        theme = Highlights.load_theme("Dracula")
+
+        # text/plain shows name and ANSI swatches
+        buf = IOBuffer()
+        show(buf, MIME("text/plain"), theme)
+        plain_out = String(take!(buf))
+        @test contains(plain_out, "Theme(\"Dracula\")")
+        @test contains(plain_out, "\u2588\u2588")  # block characters
+
+        # compact mode shows only Theme("name")
+        buf = IOBuffer()
+        show(IOContext(buf, :compact => true), MIME("text/plain"), theme)
+        compact_out = String(take!(buf))
+        @test compact_out == "Theme(\"Dracula\")"
+        @test !contains(compact_out, "\u2588")
+
+        # text/html shows color swatches
+        buf = IOBuffer()
+        show(buf, MIME("text/html"), theme)
+        html_out = String(take!(buf))
+        @test contains(html_out, "<h3>Dracula</h3>")
+        @test contains(html_out, "background:")
+        @test contains(html_out, theme.background)
+    end
 end

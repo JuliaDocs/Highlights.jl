@@ -5,7 +5,7 @@ import JSON
 import Pkg
 import TreeSitter
 
-export highlight, stylesheet, Theme
+export highlight, stylesheet, Theme, Highlight
 
 include("ansi.jl")
 include("themes.jl")
@@ -19,5 +19,6 @@ include("formats/typst.jl")
 include("stylesheet.jl")
 include("preprocessors.jl")
 include("api.jl")
+include("show.jl")
 
 end
