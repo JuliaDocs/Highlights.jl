@@ -1,0 +1,21 @@
+[comment:// Event emitter class]
+[keyword:class] [constructor:EventEmitter] [punctuation.bracket:{]
+  [function.method:constructor][punctuation.bracket:(][punctuation.bracket:)] [punctuation.bracket:{]
+    [variable.builtin:this][punctuation.delimiter:.][property:events] [operator:=] [punctuation.bracket:{][punctuation.bracket:}][punctuation.delimiter:;]
+  [punctuation.bracket:}]
+
+  [function.method:on][punctuation.bracket:(][variable:event][punctuation.delimiter:,] [variable:callback][punctuation.bracket:)] [punctuation.bracket:{]
+    [variable.builtin:this][punctuation.delimiter:.][property:events][punctuation.bracket:[][variable:event][punctuation.bracket:]] [operator:??=] [punctuation.bracket:[][punctuation.bracket:]][punctuation.delimiter:;]
+    [variable.builtin:this][punctuation.delimiter:.][property:events][punctuation.bracket:[][variable:event][punctuation.bracket:]][punctuation.delimiter:.][function.method:push][punctuation.bracket:(][variable:callback][punctuation.bracket:)][punctuation.delimiter:;]
+    [keyword:return] [variable.builtin:this][punctuation.delimiter:;]
+  [punctuation.bracket:}]
+
+  [function.method:emit][punctuation.bracket:(][variable:event][punctuation.delimiter:,] ...[variable:args][punctuation.bracket:)] [punctuation.bracket:{]
+    [keyword:const] [variable:callbacks] [operator:=] [variable.builtin:this][punctuation.delimiter:.][property:events][punctuation.bracket:[][variable:event][punctuation.bracket:]] [operator:||] [punctuation.bracket:[][punctuation.bracket:]][punctuation.delimiter:;]
+    [variable:callbacks][punctuation.delimiter:.][function.method:forEach][punctuation.bracket:(][variable:cb] [operator:=>] [function:cb][punctuation.bracket:(]...[variable:args][punctuation.bracket:)][punctuation.bracket:)][punctuation.delimiter:;]
+  [punctuation.bracket:}]
+[punctuation.bracket:}]
+
+[keyword:const] [variable:emitter] [operator:=] [keyword:new] [constructor:EventEmitter][punctuation.bracket:(][punctuation.bracket:)][punctuation.delimiter:;]
+[variable:emitter][punctuation.delimiter:.][function.method:on][punctuation.bracket:(][string:"data"][punctuation.delimiter:,] [punctuation.bracket:(][variable:x][punctuation.bracket:)] [operator:=>] [variable.builtin:console][punctuation.delimiter:.][function.method:log][punctuation.bracket:(][string:`Received: ][punctuation.special:${][variable:x][punctuation.special:}][string:`][punctuation.bracket:)][punctuation.bracket:)][punctuation.delimiter:;]
+[variable:emitter][punctuation.delimiter:.][function.method:emit][punctuation.bracket:(][string:"data"][punctuation.delimiter:,] [number:42][punctuation.bracket:)][punctuation.delimiter:;]

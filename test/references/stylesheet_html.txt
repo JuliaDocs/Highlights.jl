@@ -1,0 +1,25 @@
+<style>
+pre.hl {
+  background-color: #282A36;
+  color: #F8F8F2;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.hl-c1 { color: #7A7A7A; }
+.hl-c2 { color: #E64747; }
+.hl-c3 { color: #42E66C; }
+.hl-c4 { color: #E4F34A; }
+.hl-c5 { color: #9B6BDF; }
+.hl-c6 { color: #E356A7; }
+.hl-c7 { color: #75D7EC; }
+.hl-c8 { color: #F8F8F2; }
+.hl-c9 { color: #7A7A7A; }
+.hl-c10 { color: #FF5555; }
+.hl-c11 { color: #50FA7B; }
+.hl-c12 { color: #F1FA8C; }
+.hl-c13 { color: #BD93F9; }
+.hl-c14 { color: #FF79C6; }
+.hl-c15 { color: #8BE9FD; }
+.hl-c16 { color: #F9F9FB; }
+</style>

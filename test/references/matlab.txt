@@ -1,0 +1,42 @@
+[comment.line:% A single line comment.]
+
+[variable:x] [operator:=] [constant.numeric.float:1][punctuation.delimiter:;]
+[variable:y] [operator:=] [constant.numeric.float:2][punctuation.delimiter:;]
+[punctuation.bracket:[][variable:X][punctuation.delimiter:,][variable: ][variable:Y][punctuation.bracket:]] [operator:=] [function:func][punctuation.bracket:(][constant.numeric.float:1.0][punctuation.delimiter:,] [constant.numeric.float:2.3e-9][punctuation.delimiter:,] [constant.numeric.float:3j][punctuation.bracket:)][punctuation.delimiter:;]
+
+[comment.line:%{
+    Multiline comments here,
+
+  and here.
+
+    ... and again here.
+%}]
+
+[variable:s] [operator:=] [operator:'][string:abc ... xyz][operator:'][punctuation.delimiter:;]
+
+[keyword.function:function] result [operator:=] [function:func][punctuation.bracket:(][variable.parameter:x][punctuation.delimiter:,] [variable.parameter:y][punctuation.bracket:)]
+    [comment.line:% ...]
+[keyword.function:end]
+
+[comment.line:% External shell commands.]
+[function.macro:!ping] [string:julialang.org]
+
+[keyword.storage.type:classdef] [keyword.storage.type:ClassName]
+    [keyword:properties]
+        [variable.other.member:x]
+        [variable.other.member:y]
+        [variable.other.member:z]
+    [keyword:end]
+    [keyword:methods]
+        [keyword.function:function] [punctuation.bracket:[][variable:s][punctuation.delimiter:,] [variable:t][punctuation.bracket:]] [operator:=] [function:method_1][punctuation.bracket:(][variable.parameter:x_1][punctuation.delimiter:,] [variable.parameter:y_2][punctuation.bracket:)]
+            [keyword.control.conditional:if] x_1 [operator:<] y_2
+                [variable:s] [operator:=] [punctuation.bracket:{][constant.numeric.float:1][punctuation.delimiter:,] [constant.numeric.float:2][punctuation.delimiter:,] [constant.numeric.float:4][punctuation.bracket:}][punctuation.delimiter:;]
+                [variable:t] [operator:=] n [operator:*] A [operator:+] B [operator:+] [constant.numeric.float:1][punctuation.delimiter:;]
+            [keyword.control.conditional:else]
+                [keyword.control.repeat:for] i [operator:=] [constant.numeric.float:1][operator::]x_1
+                    [function:A][punctuation.bracket:(][variable:i][punctuation.bracket:)] [operator:=] i[operator:^][constant.numeric.float:2] [operator:+] [constant.numeric.float:1][punctuation.delimiter:;]
+                [keyword.control.repeat:end]
+            [keyword.control.conditional:end]
+        [keyword.function:end]
+    [keyword:end]
+[keyword:end]

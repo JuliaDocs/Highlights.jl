@@ -1,0 +1,46 @@
+#block(fill: rgb(40, 42, 54), inset: 1em, radius: 4pt, width: 100%)[
+#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(248, 248, 242))
+#set par(leading: 0.5em)
+#text(fill: rgb(122, 122, 122))[#raw("% A single line comment.")] \
+ \
+#text(fill: rgb(248, 248, 242))[#raw("x")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#text(fill: rgb(248, 248, 242))[#raw("y")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#text(fill: rgb(248, 248, 242))[#raw("[")]#text(fill: rgb(248, 248, 242))[#raw("X")]#text(fill: rgb(248, 248, 242))[#raw(",")]#text(fill: rgb(248, 248, 242))[#raw(" ")]#text(fill: rgb(248, 248, 242))[#raw("Y")]#text(fill: rgb(248, 248, 242))[#raw("]")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("func")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1.0")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2.3e-9")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("3j")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+ \
+#text(fill: rgb(122, 122, 122))[#raw("%{")] \
+#text(fill: rgb(122, 122, 122))[#raw("    Multiline comments here,")] \
+#text(fill: rgb(122, 122, 122))[] \
+#text(fill: rgb(122, 122, 122))[#raw("  and here.")] \
+#text(fill: rgb(122, 122, 122))[] \
+#text(fill: rgb(122, 122, 122))[#raw("    ... and again here.")] \
+#text(fill: rgb(122, 122, 122))[#raw("%}")] \
+ \
+#text(fill: rgb(248, 248, 242))[#raw("s")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("'")]#text(fill: rgb(66, 230, 108))[#raw("abc ... xyz")]#text(fill: rgb(248, 248, 242))[#raw("'")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+ \
+#text(fill: rgb(230, 71, 71))[#raw("function")]#raw(" result ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("func")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("y")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    ")#text(fill: rgb(122, 122, 122))[#raw("% ...")] \
+#text(fill: rgb(230, 71, 71))[#raw("end")] \
+ \
+#text(fill: rgb(122, 122, 122))[#raw("% External shell commands.")] \
+#text(fill: rgb(227, 86, 167))[#raw("!ping")]#raw(" ")#text(fill: rgb(66, 230, 108))[#raw("julialang.org")] \
+ \
+#text(fill: rgb(230, 71, 71))[#raw("classdef")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("ClassName")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("properties")] \
+#raw("        ")#text(fill: rgb(248, 248, 242))[#raw("x")] \
+#raw("        ")#text(fill: rgb(248, 248, 242))[#raw("y")] \
+#raw("        ")#text(fill: rgb(248, 248, 242))[#raw("z")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("methods")] \
+#raw("        ")#text(fill: rgb(230, 71, 71))[#raw("function")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("[")]#text(fill: rgb(248, 248, 242))[#raw("s")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("t")]#text(fill: rgb(248, 248, 242))[#raw("]")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("method_1")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x_1")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("y_2")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("            ")#text(fill: rgb(230, 71, 71))[#raw("if")]#raw(" x_1 ")#text(fill: rgb(248, 248, 242))[#raw("<")]#raw(" y_2") \
+#raw("                ")#text(fill: rgb(248, 248, 242))[#raw("s")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("4")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#raw("                ")#text(fill: rgb(248, 248, 242))[#raw("t")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" n ")#text(fill: rgb(248, 248, 242))[#raw("*")]#raw(" A ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" B ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#raw("            ")#text(fill: rgb(230, 71, 71))[#raw("else")] \
+#raw("                ")#text(fill: rgb(230, 71, 71))[#raw("for")]#raw(" i ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(":")]#raw("x_1") \
+#raw("                    ")#text(fill: rgb(155, 107, 223))[#raw("A")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("i")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" i")#text(fill: rgb(248, 248, 242))[#raw("^")]#text(fill: rgb(228, 243, 74))[#raw("2")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#raw("                ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#raw("            ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#raw("        ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("end")] \
+]

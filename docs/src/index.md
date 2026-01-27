@@ -1,26 +1,52 @@
 # Highlights.jl
 
-*A source code highlighter for Julia.*
+*Syntax highlighting for Julia using TreeSitter.*
 
-## Introduction
+## Overview
 
-This package provides a collection of source code *lexers* for various languages and markup
-formats and a selection of *themes* that can be used to customise the style of the formatted
-source code. Additional *lexer* definitions are straightforward to add and are based on the
-regular expression lexing mechanism used by [Pygments](http://pygments.org/).
+Highlights.jl provides syntax highlighting using [TreeSitter](https://tree-sitter.github.io/tree-sitter/) for parsing and themes from the [Gogh](https://gogh-co.github.io/Gogh/) project.
 
 ## Installation
 
-`Highlights` is a registered package and so can be installed via
-
 ```julia
+using Pkg
 Pkg.add("Highlights")
 ```
 
-The package has no dependencies other than Julia (`0.7` and up) itself.
+You'll also need to install grammar packages for the languages you want to highlight:
 
-## Usage
+```julia
+Pkg.add("tree_sitter_julia_jll")
+```
 
-  * See the [User Guide](@ref) for an introduction to using the package;
-  * the [Theme Guide](@ref) will explain how to add new themes;
-  * and the [Lexer Guide](@ref) will walk you through writing new lexer definitions.
+## Quick Start
+
+```julia
+using Highlights
+
+code = """
+function greet(name)
+    println("Hello, \$name!")
+end
+"""
+
+# Terminal output (ANSI colors)
+println(highlight(code, :julia, "Dracula"))
+
+# HTML output
+html = highlight("text/html", code, :julia, "Nord")
+```
+
+## Features
+
+- **Over 360 color themes** from the Gogh project
+- **Multiple output formats**: ANSI (terminal), HTML, LaTeX, Typst, plain text
+- **Language aliases**: `js`, `ts`, `py`, `rb`, `yml`, `rs`, `cs`
+- **Fuzzy matching**: Suggests similar themes/languages on typos
+
+## Contents
+
+```@contents
+Pages = ["guide.md", "themes.md", "languages.md", "demos.md", "api.md"]
+Depth = 1
+```

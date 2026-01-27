@@ -1,0 +1,50 @@
+[comment:! Based on code samples from https://en.wikipedia.org/wiki/Fortran]
+[comment:! and https://learnxinyminutes.com/docs/fortran95/.]
+
+[keyword:PROGRAM] [namespace:test]
+    [keyword:CALL] [function:print_message]
+[keyword.function:END] [keyword.function:PROGRAM] [namespace:test]
+[keyword.function:SUBROUTINE] [function:print_message]
+    [keyword:PRINT] [operator:*][punctuation.delimiter:,] [string:'Hello world!']
+[keyword.function:END] [keyword.function:SUBROUTINE] [function:print_message]
+
+# a preprocessor comment
+
+[boolean:.true.] [operator:==] [boolean:.FALSE.]
+
+a [operator:<] [variable:b] [keyword.operator:.AND.] [variable:i] [operator:/=] [variable:j]
+flag [operator:=] [variable:a] [operator:==] [variable:b]
+
+[keyword:print] [string:"(F6.3)"][punctuation.delimiter:,] [number:4.32]
+
+[comment:! A comment...]
+
+[type:TYPE] str[type:in]g[number:80]            [comment:! ... and other comment.]
+    [type:INTEGER]       [variable:length]
+    [type:CHARACTER][punctuation.bracket:(][number:80][punctuation.bracket:)] [type:value]
+[keyword.function:END] [namespace:TYPE] str[type:in]g[number:80]
+[type:CHARACTER][punctuation.delimiter:::] [variable:char1][punctuation.delimiter:,] [variable:char2][punctuation.delimiter:,] [variable:char3]
+[type:TYPE][punctuation.bracket:(]string80[punctuation.bracket:)][punctuation.delimiter:::] [variable:str1][punctuation.delimiter:,]  [variable:str2][punctuation.delimiter:,]  [variable:str3]
+
+[type:REAL][punctuation.delimiter:,] [type:DIMENSION][punctuation.bracket:(][number:10][punctuation.delimiter:,] [number:20][punctuation.bracket:)] [punctuation.delimiter:::] [variable:a][punctuation.delimiter:,] [variable:b][punctuation.delimiter:,] [variable:c]
+[type:REAL][punctuation.delimiter:,] [type:DIMENSION][punctuation.bracket:(][number:5][punctuation.bracket:)]      [punctuation.delimiter:::] [variable:v][punctuation.delimiter:,] [variable:w]
+[type:LOGICAL]                    [variable:flag][punctuation.bracket:(][number:10][punctuation.delimiter:,] [number:20][punctuation.bracket:)]
+
+[variable:a] [operator:=] [variable:b]
+[variable:c] [operator:=] [variable:a][operator:/][variable:b]
+[variable:w] [operator:=] [variable:v] [operator:+] [number:1.2]
+[variable:w] [operator:=] [number:5][operator:/][variable:v] [operator:+] [variable:a][punctuation.bracket:(][number:1]:[number:5][punctuation.delimiter:,] [number:5][punctuation.bracket:)]
+[variable:c][punctuation.bracket:(][number:1]:[number:8][punctuation.delimiter:,] [number:5]:[number:10][punctuation.bracket:)] [operator:=] [variable:a][punctuation.bracket:(][number:2]:[number:9][punctuation.delimiter:,] [number:5]:[number:10][punctuation.bracket:)] [operator:+] [variable:b][punctuation.bracket:(][number:1]:[number:8][punctuation.delimiter:,] [number:15]:[number:20][punctuation.bracket:)]
+[variable:v][punctuation.bracket:(][number:2]:[number:5][punctuation.bracket:)] [operator:=] [variable:v][punctuation.bracket:(][number:1]:[number:4][punctuation.bracket:)]
+
+[variable:i] [operator:=] [number:10]
+select case [punctuation.bracket:(][variable:i][punctuation.bracket:)]
+    case [punctuation.bracket:(][number:0][punctuation.bracket:)] [comment:! case i == 0]
+    [variable:j][operator:=][number:0]
+    case [punctuation.bracket:(][number:1]:[number:5][punctuation.bracket:)]
+    [variable:j][operator:=][number:1]
+    case [punctuation.bracket:(][number:6]:[punctuation.bracket:)]
+    [variable:j][operator:=][number:2]
+    case [keyword:default]
+    [variable:j][operator:=][number:3]
+end select

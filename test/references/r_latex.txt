@@ -1,0 +1,66 @@
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\begin{tcblisting}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}
+(*@\textcolor[RGB]{122,122,122}{\# Comments start with the \textasciigrave{}\#\textasciigrave{} character.}@*)
+
+(*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{248,248,242}{<-}@*) (*@\textcolor[RGB]{228,243,74}{1}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)
+
+(*@\textcolor[RGB]{155,107,223}{hist}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{thing}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{col}@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{66,230,108}{"\#ff3300"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{border}@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{66,230,108}{"pink"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{breaks}@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{228,243,74}{5}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{155,107,223}{round}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{155,107,223}{runif}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{min}@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{228,243,74}{.1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{max}@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{228,243,74}{2.0}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{155,107,223}{c}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{155,107,223}{length}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{155,107,223}{c}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{3L}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4L}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{1L}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{248,248,242}{-}@*)(*@\textcolor[RGB]{241,250,140}{Inf}@*) (*@\textcolor[RGB]{248,248,242}{<}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1e9}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{228,243,74}{61.4e-12}@*) (*@\textcolor[RGB]{248,248,242}{*}@*) (*@\textcolor[RGB]{228,243,74}{1.2e2}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{==}@*) (*@\textcolor[RGB]{228,243,74}{TRUE}@*)
+
+(*@\textcolor[RGB]{248,248,242}{a.long.variable.name}@*) (*@\textcolor[RGB]{248,248,242}{==}@*) (*@\textcolor[RGB]{228,243,74}{FALSE}@*)
+
+(*@\textcolor[RGB]{228,243,74}{4}@*) (*@\textcolor[RGB]{248,248,242}{\%\%}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)
+
+(*@\textcolor[RGB]{248,248,242}{A}@*) (*@\textcolor[RGB]{248,248,242}{\%*\%}@*) (*@\textcolor[RGB]{155,107,223}{t}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{A}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{248,248,242}{arr}@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{foo}@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{bar}@*) (*@\textcolor[RGB]{248,248,242}{==}@*) (*@\textcolor[RGB]{66,230,108}{"X"}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{155,107,223}{c}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{66,230,108}{\textquotesingle{}foo\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}bar\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}baz\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}"\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{66,230,108}{"...\textquotesingle{} }@*)(*@\textcolor[RGB]{227,86,167}{\textbackslash{}"}@*)(*@\textcolor[RGB]{66,230,108}{ ..."}@*)
+
+(*@\textcolor[RGB]{230,71,71}{while}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{num}@*) (*@\textcolor[RGB]{248,248,242}{<=}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)
+    (*@\textcolor[RGB]{122,122,122}{\# ...}@*)
+    (*@\textcolor[RGB]{230,71,71}{if}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{foo}@*) (*@\textcolor[RGB]{248,248,242}{==}@*) (*@\textcolor[RGB]{248,248,242}{T}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)
+        (*@\textcolor[RGB]{122,122,122}{\# ...}@*)
+    (*@\textcolor[RGB]{248,248,242}{\}}@*) (*@\textcolor[RGB]{230,71,71}{else}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)
+        (*@\textcolor[RGB]{122,122,122}{\# ...}@*)
+    (*@\textcolor[RGB]{248,248,242}{\}}@*)
+(*@\textcolor[RGB]{248,248,242}{\}}@*)
+
+(*@\textcolor[RGB]{155,107,223}{func}@*) (*@\textcolor[RGB]{248,248,242}{<-}@*) (*@\textcolor[RGB]{230,71,71}{function}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{y}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{z}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)
+    (*@\textcolor[RGB]{122,122,122}{\# ...}@*)
+    (*@\textcolor[RGB]{230,71,71}{return}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{something}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{248,248,242}{\}}@*)
+
+(*@\textcolor[RGB]{230,71,71}{for}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{230,71,71}{in}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)(*@\textcolor[RGB]{228,243,74}{10}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)
+    (*@\textcolor[RGB]{155,107,223}{print}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{248,248,242}{\}}@*)
+
+\end{tcblisting}

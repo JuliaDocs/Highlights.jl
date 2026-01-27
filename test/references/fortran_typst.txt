@@ -1,0 +1,54 @@
+#block(fill: rgb(40, 42, 54), inset: 1em, radius: 4pt, width: 100%)[
+#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(248, 248, 242))
+#set par(leading: 0.5em)
+#text(fill: rgb(122, 122, 122))[#raw("! Based on code samples from https://en.wikipedia.org/wiki/Fortran")] \
+#text(fill: rgb(122, 122, 122))[#raw("! and https://learnxinyminutes.com/docs/fortran95/.")] \
+ \
+#text(fill: rgb(230, 71, 71))[#raw("PROGRAM")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("test")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("CALL")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("print_message")] \
+#text(fill: rgb(230, 71, 71))[#raw("END")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("PROGRAM")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("test")] \
+#text(fill: rgb(230, 71, 71))[#raw("SUBROUTINE")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("print_message")] \
+#raw("    ")#text(fill: rgb(230, 71, 71))[#raw("PRINT")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("*")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(66, 230, 108))[#raw("'Hello world!'")] \
+#text(fill: rgb(230, 71, 71))[#raw("END")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("SUBROUTINE")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("print_message")] \
+ \
+#raw("# a preprocessor comment") \
+ \
+#text(fill: rgb(228, 243, 74))[#raw(".true.")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("==")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw(".FALSE.")] \
+ \
+#raw("a ")#text(fill: rgb(248, 248, 242))[#raw("<")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("b")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw(".AND.")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("i")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("/=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("j")] \
+#raw("flag ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("a")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("==")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("b")] \
+ \
+#text(fill: rgb(230, 71, 71))[#raw("print")]#raw(" ")#text(fill: rgb(66, 230, 108))[#raw("\"(F6.3)\"")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("4.32")] \
+ \
+#text(fill: rgb(122, 122, 122))[#raw("! A comment...")] \
+ \
+#text(fill: rgb(117, 215, 236))[#raw("TYPE")]#raw(" str")#text(fill: rgb(117, 215, 236))[#raw("in")]#raw("g")#text(fill: rgb(228, 243, 74))[#raw("80")]#raw("            ")#text(fill: rgb(122, 122, 122))[#raw("! ... and other comment.")] \
+#raw("    ")#text(fill: rgb(117, 215, 236))[#raw("INTEGER")]#raw("       ")#text(fill: rgb(248, 248, 242))[#raw("length")] \
+#raw("    ")#text(fill: rgb(117, 215, 236))[#raw("CHARACTER")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("80")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("value")] \
+#text(fill: rgb(230, 71, 71))[#raw("END")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("TYPE")]#raw(" str")#text(fill: rgb(117, 215, 236))[#raw("in")]#raw("g")#text(fill: rgb(228, 243, 74))[#raw("80")] \
+#text(fill: rgb(117, 215, 236))[#raw("CHARACTER")]#text(fill: rgb(248, 248, 242))[#raw("::")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("char1")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("char2")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("char3")] \
+#text(fill: rgb(117, 215, 236))[#raw("TYPE")]#text(fill: rgb(248, 248, 242))[#raw("(")]#raw("string80")#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw("::")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("str1")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw("  ")#text(fill: rgb(248, 248, 242))[#raw("str2")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw("  ")#text(fill: rgb(248, 248, 242))[#raw("str3")] \
+ \
+#text(fill: rgb(117, 215, 236))[#raw("REAL")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("DIMENSION")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("20")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("::")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("a")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("b")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("c")] \
+#text(fill: rgb(117, 215, 236))[#raw("REAL")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("DIMENSION")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw("      ")#text(fill: rgb(248, 248, 242))[#raw("::")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("v")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("w")] \
+#text(fill: rgb(117, 215, 236))[#raw("LOGICAL")]#raw("                    ")#text(fill: rgb(248, 248, 242))[#raw("flag")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("20")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+ \
+#text(fill: rgb(248, 248, 242))[#raw("a")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("b")] \
+#text(fill: rgb(248, 248, 242))[#raw("c")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("a")]#text(fill: rgb(248, 248, 242))[#raw("/")]#text(fill: rgb(248, 248, 242))[#raw("b")] \
+#text(fill: rgb(248, 248, 242))[#raw("w")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("v")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1.2")] \
+#text(fill: rgb(248, 248, 242))[#raw("w")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw("/")]#text(fill: rgb(248, 248, 242))[#raw("v")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("a")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(248, 248, 242))[#raw("c")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("8")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("5")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("a")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("2")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("9")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("5")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("b")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("8")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("15")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("20")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(248, 248, 242))[#raw("v")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("2")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("v")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("4")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+ \
+#text(fill: rgb(248, 248, 242))[#raw("i")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("10")] \
+#raw("select case ")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("i")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    case ")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("0")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(122, 122, 122))[#raw("! case i == 0")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("j")]#text(fill: rgb(248, 248, 242))[#raw("=")]#text(fill: rgb(228, 243, 74))[#raw("0")] \
+#raw("    case ")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":")#text(fill: rgb(228, 243, 74))[#raw("5")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("j")]#text(fill: rgb(248, 248, 242))[#raw("=")]#text(fill: rgb(228, 243, 74))[#raw("1")] \
+#raw("    case ")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("6")]#raw(":")#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("j")]#text(fill: rgb(248, 248, 242))[#raw("=")]#text(fill: rgb(228, 243, 74))[#raw("2")] \
+#raw("    case ")#text(fill: rgb(230, 71, 71))[#raw("default")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("j")]#text(fill: rgb(248, 248, 242))[#raw("=")]#text(fill: rgb(228, 243, 74))[#raw("3")] \
+#raw("end select") \
+]

@@ -24,7 +24,7 @@ pkg> add Highlights
 
 ## Project Status
 
-The package is tested against the released Julia `1.x` versions and the nightly builds on Linux, OS X, and Windows.
+The package requires Julia 1.6+ and is tested on Linux, macOS, and Windows.
 
 ## Contributing and Questions
 
@@ -32,10 +32,7 @@ Contributions are very welcome, as are feature requests and suggestions. The
 [contributing][contrib-url] page details the guidelines that should be followed when opening
 pull requests.
 
-Please open an [issue][issues-url] if you encounter any problems. If you have a question
-then feel free to ask for help in the [Gitter chat room][gitter-url].
-
-[gitter-url]: https://gitter.im/juliadocs/users
+Please open an [issue][issues-url] if you encounter any problems.
 
 [contrib-url]: https://documenter.juliadocs.org/latest/man/contributing/
 

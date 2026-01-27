@@ -1,0 +1,43 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A">% A single line comment.</span>
+
+<span style="color: #F8F8F2">x</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">;</span>
+<span style="color: #F8F8F2">y</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">;</span>
+<span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">X</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2"> </span><span style="color: #F8F8F2">Y</span><span style="color: #F8F8F2">]</span> <span style="color: #F8F8F2">=</span> <span style="color: #9B6BDF">func</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1.0</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">2.3e-9</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3j</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">;</span>
+
+<span style="color: #7A7A7A">%{
+    Multiline comments here,
+
+  and here.
+
+    ... and again here.
+%}</span>
+
+<span style="color: #F8F8F2">s</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">&#39;</span><span style="color: #42E66C">abc ... xyz</span><span style="color: #F8F8F2">&#39;</span><span style="color: #F8F8F2">;</span>
+
+<span style="color: #E64747">function</span> result <span style="color: #F8F8F2">=</span> <span style="color: #9B6BDF">func</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">y</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #7A7A7A">% ...</span>
+<span style="color: #E64747">end</span>
+
+<span style="color: #7A7A7A">% External shell commands.</span>
+<span style="color: #E356A7">!ping</span> <span style="color: #42E66C">julialang.org</span>
+
+<span style="color: #E64747">classdef</span> <span style="color: #E64747">ClassName</span>
+    <span style="color: #E64747">properties</span>
+        <span style="color: #F8F8F2">x</span>
+        <span style="color: #F8F8F2">y</span>
+        <span style="color: #F8F8F2">z</span>
+    <span style="color: #E64747">end</span>
+    <span style="color: #E64747">methods</span>
+        <span style="color: #E64747">function</span> <span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">s</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">t</span><span style="color: #F8F8F2">]</span> <span style="color: #F8F8F2">=</span> <span style="color: #9B6BDF">method_1</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x_1</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">y_2</span><span style="color: #F8F8F2">)</span>
+            <span style="color: #E64747">if</span> x_1 <span style="color: #F8F8F2">&lt;</span> y_2
+                <span style="color: #F8F8F2">s</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">{</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4</span><span style="color: #F8F8F2">}</span><span style="color: #F8F8F2">;</span>
+                <span style="color: #F8F8F2">t</span> <span style="color: #F8F8F2">=</span> n <span style="color: #F8F8F2">*</span> A <span style="color: #F8F8F2">+</span> B <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">;</span>
+            <span style="color: #E64747">else</span>
+                <span style="color: #E64747">for</span> i <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span>x_1
+                    <span style="color: #9B6BDF">A</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">i</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">=</span> i<span style="color: #F8F8F2">^</span><span style="color: #E4F34A">2</span> <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">;</span>
+                <span style="color: #E64747">end</span>
+            <span style="color: #E64747">end</span>
+        <span style="color: #E64747">end</span>
+    <span style="color: #E64747">end</span>
+<span style="color: #E64747">end</span>
+</pre>

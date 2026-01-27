@@ -1,0 +1,42 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A"># Comments start with the `#` character.</span>
+
+<span style="color: #F8F8F2">x</span> <span style="color: #F8F8F2">&lt;-</span> <span style="color: #E4F34A">1</span> <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">2</span>
+
+<span style="color: #9B6BDF">hist</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">thing</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">col</span><span style="color: #F8F8F2">=</span><span style="color: #42E66C">&quot;#ff3300&quot;</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">border</span><span style="color: #F8F8F2">=</span><span style="color: #42E66C">&quot;pink&quot;</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">breaks</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">5</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #9B6BDF">round</span><span style="color: #F8F8F2">(</span><span style="color: #9B6BDF">runif</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">min</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">.1</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">max</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">2.0</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #9B6BDF">c</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">)</span>
+<span style="color: #9B6BDF">length</span><span style="color: #F8F8F2">(</span><span style="color: #9B6BDF">c</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">3L</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4L</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">1L</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #F8F8F2">-</span><span style="color: #F1FA8C">Inf</span> <span style="color: #F8F8F2">&lt;</span> <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1e9</span> <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">61.4e-12</span> <span style="color: #F8F8F2">*</span> <span style="color: #E4F34A">1.2e2</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">==</span> <span style="color: #E4F34A">TRUE</span>
+
+<span style="color: #F8F8F2">a.long.variable.name</span> <span style="color: #F8F8F2">==</span> <span style="color: #E4F34A">FALSE</span>
+
+<span style="color: #E4F34A">4</span> <span style="color: #F8F8F2">%%</span> <span style="color: #E4F34A">3</span>
+
+<span style="color: #F8F8F2">A</span> <span style="color: #F8F8F2">%*%</span> <span style="color: #9B6BDF">t</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">A</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #F8F8F2">arr</span><span style="color: #F8F8F2">[</span><span style="color: #F8F8F2">foo</span><span style="color: #F8F8F2">$</span><span style="color: #F8F8F2">bar</span> <span style="color: #F8F8F2">==</span> <span style="color: #42E66C">&quot;X&quot;</span><span style="color: #F8F8F2">,</span><span style="color: #F8F8F2">]</span>
+
+<span style="color: #9B6BDF">c</span><span style="color: #F8F8F2">(</span><span style="color: #42E66C">&#39;foo&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;bar&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;baz&#39;</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;&quot;&#39;</span><span style="color: #F8F8F2">)</span>
+<span style="color: #42E66C">&quot;...&#39; </span><span style="color: #E356A7">\&quot;</span><span style="color: #42E66C"> ...&quot;</span>
+
+<span style="color: #E64747">while</span> <span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">num</span> <span style="color: #F8F8F2">&lt;=</span> <span style="color: #E4F34A">3</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">{</span>
+    <span style="color: #7A7A7A"># ...</span>
+    <span style="color: #E64747">if</span> <span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">foo</span> <span style="color: #F8F8F2">==</span> <span style="color: #F8F8F2">T</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">{</span>
+        <span style="color: #7A7A7A"># ...</span>
+    <span style="color: #F8F8F2">}</span> <span style="color: #E64747">else</span> <span style="color: #F8F8F2">{</span>
+        <span style="color: #7A7A7A"># ...</span>
+    <span style="color: #F8F8F2">}</span>
+<span style="color: #F8F8F2">}</span>
+
+<span style="color: #9B6BDF">func</span> <span style="color: #F8F8F2">&lt;-</span> <span style="color: #E64747">function</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">y</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">z</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">{</span>
+    <span style="color: #7A7A7A"># ...</span>
+    <span style="color: #E64747">return</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">something</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">}</span>
+
+<span style="color: #E64747">for</span> <span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span> <span style="color: #E64747">in</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">:</span><span style="color: #E4F34A">10</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">{</span>
+    <span style="color: #9B6BDF">print</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">}</span>
+</pre>

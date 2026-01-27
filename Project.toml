@@ -3,17 +3,31 @@ uuid = "eafb193a-b7ab-5a9e-9068-77385905fa72"
 version = "0.5.3"
 
 [deps]
-DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
-InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
-REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+TreeSitter = "f42328cb-ece0-4cf2-995f-9e7abb27d006"
 
 [compat]
-DocStringExtensions = "0.4, 0.5, 0.6, 0.7, 0.8, 0.9"
-julia = "1.0"
+JSON = "0.21, 1"
+TreeSitter = "0.2"
+julia = "1.6"
 
 [extras]
-Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+ReferenceTests = "324d217c-45ce-50fc-942e-d289b448e8cf"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Typst_jll = "eb4b1da6-20f6-5c66-9826-fdb8ad410d0e"
+tectonic_jll = "d7dd28d6-a5e6-559c-9131-7eb760cdacc5"
+tree_sitter_bash_jll = "7332bcdc-bd2a-5999-b4fe-680b85f40771"
+tree_sitter_go_jll = "beecb120-e197-59fa-b79c-0316d51c9920"
+tree_sitter_javascript_jll = "ca45b743-11fc-5578-b74a-7528860c0bda"
+tree_sitter_julia_jll = "52be201e-a5e9-5cfe-8bf2-2dc4b062171c"
+tree_sitter_python_jll = "88db161d-10c7-51e6-aa56-e32ecf738a46"
+tree_sitter_fortran_jll = "f370be48-5072-5a80-a2be-a91280f1992d"
+tree_sitter_matlab_jll = "67499a12-87ae-5367-9f08-9b6e5d7d8b47"
+tree_sitter_r_jll = "fc627389-31b9-5eeb-8794-6fbf305d88d7"
+tree_sitter_rust_jll = "b2197e8e-fe20-5781-846b-d7979e3cddf2"
+tree_sitter_toml_jll = "a1529afc-395a-556b-957c-713caec82e13"
 
 [targets]
-test = ["Test", "Pkg"]
+test = ["ReferenceTests", "Test", "Typst_jll", "tectonic_jll", "tree_sitter_bash_jll", "tree_sitter_fortran_jll", "tree_sitter_go_jll", "tree_sitter_javascript_jll", "tree_sitter_julia_jll", "tree_sitter_matlab_jll", "tree_sitter_python_jll", "tree_sitter_r_jll", "tree_sitter_rust_jll", "tree_sitter_toml_jll"]

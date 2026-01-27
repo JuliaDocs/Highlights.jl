@@ -1,0 +1,51 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A">! Based on code samples from https://en.wikipedia.org/wiki/Fortran</span>
+<span style="color: #7A7A7A">! and https://learnxinyminutes.com/docs/fortran95/.</span>
+
+<span style="color: #E64747">PROGRAM</span> <span style="color: #75D7EC">test</span>
+    <span style="color: #E64747">CALL</span> <span style="color: #9B6BDF">print_message</span>
+<span style="color: #E64747">END</span> <span style="color: #E64747">PROGRAM</span> <span style="color: #75D7EC">test</span>
+<span style="color: #E64747">SUBROUTINE</span> <span style="color: #9B6BDF">print_message</span>
+    <span style="color: #E64747">PRINT</span> <span style="color: #F8F8F2">*</span><span style="color: #F8F8F2">,</span> <span style="color: #42E66C">&#39;Hello world!&#39;</span>
+<span style="color: #E64747">END</span> <span style="color: #E64747">SUBROUTINE</span> <span style="color: #9B6BDF">print_message</span>
+
+# a preprocessor comment
+
+<span style="color: #E4F34A">.true.</span> <span style="color: #F8F8F2">==</span> <span style="color: #E4F34A">.FALSE.</span>
+
+a <span style="color: #F8F8F2">&lt;</span> <span style="color: #F8F8F2">b</span> <span style="color: #E64747">.AND.</span> <span style="color: #F8F8F2">i</span> <span style="color: #F8F8F2">/=</span> <span style="color: #F8F8F2">j</span>
+flag <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">a</span> <span style="color: #F8F8F2">==</span> <span style="color: #F8F8F2">b</span>
+
+<span style="color: #E64747">print</span> <span style="color: #42E66C">&quot;(F6.3)&quot;</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">4.32</span>
+
+<span style="color: #7A7A7A">! A comment...</span>
+
+<span style="color: #75D7EC">TYPE</span> str<span style="color: #75D7EC">in</span>g<span style="color: #E4F34A">80</span>            <span style="color: #7A7A7A">! ... and other comment.</span>
+    <span style="color: #75D7EC">INTEGER</span>       <span style="color: #F8F8F2">length</span>
+    <span style="color: #75D7EC">CHARACTER</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">80</span><span style="color: #F8F8F2">)</span> <span style="color: #75D7EC">value</span>
+<span style="color: #E64747">END</span> <span style="color: #75D7EC">TYPE</span> str<span style="color: #75D7EC">in</span>g<span style="color: #E4F34A">80</span>
+<span style="color: #75D7EC">CHARACTER</span><span style="color: #F8F8F2">::</span> <span style="color: #F8F8F2">char1</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">char2</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">char3</span>
+<span style="color: #75D7EC">TYPE</span><span style="color: #F8F8F2">(</span>string80<span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">::</span> <span style="color: #F8F8F2">str1</span><span style="color: #F8F8F2">,</span>  <span style="color: #F8F8F2">str2</span><span style="color: #F8F8F2">,</span>  <span style="color: #F8F8F2">str3</span>
+
+<span style="color: #75D7EC">REAL</span><span style="color: #F8F8F2">,</span> <span style="color: #75D7EC">DIMENSION</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">10</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">20</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">::</span> <span style="color: #F8F8F2">a</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">b</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">c</span>
+<span style="color: #75D7EC">REAL</span><span style="color: #F8F8F2">,</span> <span style="color: #75D7EC">DIMENSION</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">5</span><span style="color: #F8F8F2">)</span>      <span style="color: #F8F8F2">::</span> <span style="color: #F8F8F2">v</span><span style="color: #F8F8F2">,</span> <span style="color: #F8F8F2">w</span>
+<span style="color: #75D7EC">LOGICAL</span>                    <span style="color: #F8F8F2">flag</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">10</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">20</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #F8F8F2">a</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">b</span>
+<span style="color: #F8F8F2">c</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">a</span><span style="color: #F8F8F2">/</span><span style="color: #F8F8F2">b</span>
+<span style="color: #F8F8F2">w</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">v</span> <span style="color: #F8F8F2">+</span> <span style="color: #E4F34A">1.2</span>
+<span style="color: #F8F8F2">w</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">5</span><span style="color: #F8F8F2">/</span><span style="color: #F8F8F2">v</span> <span style="color: #F8F8F2">+</span> <span style="color: #F8F8F2">a</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span>:<span style="color: #E4F34A">5</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">5</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">c</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span>:<span style="color: #E4F34A">8</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">5</span>:<span style="color: #E4F34A">10</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">a</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">2</span>:<span style="color: #E4F34A">9</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">5</span>:<span style="color: #E4F34A">10</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">+</span> <span style="color: #F8F8F2">b</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span>:<span style="color: #E4F34A">8</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">15</span>:<span style="color: #E4F34A">20</span><span style="color: #F8F8F2">)</span>
+<span style="color: #F8F8F2">v</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">2</span>:<span style="color: #E4F34A">5</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">v</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span>:<span style="color: #E4F34A">4</span><span style="color: #F8F8F2">)</span>
+
+<span style="color: #F8F8F2">i</span> <span style="color: #F8F8F2">=</span> <span style="color: #E4F34A">10</span>
+select case <span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">i</span><span style="color: #F8F8F2">)</span>
+    case <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">0</span><span style="color: #F8F8F2">)</span> <span style="color: #7A7A7A">! case i == 0</span>
+    <span style="color: #F8F8F2">j</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">0</span>
+    case <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span>:<span style="color: #E4F34A">5</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #F8F8F2">j</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">1</span>
+    case <span style="color: #F8F8F2">(</span><span style="color: #E4F34A">6</span>:<span style="color: #F8F8F2">)</span>
+    <span style="color: #F8F8F2">j</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">2</span>
+    case <span style="color: #E64747">default</span>
+    <span style="color: #F8F8F2">j</span><span style="color: #F8F8F2">=</span><span style="color: #E4F34A">3</span>
+end select
+</pre>

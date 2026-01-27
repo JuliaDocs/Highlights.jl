@@ -1,29 +1,33 @@
-julia> x = 2
-2
+julia> x = 1 + 2
+3
 
-julia> """
-       The factorial function.
-
-       ```julia
-       @assert fac(3) == 1 * 2 * 3
-       ```
-       """
-       function fac(n)
-           if n < 2
-               return 1
-           else
-               return n * fac(n - 1) # <-- recursive call
-           end
+julia> function greet(name)
+           println("Hello, $name!")
        end
+greet (generic function with 1 method)
 
+julia> greet("World")
+Hello, World!
 
-       # Lets try the function out...
-       f(x + 1)
-6
+help?> sin
+search: sin sinc sind sinh sign asin sqrt using asinh asind isnan isinf
 
-help?> fac
-search: factor factorize factorial Factorization lfact qrfactct!
+  sin(x)
 
-  The factorial function.
+  Compute sine of x, where x is in radians.
 
-  @assert fac(3) == 1 * 2 * 3
+shell> ls -la
+total 8
+drwxr-xr-x  3 user  staff   96 Jan 12 10:00 .
+drwxr-xr-x  5 user  staff  160 Jan 12 10:00 ..
+-rw-r--r--  1 user  staff  256 Jan 12 10:00 file.txt
+
+pkg> status
+Status `~/Project.toml`
+  [7876af07] Highlights v0.1.0 `..`
+
+julia> s = """
+       line1
+       line2
+       """
+"line1\nline2\n"

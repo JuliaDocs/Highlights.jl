@@ -1,0 +1,83 @@
+<pre class="hl"><span class="hl-c1"># Fibonacci with memoization</span>
+<span class="hl-c2">module</span> <span class="hl-c8">Fib</span>
+
+<span class="hl-c2">const</span> <span class="hl-c8">cache</span> <span class="hl-c8">=</span> <span class="hl-c7">Dict</span><span class="hl-c8">{</span><span class="hl-c7">Int</span><span class="hl-c8">,</span><span class="hl-c7">BigInt</span><span class="hl-c8">}</span><span class="hl-c8">(</span><span class="hl-c8">)</span>
+
+<span class="hl-c3">&quot;&quot;&quot;Calculate the nth Fibonacci number.&quot;&quot;&quot;</span>
+<span class="hl-c2">function</span> <span class="hl-c5">fib</span><span class="hl-c8">(</span><span class="hl-c8">n</span><span class="hl-c8">::</span><span class="hl-c7">Int</span><span class="hl-c8">)</span><span class="hl-c8">::</span><span class="hl-c7">BigInt</span>
+    <span class="hl-c8">n</span> <span class="hl-c8">&lt;=</span> <span class="hl-c4">1</span> <span class="hl-c8">&amp;&amp;</span> <span class="hl-c2">return</span> <span class="hl-c5">BigInt</span><span class="hl-c8">(</span><span class="hl-c8">n</span><span class="hl-c8">)</span>
+    <span class="hl-c5">get!</span><span class="hl-c8">(</span><span class="hl-c8">cache</span><span class="hl-c8">,</span> <span class="hl-c8">n</span><span class="hl-c8">)</span> <span class="hl-c2">do</span>
+        <span class="hl-c5">fib</span><span class="hl-c8">(</span><span class="hl-c8">n</span> <span class="hl-c8">-</span> <span class="hl-c4">1</span><span class="hl-c8">)</span> <span class="hl-c8">+</span> <span class="hl-c5">fib</span><span class="hl-c8">(</span><span class="hl-c8">n</span> <span class="hl-c8">-</span> <span class="hl-c4">2</span><span class="hl-c8">)</span>
+    <span class="hl-c2">end</span>
+<span class="hl-c2">end</span>
+
+<span class="hl-c2">for</span> <span class="hl-c8">i</span> <span class="hl-c8">=</span> <span class="hl-c4">1</span><span class="hl-c8">:</span><span class="hl-c4">10</span>
+    <span class="hl-c8">Base</span><span class="hl-c8">.</span><span class="hl-c5">println</span><span class="hl-c8">(</span><span class="hl-c3">&quot;fib(</span><span class="hl-c8">$</span><span class="hl-c8">i</span><span class="hl-c3">) = </span><span class="hl-c8">$</span><span class="hl-c8">(</span><span class="hl-c5">fib</span><span class="hl-c8">(</span><span class="hl-c8">i</span><span class="hl-c8">)</span><span class="hl-c8">)</span><span class="hl-c3">&quot;</span><span class="hl-c8">)</span>
+<span class="hl-c2">end</span>
+
+<span class="hl-c1"># Demonstrate qualified calls</span>
+<span class="hl-c8">Base</span><span class="hl-c8">.</span><span class="hl-c5">length</span><span class="hl-c8">(</span><span class="hl-c8">cache</span><span class="hl-c8">)</span>
+<span class="hl-c8">Core</span><span class="hl-c8">.</span><span class="hl-c5">typeof</span><span class="hl-c8">(</span><span class="hl-c8">cache</span><span class="hl-c8">)</span>
+<span class="hl-c8">Base</span><span class="hl-c8">.</span><span class="hl-c8">Iterators</span><span class="hl-c8">.</span><span class="hl-c5">take</span><span class="hl-c8">(</span><span class="hl-c4">1</span><span class="hl-c8">:</span><span class="hl-c4">10</span><span class="hl-c8">,</span> <span class="hl-c4">3</span><span class="hl-c8">)</span>
+
+<span class="hl-c2">end</span> <span class="hl-c1"># module</span>
+
+<span class="hl-c1">#=
+Additional syntax coverage from old julia sample:
+Nested comments #= can be #= deeply =# nested =#
+=#</span>
+
+<span class="hl-c1"># Array and tuple literals</span>
+<span class="hl-c8">[</span><span class="hl-c4">1</span><span class="hl-c8">,</span> <span class="hl-c4">3</span><span class="hl-c8">,</span> <span class="hl-c4">3</span><span class="hl-c8">,</span> <span class="hl-c4">4</span><span class="hl-c8">]</span><span class="hl-c8">[</span><span class="hl-c4">1</span><span class="hl-c8">:</span><span class="hl-c14">end</span><span class="hl-c8">]</span>
+<span class="hl-c8">(</span><span class="hl-c4">1</span><span class="hl-c8">,</span> <span class="hl-c4">2</span><span class="hl-c8">,</span> <span class="hl-c4">1.0</span><span class="hl-c8">)</span><span class="hl-c8">[</span><span class="hl-c4">1</span><span class="hl-c8">:</span><span class="hl-c4">2</span><span class="hl-c8">]</span>
+<span class="hl-c8">[</span><span class="hl-c8">(</span><span class="hl-c4">1</span><span class="hl-c8">,</span> <span class="hl-c4">3</span><span class="hl-c8">)</span><span class="hl-c8">,</span> <span class="hl-c8">(</span><span class="hl-c4">3</span><span class="hl-c8">,</span> <span class="hl-c4">4</span><span class="hl-c8">)</span><span class="hl-c8">]</span><span class="hl-c8">[</span><span class="hl-c14">end</span><span class="hl-c8">-</span><span class="hl-c4">1</span><span class="hl-c8">]</span>
+<span class="hl-c8">[</span><span class="hl-c8">(</span><span class="hl-c4">1</span><span class="hl-c8">,</span> <span class="hl-c4">3</span><span class="hl-c8">)</span><span class="hl-c8">,</span> <span class="hl-c8">(</span><span class="hl-c4">3</span><span class="hl-c8">,</span> <span class="hl-c4">4</span><span class="hl-c8">)</span><span class="hl-c8">]</span><span class="hl-c8">[</span><span class="hl-c14">begin</span><span class="hl-c8">]</span>
+
+<span class="hl-c1"># Control flow</span>
+<span class="hl-c2">if</span> <span class="hl-c8">x</span> <span class="hl-c2">in</span> <span class="hl-c8">y</span>
+    <span class="hl-c12">nothing</span>
+<span class="hl-c2">end</span>
+<span class="hl-c8">x</span> <span class="hl-c2">in</span> <span class="hl-c8">y</span> <span class="hl-c2">?</span> <span class="hl-c4">false</span> <span class="hl-c2">:</span> <span class="hl-c4">true</span>
+
+<span class="hl-c2">let</span> <span class="hl-c8">x</span> <span class="hl-c8">=</span> <span class="hl-c4">1</span>
+    <span class="hl-c2">local</span> <span class="hl-c8">t</span>
+    <span class="hl-c2">global</span> <span class="hl-c8">s</span>
+    <span class="hl-c8">t</span> <span class="hl-c8">=</span> <span class="hl-c8">x</span>
+<span class="hl-c2">end</span>
+
+<span class="hl-c1"># Type definitions</span>
+<span class="hl-c2">abstract</span> <span class="hl-c2">type</span> <span class="hl-c7">AbstractPoint</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span><span class="hl-c7"> </span><span class="hl-c8">&lt;:</span><span class="hl-c7"> </span><span class="hl-c7">Number</span> <span class="hl-c2">end</span>
+<span class="hl-c2">mutable</span> <span class="hl-c2">struct</span> <span class="hl-c7">Point</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span> <span class="hl-c2">where</span> <span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">&lt;:</span><span class="hl-c7">Number</span><span class="hl-c8">}</span><span class="hl-c7">
+    x</span><span class="hl-c8">::</span><span class="hl-c7">T</span><span class="hl-c7">
+    y</span><span class="hl-c8">::</span><span class="hl-c7">T
+    </span><span class="hl-c5">Point</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">)</span><span class="hl-c7"> </span><span class="hl-c8">=</span><span class="hl-c7"> new</span><span class="hl-c8">(</span><span class="hl-c7">x</span><span class="hl-c8">,</span><span class="hl-c7"> 2x</span><span class="hl-c8">)</span><span class="hl-c7">
+end
+struct Empty</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span><span class="hl-c7"> end
+primitive type Float16Custom </span><span class="hl-c8">&lt;:</span><span class="hl-c7"> </span><span class="hl-c15">AbstractFloat</span><span class="hl-c7"> 16 end
+
+</span><span class="hl-c1"># Macros</span><span class="hl-c7">
+macro something</span><span class="hl-c8">(</span><span class="hl-c7">x</span><span class="hl-c8">...</span><span class="hl-c8">)</span>
+    <span class="hl-c7">nothing</span>
+<span class="hl-c2">end</span>
+
+<span class="hl-c1"># Character literals</span>
+<span class="hl-c3">&#39; &#39;</span><span class="hl-c8">,</span> <span class="hl-c3">&#39;\n&#39;</span><span class="hl-c8">,</span> <span class="hl-c3">&#39;\&#39;&#39;</span><span class="hl-c8">,</span> <span class="hl-c3">&#39;&quot;&#39;</span><span class="hl-c8">,</span> <span class="hl-c3">&#39;\u1234&#39;</span><span class="hl-c8">,</span> <span class="hl-c3">&#39;⻆&#39;</span>
+
+<span class="hl-c1"># String literals</span>
+<span class="hl-c3">&quot;&quot;&quot;Multiline
+string&quot;&quot;&quot;</span>
+<span class="hl-c3">&quot; </span><span class="hl-c8">$</span><span class="hl-c8">x</span><span class="hl-c3"> </span><span class="hl-c8">$</span><span class="hl-c8">(</span><span class="hl-c2">let</span><span class="hl-c3"> </span><span class="hl-c8">x</span><span class="hl-c3"> </span><span class="hl-c8">=</span><span class="hl-c3"> </span><span class="hl-c8">y</span><span class="hl-c3"> </span><span class="hl-c8">+</span><span class="hl-c3"> </span><span class="hl-c4">1</span><span class="hl-c8">;</span><span class="hl-c3"> </span><span class="hl-c8">x</span><span class="hl-c8">^</span><span class="hl-c4">2</span><span class="hl-c8">;</span><span class="hl-c3"> </span><span class="hl-c2">end</span><span class="hl-c8">)</span><span class="hl-c3"> &quot;</span>
+<span class="hl-c6">r</span><span class="hl-c3">&quot;[a-z]+$xyz&quot;</span><span class="hl-c8">m</span>
+<span class="hl-c6">raw</span><span class="hl-c3">&quot;\n\n\r\t...\b&quot;</span>
+<span class="hl-c6">v</span><span class="hl-c3">&quot;0.0.2&quot;</span> <span class="hl-c8">≥</span> <span class="hl-c6">v</span><span class="hl-c3">&quot;0.0.1&quot;</span>
+
+<span class="hl-c1"># Command literals</span>
+<span class="hl-c11">`echo </span><span class="hl-c8">$</span><span class="hl-c8">bar</span><span class="hl-c11">`</span>
+
+<span class="hl-c1"># Number formats</span>
+<span class="hl-c4">1_000_000</span> <span class="hl-c8">+</span> <span class="hl-c4">1.0e-9</span> <span class="hl-c8">*</span> <span class="hl-c4">0.121</span> <span class="hl-c8">/</span> <span class="hl-c4">1121.0</span>
+<span class="hl-c4">1.0f0</span> <span class="hl-c8">-</span> <span class="hl-c4">1E-12</span>
+<span class="hl-c4">0b100_101_111</span>
+<span class="hl-c4">0o12123535</span>
+<span class="hl-c4">0x4312afAF</span>
+</pre>

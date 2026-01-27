@@ -1,0 +1,107 @@
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\begin{tcblisting}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}
+(*@\textcolor[RGB]{122,122,122}{\# Fibonacci with memoization}@*)
+(*@\textcolor[RGB]{230,71,71}{module}@*) (*@\textcolor[RGB]{248,248,242}{Fib}@*)
+
+(*@\textcolor[RGB]{230,71,71}{const}@*) (*@\textcolor[RGB]{248,248,242}{cache}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{117,215,236}{Dict}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{Int}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{117,215,236}{BigInt}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{66,230,108}{"""Calculate the nth Fibonacci number."""}@*)
+(*@\textcolor[RGB]{230,71,71}{function}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{Int}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{BigInt}@*)
+    (*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{<=}@*) (*@\textcolor[RGB]{228,243,74}{1}@*) (*@\textcolor[RGB]{248,248,242}{\&\&}@*) (*@\textcolor[RGB]{230,71,71}{return}@*) (*@\textcolor[RGB]{155,107,223}{BigInt}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{155,107,223}{get!}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{cache}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{230,71,71}{do}@*)
+        (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{-}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{-}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+(*@\textcolor[RGB]{230,71,71}{for}@*) (*@\textcolor[RGB]{248,248,242}{i}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)(*@\textcolor[RGB]{228,243,74}{10}@*)
+    (*@\textcolor[RGB]{248,248,242}{Base}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{println}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{66,230,108}{"fib(}@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{i}@*)(*@\textcolor[RGB]{66,230,108}{) = }@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{i}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{66,230,108}{"}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Demonstrate qualified calls}@*)
+(*@\textcolor[RGB]{248,248,242}{Base}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{length}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{cache}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{248,248,242}{Core}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{typeof}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{cache}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{248,248,242}{Base}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{248,248,242}{Iterators}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{take}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)(*@\textcolor[RGB]{228,243,74}{10}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+(*@\textcolor[RGB]{230,71,71}{end}@*) (*@\textcolor[RGB]{122,122,122}{\# module}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\#=
+Additional syntax coverage from old julia sample:
+Nested comments \#= can be \#= deeply =\# nested =\#
+=\#}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Array and tuple literals}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)(*@\textcolor[RGB]{255,121,198}{end}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{1.0}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{:}@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{255,121,198}{end}@*)(*@\textcolor[RGB]{248,248,242}{-}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{4}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{255,121,198}{begin}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Control flow}@*)
+(*@\textcolor[RGB]{230,71,71}{if}@*) (*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{230,71,71}{in}@*) (*@\textcolor[RGB]{248,248,242}{y}@*)
+    (*@\textcolor[RGB]{241,250,140}{nothing}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{230,71,71}{in}@*) (*@\textcolor[RGB]{248,248,242}{y}@*) (*@\textcolor[RGB]{230,71,71}{?}@*) (*@\textcolor[RGB]{228,243,74}{false}@*) (*@\textcolor[RGB]{230,71,71}{:}@*) (*@\textcolor[RGB]{228,243,74}{true}@*)
+
+(*@\textcolor[RGB]{230,71,71}{let}@*) (*@\textcolor[RGB]{248,248,242}{x}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)
+    (*@\textcolor[RGB]{230,71,71}{local}@*) (*@\textcolor[RGB]{248,248,242}{t}@*)
+    (*@\textcolor[RGB]{230,71,71}{global}@*) (*@\textcolor[RGB]{248,248,242}{s}@*)
+    (*@\textcolor[RGB]{248,248,242}{t}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{248,248,242}{x}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Type definitions}@*)
+(*@\textcolor[RGB]{230,71,71}{abstract}@*) (*@\textcolor[RGB]{230,71,71}{type}@*) (*@\textcolor[RGB]{117,215,236}{AbstractPoint}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{117,215,236}{Number}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{mutable}@*) (*@\textcolor[RGB]{230,71,71}{struct}@*) (*@\textcolor[RGB]{117,215,236}{Point}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*) (*@\textcolor[RGB]{230,71,71}{where}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{Number}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{
+    x}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{117,215,236}{
+    y}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T
+    }@*)(*@\textcolor[RGB]{155,107,223}{Point}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{117,215,236}{ new}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{117,215,236}{ 2x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{117,215,236}{
+end
+struct Empty}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{ end
+primitive type Float16Custom }@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{139,233,253}{AbstractFloat}@*)(*@\textcolor[RGB]{117,215,236}{ 16 end
+
+}@*)(*@\textcolor[RGB]{122,122,122}{\# Macros}@*)(*@\textcolor[RGB]{117,215,236}{
+macro something}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{...}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{117,215,236}{nothing}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Character literals}@*)
+(*@\textcolor[RGB]{66,230,108}{\textquotesingle{} \textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textbackslash{}n\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}"\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}\textbackslash{}u1234\textquotesingle{}}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{66,230,108}{\textquotesingle{}⻆\textquotesingle{}}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# String literals}@*)
+(*@\textcolor[RGB]{66,230,108}{"""Multiline
+string"""}@*)
+(*@\textcolor[RGB]{66,230,108}{" }@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{230,71,71}{let}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{y}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{+}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{\textasciicircum{}}@*)(*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{;}@*)(*@\textcolor[RGB]{66,230,108}{ }@*)(*@\textcolor[RGB]{230,71,71}{end}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{66,230,108}{ "}@*)
+(*@\textcolor[RGB]{227,86,167}{r}@*)(*@\textcolor[RGB]{66,230,108}{"[a-z]+\$xyz"}@*)(*@\textcolor[RGB]{248,248,242}{m}@*)
+(*@\textcolor[RGB]{227,86,167}{raw}@*)(*@\textcolor[RGB]{66,230,108}{"\textbackslash{}n\textbackslash{}n\textbackslash{}r\textbackslash{}t...\textbackslash{}b"}@*)
+(*@\textcolor[RGB]{227,86,167}{v}@*)(*@\textcolor[RGB]{66,230,108}{"0.0.2"}@*) (*@\textcolor[RGB]{248,248,242}{≥}@*) (*@\textcolor[RGB]{227,86,167}{v}@*)(*@\textcolor[RGB]{66,230,108}{"0.0.1"}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Command literals}@*)
+(*@\textcolor[RGB]{80,250,123}{\textasciigrave{}echo }@*)(*@\textcolor[RGB]{248,248,242}{\$}@*)(*@\textcolor[RGB]{248,248,242}{bar}@*)(*@\textcolor[RGB]{80,250,123}{\textasciigrave{}}@*)
+
+(*@\textcolor[RGB]{122,122,122}{\# Number formats}@*)
+(*@\textcolor[RGB]{228,243,74}{1\_000\_000}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{228,243,74}{1.0e-9}@*) (*@\textcolor[RGB]{248,248,242}{*}@*) (*@\textcolor[RGB]{228,243,74}{0.121}@*) (*@\textcolor[RGB]{248,248,242}{/}@*) (*@\textcolor[RGB]{228,243,74}{1121.0}@*)
+(*@\textcolor[RGB]{228,243,74}{1.0f0}@*) (*@\textcolor[RGB]{248,248,242}{-}@*) (*@\textcolor[RGB]{228,243,74}{1E-12}@*)
+(*@\textcolor[RGB]{228,243,74}{0b100\_101\_111}@*)
+(*@\textcolor[RGB]{228,243,74}{0o12123535}@*)
+(*@\textcolor[RGB]{228,243,74}{0x4312afAF}@*)
+
+\end{tcblisting}

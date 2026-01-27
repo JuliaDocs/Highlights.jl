@@ -1,0 +1,30 @@
+[comment:// Concurrent prime sieve]
+[keyword:package] main
+
+[keyword:import] [string:"fmt"]
+
+[keyword:func] [function:generate]([variable:ch] [keyword:chan][operator:<-] [type:int]) {
+    [keyword:for] [variable:i] [operator::=] [number:2]; ; [variable:i][operator:++] {
+        [variable:ch] [operator:<-] [variable:i]
+    }
+}
+
+[keyword:func] [function:filter]([variable:in] [operator:<-][keyword:chan] [type:int], [variable:out] [keyword:chan][operator:<-] [type:int], [variable:prime] [type:int]) {
+    [keyword:for] [variable:i] [operator::=] [keyword:range] [variable:in] {
+        [keyword:if] [variable:i][operator:%][variable:prime] [operator:!=] [number:0] {
+            [variable:out] [operator:<-] [variable:i]
+        }
+    }
+}
+
+[keyword:func] [function:main]() {
+    [variable:ch] [operator::=] [function:make]([keyword:chan] [type:int])
+    [keyword:go] [function:generate]([variable:ch])
+    [keyword:for] [variable:i] [operator::=] [number:0]; [variable:i] [operator:<] [number:10]; [variable:i][operator:++] {
+        [variable:prime] [operator::=] [operator:<-][variable:ch]
+        [variable:fmt].[function.method:Println]([variable:prime])
+        [variable:ch1] [operator::=] [function:make]([keyword:chan] [type:int])
+        [keyword:go] [function:filter]([variable:ch], [variable:ch1], [variable:prime])
+        [variable:ch] [operator:=] [variable:ch1]
+    }
+}
