@@ -24,7 +24,7 @@ jobs:
 
       - run: julia --project=scripts/gogh scripts/gogh/gogh.jl artifacts
 
-      - uses: peter-evans/create-pull-request@v6
+      - uses: peter-evans/create-pull-request@v8
         with:
           add-paths: Artifacts.toml
           commit-message: "Update Gogh themes artifact"
