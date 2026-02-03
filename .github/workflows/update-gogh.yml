@@ -23,6 +23,8 @@ jobs:
       - run: julia --project=scripts/gogh -e 'using Pkg; Pkg.instantiate()'
 
       - run: julia --project=scripts/gogh scripts/gogh/gogh.jl artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - uses: peter-evans/create-pull-request@v8
         with:
