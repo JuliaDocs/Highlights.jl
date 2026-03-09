@@ -12,7 +12,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1'
-      - uses: julia-actions/cache@v2
+      - uses: julia-actions/cache@v3
       - run: julia --project=scripts/format -e 'using Pkg; Pkg.instantiate()'
       - run: julia --project=scripts/format scripts/format/format.jl
       - run: git diff --exit-code --color
@@ -25,7 +25,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1'
-      - uses: julia-actions/cache@v2
+      - uses: julia-actions/cache@v3
       - run: julia --project=scripts/changelog -e 'using Pkg; Pkg.instantiate()'
       - run: julia --project=scripts/changelog scripts/changelog/changelog.jl
       - run: git diff --exit-code --color
@@ -53,7 +53,7 @@ jobs:
         with:
           version: ${{ matrix.version }}
           show-versioninfo: true
-      - uses: julia-actions/cache@v2
+      - uses: julia-actions/cache@v3
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
       - uses: codecov/codecov-action@v5
