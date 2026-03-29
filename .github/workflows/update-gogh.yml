@@ -20,6 +20,10 @@ jobs:
         with:
           version: '1'
 
+      - run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - run: julia --project=scripts/gogh -e 'using Pkg; Pkg.instantiate()'
 
       - run: julia --project=scripts/gogh scripts/gogh/gogh.jl artifacts
