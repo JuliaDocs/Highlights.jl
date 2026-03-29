@@ -55,11 +55,11 @@ function create_tarball(tag::String)
 
     println("Creating artifact...")
     tree_hash = create_artifact() do dir
-        # Extract only data/json/, strip 2 components to get json/* directly
-        run(`tar -xzf $temp_tarball -C $dir --strip-components=2 --include='*/data/json/*'`)
-        # Rename json/ to data/json/ to match expected path
-        mkpath(joinpath(dir, "data"))
-        mv(joinpath(dir, "json"), joinpath(dir, "data", "json"))
+        mktempdir() do tmp
+            run(`tar -xzf $temp_tarball -C $tmp --strip-components=1`)
+            mkpath(joinpath(dir, "data"))
+            cp(joinpath(tmp, "data", "json"), joinpath(dir, "data", "json"))
+        end
     end
 
     # Archive using Julia's method for correct hash
