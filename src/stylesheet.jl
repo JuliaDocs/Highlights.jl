@@ -1,11 +1,13 @@
 # Stylesheet generation for class-based highlighting
 
 """
-    stylesheet(theme_name::String; classprefix="hl") -> String
-    stylesheet(mime, theme_name::String; classprefix="hl") -> String
-    stylesheet(io::IO, mime, theme_name::String; classprefix="hl")
+    stylesheet(theme; classprefix="hl") -> String
+    stylesheet(mime, theme; classprefix="hl") -> String
+    stylesheet(io::IO, mime, theme; classprefix="hl")
 
-Generate a stylesheet for class-based syntax highlighting.
+Generate a stylesheet for class-based syntax highlighting. `theme` is a built-in
+theme name (`String`) or a `Theme` object — useful when the theme carries
+custom styling.
 
 # Arguments
 - `classprefix`: Prefix for CSS classes/LaTeX commands (default "hl")
@@ -14,6 +16,17 @@ Generate a stylesheet for class-based syntax highlighting.
 - `MIME"text/css"` - Raw CSS rules
 - `MIME"text/html"` - CSS wrapped in `<style>` tags
 - `MIME"text/latex"` - LaTeX `\\newcommand` definitions
+
+# Style modifiers
+
+If the theme uses per-capture styling (`:bold`, `:italic`, `:underline`),
+matching modifier classes/commands are emitted alongside color rules:
+
+- CSS: `.hl-bold`, `.hl-italic`, `.hl-underline`
+- LaTeX: `\\HLB`, `\\HLI`, `\\HLU` (and `\\usepackage[normalem]{ulem}` if any
+  capture uses underline)
+
+Modifiers are emitted only if the theme actually uses them.
 
 # Example
 ```julia
@@ -28,34 +41,32 @@ css = stylesheet("Dracula"; classprefix="syntax")
 # Use with class-based HTML output
 code_html = highlight("text/html", code, :julia, "Dracula"; stylesheet=true)
 full_html = stylesheet("text/html", "Dracula") * code_html
+
+# Styled theme — pass the Theme directly so modifier rules get emitted
+my_theme = Theme("Dracula", styles = Dict("comment" => :italic))
+stylesheet(MIME("text/css"), my_theme)
 ```
 """
-function stylesheet(theme_name::String; classprefix::AbstractString = "hl")
-    stylesheet(MIME("text/css"), theme_name; classprefix)
+function stylesheet(theme; classprefix::AbstractString = "hl")
+    stylesheet(MIME("text/css"), theme; classprefix)
 end
 
-function stylesheet(mime, theme_name::String; classprefix::AbstractString = "hl")
+function stylesheet(mime, theme; classprefix::AbstractString = "hl")
     io = IOBuffer()
-    stylesheet(io, mime, theme_name; classprefix)
+    stylesheet(io, mime, theme; classprefix)
     return String(take!(io))
 end
 
-function stylesheet(
-    io::IO,
-    mime::AbstractString,
-    theme_name::String;
-    classprefix::AbstractString = "hl",
-)
-    stylesheet(io, MIME(mime), theme_name; classprefix)
+function stylesheet(io::IO, mime::AbstractString, theme; classprefix::AbstractString = "hl")
+    stylesheet(io, MIME(mime), theme; classprefix)
 end
 
-function stylesheet(
-    io::IO,
-    ::MIME"text/css",
-    theme_name::String;
-    classprefix::AbstractString = "hl",
-)
-    theme = load_theme(theme_name)
+# Resolve String theme names; Theme objects pass through.
+_resolve_theme(t::Theme) = t
+_resolve_theme(name::AbstractString) = load_theme(String(name))
+
+function stylesheet(io::IO, ::MIME"text/css", theme; classprefix::AbstractString = "hl")
+    theme = _resolve_theme(theme)
 
     # Base pre style
     println(io, "pre.$(classprefix) {")
@@ -71,33 +82,39 @@ function stylesheet(
         println(io, ".$(classprefix)-c$i { color: $(theme.colors[i]); }")
     end
 
+    # Style modifier classes (only emit if the theme uses them)
+    used_styles = _used_styles(theme)
+    if :bold in used_styles
+        println(io, ".$(classprefix)-bold { font-weight: bold; }")
+    end
+    if :italic in used_styles
+        println(io, ".$(classprefix)-italic { font-style: italic; }")
+    end
+    if :underline in used_styles
+        println(io, ".$(classprefix)-underline { text-decoration: underline; }")
+    end
+
     return nothing
 end
 
-function stylesheet(
-    io::IO,
-    ::MIME"text/html",
-    theme_name::String;
-    classprefix::AbstractString = "hl",
-)
+function stylesheet(io::IO, ::MIME"text/html", theme; classprefix::AbstractString = "hl")
     println(io, "<style>")
-    stylesheet(io, MIME("text/css"), theme_name; classprefix)
+    stylesheet(io, MIME("text/css"), theme; classprefix)
     println(io, "</style>")
     return nothing
 end
 
-function stylesheet(
-    io::IO,
-    ::MIME"text/latex",
-    theme_name::String;
-    classprefix::AbstractString = "hl",
-)
-    theme = load_theme(theme_name)
+function stylesheet(io::IO, ::MIME"text/latex", theme; classprefix::AbstractString = "hl")
+    theme = _resolve_theme(theme)
     cmdprefix = uppercase(classprefix) * "C"
+    used_styles = _used_styles(theme)
 
     println(io, "\\usepackage{xcolor}")
     println(io, "\\usepackage{listings}")
     println(io, "\\usepackage[listings,breakable]{tcolorbox}")
+    if :underline in used_styles
+        println(io, "\\usepackage[normalem]{ulem}")
+    end
     println(io)
 
     # Define colors
@@ -121,6 +138,18 @@ function stylesheet(
             io,
             "\\newcommand{\\$(cmdprefix)$letter}[1]{\\textcolor{$(classprefix)c$i}{#1}}",
         )
+    end
+
+    # Style commands (only emit if the theme uses them)
+    stylepfx = uppercase(classprefix)
+    if :bold in used_styles
+        println(io, "\\newcommand{\\$(stylepfx)B}[1]{\\textbf{#1}}")
+    end
+    if :italic in used_styles
+        println(io, "\\newcommand{\\$(stylepfx)I}[1]{\\textit{#1}}")
+    end
+    if :underline in used_styles
+        println(io, "\\newcommand{\\$(stylepfx)U}[1]{\\uline{#1}}")
     end
 
     println(io)
@@ -148,4 +177,13 @@ function stylesheet(
     println(io, "}")
 
     return nothing
+end
+
+# Collect the unique set of style flags actually used by a theme.
+function _used_styles(theme::Theme)
+    used = Set{Symbol}()
+    for v in values(theme.styles)
+        union!(used, v)
+    end
+    return used
 end

@@ -149,6 +149,29 @@ function get_capture_color(capture_name::AbstractString, mapping::Dict)
     return 8  # default foreground
 end
 
+const EMPTY_STYLES = Symbol[]
+
+"""
+    get_capture_styles(capture_name::AbstractString, theme) -> Vector{Symbol}
+
+Get text styles (subset of `:bold`, `:italic`, `:underline`) for a capture
+name, with hierarchical fallback. Returns an empty vector if no style is set.
+"""
+function get_capture_styles(capture_name::AbstractString, theme)
+    styles = theme.styles
+    isempty(styles) && return EMPTY_STYLES
+    haskey(styles, capture_name) && return styles[capture_name]
+
+    parts = split(capture_name, '.')
+    while length(parts) > 1
+        pop!(parts)
+        parent_name = join(parts, '.')
+        haskey(styles, parent_name) && return styles[parent_name]
+    end
+
+    return EMPTY_STYLES
+end
+
 """
     get_capture_priority(capture_name::AbstractString, priorities::Dict) -> Int
 

@@ -107,6 +107,76 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
         @test chained.colors[3] == "#00ff00"
     end
 
+    @testset "Theme styles" begin
+        # Empty by default
+        base = Highlights.load_theme("Dracula")
+        @test isempty(base.styles)
+
+        # Bare Symbol normalises to a Vector
+        t = Highlights.Theme("Dracula", styles = Dict("comment" => :italic))
+        @test t.styles["comment"] == [:italic]
+
+        # Vector accepted as-is
+        t = Highlights.Theme("Dracula", styles = Dict("function" => [:bold, :italic]))
+        @test t.styles["function"] == [:bold, :italic]
+
+        # Mixed bare/Vector in same Dict
+        t = Highlights.Theme(
+            "Dracula",
+            styles = Dict("comment" => :italic, "function" => [:bold, :italic]),
+        )
+        @test t.styles["comment"] == [:italic]
+        @test t.styles["function"] == [:bold, :italic]
+
+        # Validation rejects unknown symbols
+        @test_throws ErrorException Highlights.Theme(
+            "Dracula",
+            styles = Dict("comment" => :strikethrough),
+        )
+        @test_throws ErrorException Highlights.Theme(
+            "Dracula",
+            styles = Dict("comment" => [:bold, :itailc]),
+        )
+
+        # Derivation: override semantics (last wins per capture)
+        t1 = Highlights.Theme("Dracula", styles = Dict("comment" => :italic))
+        t2 = Highlights.Theme(t1, styles = Dict("comment" => :bold))
+        @test t2.styles["comment"] == [:bold]
+
+        # Derivation: untouched captures inherit from base
+        t3 = Highlights.Theme(t1, styles = Dict("keyword" => :bold))
+        @test t3.styles["comment"] == [:italic]
+        @test t3.styles["keyword"] == [:bold]
+
+        # Setting Symbol[] removes styling for that capture
+        t4 = Highlights.Theme(t1, styles = Dict("comment" => Symbol[]))
+        @test t4.styles["comment"] == Symbol[]
+
+        # Direct positional construction: 4-arg form (no styles)
+        t5 = Highlights.Theme("Mine", Dict(1 => "#ff0000"), "#000000", "#ffffff")
+        @test t5.name == "Mine"
+        @test isempty(t5.styles)
+
+        # Direct positional construction: 5-arg form normalises bare Symbol
+        t6 = Highlights.Theme(
+            "Mine",
+            Dict(1 => "#ff0000"),
+            "#000000",
+            "#ffffff",
+            Dict("comment" => :italic),
+        )
+        @test t6.styles["comment"] == [:italic]
+
+        # Direct positional construction: 5-arg form validates styles
+        @test_throws ErrorException Highlights.Theme(
+            "Mine",
+            Dict(1 => "#ff0000"),
+            "#000000",
+            "#ffffff",
+            Dict("comment" => :strikethrough),
+        )
+    end
+
     @testset "Theme fallbacks" begin
         # Missing colors get defaults, then contrast adjustment
         theme_data =
@@ -167,6 +237,30 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
 
         # Unknown defaults to 8
         @test Highlights.get_capture_color("unknown.capture", colors) == 8
+    end
+
+    @testset "Capture style mapping" begin
+        # Theme with no styles returns the EMPTY_STYLES sentinel
+        plain = Highlights.load_theme("Dracula")
+        result = Highlights.get_capture_styles("comment", plain)
+        @test result === Highlights.EMPTY_STYLES
+        @test isempty(result)
+
+        # Direct match
+        theme = Highlights.Theme(
+            "Dracula",
+            styles = Dict("comment" => :italic, "keyword" => [:bold, :italic]),
+        )
+        @test Highlights.get_capture_styles("comment", theme) == [:italic]
+        @test Highlights.get_capture_styles("keyword", theme) == [:bold, :italic]
+
+        # Hierarchical fallback: keyword.return → keyword
+        @test Highlights.get_capture_styles("keyword.return", theme) == [:bold, :italic]
+        @test Highlights.get_capture_styles("keyword.builtin.true", theme) ==
+              [:bold, :italic]
+
+        # Capture with no match falls through to EMPTY_STYLES
+        @test Highlights.get_capture_styles("type", theme) === Highlights.EMPTY_STYLES
     end
 
     @testset "Token deduplication" begin
@@ -438,6 +532,122 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
             "Dracula";
             stylesheet = true,
         )
+    end
+
+    @testset "Styled output formats" begin
+        code = read_sample("fib.jl")
+        theme = Highlights.Theme(
+            "Dracula",
+            styles = Dict(
+                "comment" => :italic,
+                "keyword" => :bold,
+                "function" => [:bold, :italic],
+                "type" => :underline,
+            ),
+        )
+        @test_reference "references/styled_format_ansi.txt" Highlights.highlight(
+            code,
+            :julia,
+            theme,
+        )
+        @test_reference "references/styled_format_html.txt" Highlights.highlight(
+            "text/html",
+            code,
+            :julia,
+            theme,
+        )
+        @test_reference "references/styled_format_html_external.txt" Highlights.highlight(
+            "text/html",
+            code,
+            :julia,
+            theme;
+            stylesheet = true,
+        )
+        @test_reference "references/styled_format_latex.txt" Highlights.highlight(
+            "text/latex",
+            code,
+            :julia,
+            theme,
+        )
+        @test_reference "references/styled_format_latex_external.txt" Highlights.highlight(
+            "text/latex",
+            code,
+            :julia,
+            theme;
+            stylesheet = true,
+        )
+        @test_reference "references/styled_format_typst.txt" Highlights.highlight(
+            "text/typst",
+            code,
+            :julia,
+            theme,
+        )
+    end
+
+    @testset "Styled stylesheet generation" begin
+        theme = Highlights.Theme(
+            "Dracula",
+            styles = Dict(
+                "comment" => :italic,
+                "keyword" => :bold,
+                "function" => [:bold, :italic],
+                "type" => :underline,
+            ),
+        )
+        @test_reference "references/styled_stylesheet_css.txt" Highlights.stylesheet(
+            MIME("text/css"),
+            theme,
+        )
+        @test_reference "references/styled_stylesheet_latex.txt" Highlights.stylesheet(
+            MIME("text/latex"),
+            theme,
+        )
+
+        # Only-italic theme — confirms unused flags are not emitted
+        italic_only = Highlights.Theme("Dracula", styles = Dict("comment" => :italic))
+        @test_reference "references/styled_stylesheet_css_italic_only.txt" Highlights.stylesheet(
+            MIME("text/css"),
+            italic_only,
+        )
+        @test_reference "references/styled_stylesheet_latex_italic_only.txt" Highlights.stylesheet(
+            MIME("text/latex"),
+            italic_only,
+        )
+    end
+
+    @testset "Multi-line styled token rendering" begin
+        # Styled token spanning a newline. Verifies:
+        #   ANSI: SGR codes re-emit alongside color after a line_prefix
+        #   Typst: underline wrap closes/reopens across line breaks
+        source = "ab\ncd"
+        tokens = [Highlights.HighlightToken("ab\ncd", "comment", (1, 5), nothing)]
+        ansi_theme =
+            Highlights.Theme("Dracula", styles = Dict("comment" => [:italic, :bold]))
+        typst_theme = Highlights.Theme("Dracula", styles = Dict("comment" => :underline))
+
+        ansi_io = IOBuffer()
+        Highlights.format(
+            ansi_io,
+            MIME("text/ansi"),
+            tokens,
+            source,
+            ansi_theme,
+            :none;
+            line_prefixes = [("> ", 2), ("> ", 2)],
+        )
+        @test_reference "references/styled_multiline_ansi.txt" String(take!(ansi_io))
+
+        typst_io = IOBuffer()
+        Highlights.format(
+            typst_io,
+            MIME("text/typst"),
+            tokens,
+            source,
+            typst_theme,
+            :none;
+            wrap = false,
+        )
+        @test_reference "references/styled_multiline_typst.txt" String(take!(typst_io))
     end
 
     @testset "Stylesheet mode with REPL prefixes" begin

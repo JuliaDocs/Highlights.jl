@@ -35,8 +35,15 @@ function format(
     end
 
     # Print text, interleaving line prefixes at newlines
-    # restore_color: ANSI code to re-apply after prefix (since prefix resets)
-    function print_text(text::AbstractString, restore_color::AbstractString = "")
+    # restore_sgr: ANSI code(s) to re-apply after prefix (since prefix resets)
+    # has_styles: when true, emit a reset before the newline so bold/italic/underline
+    #             don't bleed into the prefix glyph (a fresh color SGR alone doesn't
+    #             reset them; color-only output has no bleed).
+    function print_text(
+        text::AbstractString,
+        restore_sgr::AbstractString = "",
+        has_styles::Bool = false,
+    )
         if isempty(line_prefixes)
             # Fast path: no REPL prefixes
             print(io, text)
@@ -45,10 +52,11 @@ function format(
             first = true
             for part in _eachsplit(text, '\n'; keepempty = true)
                 if !first
+                    has_styles && print(io, ansi_reset())
                     print(io, '\n')
                     line_idx += 1
                     emit_prefix()
-                    print(io, restore_color)  # Re-apply color after prefix reset
+                    print(io, restore_sgr)
                 end
                 first = false
                 # Strip trailing \r for Windows line endings
@@ -66,18 +74,19 @@ function format(
             print_text(gap_text)
         end
 
-        # Get color for token
+        # Get color and styles for token
         color_idx = get_capture_color(token.capture, mapping)
         hex_color = theme.colors[color_idx]
-        color_code = ansi_color_from_hex(hex_color)
+        styles = get_capture_styles(token.capture, theme)
+        sgr = ansi_color_from_hex(hex_color) * ansi_styles(styles)
 
         # Write colored token with transform wrapper
         # Strip \r from token text (Windows CRLF creates empty tokens)
         token_text = replace(token.text, '\r' => "")
         if !isempty(token_text)
             transform(io, mime, token, true, source, language)
-            print(io, color_code)
-            print_text(token_text, color_code)
+            print(io, sgr)
+            print_text(token_text, sgr, !isempty(styles))
             print(io, ansi_reset())
             transform(io, mime, token, false, source, language)
         end
@@ -98,7 +107,8 @@ end
     format_styled(io::IO, ::MIME"text/ansi", text::AbstractString, color::Int, theme::Theme)
 
 Output text with a single color for ANSI terminal.
-Color 0 uses theme foreground, 1-16 use theme.colors.
+Color 0 uses theme foreground, 1-16 use theme.colors. Used by the line-prefix
+path (REPL session preprocessors); line prefixes carry no per-capture styling.
 """
 function format_styled(
     io::IO,

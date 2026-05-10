@@ -65,27 +65,34 @@ function format(
     end
 
     # Write text with proper line break handling
-    # in_color: true if we're inside a #text(fill: ...)[...] bracket
-    # Returns true if we ended inside a color bracket
+    # text_open: opening sequence for the styled wrapper(s) — close with as many "]" as
+    #   open brackets in text_open. Empty string means no wrapper.
+    # in_wrap: true if we're currently inside the wrapper brackets
+    # Returns true if we ended inside the wrapper
     function write_text(
         text::AbstractString,
-        color_str::AbstractString = "",
-        in_color::Bool = false,
+        text_open::AbstractString = "",
+        bracket_count::Int = 0,
+        in_wrap::Bool = false,
     )
         lines = split(text, '\n', keepempty = true)
         for (i, line) in enumerate(lines)
             if i > 1
-                # Close color bracket before newline if we're in one
-                in_color && print(io, "]")
+                # Close wrapper brackets before newline if we're inside
+                if in_wrap
+                    for _ = 1:bracket_count
+                        print(io, "]")
+                    end
+                end
                 print(io, " \\\n")  # Typst line break: backslash-space
                 line_idx += 1
                 emit_prefix()
-                # Reopen color bracket after newline
-                if !isempty(color_str)
-                    print(io, color_str)
-                    in_color = true
+                # Reopen wrapper after newline
+                if !isempty(text_open)
+                    print(io, text_open)
+                    in_wrap = true
                 else
-                    in_color = false
+                    in_wrap = false
                 end
             end
             line = rstrip(line, '\r')
@@ -93,7 +100,7 @@ function format(
                 write_typst_raw(io, line)
             end
         end
-        return in_color
+        return in_wrap
     end
 
     for token in tokens
@@ -105,19 +112,36 @@ function format(
             write_text(gap_text)
         end
 
-        # Get color for token
+        # Get color and styles for token
         color_idx = get_capture_color(token.capture, mapping)
         r, g, b = hex_to_rgb(theme.colors[color_idx])
-        color_str = "#text(fill: rgb($r, $g, $b))["
+        styles = get_capture_styles(token.capture, theme)
+
+        # Build the #text(...) call with weight/style kwargs
+        text_args = "fill: rgb($r, $g, $b)"
+        if :bold in styles
+            text_args *= ", weight: \"bold\""
+        end
+        if :italic in styles
+            text_args *= ", style: \"italic\""
+        end
+        underline_wrap = :underline in styles
+
+        text_open = underline_wrap ? "#underline[#text($text_args)[" : "#text($text_args)["
+        bracket_count = underline_wrap ? 2 : 1
 
         # Write colored token with transform wrapper
         # Strip \r from token text (Windows CRLF creates empty tokens)
         token_text = replace(token.text, '\r' => "")
         if !isempty(token_text)
             transform(io, mime, token, true, source, language)
-            print(io, color_str)
-            still_in_color = write_text(token_text, color_str, true)
-            still_in_color && print(io, "]")
+            print(io, text_open)
+            still_in_wrap = write_text(token_text, text_open, bracket_count, true)
+            if still_in_wrap
+                for _ = 1:bracket_count
+                    print(io, "]")
+                end
+            end
             transform(io, mime, token, false, source, language)
         end
 
@@ -139,7 +163,8 @@ end
     format_styled(io::IO, ::MIME"text/typst", text::AbstractString, color::Int, theme::Theme)
 
 Output text with a single color for Typst.
-Color 0 uses theme foreground, 1-16 use theme.colors.
+Color 0 uses theme foreground, 1-16 use theme.colors. Used by the line-prefix
+path (REPL session preprocessors); line prefixes carry no per-capture styling.
 """
 function format_styled(
     io::IO,

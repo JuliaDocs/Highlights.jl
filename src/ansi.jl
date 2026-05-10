@@ -60,6 +60,28 @@ function ansi_color_from_hex(hex::AbstractString; background::Bool = false)
     return ansi_color_rgb(r, g, b; background = background)
 end
 
+"""
+    ansi_styles(styles) -> String
+
+Build the ANSI SGR escape sequence for a list of style flags
+(`:bold`, `:italic`, `:underline`). Returns an empty string if `styles`
+is empty.
+"""
+function ansi_styles(styles)
+    isempty(styles) && return ""
+    io = IOBuffer()
+    for s in styles
+        if s === :bold
+            print(io, "\e[1m")
+        elseif s === :italic
+            print(io, "\e[3m")
+        elseif s === :underline
+            print(io, "\e[4m")
+        end
+    end
+    return String(take!(io))
+end
+
 # Convert color index (1-16) to letter (a-p) for LaTeX command names
 color_to_letter(i::Int) = Char('a' + i - 1)
 

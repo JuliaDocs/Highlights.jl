@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Restore per-capture text styling (`:bold`, `:italic`, `:underline`) lost in
+  the 0.6 TreeSitter rewrite. Configured via `Theme(...; styles = ...)` and
+  applied across ANSI, HTML (inline and class-based), LaTeX, and Typst.
+  `stylesheet` emits matching modifier classes/commands and loads `ulem` when
+  underline is used; it now also accepts a `Theme` value so styled themes can
+  drive class-based output [#81].
+
 ### Changed
 
 - CI runs on pushed tags in addition to `master` and pull requests [#81].

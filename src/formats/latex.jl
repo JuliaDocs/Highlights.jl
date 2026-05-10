@@ -64,6 +64,10 @@ Set `stylesheet=false` (default) for inline colors: `\\textcolor[RGB]{...}{text}
 Set `stylesheet=true` for stylesheet commands: `\\HLC1{text}` (use with `stylesheet()`).
 Set `classprefix` to customize the command prefix (default "hl", commands become `\\HLC1`).
 Set `wrap=false` to skip the lstlisting wrapper (for preprocessed segments).
+
+If the theme uses `:underline` styling, the `ulem` package must be loaded in
+the document preamble: `\\usepackage[normalem]{ulem}`. The `stylesheet()`
+output for `MIME("text/latex")` includes this automatically.
 """
 function format(
     io::IO,
@@ -138,6 +142,13 @@ function format(
         end
     end
 
+    stylecmds_inline = (bold = "\\textbf{", italic = "\\textit{", underline = "\\uline{")
+    stylecmds_sheet = (
+        bold = "\\" * uppercase(classprefix) * "B{",
+        italic = "\\" * uppercase(classprefix) * "I{",
+        underline = "\\" * uppercase(classprefix) * "U{",
+    )
+
     for token in tokens
         start_pos, end_pos = token.byte_range
 
@@ -147,23 +158,40 @@ function format(
             print_raw(gap_text)
         end
 
-        # Get color for token
+        # Get color and styles for token
         color_idx = get_capture_color(token.capture, mapping)
+        styles = get_capture_styles(token.capture, theme)
+        cmds = stylesheet ? stylecmds_sheet : stylecmds_inline
 
         # Write colored token with transform wrapper (using escapeinside)
         # Strip \r from token text (Windows CRLF creates empty tokens)
         token_text = replace(token.text, '\r' => "")
         if !isempty(token_text)
             transform(io, mime, token, true, source, language)
+            print(io, "(*@")
+            # Outer style wrappers (color innermost so braces nest cleanly)
+            for s in styles
+                if s === :underline
+                    print(io, cmds.underline)
+                elseif s === :italic
+                    print(io, cmds.italic)
+                elseif s === :bold
+                    print(io, cmds.bold)
+                end
+            end
             if stylesheet
-                print(io, "(*@\\", cmdprefix, color_to_letter(color_idx), "{")
+                print(io, "\\", cmdprefix, color_to_letter(color_idx), "{")
             else
                 hex_color = theme.colors[color_idx]
                 latex_color = hex_to_latex_color(hex_color)
-                print(io, "(*@\\textcolor", latex_color, "{")
+                print(io, "\\textcolor", latex_color, "{")
             end
             escape_with_prefixes(token_text)
-            print(io, "}@*)")
+            print(io, "}")  # close color
+            for _ in styles
+                print(io, "}")
+            end
+            print(io, "@*)")
             transform(io, mime, token, false, source, language)
         end
 
@@ -186,7 +214,8 @@ end
                   stylesheet=false, classprefix="hl")
 
 Output text with a single color for LaTeX.
-Color 0 uses theme foreground, 1-16 use theme.colors.
+Color 0 uses theme foreground, 1-16 use theme.colors. Used by the line-prefix
+path (REPL session preprocessors); line prefixes carry no per-capture styling.
 """
 function format_styled(
     io::IO,
