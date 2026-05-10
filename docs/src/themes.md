@@ -81,6 +81,47 @@ base = Theme("Dracula", background = "#1a1a1a")
 custom = Theme(base, colors = Dict(3 => "#00ff00"))
 ```
 
+### Per-Capture Styling
+
+Themes can attach text styling — `:bold`, `:italic`, `:underline` — to
+tree-sitter captures via the `styles` keyword. A bare Symbol or a
+Vector of Symbols is accepted:
+
+```julia
+Theme("Dracula", styles = Dict(
+    "comment"  => :italic,
+    "keyword"  => :bold,
+    "function" => [:bold, :italic],
+    "type"     => :underline,
+))
+```
+
+Lookup walks the capture hierarchy, so setting `"keyword"` covers
+`"keyword.return"`, `"keyword.function"`, etc.
+
+Gogh themes ship without styling — set it explicitly when you derive
+your own. Styles work in every output format: ANSI, HTML (inline and
+class-based), LaTeX, and Typst.
+
+#### Removing Styling
+
+Styles use override semantics during derivation (matching `colors`).
+To remove a style inherited from a base, set the capture to an empty
+Vector:
+
+```julia
+italic_comments = Theme("Dracula", styles = Dict("comment" => :italic))
+no_style        = Theme(italic_comments, styles = Dict("comment" => Symbol[]))
+```
+
+#### LaTeX and Underline
+
+If any capture uses `:underline`, the LaTeX output uses `\\uline` from
+the `ulem` package. The generated stylesheet
+([`Highlights.stylesheet`](@ref) for `MIME("text/latex")`) includes
+`\\usepackage[normalem]{ulem}` automatically. For inline LaTeX output,
+add the package to your document preamble.
+
 ### Loading from JSON Files
 
 Load themes from external JSON files (Gogh-compatible format):
@@ -121,6 +162,9 @@ File-based themes are not cached, allowing live editing.
 ```
 
 Required: `name`. Optional: `background`, `foreground`, `color_01`-`color_16`.
+
+JSON theme files carry colors only — to attach per-capture styling,
+load the file and derive: `Theme("/path/to/theme.json", styles = …)`.
 
 ### Color Indices
 

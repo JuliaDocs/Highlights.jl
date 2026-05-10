@@ -1,0 +1,2 @@
+#underline[#text(fill: rgb(122, 122, 122))[#raw("ab")]] \
+#underline[#text(fill: rgb(122, 122, 122))[#raw("cd")]]

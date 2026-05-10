@@ -1,15 +1,36 @@
 # Theme loading from Gogh JSON files.
 
+const VALID_STYLES = (:bold, :italic, :underline)
+
+function normalize_styles(styles)
+    out = Dict{String,Vector{Symbol}}()
+    for (capture, value) in styles
+        vec = value isa Symbol ? Symbol[value] : collect(Symbol, value)
+        for s in vec
+            s in VALID_STYLES || error(
+                "Invalid style :$s for capture \"$capture\". " *
+                "Valid styles: $(join(VALID_STYLES, ", "))",
+            )
+        end
+        out[String(capture)] = vec
+    end
+    return out
+end
+
 """
     Theme
 
-Represents a color theme with 16 ANSI colors and special colors.
+Represents a color theme with 16 ANSI colors, special colors, and optional
+per-capture text styling (bold, italic, underline).
 
 # Fields
 - `name::String`: Theme name
 - `colors::Dict{Int,String}`: Maps color index (1-16) to hex color string
 - `background::String`: Background color (hex)
 - `foreground::String`: Default text color (hex)
+- `styles::Dict{String,Vector{Symbol}}`: Maps capture name (e.g. `"comment"`)
+  to a list of style flags. Valid symbols: `:bold`, `:italic`, `:underline`.
+  Lookup uses hierarchical fallback: setting `"keyword"` covers `"keyword.return"`.
 
 # Custom Themes
 
@@ -22,6 +43,14 @@ Theme("Dracula", colors = Dict(2 => "#ff0000"))
 # Change background
 Theme("Nord", background = "#1a1a1a")
 
+# Add styling (bare Symbol or Vector accepted)
+Theme("Dracula", styles = Dict(
+    "comment"  => :italic,
+    "keyword"  => :bold,
+    "function" => [:bold, :italic],
+    "type"     => :underline,
+))
+
 # Give it a new name
 Theme("Dracula", name = "MyDracula", colors = Dict(2 => "#ff0000"))
 
@@ -29,13 +58,25 @@ Theme("Dracula", name = "MyDracula", colors = Dict(2 => "#ff0000"))
 base = Theme("Dracula", background = "#1a1a1a")
 custom = Theme(base, colors = Dict(3 => "#00ff00"))
 ```
+
+# Style merge semantics
+
+Derived-theme `styles` override the base per-capture (last-wins), matching
+`colors`. To remove a base style, set the capture to `Symbol[]`.
 """
 struct Theme
     name::String
     colors::Dict{Int,String}
     background::String
     foreground::String
+    styles::Dict{String,Vector{Symbol}}
+
+    Theme(name, colors, background, foreground, styles) =
+        new(name, colors, background, foreground, normalize_styles(styles))
 end
+
+Theme(name, colors, background, foreground) =
+    Theme(name, colors, background, foreground, Dict{String,Vector{Symbol}}())
 
 function Theme(
     base::String;
@@ -43,8 +84,9 @@ function Theme(
     colors::Dict{Int,String} = Dict{Int,String}(),
     background::Union{String,Nothing} = nothing,
     foreground::Union{String,Nothing} = nothing,
+    styles = Dict{String,Vector{Symbol}}(),
 )
-    Theme(load_theme(base); name, colors, background, foreground)
+    Theme(load_theme(base); name, colors, background, foreground, styles)
 end
 
 function Theme(
@@ -53,12 +95,14 @@ function Theme(
     colors::Dict{Int,String} = Dict{Int,String}(),
     background::Union{String,Nothing} = nothing,
     foreground::Union{String,Nothing} = nothing,
+    styles = Dict{String,Vector{Symbol}}(),
 )
     Theme(
         name,
         merge(base.colors, colors),
         something(background, base.background),
         something(foreground, base.foreground),
+        merge(base.styles, normalize_styles(styles)),
     )
 end
 
@@ -141,7 +185,13 @@ function parse_theme(data)
         colors[1] = rgb_to_hex(r, g, b)
     end
 
-    return Theme(data["name"], colors, background, foreground)
+    return Theme(
+        data["name"],
+        colors,
+        background,
+        foreground,
+        Dict{String,Vector{Symbol}}(),
+    )
 end
 
 """

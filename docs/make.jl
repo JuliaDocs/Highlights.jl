@@ -26,6 +26,17 @@ const DEMO_THEMES = [
     "Tokyo Night Light",
 ]
 
+# Tasteful per-capture styling applied to every demo theme so the
+# bold/italic/underline support is visible in the gallery and PDF.
+const DEMO_STYLES = Dict(
+    "comment" => :italic,
+    "keyword" => :bold,
+    "function" => [:bold, :italic],
+    "type" => :underline,
+)
+
+styled_theme(name) = Highlights.Theme(name; styles = DEMO_STYLES)
+
 const DEMO_SAMPLES = Dict(
     :julia => """
 # Fibonacci sequence
@@ -221,7 +232,7 @@ open(joinpath(@__DIR__, "src", "gallery.html"), "w") do io
         # Code panels
         panels_html = join(
             [
-                """<div class="code-panel$(lang == :julia ? " active" : "")" data-lang="$lang">$(highlight("text/html", DEMO_SAMPLES[lang], lang, theme_name))</div>"""
+                """<div class="code-panel$(lang == :julia ? " active" : "")" data-lang="$lang">$(highlight("text/html", DEMO_SAMPLES[lang], lang, styled_theme(theme_name)))</div>"""
                 for lang in LANG_ORDER
             ],
             "\n                ",
@@ -296,7 +307,7 @@ Each section shows the same code in different themes and languages.
         )
         for lang in [:julia, :python, :rust]
             label = LANG_LABELS[lang]
-            code = highlight("text/typst", DEMO_SAMPLES[lang], lang, theme)
+            code = highlight("text/typst", DEMO_SAMPLES[lang], lang, styled_theme(theme))
             println(
                 io,
                 """
@@ -325,6 +336,7 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "User Guide" => "guide.md",
+        "Migration" => "migration.md",
         "Themes" => "themes.md",
         "Languages" => "languages.md",
         "Theme Gallery" => "demos.md",

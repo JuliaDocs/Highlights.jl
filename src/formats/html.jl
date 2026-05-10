@@ -29,6 +29,18 @@ function escape_html(s::AbstractString)
     return String(take!(io))
 end
 
+function _write_inline_styles(io::IO, styles)
+    for s in styles
+        if s === :bold
+            print(io, "; font-weight: bold")
+        elseif s === :italic
+            print(io, "; font-style: italic")
+        elseif s === :underline
+            print(io, "; text-decoration: underline")
+        end
+    end
+end
+
 """
     format(io::IO, ::MIME"text/html", tokens, source, theme, language;
            mapping=default_capture_colors(), transform=default_transform, wrap=true,
@@ -106,8 +118,9 @@ function format(
             escape_with_prefixes(gap_text)
         end
 
-        # Get color for token
+        # Get color and styles for token
         color_idx = get_capture_color(token.capture, mapping)
+        styles = get_capture_styles(token.capture, theme)
 
         # Write colored token with transform wrapper
         # Strip \r from token text (Windows CRLF creates empty tokens)
@@ -115,10 +128,16 @@ function format(
         if !isempty(token_text)
             transform(io, mime, token, true, source, language)
             if stylesheet
-                print(io, "<span class=\"$(classprefix)-c$color_idx\">")
+                print(io, "<span class=\"$(classprefix)-c$color_idx")
+                for s in styles
+                    print(io, " $(classprefix)-$s")
+                end
+                print(io, "\">")
             else
                 hex_color = theme.colors[color_idx]
-                print(io, "<span style=\"color: $(hex_color)\">")
+                print(io, "<span style=\"color: $(hex_color)")
+                _write_inline_styles(io, styles)
+                print(io, "\">")
             end
             escape_with_prefixes(token_text)
             print(io, "</span>")
@@ -144,7 +163,8 @@ end
                   stylesheet=false, classprefix="hl")
 
 Output text with a single color for HTML.
-Color 0 uses theme foreground, 1-16 use theme.colors.
+Color 0 uses theme foreground, 1-16 use theme.colors. Used by the line-prefix
+path (REPL session preprocessors); line prefixes carry no per-capture styling.
 """
 function format_styled(
     io::IO,
