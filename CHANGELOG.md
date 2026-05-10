@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.6.1] - 2026-05-10
+
 ### Added
 
 - Migration guide for users coming from `Highlights@0.5` [#81].
@@ -156,6 +158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.2]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.5.2
 [v0.5.3]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.5.3
 [v0.6.0]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.0
+[v0.6.1]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.1
 [#7]: https://github.com/JuliaDocs/Highlights.jl/issues/7
 [#9]: https://github.com/JuliaDocs/Highlights.jl/issues/9
 [#10]: https://github.com/JuliaDocs/Highlights.jl/issues/10
