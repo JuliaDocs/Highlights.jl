@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Migration guide for users coming from `Highlights@0.5` [#81].
+
 ### Fixed
 
 - Restore per-capture text styling (`:bold`, `:italic`, `:underline`) lost in
@@ -172,3 +176,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#64]: https://github.com/JuliaDocs/Highlights.jl/issues/64
 [#65]: https://github.com/JuliaDocs/Highlights.jl/issues/65
 [#66]: https://github.com/JuliaDocs/Highlights.jl/issues/66
+[#81]: https://github.com/JuliaDocs/Highlights.jl/issues/81

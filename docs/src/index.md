@@ -47,6 +47,8 @@ html = highlight("text/html", code, :julia, "Nord")
 ## Contents
 
 ```@contents
-Pages = ["guide.md", "themes.md", "languages.md", "demos.md", "api.md"]
+Pages = ["guide.md", "migration.md", "themes.md", "languages.md", "demos.md", "api.md"]
 Depth = 1
 ```
+
+Coming from `Highlights@0.5`? See [Migrating from 0.5 to 0.6](@ref).

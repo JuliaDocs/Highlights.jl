@@ -336,6 +336,7 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "User Guide" => "guide.md",
+        "Migration" => "migration.md",
         "Themes" => "themes.md",
         "Languages" => "languages.md",
         "Theme Gallery" => "demos.md",
