@@ -47,18 +47,20 @@ Nested comments \#= can be \#= deeply =\# nested =\#
 (*@\HLCb{end}@*)
 
 (*@\HLCa{\# Type definitions}@*)
-(*@\HLCb{abstract}@*) (*@\HLCb{type}@*) (*@\HLCg{AbstractPoint}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*)(*@\HLCg{ }@*)(*@\HLCh{<:}@*)(*@\HLCg{ }@*)(*@\HLCg{Number}@*) (*@\HLCb{end}@*)
-(*@\HLCb{mutable}@*) (*@\HLCb{struct}@*) (*@\HLCg{Point}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*) (*@\HLCb{where}@*) (*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{<:}@*)(*@\HLCg{Number}@*)(*@\HLCh{\}}@*)(*@\HLCg{
-    x}@*)(*@\HLCh{::}@*)(*@\HLCg{T}@*)(*@\HLCg{
-    y}@*)(*@\HLCh{::}@*)(*@\HLCg{T
-    }@*)(*@\HLCe{Point}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*)(*@\HLCg{ }@*)(*@\HLCh{=}@*)(*@\HLCg{ new}@*)(*@\HLCh{(}@*)(*@\HLCg{x}@*)(*@\HLCh{,}@*)(*@\HLCg{ 2x}@*)(*@\HLCh{)}@*)(*@\HLCg{
-end
-struct Empty}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*)(*@\HLCg{ end
-primitive type Float16Custom }@*)(*@\HLCh{<:}@*)(*@\HLCg{ }@*)(*@\HLCo{AbstractFloat}@*)(*@\HLCg{ 16 end
+(*@\HLCb{abstract}@*) (*@\HLCb{type}@*) (*@\HLCg{Shape}@*) (*@\HLCb{end}@*)
+(*@\HLCb{abstract}@*) (*@\HLCb{type}@*) (*@\HLCg{AbstractPoint}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*) (*@\HLCh{<:}@*) (*@\HLCg{Number}@*) (*@\HLCb{end}@*)
+(*@\HLCb{mutable}@*) (*@\HLCb{struct}@*) (*@\HLCg{Point}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{<:}@*)(*@\HLCg{Number}@*)(*@\HLCh{\}}@*)
+    (*@\HLCh{x}@*)(*@\HLCh{::}@*)(*@\HLCg{T}@*)
+    (*@\HLCh{y}@*)(*@\HLCh{::}@*)(*@\HLCg{T}@*)
+    (*@\HLCe{Point}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*) (*@\HLCh{=}@*) (*@\HLCe{new}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{,}@*) (*@\HLCd{2}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*)
+(*@\HLCb{end}@*)
+(*@\HLCb{struct}@*) (*@\HLCg{Empty}@*)(*@\HLCh{\{}@*)(*@\HLCg{T}@*)(*@\HLCh{\}}@*) (*@\HLCb{end}@*)
+(*@\HLCb{primitive}@*) (*@\HLCb{type}@*) (*@\HLCg{Float16Custom}@*) (*@\HLCh{<:}@*) (*@\HLCg{AbstractFloat}@*) (*@\HLCd{16}@*) (*@\HLCb{end}@*)
+(*@\HLCb{const}@*) (*@\HLCh{Coord}@*) (*@\HLCh{=}@*) (*@\HLCo{Float64}@*)
 
-}@*)(*@\HLCa{\# Macros}@*)(*@\HLCg{
-macro something}@*)(*@\HLCh{(}@*)(*@\HLCg{x}@*)(*@\HLCh{...}@*)(*@\HLCh{)}@*)
-    (*@\HLCg{nothing}@*)
+(*@\HLCa{\# Macros}@*)
+(*@\HLCb{macro}@*) (*@\HLCf{something}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{...}@*)(*@\HLCh{)}@*)
+    (*@\HLCl{nothing}@*)
 (*@\HLCb{end}@*)
 
 (*@\HLCa{\# Character literals}@*)

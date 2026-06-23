@@ -46,18 +46,20 @@ Nested comments #= can be #= deeply =# nested =#
 <span style="color: #E64747">end</span>
 
 <span style="color: #7A7A7A"># Type definitions</span>
-<span style="color: #E64747">abstract</span> <span style="color: #E64747">type</span> <span style="color: #75D7EC">AbstractPoint</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC"> </span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC"> </span><span style="color: #75D7EC">Number</span> <span style="color: #E64747">end</span>
-<span style="color: #E64747">mutable</span> <span style="color: #E64747">struct</span> <span style="color: #75D7EC">Point</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span> <span style="color: #E64747">where</span> <span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC">Number</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC">
-    x</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T</span><span style="color: #75D7EC">
-    y</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T
-    </span><span style="color: #9B6BDF">Point</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">)</span><span style="color: #75D7EC"> </span><span style="color: #F8F8F2">=</span><span style="color: #75D7EC"> new</span><span style="color: #F8F8F2">(</span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2">,</span><span style="color: #75D7EC"> 2x</span><span style="color: #F8F8F2">)</span><span style="color: #75D7EC">
-end
-struct Empty</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span><span style="color: #75D7EC"> end
-primitive type Float16Custom </span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC"> </span><span style="color: #8BE9FD">AbstractFloat</span><span style="color: #75D7EC"> 16 end
+<span style="color: #E64747">abstract</span> <span style="color: #E64747">type</span> <span style="color: #75D7EC">Shape</span> <span style="color: #E64747">end</span>
+<span style="color: #E64747">abstract</span> <span style="color: #E64747">type</span> <span style="color: #75D7EC">AbstractPoint</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span> <span style="color: #F8F8F2">&lt;:</span> <span style="color: #75D7EC">Number</span> <span style="color: #E64747">end</span>
+<span style="color: #E64747">mutable</span> <span style="color: #E64747">struct</span> <span style="color: #75D7EC">Point</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">&lt;:</span><span style="color: #75D7EC">Number</span><span style="color: #F8F8F2">}</span>
+    <span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T</span>
+    <span style="color: #F8F8F2">y</span><span style="color: #F8F8F2">::</span><span style="color: #75D7EC">T</span>
+    <span style="color: #9B6BDF">Point</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">=</span> <span style="color: #9B6BDF">new</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">)</span>
+<span style="color: #E64747">end</span>
+<span style="color: #E64747">struct</span> <span style="color: #75D7EC">Empty</span><span style="color: #F8F8F2">{</span><span style="color: #75D7EC">T</span><span style="color: #F8F8F2">}</span> <span style="color: #E64747">end</span>
+<span style="color: #E64747">primitive</span> <span style="color: #E64747">type</span> <span style="color: #75D7EC">Float16Custom</span> <span style="color: #F8F8F2">&lt;:</span> <span style="color: #75D7EC">AbstractFloat</span> <span style="color: #E4F34A">16</span> <span style="color: #E64747">end</span>
+<span style="color: #E64747">const</span> <span style="color: #F8F8F2">Coord</span> <span style="color: #F8F8F2">=</span> <span style="color: #8BE9FD">Float64</span>
 
-</span><span style="color: #7A7A7A"># Macros</span><span style="color: #75D7EC">
-macro something</span><span style="color: #F8F8F2">(</span><span style="color: #75D7EC">x</span><span style="color: #F8F8F2">...</span><span style="color: #F8F8F2">)</span>
-    <span style="color: #75D7EC">nothing</span>
+<span style="color: #7A7A7A"># Macros</span>
+<span style="color: #E64747">macro</span> <span style="color: #E356A7">something</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">x</span><span style="color: #F8F8F2">...</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #F1FA8C">nothing</span>
 <span style="color: #E64747">end</span>
 
 <span style="color: #7A7A7A"># Character literals</span>

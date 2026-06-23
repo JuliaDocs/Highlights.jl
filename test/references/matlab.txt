@@ -2,7 +2,7 @@
 
 [variable:x] [operator:=] [constant.numeric.float:1][punctuation.delimiter:;]
 [variable:y] [operator:=] [constant.numeric.float:2][punctuation.delimiter:;]
-[punctuation.bracket:[][variable:X][punctuation.delimiter:,][variable: ][variable:Y][punctuation.bracket:]] [operator:=] [function:func][punctuation.bracket:(][constant.numeric.float:1.0][punctuation.delimiter:,] [constant.numeric.float:2.3e-9][punctuation.delimiter:,] [constant.numeric.float:3j][punctuation.bracket:)][punctuation.delimiter:;]
+[punctuation.bracket:[][variable:X][punctuation.delimiter:,] [variable:Y][punctuation.bracket:]] [operator:=] [function:func][punctuation.bracket:(][constant.numeric.float:1.0][punctuation.delimiter:,] [constant.numeric.float:2.3e-9][punctuation.delimiter:,] [constant.numeric.float:3j][punctuation.bracket:)][punctuation.delimiter:;]
 
 [comment.line:%{
     Multiline comments here,

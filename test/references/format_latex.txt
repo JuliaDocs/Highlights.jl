@@ -69,18 +69,20 @@ Nested comments \#= can be \#= deeply =\# nested =\#
 (*@\textcolor[RGB]{230,71,71}{end}@*)
 
 (*@\textcolor[RGB]{122,122,122}{\# Type definitions}@*)
-(*@\textcolor[RGB]{230,71,71}{abstract}@*) (*@\textcolor[RGB]{230,71,71}{type}@*) (*@\textcolor[RGB]{117,215,236}{AbstractPoint}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{117,215,236}{Number}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
-(*@\textcolor[RGB]{230,71,71}{mutable}@*) (*@\textcolor[RGB]{230,71,71}{struct}@*) (*@\textcolor[RGB]{117,215,236}{Point}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*) (*@\textcolor[RGB]{230,71,71}{where}@*) (*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{Number}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{
-    x}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{117,215,236}{
-    y}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T
-    }@*)(*@\textcolor[RGB]{155,107,223}{Point}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{248,248,242}{=}@*)(*@\textcolor[RGB]{117,215,236}{ new}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{,}@*)(*@\textcolor[RGB]{117,215,236}{ 2x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{117,215,236}{
-end
-struct Empty}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{117,215,236}{ end
-primitive type Float16Custom }@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{ }@*)(*@\textcolor[RGB]{139,233,253}{AbstractFloat}@*)(*@\textcolor[RGB]{117,215,236}{ 16 end
+(*@\textcolor[RGB]{230,71,71}{abstract}@*) (*@\textcolor[RGB]{230,71,71}{type}@*) (*@\textcolor[RGB]{117,215,236}{Shape}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{abstract}@*) (*@\textcolor[RGB]{230,71,71}{type}@*) (*@\textcolor[RGB]{117,215,236}{AbstractPoint}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*) (*@\textcolor[RGB]{248,248,242}{<:}@*) (*@\textcolor[RGB]{117,215,236}{Number}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{mutable}@*) (*@\textcolor[RGB]{230,71,71}{struct}@*) (*@\textcolor[RGB]{117,215,236}{Point}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{<:}@*)(*@\textcolor[RGB]{117,215,236}{Number}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)
+    (*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)
+    (*@\textcolor[RGB]{248,248,242}{y}@*)(*@\textcolor[RGB]{248,248,242}{::}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)
+    (*@\textcolor[RGB]{155,107,223}{Point}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{155,107,223}{new}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{struct}@*) (*@\textcolor[RGB]{117,215,236}{Empty}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{117,215,236}{T}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{primitive}@*) (*@\textcolor[RGB]{230,71,71}{type}@*) (*@\textcolor[RGB]{117,215,236}{Float16Custom}@*) (*@\textcolor[RGB]{248,248,242}{<:}@*) (*@\textcolor[RGB]{117,215,236}{AbstractFloat}@*) (*@\textcolor[RGB]{228,243,74}{16}@*) (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{const}@*) (*@\textcolor[RGB]{248,248,242}{Coord}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{139,233,253}{Float64}@*)
 
-}@*)(*@\textcolor[RGB]{122,122,122}{\# Macros}@*)(*@\textcolor[RGB]{117,215,236}{
-macro something}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{117,215,236}{x}@*)(*@\textcolor[RGB]{248,248,242}{...}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
-    (*@\textcolor[RGB]{117,215,236}{nothing}@*)
+(*@\textcolor[RGB]{122,122,122}{\# Macros}@*)
+(*@\textcolor[RGB]{230,71,71}{macro}@*) (*@\textcolor[RGB]{227,86,167}{something}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{x}@*)(*@\textcolor[RGB]{248,248,242}{...}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{241,250,140}{nothing}@*)
 (*@\textcolor[RGB]{230,71,71}{end}@*)
 
 (*@\textcolor[RGB]{122,122,122}{\# Character literals}@*)

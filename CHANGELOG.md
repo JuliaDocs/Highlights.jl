@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Stop capture styling from bleeding onto the whitespace and newlines between
+  tokens. Node-level grammar captures (e.g. a whole Fortran statement matched as
+  a keyword) no longer style trailing spaces or line breaks; string and comment
+  content keeps its whitespace [#84].
+
 ## [v0.6.1] - 2026-05-10
 
 ### Added
@@ -180,3 +187,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#65]: https://github.com/JuliaDocs/Highlights.jl/issues/65
 [#66]: https://github.com/JuliaDocs/Highlights.jl/issues/66
 [#81]: https://github.com/JuliaDocs/Highlights.jl/issues/81
+[#84]: https://github.com/JuliaDocs/Highlights.jl/issues/84

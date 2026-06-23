@@ -46,18 +46,20 @@ Nested comments #= can be #= deeply =# nested =#
 <span class="hl-c2 hl-bold">end</span>
 
 <span class="hl-c1 hl-italic"># Type definitions</span>
-<span class="hl-c2 hl-bold">abstract</span> <span class="hl-c2 hl-bold">type</span> <span class="hl-c7 hl-underline">AbstractPoint</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">}</span><span class="hl-c7 hl-underline"> </span><span class="hl-c8">&lt;:</span><span class="hl-c7 hl-underline"> </span><span class="hl-c7 hl-underline">Number</span> <span class="hl-c2 hl-bold">end</span>
-<span class="hl-c2 hl-bold">mutable</span> <span class="hl-c2 hl-bold">struct</span> <span class="hl-c7 hl-underline">Point</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">}</span> <span class="hl-c2 hl-bold">where</span> <span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">&lt;:</span><span class="hl-c7 hl-underline">Number</span><span class="hl-c8">}</span><span class="hl-c7 hl-underline">
-    x</span><span class="hl-c8">::</span><span class="hl-c7 hl-underline">T</span><span class="hl-c7 hl-underline">
-    y</span><span class="hl-c8">::</span><span class="hl-c7 hl-underline">T
-    </span><span class="hl-c5 hl-bold hl-italic">Point</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">)</span><span class="hl-c7 hl-underline"> </span><span class="hl-c8">=</span><span class="hl-c7 hl-underline"> new</span><span class="hl-c8">(</span><span class="hl-c7 hl-underline">x</span><span class="hl-c8">,</span><span class="hl-c7 hl-underline"> 2x</span><span class="hl-c8">)</span><span class="hl-c7 hl-underline">
-end
-struct Empty</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">}</span><span class="hl-c7 hl-underline"> end
-primitive type Float16Custom </span><span class="hl-c8">&lt;:</span><span class="hl-c7 hl-underline"> </span><span class="hl-c15 hl-underline">AbstractFloat</span><span class="hl-c7 hl-underline"> 16 end
+<span class="hl-c2 hl-bold">abstract</span> <span class="hl-c2 hl-bold">type</span> <span class="hl-c7 hl-underline">Shape</span> <span class="hl-c2 hl-bold">end</span>
+<span class="hl-c2 hl-bold">abstract</span> <span class="hl-c2 hl-bold">type</span> <span class="hl-c7 hl-underline">AbstractPoint</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">}</span> <span class="hl-c8">&lt;:</span> <span class="hl-c7 hl-underline">Number</span> <span class="hl-c2 hl-bold">end</span>
+<span class="hl-c2 hl-bold">mutable</span> <span class="hl-c2 hl-bold">struct</span> <span class="hl-c7 hl-underline">Point</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">&lt;:</span><span class="hl-c7 hl-underline">Number</span><span class="hl-c8">}</span>
+    <span class="hl-c8">x</span><span class="hl-c8">::</span><span class="hl-c7 hl-underline">T</span>
+    <span class="hl-c8">y</span><span class="hl-c8">::</span><span class="hl-c7 hl-underline">T</span>
+    <span class="hl-c5 hl-bold hl-italic">Point</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">)</span> <span class="hl-c8">=</span> <span class="hl-c5 hl-bold hl-italic">new</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">,</span> <span class="hl-c4">2</span><span class="hl-c8">x</span><span class="hl-c8">)</span>
+<span class="hl-c2 hl-bold">end</span>
+<span class="hl-c2 hl-bold">struct</span> <span class="hl-c7 hl-underline">Empty</span><span class="hl-c8">{</span><span class="hl-c7 hl-underline">T</span><span class="hl-c8">}</span> <span class="hl-c2 hl-bold">end</span>
+<span class="hl-c2 hl-bold">primitive</span> <span class="hl-c2 hl-bold">type</span> <span class="hl-c7 hl-underline">Float16Custom</span> <span class="hl-c8">&lt;:</span> <span class="hl-c7 hl-underline">AbstractFloat</span> <span class="hl-c4">16</span> <span class="hl-c2 hl-bold">end</span>
+<span class="hl-c2 hl-bold">const</span> <span class="hl-c8">Coord</span> <span class="hl-c8">=</span> <span class="hl-c15 hl-underline">Float64</span>
 
-</span><span class="hl-c1 hl-italic"># Macros</span><span class="hl-c7 hl-underline">
-macro something</span><span class="hl-c8">(</span><span class="hl-c7 hl-underline">x</span><span class="hl-c8">...</span><span class="hl-c8">)</span>
-    <span class="hl-c7 hl-underline">nothing</span>
+<span class="hl-c1 hl-italic"># Macros</span>
+<span class="hl-c2 hl-bold">macro</span> <span class="hl-c6 hl-bold hl-italic">something</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">...</span><span class="hl-c8">)</span>
+    <span class="hl-c12">nothing</span>
 <span class="hl-c2 hl-bold">end</span>
 
 <span class="hl-c1 hl-italic"># Character literals</span>

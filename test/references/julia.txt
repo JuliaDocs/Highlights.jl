@@ -46,19 +46,21 @@ Nested comments #= can be #= deeply =# nested =#
 [keyword:end]
 
 [comment:# Type definitions]
-[keyword.type:abstract] [keyword.type:type] [type:AbstractPoint][punctuation.bracket:{][type:T][punctuation.bracket:}][type.definition: ][operator:<:][type.definition: ][type:Number] [keyword.type:end]
-[keyword.type:mutable] [keyword.type:struct] [type:Point][punctuation.bracket:{][type:T][punctuation.bracket:}] [keyword.operator:where] [punctuation.bracket:{][type:T][operator:<:][type:Number][punctuation.bracket:}][type:
-    x][operator:::][type:T][type:
-    y][operator:::][type:T
-    ][function.call:Point][punctuation.bracket:(][variable:x][punctuation.bracket:)][type: ][operator:=][type: new][punctuation.bracket:(][type:x][punctuation.delimiter:,][type: 2x][punctuation.bracket:)][type:
-end
-struct Empty][punctuation.bracket:{][type:T][punctuation.bracket:}][type: end
-primitive type Float16Custom ][operator:<:][type: ][type.builtin:AbstractFloat][type: 16 end
-
-][comment:# Macros][type:
-macro something][punctuation.bracket:(][type:x][punctuation.special:...][punctuation.bracket:)]
-    [type.definition:nothing]
+[keyword.type:abstract] [keyword.type:type] [type.definition:Shape] [keyword.type:end]
+[keyword.type:abstract] [keyword.type:type] [type:AbstractPoint][punctuation.bracket:{][type:T][punctuation.bracket:}] [operator:<:] [type:Number] [keyword.type:end]
+[keyword.type:mutable] [keyword.type:struct] [type:Point][punctuation.bracket:{][type:T][operator:<:][type:Number][punctuation.bracket:}]
+    [variable:x][operator:::][type:T]
+    [variable:y][operator:::][type:T]
+    [function.call:Point][punctuation.bracket:(][variable:x][punctuation.bracket:)] [operator:=] [function.call:new][punctuation.bracket:(][variable:x][punctuation.delimiter:,] [number:2][variable:x][punctuation.bracket:)]
 [keyword.type:end]
+[keyword.type:struct] [type:Empty][punctuation.bracket:{][type:T][punctuation.bracket:}] [keyword.type:end]
+[keyword.type:primitive] [keyword.type:type] [type:Float16Custom] [operator:<:] [type:AbstractFloat] [number:16] [keyword.type:end]
+[keyword.modifier:const] [variable:Coord] [operator:=] [type.builtin:Float64]
+
+[comment:# Macros]
+[keyword:macro] [function.macro:something][punctuation.bracket:(][variable:x][punctuation.special:...][punctuation.bracket:)]
+    [constant.builtin:nothing]
+[keyword:end]
 
 [comment:# Character literals]
 [character:' '][punctuation.delimiter:,] [character:'\n'][punctuation.delimiter:,] [character:'\''][punctuation.delimiter:,] [character:'"'][punctuation.delimiter:,] [character:'\u1234'][punctuation.delimiter:,] [character:'⻆']

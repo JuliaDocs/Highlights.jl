@@ -46,14 +46,16 @@ let x = 1
 end
 
 # Type definitions
+abstract type Shape end
 abstract type AbstractPoint{T} <: Number end
-mutable struct Point{T} where {T<:Number}
+mutable struct Point{T<:Number}
     x::T
     y::T
     Point(x) = new(x, 2x)
 end
 struct Empty{T} end
 primitive type Float16Custom <: AbstractFloat 16 end
+const Coord = Float64
 
 # Macros
 macro something(x...)

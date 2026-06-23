@@ -289,6 +289,52 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
         )
     end
 
+    @testset "Capture span trimming" begin
+        # No whitespace: unchanged
+        @test Highlights.trim_capture("PROGRAM", (1, 7)) == ("PROGRAM", (1, 7))
+
+        # Trailing newline trimmed, range shrinks
+        @test Highlights.trim_capture("PROGRAM test\n", (1, 13)) ==
+              ("PROGRAM test", (1, 12))
+
+        # Trailing space trimmed
+        @test Highlights.trim_capture("END PROGRAM ", (37, 48)) ==
+              ("END PROGRAM", (37, 47))
+
+        # Leading and trailing trimmed, start advances
+        @test Highlights.trim_capture("  x  ", (5, 9)) == ("x", (7, 7))
+
+        # Entirely whitespace: dropped
+        @test Highlights.trim_capture("  \n ", (1, 4)) === nothing
+
+        # Content captures (string, comment, character) keep their whitespace
+        @test Highlights.is_content_capture("string")
+        @test Highlights.is_content_capture("string.escape")
+        @test Highlights.is_content_capture("comment")
+        @test Highlights.is_content_capture("character")
+        # Structural captures get trimmed
+        @test !Highlights.is_content_capture("keyword")
+        @test !Highlights.is_content_capture("type.definition")
+    end
+
+    @testset "Composite capture trimming" begin
+        # Julia captures whole struct bodies as @type. Structural whitespace and
+        # newlines inside that composite capture must not be styled.
+        out = Highlights.highlight(
+            "text/plain",
+            "struct Foo\n    x::Int\nend",
+            :julia,
+            "Dracula",
+        )
+        @test !occursin(r"\[[\w.]+:[ \t\n]", out)  # no styled token starts with whitespace
+        @test !occursin(r"[ \t\n]\]", out)          # no styled token ends with whitespace
+
+        # Leaf captures (string content) own their whitespace: an internal space
+        # stays inside the string token.
+        str = Highlights.highlight("text/plain", "y = \"a \"", :julia, "Dracula")
+        @test occursin("[string:\"a \"]", str)
+    end
+
     @testset "HTML escaping" begin
         @test Highlights.escape_html("<script>") == "&lt;script&gt;"
         @test Highlights.escape_html("a & b") == "a &amp; b"
