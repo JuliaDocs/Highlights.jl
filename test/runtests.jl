@@ -298,8 +298,7 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
               ("PROGRAM test", (1, 12))
 
         # Trailing space trimmed
-        @test Highlights.trim_capture("END PROGRAM ", (37, 48)) ==
-              ("END PROGRAM", (37, 47))
+        @test Highlights.trim_capture("END PROGRAM ", (37, 48)) == ("END PROGRAM", (37, 47))
 
         # Leading and trailing trimmed, start advances
         @test Highlights.trim_capture("  x  ", (5, 9)) == ("x", (7, 7))
