@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Elixir syntax highlighting, covered by reference tests across ANSI, HTML,
+  LaTeX, and Typst output [#86].
+
 ### Fixed
 
 - Stop capture styling from bleeding onto the whitespace and newlines between
@@ -188,3 +193,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#66]: https://github.com/JuliaDocs/Highlights.jl/issues/66
 [#81]: https://github.com/JuliaDocs/Highlights.jl/issues/81
 [#84]: https://github.com/JuliaDocs/Highlights.jl/issues/84
+[#86]: https://github.com/JuliaDocs/Highlights.jl/issues/86
