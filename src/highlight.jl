@@ -298,6 +298,34 @@ function deduplicate_tokens(tokens::Vector{HighlightToken}, priorities::Dict)
     return result
 end
 
+# Capture categories whose spanned whitespace is literal content (string and
+# comment text), not structural whitespace between tokens.
+const CONTENT_CAPTURES = ("string", "comment", "character")
+
+"""
+    is_content_capture(name::AbstractString) -> Bool
+
+Whether a capture name denotes literal text content (string, comment, character)
+whose whitespace must be preserved rather than trimmed.
+"""
+is_content_capture(name::AbstractString) = first(split(name, '.')) in CONTENT_CAPTURES
+
+"""
+    trim_capture(text::AbstractString, byte_range::Tuple{Int,Int}) -> Union{Tuple{String,Tuple{Int,Int}},Nothing}
+
+Trim leading and trailing whitespace from a capture span so styling does not
+bleed onto the spaces and newlines between tokens. Returns the trimmed text and
+adjusted byte range, or `nothing` when the span is entirely whitespace.
+"""
+function trim_capture(text::AbstractString, byte_range::Tuple{Int,Int})
+    stripped = strip(text)
+    isempty(stripped) && return nothing
+    lead = sizeof(text) - sizeof(lstrip(text))
+    trail = sizeof(text) - sizeof(rstrip(text))
+    start, stop = byte_range
+    return String(stripped), (start + lead, stop - trail)
+end
+
 """
     highlight_tokens(parser::TreeSitter.Parser, query::TreeSitter.Query, source::AbstractString;
                      priorities::Dict=default_capture_priorities()) -> Vector{HighlightToken}
@@ -325,5 +353,23 @@ function highlight_tokens(
     end
 
     sort!(tokens, by = t -> t.byte_range[1])
-    return deduplicate_tokens(tokens, priorities)
+
+    # Node-level captures (e.g. a whole `(program_statement)` matched as
+    # @keyword, or a Julia struct body matched as @type) bleed styling onto the
+    # structural spaces and newlines between their children. Trim that
+    # whitespace so it falls back to the formatters' unstyled gap path. Content
+    # captures (string, comment, character) own their whitespace, so they are
+    # left untouched.
+    result = HighlightToken[]
+    for token in deduplicate_tokens(tokens, priorities)
+        if is_content_capture(token.capture)
+            push!(result, token)
+        else
+            trimmed = trim_capture(token.text, token.byte_range)
+            trimmed === nothing && continue
+            new_text, new_range = trimmed
+            push!(result, HighlightToken(new_text, token.capture, new_range, token.node))
+        end
+    end
+    return result
 end

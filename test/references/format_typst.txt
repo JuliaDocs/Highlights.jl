@@ -49,18 +49,20 @@
 #text(fill: rgb(230, 71, 71))[#raw("end")] \
  \
 #text(fill: rgb(122, 122, 122))[#raw("# Type definitions")] \
-#text(fill: rgb(230, 71, 71))[#raw("abstract")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("type")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("AbstractPoint")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(117, 215, 236))[#raw(" ")]#text(fill: rgb(248, 248, 242))[#raw("<:")]#text(fill: rgb(117, 215, 236))[#raw(" ")]#text(fill: rgb(117, 215, 236))[#raw("Number")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
-#text(fill: rgb(230, 71, 71))[#raw("mutable")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("struct")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Point")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("}")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("where")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("<:")]#text(fill: rgb(117, 215, 236))[#raw("Number")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(117, 215, 236))[] \
-#text(fill: rgb(117, 215, 236))[#raw("    x")]#text(fill: rgb(248, 248, 242))[#raw("::")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(117, 215, 236))[] \
-#text(fill: rgb(117, 215, 236))[#raw("    y")]#text(fill: rgb(248, 248, 242))[#raw("::")]#text(fill: rgb(117, 215, 236))[#raw("T")] \
-#text(fill: rgb(117, 215, 236))[#raw("    ")]#text(fill: rgb(155, 107, 223))[#raw("Point")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(117, 215, 236))[#raw(" ")]#text(fill: rgb(248, 248, 242))[#raw("=")]#text(fill: rgb(117, 215, 236))[#raw(" new")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(117, 215, 236))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(",")]#text(fill: rgb(117, 215, 236))[#raw(" 2x")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(117, 215, 236))[] \
-#text(fill: rgb(117, 215, 236))[#raw("end")] \
-#text(fill: rgb(117, 215, 236))[#raw("struct Empty")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(117, 215, 236))[#raw(" end")] \
-#text(fill: rgb(117, 215, 236))[#raw("primitive type Float16Custom ")]#text(fill: rgb(248, 248, 242))[#raw("<:")]#text(fill: rgb(117, 215, 236))[#raw(" ")]#text(fill: rgb(139, 233, 253))[#raw("AbstractFloat")]#text(fill: rgb(117, 215, 236))[#raw(" 16 end")] \
-#text(fill: rgb(117, 215, 236))[] \
-#text(fill: rgb(117, 215, 236))[]#text(fill: rgb(122, 122, 122))[#raw("# Macros")]#text(fill: rgb(117, 215, 236))[] \
-#text(fill: rgb(117, 215, 236))[#raw("macro something")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(117, 215, 236))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw("...")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
-#raw("    ")#text(fill: rgb(117, 215, 236))[#raw("nothing")] \
+#text(fill: rgb(230, 71, 71))[#raw("abstract")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("type")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Shape")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("abstract")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("type")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("AbstractPoint")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("}")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<:")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Number")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("mutable")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("struct")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Point")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("<:")]#text(fill: rgb(117, 215, 236))[#raw("Number")]#text(fill: rgb(248, 248, 242))[#raw("}")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw("::")]#text(fill: rgb(117, 215, 236))[#raw("T")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("y")]#text(fill: rgb(248, 248, 242))[#raw("::")]#text(fill: rgb(117, 215, 236))[#raw("T")] \
+#raw("    ")#text(fill: rgb(155, 107, 223))[#raw("Point")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(155, 107, 223))[#raw("new")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("struct")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Empty")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(117, 215, 236))[#raw("T")]#text(fill: rgb(248, 248, 242))[#raw("}")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("primitive")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("type")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("Float16Custom")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<:")]#raw(" ")#text(fill: rgb(117, 215, 236))[#raw("AbstractFloat")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("16")]#raw(" ")#text(fill: rgb(230, 71, 71))[#raw("end")] \
+#text(fill: rgb(230, 71, 71))[#raw("const")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("Coord")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("=")]#raw(" ")#text(fill: rgb(139, 233, 253))[#raw("Float64")] \
+ \
+#text(fill: rgb(122, 122, 122))[#raw("# Macros")] \
+#text(fill: rgb(230, 71, 71))[#raw("macro")]#raw(" ")#text(fill: rgb(227, 86, 167))[#raw("something")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("x")]#text(fill: rgb(248, 248, 242))[#raw("...")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    ")#text(fill: rgb(241, 250, 140))[#raw("nothing")] \
 #text(fill: rgb(230, 71, 71))[#raw("end")] \
  \
 #text(fill: rgb(122, 122, 122))[#raw("# Character literals")] \

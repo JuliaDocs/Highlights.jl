@@ -47,18 +47,20 @@ Nested comments \#= can be \#= deeply =\# nested =\#
 (*@\HLB{\HLCb{end}}@*)
 
 (*@\HLI{\HLCa{\# Type definitions}}@*)
-(*@\HLB{\HLCb{abstract}}@*) (*@\HLB{\HLCb{type}}@*) (*@\HLU{\HLCg{AbstractPoint}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{\}}@*)(*@\HLU{\HLCg{ }}@*)(*@\HLCh{<:}@*)(*@\HLU{\HLCg{ }}@*)(*@\HLU{\HLCg{Number}}@*) (*@\HLB{\HLCb{end}}@*)
-(*@\HLB{\HLCb{mutable}}@*) (*@\HLB{\HLCb{struct}}@*) (*@\HLU{\HLCg{Point}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{\}}@*) (*@\HLB{\HLCb{where}}@*) (*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{<:}@*)(*@\HLU{\HLCg{Number}}@*)(*@\HLCh{\}}@*)(*@\HLU{\HLCg{
-    x}}@*)(*@\HLCh{::}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLU{\HLCg{
-    y}}@*)(*@\HLCh{::}@*)(*@\HLU{\HLCg{T
-    }}@*)(*@\HLB{\HLI{\HLCe{Point}}}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*)(*@\HLU{\HLCg{ }}@*)(*@\HLCh{=}@*)(*@\HLU{\HLCg{ new}}@*)(*@\HLCh{(}@*)(*@\HLU{\HLCg{x}}@*)(*@\HLCh{,}@*)(*@\HLU{\HLCg{ 2x}}@*)(*@\HLCh{)}@*)(*@\HLU{\HLCg{
-end
-struct Empty}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{\}}@*)(*@\HLU{\HLCg{ end
-primitive type Float16Custom }}@*)(*@\HLCh{<:}@*)(*@\HLU{\HLCg{ }}@*)(*@\HLU{\HLCo{AbstractFloat}}@*)(*@\HLU{\HLCg{ 16 end
+(*@\HLB{\HLCb{abstract}}@*) (*@\HLB{\HLCb{type}}@*) (*@\HLU{\HLCg{Shape}}@*) (*@\HLB{\HLCb{end}}@*)
+(*@\HLB{\HLCb{abstract}}@*) (*@\HLB{\HLCb{type}}@*) (*@\HLU{\HLCg{AbstractPoint}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{\}}@*) (*@\HLCh{<:}@*) (*@\HLU{\HLCg{Number}}@*) (*@\HLB{\HLCb{end}}@*)
+(*@\HLB{\HLCb{mutable}}@*) (*@\HLB{\HLCb{struct}}@*) (*@\HLU{\HLCg{Point}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{<:}@*)(*@\HLU{\HLCg{Number}}@*)(*@\HLCh{\}}@*)
+    (*@\HLCh{x}@*)(*@\HLCh{::}@*)(*@\HLU{\HLCg{T}}@*)
+    (*@\HLCh{y}@*)(*@\HLCh{::}@*)(*@\HLU{\HLCg{T}}@*)
+    (*@\HLB{\HLI{\HLCe{Point}}}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*) (*@\HLCh{=}@*) (*@\HLB{\HLI{\HLCe{new}}}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{,}@*) (*@\HLCd{2}@*)(*@\HLCh{x}@*)(*@\HLCh{)}@*)
+(*@\HLB{\HLCb{end}}@*)
+(*@\HLB{\HLCb{struct}}@*) (*@\HLU{\HLCg{Empty}}@*)(*@\HLCh{\{}@*)(*@\HLU{\HLCg{T}}@*)(*@\HLCh{\}}@*) (*@\HLB{\HLCb{end}}@*)
+(*@\HLB{\HLCb{primitive}}@*) (*@\HLB{\HLCb{type}}@*) (*@\HLU{\HLCg{Float16Custom}}@*) (*@\HLCh{<:}@*) (*@\HLU{\HLCg{AbstractFloat}}@*) (*@\HLCd{16}@*) (*@\HLB{\HLCb{end}}@*)
+(*@\HLB{\HLCb{const}}@*) (*@\HLCh{Coord}@*) (*@\HLCh{=}@*) (*@\HLU{\HLCo{Float64}}@*)
 
-}}@*)(*@\HLI{\HLCa{\# Macros}}@*)(*@\HLU{\HLCg{
-macro something}}@*)(*@\HLCh{(}@*)(*@\HLU{\HLCg{x}}@*)(*@\HLCh{...}@*)(*@\HLCh{)}@*)
-    (*@\HLU{\HLCg{nothing}}@*)
+(*@\HLI{\HLCa{\# Macros}}@*)
+(*@\HLB{\HLCb{macro}}@*) (*@\HLB{\HLI{\HLCf{something}}}@*)(*@\HLCh{(}@*)(*@\HLCh{x}@*)(*@\HLCh{...}@*)(*@\HLCh{)}@*)
+    (*@\HLCl{nothing}@*)
 (*@\HLB{\HLCb{end}}@*)
 
 (*@\HLI{\HLCa{\# Character literals}}@*)

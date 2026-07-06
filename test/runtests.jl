@@ -289,6 +289,73 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
         )
     end
 
+    @testset "Capture span trimming" begin
+        # No whitespace: unchanged
+        @test Highlights.trim_capture("PROGRAM", (1, 7)) == ("PROGRAM", (1, 7))
+
+        # Trailing newline trimmed, range shrinks
+        @test Highlights.trim_capture("PROGRAM test\n", (1, 13)) ==
+              ("PROGRAM test", (1, 12))
+
+        # Trailing space trimmed
+        @test Highlights.trim_capture("END PROGRAM ", (37, 48)) == ("END PROGRAM", (37, 47))
+
+        # Leading and trailing trimmed, start advances
+        @test Highlights.trim_capture("  x  ", (5, 9)) == ("x", (7, 7))
+
+        # Entirely whitespace: dropped
+        @test Highlights.trim_capture("  \n ", (1, 4)) === nothing
+
+        # Content captures (string, comment, character) keep their whitespace
+        @test Highlights.is_content_capture("string")
+        @test Highlights.is_content_capture("string.escape")
+        @test Highlights.is_content_capture("comment")
+        @test Highlights.is_content_capture("character")
+        # Structural captures get trimmed
+        @test !Highlights.is_content_capture("keyword")
+        @test !Highlights.is_content_capture("type.definition")
+    end
+
+    @testset "Composite capture trimming" begin
+        # Fortran captures whole statements as @keyword, spanning the space and
+        # line break after `PROGRAM test`. That structural whitespace must not
+        # be styled.
+        out = Highlights.highlight(
+            "text/plain",
+            "PROGRAM test\n    CALL greet\nEND PROGRAM test",
+            :fortran,
+            "Dracula",
+        )
+        @test occursin("[keyword:PROGRAM] [variable:test]", out)
+        @test occursin("[keyword:END PROGRAM] [variable:test]", out)
+        @test !occursin(r"\[[\w.]+:[ \t\n]", out)  # no styled token starts with whitespace
+        @test !occursin(r"[ \t\n]\]", out)          # no styled token ends with whitespace
+
+        # MATLAB multi-assignment yields a whitespace-only @variable capture
+        # between the comma and the next identifier. Whitespace-only spans are
+        # dropped, not styled.
+        out = Highlights.highlight("text/plain", "[X, Y] = func(1.0);", :matlab, "Dracula")
+        @test !occursin("[variable: ]", out)
+        @test occursin("[punctuation.delimiter:,] [variable:Y]", out)
+
+        # Invalid source puts tree-sitter into error recovery, producing
+        # composite @type spans across newlines. Their interior line breaks fall
+        # to the unstyled gap path.
+        out = Highlights.highlight(
+            "text/plain",
+            "mutable struct Point{T} where {T<:Number}\n    x::T\nend",
+            :julia,
+            "Dracula",
+        )
+        @test !occursin(r"\[[\w.]+:[ \t\n]", out)
+        @test !occursin(r"[ \t\n]\]", out)
+
+        # Leaf captures (string content) own their whitespace: an internal space
+        # stays inside the string token.
+        str = Highlights.highlight("text/plain", "y = \"a \"", :julia, "Dracula")
+        @test occursin("[string:\"a \"]", str)
+    end
+
     @testset "HTML escaping" begin
         @test Highlights.escape_html("<script>") == "&lt;script&gt;"
         @test Highlights.escape_html("a & b") == "a &amp; b"

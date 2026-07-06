@@ -46,18 +46,20 @@ Nested comments #= can be #= deeply =# nested =#
 <span class="hl-c2">end</span>
 
 <span class="hl-c1"># Type definitions</span>
-<span class="hl-c2">abstract</span> <span class="hl-c2">type</span> <span class="hl-c7">AbstractPoint</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span><span class="hl-c7"> </span><span class="hl-c8">&lt;:</span><span class="hl-c7"> </span><span class="hl-c7">Number</span> <span class="hl-c2">end</span>
-<span class="hl-c2">mutable</span> <span class="hl-c2">struct</span> <span class="hl-c7">Point</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span> <span class="hl-c2">where</span> <span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">&lt;:</span><span class="hl-c7">Number</span><span class="hl-c8">}</span><span class="hl-c7">
-    x</span><span class="hl-c8">::</span><span class="hl-c7">T</span><span class="hl-c7">
-    y</span><span class="hl-c8">::</span><span class="hl-c7">T
-    </span><span class="hl-c5">Point</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">)</span><span class="hl-c7"> </span><span class="hl-c8">=</span><span class="hl-c7"> new</span><span class="hl-c8">(</span><span class="hl-c7">x</span><span class="hl-c8">,</span><span class="hl-c7"> 2x</span><span class="hl-c8">)</span><span class="hl-c7">
-end
-struct Empty</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span><span class="hl-c7"> end
-primitive type Float16Custom </span><span class="hl-c8">&lt;:</span><span class="hl-c7"> </span><span class="hl-c15">AbstractFloat</span><span class="hl-c7"> 16 end
+<span class="hl-c2">abstract</span> <span class="hl-c2">type</span> <span class="hl-c7">Shape</span> <span class="hl-c2">end</span>
+<span class="hl-c2">abstract</span> <span class="hl-c2">type</span> <span class="hl-c7">AbstractPoint</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span> <span class="hl-c8">&lt;:</span> <span class="hl-c7">Number</span> <span class="hl-c2">end</span>
+<span class="hl-c2">mutable</span> <span class="hl-c2">struct</span> <span class="hl-c7">Point</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">&lt;:</span><span class="hl-c7">Number</span><span class="hl-c8">}</span>
+    <span class="hl-c8">x</span><span class="hl-c8">::</span><span class="hl-c7">T</span>
+    <span class="hl-c8">y</span><span class="hl-c8">::</span><span class="hl-c7">T</span>
+    <span class="hl-c5">Point</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">)</span> <span class="hl-c8">=</span> <span class="hl-c5">new</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">,</span> <span class="hl-c4">2</span><span class="hl-c8">x</span><span class="hl-c8">)</span>
+<span class="hl-c2">end</span>
+<span class="hl-c2">struct</span> <span class="hl-c7">Empty</span><span class="hl-c8">{</span><span class="hl-c7">T</span><span class="hl-c8">}</span> <span class="hl-c2">end</span>
+<span class="hl-c2">primitive</span> <span class="hl-c2">type</span> <span class="hl-c7">Float16Custom</span> <span class="hl-c8">&lt;:</span> <span class="hl-c7">AbstractFloat</span> <span class="hl-c4">16</span> <span class="hl-c2">end</span>
+<span class="hl-c2">const</span> <span class="hl-c8">Coord</span> <span class="hl-c8">=</span> <span class="hl-c15">Float64</span>
 
-</span><span class="hl-c1"># Macros</span><span class="hl-c7">
-macro something</span><span class="hl-c8">(</span><span class="hl-c7">x</span><span class="hl-c8">...</span><span class="hl-c8">)</span>
-    <span class="hl-c7">nothing</span>
+<span class="hl-c1"># Macros</span>
+<span class="hl-c2">macro</span> <span class="hl-c6">something</span><span class="hl-c8">(</span><span class="hl-c8">x</span><span class="hl-c8">...</span><span class="hl-c8">)</span>
+    <span class="hl-c12">nothing</span>
 <span class="hl-c2">end</span>
 
 <span class="hl-c1"># Character literals</span>
