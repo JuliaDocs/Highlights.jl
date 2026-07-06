@@ -1,0 +1,35 @@
+<pre style="background-color: #282A36; color: #F8F8F2; padding: 1em; border-radius: 4px; overflow-x: auto;"><span style="color: #7A7A7A"># A single line comment.</span>
+
+<span style="color: #E64747">defmodule</span> <span style="color: #75D7EC">Greeter</span> <span style="color: #E64747">do</span>
+  <span style="color: #7A7A7A">@</span><span style="color: #9B6BDF">moduledoc</span> <span style="color: #42E66C">&quot;&quot;&quot;
+  Greets people and computes Fibonacci numbers.
+  &quot;&quot;&quot;</span>
+
+  <span style="color: #F8F8F2">@</span><span style="color: #9B6BDF">default_name</span> <span style="color: #42E66C">&quot;world&quot;</span>
+
+  <span style="color: #7A7A7A">@</span><span style="color: #9B6BDF">doc</span> <span style="color: #42E66C">&quot;Return a greeting for `name`.&quot;</span>
+  <span style="color: #F8F8F2">@</span><span style="color: #9B6BDF">spec</span> <span style="color: #9B6BDF">greet</span><span style="color: #F8F8F2">(</span><span style="color: #75D7EC">String</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">t</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">::</span> <span style="color: #75D7EC">String</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">t</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">)</span>
+  <span style="color: #E64747">def</span> <span style="color: #9B6BDF">greet</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">name</span> <span style="color: #F8F8F2">\\</span> <span style="color: #F8F8F2">@</span><span style="color: #F8F8F2">default_name</span><span style="color: #F8F8F2">)</span> <span style="color: #E64747">do</span>
+    <span style="color: #42E66C">&quot;Hello, </span><span style="color: #F8F8F2">#{</span><span style="color: #F8F8F2">name</span><span style="color: #F8F8F2">}</span><span style="color: #42E66C">!&quot;</span>
+  <span style="color: #E64747">end</span>
+
+  <span style="color: #E64747">def</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">0</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">do: </span><span style="color: #E4F34A">0</span>
+  <span style="color: #E64747">def</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">)</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">do: </span><span style="color: #E4F34A">1</span>
+  <span style="color: #E64747">def</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">)</span> <span style="color: #E64747">when</span> <span style="color: #9B6BDF">is_integer</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">)</span> <span style="color: #E64747">and</span> <span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">&gt;</span> <span style="color: #E4F34A">1</span> <span style="color: #E64747">do</span>
+    <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">-</span> <span style="color: #E4F34A">1</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">+</span> <span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">-</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">)</span>
+  <span style="color: #E64747">end</span>
+
+  <span style="color: #E64747">def</span> <span style="color: #9B6BDF">run</span> <span style="color: #E64747">do</span>
+    <span style="color: #F8F8F2">names</span> <span style="color: #F8F8F2">=</span> <span style="color: #50FA7B">~</span><span style="color: #F8F8F2">w</span><span style="color: #50FA7B">(</span><span style="color: #50FA7B">Alice Bob Carol</span><span style="color: #50FA7B">)</span>
+
+    <span style="color: #F8F8F2">names</span>
+    <span style="color: #F8F8F2">|&gt;</span> <span style="color: #75D7EC">Enum</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">map</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">&amp;</span><span style="color: #F8F8F2">greet</span><span style="color: #F8F8F2">/</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">)</span>
+    <span style="color: #F8F8F2">|&gt;</span> <span style="color: #75D7EC">Enum</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">each</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">&amp;</span><span style="color: #75D7EC">IO</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">puts</span><span style="color: #F8F8F2">/</span><span style="color: #E4F34A">1</span><span style="color: #F8F8F2">)</span>
+
+    <span style="color: #F8F8F2">config</span> <span style="color: #F8F8F2">=</span> <span style="color: #F8F8F2">%</span><span style="color: #F8F8F2">{</span><span style="color: #50FA7B">retries: </span><span style="color: #E4F34A">3</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">timeout: </span><span style="color: #E4F34A">5_000</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">tags: </span><span style="color: #F8F8F2">[</span><span style="color: #50FA7B">:fast</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">:safe</span><span style="color: #F8F8F2">]</span><span style="color: #F8F8F2">}</span>
+    <span style="color: #75D7EC">IO</span><span style="color: #F8F8F2">.</span><span style="color: #9B6BDF">inspect</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">config</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">label: </span><span style="color: #50FA7B">:config</span><span style="color: #F8F8F2">)</span>
+
+    <span style="color: #E64747">for</span> <span style="color: #F8F8F2">n</span> <span style="color: #F8F8F2">&lt;-</span> <span style="color: #E4F34A">0</span><span style="color: #F8F8F2">..</span><span style="color: #E4F34A">10</span><span style="color: #F8F8F2">,</span> <span style="color: #9B6BDF">rem</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">,</span> <span style="color: #E4F34A">2</span><span style="color: #F8F8F2">)</span> <span style="color: #F8F8F2">==</span> <span style="color: #E4F34A">0</span><span style="color: #F8F8F2">,</span> <span style="color: #50FA7B">do: </span><span style="color: #9B6BDF">fib</span><span style="color: #F8F8F2">(</span><span style="color: #F8F8F2">n</span><span style="color: #F8F8F2">)</span>
+  <span style="color: #E64747">end</span>
+<span style="color: #E64747">end</span>
+</pre>

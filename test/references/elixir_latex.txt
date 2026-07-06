@@ -1,0 +1,59 @@
+\definecolor{hlbg}{RGB}{40,42,54}
+\definecolor{hlfg}{RGB}{248,248,242}
+
+\begin{tcblisting}{
+  colback=hlbg,
+  colframe=hlbg,
+  listing only,
+  breakable,
+  boxrule=0pt,
+  left=0.5em,
+  right=0.5em,
+  top=0.5em,
+  bottom=0.5em,
+  listing options={
+    basicstyle=\ttfamily\footnotesize\color{hlfg},
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showspaces=false,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)},
+  }
+}
+(*@\textcolor[RGB]{122,122,122}{\# A single line comment.}@*)
+
+(*@\textcolor[RGB]{230,71,71}{defmodule}@*) (*@\textcolor[RGB]{117,215,236}{Greeter}@*) (*@\textcolor[RGB]{230,71,71}{do}@*)
+  (*@\textcolor[RGB]{122,122,122}{@}@*)(*@\textcolor[RGB]{155,107,223}{moduledoc}@*) (*@\textcolor[RGB]{66,230,108}{"""
+  Greets people and computes Fibonacci numbers.
+  """}@*)
+
+  (*@\textcolor[RGB]{248,248,242}{@}@*)(*@\textcolor[RGB]{155,107,223}{default\_name}@*) (*@\textcolor[RGB]{66,230,108}{"world"}@*)
+
+  (*@\textcolor[RGB]{122,122,122}{@}@*)(*@\textcolor[RGB]{155,107,223}{doc}@*) (*@\textcolor[RGB]{66,230,108}{"Return a greeting for \textasciigrave{}name\textasciigrave{}."}@*)
+  (*@\textcolor[RGB]{248,248,242}{@}@*)(*@\textcolor[RGB]{155,107,223}{spec}@*) (*@\textcolor[RGB]{155,107,223}{greet}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{117,215,236}{String}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{t}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{::}@*) (*@\textcolor[RGB]{117,215,236}{String}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{t}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+  (*@\textcolor[RGB]{230,71,71}{def}@*) (*@\textcolor[RGB]{155,107,223}{greet}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{name}@*) (*@\textcolor[RGB]{248,248,242}{\textbackslash{}\textbackslash{}}@*) (*@\textcolor[RGB]{248,248,242}{@}@*)(*@\textcolor[RGB]{248,248,242}{default\_name}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{230,71,71}{do}@*)
+    (*@\textcolor[RGB]{66,230,108}{"Hello, }@*)(*@\textcolor[RGB]{248,248,242}{\#\{}@*)(*@\textcolor[RGB]{248,248,242}{name}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)(*@\textcolor[RGB]{66,230,108}{!"}@*)
+  (*@\textcolor[RGB]{230,71,71}{end}@*)
+
+  (*@\textcolor[RGB]{230,71,71}{def}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{0}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{do: }@*)(*@\textcolor[RGB]{228,243,74}{0}@*)
+  (*@\textcolor[RGB]{230,71,71}{def}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{do: }@*)(*@\textcolor[RGB]{228,243,74}{1}@*)
+  (*@\textcolor[RGB]{230,71,71}{def}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{230,71,71}{when}@*) (*@\textcolor[RGB]{155,107,223}{is\_integer}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{230,71,71}{and}@*) (*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{>}@*) (*@\textcolor[RGB]{228,243,74}{1}@*) (*@\textcolor[RGB]{230,71,71}{do}@*)
+    (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{-}@*) (*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{+}@*) (*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{-}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+  (*@\textcolor[RGB]{230,71,71}{end}@*)
+
+  (*@\textcolor[RGB]{230,71,71}{def}@*) (*@\textcolor[RGB]{155,107,223}{run}@*) (*@\textcolor[RGB]{230,71,71}{do}@*)
+    (*@\textcolor[RGB]{248,248,242}{names}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{80,250,123}{\textasciitilde{}}@*)(*@\textcolor[RGB]{248,248,242}{w}@*)(*@\textcolor[RGB]{80,250,123}{(}@*)(*@\textcolor[RGB]{80,250,123}{Alice Bob Carol}@*)(*@\textcolor[RGB]{80,250,123}{)}@*)
+
+    (*@\textcolor[RGB]{248,248,242}{names}@*)
+    (*@\textcolor[RGB]{248,248,242}{|>}@*) (*@\textcolor[RGB]{117,215,236}{Enum}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{map}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{\&}@*)(*@\textcolor[RGB]{248,248,242}{greet}@*)(*@\textcolor[RGB]{248,248,242}{/}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+    (*@\textcolor[RGB]{248,248,242}{|>}@*) (*@\textcolor[RGB]{117,215,236}{Enum}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{each}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{\&}@*)(*@\textcolor[RGB]{117,215,236}{IO}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{puts}@*)(*@\textcolor[RGB]{248,248,242}{/}@*)(*@\textcolor[RGB]{228,243,74}{1}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+    (*@\textcolor[RGB]{248,248,242}{config}@*) (*@\textcolor[RGB]{248,248,242}{=}@*) (*@\textcolor[RGB]{248,248,242}{\%}@*)(*@\textcolor[RGB]{248,248,242}{\{}@*)(*@\textcolor[RGB]{80,250,123}{retries: }@*)(*@\textcolor[RGB]{228,243,74}{3}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{timeout: }@*)(*@\textcolor[RGB]{228,243,74}{5\_000}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{tags: }@*)(*@\textcolor[RGB]{248,248,242}{[}@*)(*@\textcolor[RGB]{80,250,123}{:fast}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{:safe}@*)(*@\textcolor[RGB]{248,248,242}{]}@*)(*@\textcolor[RGB]{248,248,242}{\}}@*)
+    (*@\textcolor[RGB]{117,215,236}{IO}@*)(*@\textcolor[RGB]{248,248,242}{.}@*)(*@\textcolor[RGB]{155,107,223}{inspect}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{config}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{label: }@*)(*@\textcolor[RGB]{80,250,123}{:config}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+
+    (*@\textcolor[RGB]{230,71,71}{for}@*) (*@\textcolor[RGB]{248,248,242}{n}@*) (*@\textcolor[RGB]{248,248,242}{<-}@*) (*@\textcolor[RGB]{228,243,74}{0}@*)(*@\textcolor[RGB]{248,248,242}{..}@*)(*@\textcolor[RGB]{228,243,74}{10}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{155,107,223}{rem}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{228,243,74}{2}@*)(*@\textcolor[RGB]{248,248,242}{)}@*) (*@\textcolor[RGB]{248,248,242}{==}@*) (*@\textcolor[RGB]{228,243,74}{0}@*)(*@\textcolor[RGB]{248,248,242}{,}@*) (*@\textcolor[RGB]{80,250,123}{do: }@*)(*@\textcolor[RGB]{155,107,223}{fib}@*)(*@\textcolor[RGB]{248,248,242}{(}@*)(*@\textcolor[RGB]{248,248,242}{n}@*)(*@\textcolor[RGB]{248,248,242}{)}@*)
+  (*@\textcolor[RGB]{230,71,71}{end}@*)
+(*@\textcolor[RGB]{230,71,71}{end}@*)
+
+\end{tcblisting}

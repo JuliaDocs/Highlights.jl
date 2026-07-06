@@ -4,6 +4,7 @@ using Test
 
 import tectonic_jll
 import Typst_jll
+import tree_sitter_elixir_jll
 import tree_sitter_fortran_jll
 import tree_sitter_go_jll
 import tree_sitter_javascript_jll
@@ -409,6 +410,12 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
             :go,
             "Dracula",
         )
+        @test_reference "references/elixir.txt" Highlights.highlight(
+            "text/plain",
+            read_sample("hello.ex"),
+            :elixir,
+            "Dracula",
+        )
         @test_reference "references/fortran.txt" Highlights.highlight(
             "text/plain",
             read_sample("hello.f90"),
@@ -458,6 +465,31 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
             "text/typst",
             code,
             :julia,
+            "Dracula",
+        )
+
+        # Elixir
+        @test_reference "references/elixir_ansi.txt" Highlights.highlight(
+            read_sample("hello.ex"),
+            :elixir,
+            "Dracula",
+        )
+        @test_reference "references/elixir_html.txt" Highlights.highlight(
+            "text/html",
+            read_sample("hello.ex"),
+            :elixir,
+            "Dracula",
+        )
+        @test_reference "references/elixir_latex.txt" Highlights.highlight(
+            "text/latex",
+            read_sample("hello.ex"),
+            :elixir,
+            "Dracula",
+        )
+        @test_reference "references/elixir_typst.txt" Highlights.highlight(
+            "text/typst",
+            read_sample("hello.ex"),
+            :elixir,
             "Dracula",
         )
 

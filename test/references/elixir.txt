@@ -1,0 +1,34 @@
+[comment:# A single line comment.]
+
+[keyword:defmodule] [module:Greeter] [keyword:do]
+  [comment.doc:@][function:moduledoc] [string:"""
+  Greets people and computes Fibonacci numbers.
+  """]
+
+  [operator:@][function:default_name] [string:"world"]
+
+  [comment.doc:@][function:doc] [string:"Return a greeting for `name`."]
+  [operator:@][function:spec] [function:greet][punctuation.bracket:(][module:String][operator:.][function:t][punctuation.bracket:(][punctuation.bracket:)][punctuation.bracket:)] [operator:::] [module:String][operator:.][function:t][punctuation.bracket:(][punctuation.bracket:)]
+  [keyword:def] [function:greet][punctuation.bracket:(][variable:name] [operator:\\] [operator:@][variable:default_name][punctuation.bracket:)] [keyword:do]
+    [string:"Hello, ][punctuation.special:#{][variable:name][punctuation.special:}][string:!"]
+  [keyword:end]
+
+  [keyword:def] [function:fib][punctuation.bracket:(][number:0][punctuation.bracket:)][punctuation.delimiter:,] [string.special.symbol:do: ][number:0]
+  [keyword:def] [function:fib][punctuation.bracket:(][number:1][punctuation.bracket:)][punctuation.delimiter:,] [string.special.symbol:do: ][number:1]
+  [keyword:def] [function:fib][punctuation.bracket:(][variable:n][punctuation.bracket:)] [keyword:when] [function:is_integer][punctuation.bracket:(][variable:n][punctuation.bracket:)] [keyword:and] [variable:n] [operator:>] [number:1] [keyword:do]
+    [function:fib][punctuation.bracket:(][variable:n] [operator:-] [number:1][punctuation.bracket:)] [operator:+] [function:fib][punctuation.bracket:(][variable:n] [operator:-] [number:2][punctuation.bracket:)]
+  [keyword:end]
+
+  [keyword:def] [function:run] [keyword:do]
+    [variable:names] [operator:=] [string.special:~][__name__:w][string.special:(][string.special:Alice Bob Carol][string.special:)]
+
+    [variable:names]
+    [operator:|>] [module:Enum][operator:.][function:map][punctuation.bracket:(][operator:&][variable:greet][operator:/][number:1][punctuation.bracket:)]
+    [operator:|>] [module:Enum][operator:.][function:each][punctuation.bracket:(][operator:&][module:IO][operator:.][function:puts][operator:/][number:1][punctuation.bracket:)]
+
+    [variable:config] [operator:=] [punctuation:%][punctuation.bracket:{][string.special.symbol:retries: ][number:3][punctuation.delimiter:,] [string.special.symbol:timeout: ][number:5_000][punctuation.delimiter:,] [string.special.symbol:tags: ][punctuation.bracket:[][string.special.symbol::fast][punctuation.delimiter:,] [string.special.symbol::safe][punctuation.bracket:]][punctuation.bracket:}]
+    [module:IO][operator:.][function:inspect][punctuation.bracket:(][variable:config][punctuation.delimiter:,] [string.special.symbol:label: ][string.special.symbol::config][punctuation.bracket:)]
+
+    [keyword:for] [variable:n] [operator:<-] [number:0][operator:..][number:10][punctuation.delimiter:,] [function:rem][punctuation.bracket:(][variable:n][punctuation.delimiter:,] [number:2][punctuation.bracket:)] [operator:==] [number:0][punctuation.delimiter:,] [string.special.symbol:do: ][function:fib][punctuation.bracket:(][variable:n][punctuation.bracket:)]
+  [keyword:end]
+[keyword:end]
