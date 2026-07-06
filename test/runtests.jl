@@ -318,16 +318,38 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
     end
 
     @testset "Composite capture trimming" begin
-        # Julia captures whole struct bodies as @type. Structural whitespace and
-        # newlines inside that composite capture must not be styled.
+        # Fortran captures whole statements as @keyword, spanning the space and
+        # line break after `PROGRAM test`. That structural whitespace must not
+        # be styled.
         out = Highlights.highlight(
             "text/plain",
-            "struct Foo\n    x::Int\nend",
+            "PROGRAM test\n    CALL greet\nEND PROGRAM test",
+            :fortran,
+            "Dracula",
+        )
+        @test occursin("[keyword:PROGRAM] [variable:test]", out)
+        @test occursin("[keyword:END PROGRAM] [variable:test]", out)
+        @test !occursin(r"\[[\w.]+:[ \t\n]", out)  # no styled token starts with whitespace
+        @test !occursin(r"[ \t\n]\]", out)          # no styled token ends with whitespace
+
+        # MATLAB multi-assignment yields a whitespace-only @variable capture
+        # between the comma and the next identifier. Whitespace-only spans are
+        # dropped, not styled.
+        out = Highlights.highlight("text/plain", "[X, Y] = func(1.0);", :matlab, "Dracula")
+        @test !occursin("[variable: ]", out)
+        @test occursin("[punctuation.delimiter:,] [variable:Y]", out)
+
+        # Invalid source puts tree-sitter into error recovery, producing
+        # composite @type spans across newlines. Their interior line breaks fall
+        # to the unstyled gap path.
+        out = Highlights.highlight(
+            "text/plain",
+            "mutable struct Point{T} where {T<:Number}\n    x::T\nend",
             :julia,
             "Dracula",
         )
-        @test !occursin(r"\[[\w.]+:[ \t\n]", out)  # no styled token starts with whitespace
-        @test !occursin(r"[ \t\n]\]", out)          # no styled token ends with whitespace
+        @test !occursin(r"\[[\w.]+:[ \t\n]", out)
+        @test !occursin(r"[ \t\n]\]", out)
 
         # Leaf captures (string content) own their whitespace: an internal space
         # stays inside the string token.
