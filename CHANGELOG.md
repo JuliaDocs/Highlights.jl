@@ -9,11 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Language injection via the `inject` keyword on `highlight`. With
+  `inject=true`, code embedded in the source is highlighted by its own grammar
+  (JavaScript and CSS in HTML, command literals in Julia). Default output is
+  unchanged and loads no embedded grammars [#88].
 - Elixir syntax highlighting, covered by reference tests across ANSI, HTML,
   LaTeX, and Typst output [#86].
 
 ### Fixed
 
+- Colour the capture names markup and CSS grammars emit that previously fell
+  through to the plain foreground: `tag` and `tag.error` for HTML tag names,
+  `property` for CSS property names and selectors [#88].
 - Stop capture styling from bleeding onto the whitespace and newlines between
   tokens. Node-level grammar captures (e.g. a whole Fortran statement matched as
   a keyword) no longer style trailing spaces or line breaks; string and comment

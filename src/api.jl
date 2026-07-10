@@ -103,6 +103,7 @@ function highlight(
     preprocess = nothing,
     stylesheet::Bool = false,
     classprefix::AbstractString = "hl",
+    inject::Bool = false,
 )
     highlight(
         MIME("text/ansi"),
@@ -113,6 +114,7 @@ function highlight(
         preprocess,
         stylesheet,
         classprefix,
+        inject,
     )
 end
 
@@ -125,6 +127,7 @@ function highlight(
     preprocess = nothing,
     stylesheet::Bool = false,
     classprefix::AbstractString = "hl",
+    inject::Bool = false,
 )
     io = IOBuffer()
     highlight(
@@ -137,6 +140,7 @@ function highlight(
         preprocess,
         stylesheet,
         classprefix,
+        inject,
     )
     return String(take!(io))
 end
@@ -151,6 +155,7 @@ function highlight(
     preprocess = nothing,
     stylesheet::Bool = false,
     classprefix::AbstractString = "hl",
+    inject::Bool = false,
 )
     highlight(
         io,
@@ -162,6 +167,7 @@ function highlight(
         preprocess,
         stylesheet,
         classprefix,
+        inject,
     )
 end
 
@@ -186,6 +192,7 @@ function highlight(
     preprocess = nothing,
     stylesheet::Bool = false,
     classprefix::AbstractString = "hl",
+    inject::Bool = false,
 )
     lang_sym = normalize_language(language)
 
@@ -198,8 +205,7 @@ function highlight(
         # Normal path - highlight entire source
         lang_module = resolve_language(language)
         parser = TreeSitter.Parser(lang_module)
-        query = TreeSitter.Query(lang_module, ["highlights"])
-        tokens = highlight_tokens(parser, query, source)
+        tokens = highlight_tokens(parser, source; inject)
         format(
             io,
             mime,
@@ -219,8 +225,7 @@ function highlight(
             if segment isa CodeSegment
                 lang_module = resolve_language(segment.language)
                 parser = TreeSitter.Parser(lang_module)
-                query = TreeSitter.Query(lang_module, ["highlights"])
-                tokens = highlight_tokens(parser, query, segment.text)
+                tokens = highlight_tokens(parser, segment.text; inject)
                 format(
                     io,
                     mime,
