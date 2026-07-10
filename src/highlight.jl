@@ -52,7 +52,7 @@ function default_capture_colors()
         "variable" => 8,
         "variable.builtin" => 14,
         "variable.parameter" => 8,
-        "property" => 8,
+        "property" => 7,
 
         # Constants
         "constant" => 4,
@@ -68,6 +68,10 @@ function default_capture_colors()
 
         # Comments
         "comment" => 1,
+
+        # Markup
+        "tag" => 2,
+        "tag.error" => 10,
 
         # Operators/punctuation
         "operator" => 8,
@@ -327,22 +331,34 @@ function trim_capture(text::AbstractString, byte_range::Tuple{Int,Int})
 end
 
 """
-    highlight_tokens(parser::TreeSitter.Parser, query::TreeSitter.Query, source::AbstractString;
-                     priorities::Dict=default_capture_priorities()) -> Vector{HighlightToken}
+    highlight_tokens(parser::TreeSitter.Parser, source::AbstractString;
+                     priorities::Dict=default_capture_priorities(), inject::Bool=false) -> Vector{HighlightToken}
 
 Extract highlight tokens from source code, sorted by position.
+
+With `inject=true`, languages embedded in `source` are highlighted by their own grammar:
+each injection layer is highlighted with its own `highlights` query, and overlap between a
+coarse enclosing capture and a fine embedded one resolves in `deduplicate_tokens`, where the
+shorter span wins. With `inject=false` (default) only the top-level grammar highlights, and
+no embedded grammars are loaded.
 """
 function highlight_tokens(
     parser::TreeSitter.Parser,
-    query::TreeSitter.Query,
     source::AbstractString;
     priorities::Dict = default_capture_priorities(),
+    inject::Bool = false,
 )
     tokens = HighlightToken[]
-    tree = Base.parse(parser, source)
+    # max_depth=0 leaves the tree a single layer, so injected grammars are neither resolved
+    # nor loaded when injection is off.
+    tree = Base.parse(parser, source; max_depth = inject ? 8 : 0)
+    layers = inject ? TreeSitter.layers(tree) : (tree,)
 
-    for m in eachmatch(query, tree)
-        if TreeSitter.predicate(query, m, source)
+    for layer in layers
+        haskey(layer.language.queries, "highlights") || continue
+        query = TreeSitter.Query(layer.language, ["highlights"])
+        for m in eachmatch(query, layer)
+            TreeSitter.predicate(query, m, source) || continue
             for c in TreeSitter.captures(m)
                 capture_name = TreeSitter.capture_name(query, c)
                 text = TreeSitter.slice(source, c.node)

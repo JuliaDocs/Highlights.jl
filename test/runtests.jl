@@ -238,6 +238,70 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
 
         # Unknown defaults to 8
         @test Highlights.get_capture_color("unknown.capture", colors) == 8
+
+        # Markup tag names and CSS property names are distinct from the default foreground
+        @test Highlights.get_capture_color("tag", colors) != 8
+        @test Highlights.get_capture_color("property", colors) != 8
+        @test Highlights.get_capture_color("tag.error", colors) ==
+              Highlights.get_capture_color("error", colors)
+    end
+
+    @testset "Markup highlighting" begin
+        theme = Highlights.load_theme("Dracula")
+        tags = Highlights.highlight(MIME("text/html"), "<b id=\"x\">hi</b>", :html, theme)
+
+        # Tag names carry the keyword colour, not the theme's plain foreground.
+        @test occursin("<span style=\"color: $(theme.colors[2])\">b</span>", tags)
+        @test !occursin("<span style=\"color: $(theme.colors[8])\">b</span>", tags)
+    end
+
+    @testset "Language injection" begin
+        theme = Highlights.load_theme("Dracula")
+        plain(source, lang) =
+            Highlights.highlight(MIME("text/plain"), source, lang, theme; inject = true)
+
+        @testset "embedded code uses the embedded language's grammar" begin
+            out = plain("<script>const x = 1;</script>", :html)
+
+            # `const` is a keyword to javascript and raw text to html.
+            @test occursin("[keyword:const]", out)
+            @test occursin("[number:1]", out)
+
+            # The enclosing html is still highlighted by html.
+            @test occursin("[tag:script]", out)
+        end
+
+        @testset "injection is off by default" begin
+            # Without inject=true the embedded javascript stays raw text.
+            out = Highlights.highlight(
+                MIME("text/plain"),
+                "<script>const x = 1;</script>",
+                :html,
+                theme,
+            )
+            @test !occursin("[keyword:const]", out)
+            @test occursin("const x = 1;", out)
+            @test occursin("[tag:script]", out)
+        end
+
+        @testset "a grammar without injectable content is unchanged" begin
+            out = plain("f(x) = x\n", :julia)
+            @test occursin("[function.call:f]", out)
+        end
+
+        @testset "an unavailable grammar degrades to unhighlighted text" begin
+            # No tree_sitter_css_jll exists, so html's css injection cannot resolve.
+            out = plain("<style>a { color: red; }</style>", :html)
+
+            @test occursin("[tag:style]", out)
+            @test occursin("a { color: red; }", out)   # present, just unstyled
+        end
+
+        @testset "source text is preserved verbatim" begin
+            source = "<script>const x = 1;</script>\n"
+            out = plain(source, :html)
+            @test replace(out, r"\[[a-z.]+:" => "", "]" => "") == source
+        end
     end
 
     @testset "Capture style mapping" begin

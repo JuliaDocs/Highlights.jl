@@ -24,6 +24,7 @@ tree_sitter_bash_jll = "7332bcdc-bd2a-5999-b4fe-680b85f40771"
 tree_sitter_elixir_jll = "1780c887-7120-5810-92a7-28bfca871107"
 tree_sitter_fortran_jll = "f370be48-5072-5a80-a2be-a91280f1992d"
 tree_sitter_go_jll = "beecb120-e197-59fa-b79c-0316d51c9920"
+tree_sitter_html_jll = "3890dd07-cc9a-5220-ba41-7d914d0b28d4"
 tree_sitter_javascript_jll = "ca45b743-11fc-5578-b74a-7528860c0bda"
 tree_sitter_julia_jll = "52be201e-a5e9-5cfe-8bf2-2dc4b062171c"
 tree_sitter_matlab_jll = "67499a12-87ae-5367-9f08-9b6e5d7d8b47"
@@ -33,4 +34,4 @@ tree_sitter_rust_jll = "b2197e8e-fe20-5781-846b-d7979e3cddf2"
 tree_sitter_toml_jll = "a1529afc-395a-556b-957c-713caec82e13"
 
 [targets]
-test = ["ReferenceTests", "Test", "Typst_jll", "tectonic_jll", "tree_sitter_bash_jll", "tree_sitter_elixir_jll", "tree_sitter_fortran_jll", "tree_sitter_go_jll", "tree_sitter_javascript_jll", "tree_sitter_julia_jll", "tree_sitter_matlab_jll", "tree_sitter_python_jll", "tree_sitter_r_jll", "tree_sitter_rust_jll", "tree_sitter_toml_jll"]
+test = ["ReferenceTests", "Test", "Typst_jll", "tectonic_jll", "tree_sitter_bash_jll", "tree_sitter_elixir_jll", "tree_sitter_fortran_jll", "tree_sitter_go_jll", "tree_sitter_html_jll", "tree_sitter_javascript_jll", "tree_sitter_julia_jll", "tree_sitter_matlab_jll", "tree_sitter_python_jll", "tree_sitter_r_jll", "tree_sitter_rust_jll", "tree_sitter_toml_jll"]
