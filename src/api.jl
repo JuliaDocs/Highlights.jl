@@ -197,9 +197,7 @@ function highlight(
     if preprocess === nothing
         # Normal path - highlight entire source
         lang_module = resolve_language(language)
-        parser = TreeSitter.Parser(lang_module)
-        query = TreeSitter.Query(lang_module, ["highlights"])
-        tokens = highlight_tokens(parser, query, source)
+        tokens = highlight_tokens(lang_module, source)
         format(
             io,
             mime,
@@ -218,9 +216,7 @@ function highlight(
         for segment in segments
             if segment isa CodeSegment
                 lang_module = resolve_language(segment.language)
-                parser = TreeSitter.Parser(lang_module)
-                query = TreeSitter.Query(lang_module, ["highlights"])
-                tokens = highlight_tokens(parser, query, segment.text)
+                tokens = highlight_tokens(lang_module, segment.text)
                 format(
                     io,
                     mime,

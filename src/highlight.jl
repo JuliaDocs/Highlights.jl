@@ -327,6 +327,54 @@ function trim_capture(text::AbstractString, byte_range::Tuple{Int,Int})
 end
 
 """
+    CachedLanguage
+
+Per-language cache entry holding a compiled highlight query and a reusable
+parser. Compiling the query dominates the cost of `highlight` by several
+orders of magnitude, so both are created once per language module and reused.
+
+The query is immutable once compiled and every `eachmatch` runs on a fresh
+cursor, so it can be shared freely. The parser is stateful, so `lock` must be
+held while parsing.
+"""
+struct CachedLanguage
+    lock::ReentrantLock
+    parser::TreeSitter.Parser
+    query::TreeSitter.Query
+end
+
+const LANGUAGE_CACHE = Dict{Module,CachedLanguage}()
+const LANGUAGE_CACHE_LOCK = ReentrantLock()
+
+"""
+    cached_language(lang_module::Module) -> CachedLanguage
+
+Return the cached parser and compiled highlight query for a language module,
+creating them on first use.
+"""
+function cached_language(lang_module::Module)
+    Base.@lock LANGUAGE_CACHE_LOCK get!(LANGUAGE_CACHE, lang_module) do
+        CachedLanguage(
+            ReentrantLock(),
+            TreeSitter.Parser(lang_module),
+            TreeSitter.Query(lang_module, ["highlights"]),
+        )
+    end
+end
+
+"""
+    highlight_tokens(lang_module::Module, source::AbstractString;
+                     priorities::Dict=default_capture_priorities()) -> Vector{HighlightToken}
+
+Extract highlight tokens from source code using the cached parser and query
+for `lang_module`.
+"""
+function highlight_tokens(lang_module::Module, source::AbstractString; kw...)
+    cached = cached_language(lang_module)
+    Base.@lock cached.lock highlight_tokens(cached.parser, cached.query, source; kw...)
+end
+
+"""
     highlight_tokens(parser::TreeSitter.Parser, query::TreeSitter.Query, source::AbstractString;
                      priorities::Dict=default_capture_priorities()) -> Vector{HighlightToken}
 
