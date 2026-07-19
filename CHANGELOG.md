@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.6.2] - 2026-07-19
+
 ### Added
 
-- Elixir syntax highlighting, covered by reference tests across ANSI, HTML,
+- Reference test coverage for Elixir syntax highlighting across ANSI, HTML,
   LaTeX, and Typst output [#86].
 
 ### Fixed
@@ -171,6 +173,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.5.3]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.5.3
 [v0.6.0]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.0
 [v0.6.1]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.1
+[v0.6.2]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.2
 [#7]: https://github.com/JuliaDocs/Highlights.jl/issues/7
 [#9]: https://github.com/JuliaDocs/Highlights.jl/issues/9
 [#10]: https://github.com/JuliaDocs/Highlights.jl/issues/10
