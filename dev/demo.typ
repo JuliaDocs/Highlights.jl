@@ -22,13 +22,13 @@ Each section shows the same code in different themes and languages.
 #block(fill: rgb(40, 42, 54), inset: 1em, radius: 4pt, width: 100%)[
 #set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(248, 248, 242))
 #set par(leading: 0.5em)
-#text(fill: rgb(122, 122, 122), style: "italic")[#raw("# Fibonacci sequence")] \
-#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("function")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#text(fill: rgb(248, 248, 242))[#raw("::")]#underline[#text(fill: rgb(117, 215, 236))[#raw("Int")]]#text(fill: rgb(248, 248, 242))[#raw(")")] \
-#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("&&")]#raw(" ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")] \
-#raw("    ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
-#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("end")] \
+#text(fill: rgb(98, 114, 164), style: "italic")[#raw("# Fibonacci sequence")] \
+#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("function")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#text(fill: rgb(248, 248, 242))[#raw("::")]#underline[#text(fill: rgb(139, 233, 253))[#raw("Int")]]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#raw("    ")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<=")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("1")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("&&")]#raw(" ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")] \
+#raw("    ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("end")] \
  \
-#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(66, 230, 108))[#raw("\"fib(10) = ")]#text(fill: rgb(248, 248, 242))[#raw("$")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(66, 230, 108))[#raw("\"")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(80, 250, 123))[#raw("\"fib(10) = ")]#text(fill: rgb(248, 248, 242))[#raw("$")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(241, 250, 140))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(80, 250, 123))[#raw("\"")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
 ]
 ]
 #v(0.5em)
@@ -38,13 +38,13 @@ Each section shows the same code in different themes and languages.
 #block(fill: rgb(40, 42, 54), inset: 1em, radius: 4pt, width: 100%)[
 #set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(248, 248, 242))
 #set par(leading: 0.5em)
-#text(fill: rgb(122, 122, 122), style: "italic")[#raw("# Fibonacci sequence")] \
-#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("def")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw("):") \
-#raw("    ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("if")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<=")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(":") \
-#raw("        ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")] \
-#raw("    ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("1")]#raw(") ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(228, 243, 74))[#raw("2")]#raw(")") \
+#text(fill: rgb(98, 114, 164), style: "italic")[#raw("# Fibonacci sequence")] \
+#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("def")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw("):") \
+#raw("    ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("if")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("<=")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("1")]#raw(":") \
+#raw("        ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("n")] \
+#raw("    ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("1")]#raw(") ")#text(fill: rgb(248, 248, 242))[#raw("+")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(248, 248, 242))[#raw("n")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("-")]#raw(" ")#text(fill: rgb(241, 250, 140))[#raw("2")]#raw(")") \
  \
-#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("print")]#raw("(")#text(fill: rgb(66, 230, 108))[#raw("f\"fib(10) = ")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(228, 243, 74))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(66, 230, 108))[#raw("\"")]#raw(")") \
+#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("print")]#raw("(")#text(fill: rgb(80, 250, 123))[#raw("f\"fib(10) = ")]#text(fill: rgb(248, 248, 242))[#raw("{")]#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(241, 250, 140))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw("}")]#text(fill: rgb(80, 250, 123))[#raw("\"")]#raw(")") \
 ]
 ]
 #v(0.5em)
@@ -54,14 +54,14 @@ Each section shows the same code in different themes and languages.
 #block(fill: rgb(40, 42, 54), inset: 1em, radius: 4pt, width: 100%)[
 #set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(248, 248, 242))
 #set par(leading: 0.5em)
-#text(fill: rgb(122, 122, 122), style: "italic")[#raw("// Fibonacci sequence")] \
-#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#text(fill: rgb(248, 248, 242))[#raw(":")]#raw(" ")#underline[#text(fill: rgb(139, 233, 253))[#raw("u32")]]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" -> ")#underline[#text(fill: rgb(139, 233, 253))[#raw("u32")]]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")] \
-#raw("    ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("if")]#raw(" n <= ")#text(fill: rgb(241, 250, 140))[#raw("1")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")]#raw(" ")#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("return")]#raw(" n")#text(fill: rgb(248, 248, 242))[#raw(";")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("}")] \
-#raw("    ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#raw("n - ")#text(fill: rgb(241, 250, 140))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" + ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#raw("n - ")#text(fill: rgb(241, 250, 140))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
+#text(fill: rgb(98, 114, 164), style: "italic")[#raw("// Fibonacci sequence")] \
+#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw("n")]#text(fill: rgb(248, 248, 242))[#raw(":")]#raw(" ")#underline[#text(fill: rgb(164, 255, 255))[#raw("u32")]]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" -> ")#underline[#text(fill: rgb(164, 255, 255))[#raw("u32")]]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")] \
+#raw("    ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("if")]#raw(" n <= ")#text(fill: rgb(255, 255, 165))[#raw("1")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")]#raw(" ")#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("return")]#raw(" n")#text(fill: rgb(248, 248, 242))[#raw(";")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("}")] \
+#raw("    ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#raw("n - ")#text(fill: rgb(255, 255, 165))[#raw("1")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" + ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(248, 248, 242))[#raw("(")]#raw("n - ")#text(fill: rgb(255, 255, 165))[#raw("2")]#text(fill: rgb(248, 248, 242))[#raw(")")] \
 #text(fill: rgb(248, 248, 242))[#raw("}")] \
  \
-#text(fill: rgb(230, 71, 71), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(155, 107, 223), weight: "bold", style: "italic")[#raw("main")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")] \
-#raw("    ")#text(fill: rgb(227, 86, 167), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(227, 86, 167), weight: "bold", style: "italic")[#raw("!")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(66, 230, 108))[#raw("\"fib(10) = {}\"")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" fib")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(241, 250, 140))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
+#text(fill: rgb(255, 85, 85), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(189, 147, 249), weight: "bold", style: "italic")[#raw("main")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(248, 248, 242))[#raw(")")]#raw(" ")#text(fill: rgb(248, 248, 242))[#raw("{")] \
+#raw("    ")#text(fill: rgb(255, 121, 198), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(255, 121, 198), weight: "bold", style: "italic")[#raw("!")]#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(80, 250, 123))[#raw("\"fib(10) = {}\"")]#text(fill: rgb(248, 248, 242))[#raw(",")]#raw(" fib")#text(fill: rgb(248, 248, 242))[#raw("(")]#text(fill: rgb(255, 255, 165))[#raw("10")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(")")]#text(fill: rgb(248, 248, 242))[#raw(";")] \
 #text(fill: rgb(248, 248, 242))[#raw("}")] \
 ]
 ]
@@ -127,50 +127,50 @@ Each section shows the same code in different themes and languages.
 
 #text(weight: "bold")[Julia]
 #block(fill: luma(245), inset: 8pt, radius: 4pt, width: 100%)[
-#block(fill: rgb(253, 246, 227), inset: 1em, radius: 4pt, width: 100%)[
-#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(101, 123, 131))
+#block(fill: rgb(252, 244, 220), inset: 1em, radius: 4pt, width: 100%)[
+#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(83, 104, 112))
 #set par(leading: 0.5em)
-#text(fill: rgb(101, 123, 131), style: "italic")[#raw("# Fibonacci sequence")] \
-#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("function")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(0, 43, 54))[#raw("n")]#text(fill: rgb(0, 43, 54))[#raw("::")]#underline[#text(fill: rgb(42, 161, 152))[#raw("Int")]]#text(fill: rgb(0, 43, 54))[#raw(")")] \
-#raw("    ")#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("<=")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("1")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("&&")]#raw(" ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("n")] \
-#raw("    ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("-")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("1")]#text(fill: rgb(0, 43, 54))[#raw(")")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("+")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("-")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("2")]#text(fill: rgb(0, 43, 54))[#raw(")")] \
-#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("end")] \
+#text(fill: rgb(0, 30, 39), style: "italic")[#raw("# Fibonacci sequence")] \
+#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("function")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(234, 227, 203))[#raw("n")]#text(fill: rgb(234, 227, 203))[#raw("::")]#underline[#text(fill: rgb(37, 146, 134))[#raw("Int")]]#text(fill: rgb(234, 227, 203))[#raw(")")] \
+#raw("    ")#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("<=")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("1")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("&&")]#raw(" ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("n")] \
+#raw("    ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("-")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("1")]#text(fill: rgb(234, 227, 203))[#raw(")")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("+")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("-")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("2")]#text(fill: rgb(234, 227, 203))[#raw(")")] \
+#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("end")] \
  \
-#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(133, 153, 0))[#raw("\"fib(10) = ")]#text(fill: rgb(0, 43, 54))[#raw("$")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(181, 137, 0))[#raw("10")]#text(fill: rgb(0, 43, 54))[#raw(")")]#text(fill: rgb(0, 43, 54))[#raw(")")]#text(fill: rgb(133, 153, 0))[#raw("\"")]#text(fill: rgb(0, 43, 54))[#raw(")")] \
+#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(115, 138, 5))[#raw("\"fib(10) = ")]#text(fill: rgb(234, 227, 203))[#raw("$")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(165, 119, 6))[#raw("10")]#text(fill: rgb(234, 227, 203))[#raw(")")]#text(fill: rgb(234, 227, 203))[#raw(")")]#text(fill: rgb(115, 138, 5))[#raw("\"")]#text(fill: rgb(234, 227, 203))[#raw(")")] \
 ]
 ]
 #v(0.5em)
 
 #text(weight: "bold")[Python]
 #block(fill: luma(245), inset: 8pt, radius: 4pt, width: 100%)[
-#block(fill: rgb(253, 246, 227), inset: 1em, radius: 4pt, width: 100%)[
-#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(101, 123, 131))
+#block(fill: rgb(252, 244, 220), inset: 1em, radius: 4pt, width: 100%)[
+#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(83, 104, 112))
 #set par(leading: 0.5em)
-#text(fill: rgb(101, 123, 131), style: "italic")[#raw("# Fibonacci sequence")] \
-#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("def")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(0, 43, 54))[#raw("n")]#raw("):") \
-#raw("    ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("if")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("<=")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("1")]#raw(":") \
-#raw("        ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("n")] \
-#raw("    ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("-")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("1")]#raw(") ")#text(fill: rgb(0, 43, 54))[#raw("+")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(0, 43, 54))[#raw("n")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("-")]#raw(" ")#text(fill: rgb(181, 137, 0))[#raw("2")]#raw(")") \
+#text(fill: rgb(0, 30, 39), style: "italic")[#raw("# Fibonacci sequence")] \
+#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("def")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(234, 227, 203))[#raw("n")]#raw("):") \
+#raw("    ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("if")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("<=")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("1")]#raw(":") \
+#raw("        ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("n")] \
+#raw("    ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("return")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("-")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("1")]#raw(") ")#text(fill: rgb(234, 227, 203))[#raw("+")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#raw("(")#text(fill: rgb(234, 227, 203))[#raw("n")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("-")]#raw(" ")#text(fill: rgb(165, 119, 6))[#raw("2")]#raw(")") \
  \
-#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("print")]#raw("(")#text(fill: rgb(133, 153, 0))[#raw("f\"fib(10) = ")]#text(fill: rgb(0, 43, 54))[#raw("{")]#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(181, 137, 0))[#raw("10")]#text(fill: rgb(0, 43, 54))[#raw(")")]#text(fill: rgb(0, 43, 54))[#raw("}")]#text(fill: rgb(133, 153, 0))[#raw("\"")]#raw(")") \
+#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("print")]#raw("(")#text(fill: rgb(115, 138, 5))[#raw("f\"fib(10) = ")]#text(fill: rgb(234, 227, 203))[#raw("{")]#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(165, 119, 6))[#raw("10")]#text(fill: rgb(234, 227, 203))[#raw(")")]#text(fill: rgb(234, 227, 203))[#raw("}")]#text(fill: rgb(115, 138, 5))[#raw("\"")]#raw(")") \
 ]
 ]
 #v(0.5em)
 
 #text(weight: "bold")[Rust]
 #block(fill: luma(245), inset: 8pt, radius: 4pt, width: 100%)[
-#block(fill: rgb(253, 246, 227), inset: 1em, radius: 4pt, width: 100%)[
-#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(101, 123, 131))
+#block(fill: rgb(252, 244, 220), inset: 1em, radius: 4pt, width: 100%)[
+#set text(font: "DejaVu Sans Mono", size: 9pt, fill: rgb(83, 104, 112))
 #set par(leading: 0.5em)
-#text(fill: rgb(101, 123, 131), style: "italic")[#raw("// Fibonacci sequence")] \
-#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(0, 43, 54))[#raw("n")]#text(fill: rgb(0, 43, 54))[#raw(":")]#raw(" ")#underline[#text(fill: rgb(42, 161, 152))[#raw("u32")]]#text(fill: rgb(0, 43, 54))[#raw(")")]#raw(" -> ")#underline[#text(fill: rgb(42, 161, 152))[#raw("u32")]]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("{")] \
-#raw("    ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("if")]#raw(" n <= ")#text(fill: rgb(181, 137, 0))[#raw("1")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("{")]#raw(" ")#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("return")]#raw(" n")#text(fill: rgb(0, 43, 54))[#raw(";")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("}")] \
-#raw("    ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#raw("n - ")#text(fill: rgb(181, 137, 0))[#raw("1")]#text(fill: rgb(0, 43, 54))[#raw(")")]#raw(" + ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(0, 43, 54))[#raw("(")]#raw("n - ")#text(fill: rgb(181, 137, 0))[#raw("2")]#text(fill: rgb(0, 43, 54))[#raw(")")] \
-#text(fill: rgb(0, 43, 54))[#raw("}")] \
+#text(fill: rgb(0, 30, 39), style: "italic")[#raw("// Fibonacci sequence")] \
+#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(234, 227, 203))[#raw("n")]#text(fill: rgb(234, 227, 203))[#raw(":")]#raw(" ")#underline[#text(fill: rgb(129, 144, 144))[#raw("u32")]]#text(fill: rgb(234, 227, 203))[#raw(")")]#raw(" -> ")#underline[#text(fill: rgb(129, 144, 144))[#raw("u32")]]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("{")] \
+#raw("    ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("if")]#raw(" n <= ")#text(fill: rgb(83, 104, 112))[#raw("1")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("{")]#raw(" ")#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("return")]#raw(" n")#text(fill: rgb(234, 227, 203))[#raw(";")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("}")] \
+#raw("    ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#raw("n - ")#text(fill: rgb(83, 104, 112))[#raw("1")]#text(fill: rgb(234, 227, 203))[#raw(")")]#raw(" + ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("fib")]#text(fill: rgb(234, 227, 203))[#raw("(")]#raw("n - ")#text(fill: rgb(83, 104, 112))[#raw("2")]#text(fill: rgb(234, 227, 203))[#raw(")")] \
+#text(fill: rgb(234, 227, 203))[#raw("}")] \
  \
-#text(fill: rgb(220, 50, 47), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(38, 139, 210), weight: "bold", style: "italic")[#raw("main")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(0, 43, 54))[#raw(")")]#raw(" ")#text(fill: rgb(0, 43, 54))[#raw("{")] \
-#raw("    ")#text(fill: rgb(211, 54, 130), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(211, 54, 130), weight: "bold", style: "italic")[#raw("!")]#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(133, 153, 0))[#raw("\"fib(10) = {}\"")]#text(fill: rgb(0, 43, 54))[#raw(",")]#raw(" fib")#text(fill: rgb(0, 43, 54))[#raw("(")]#text(fill: rgb(181, 137, 0))[#raw("10")]#text(fill: rgb(0, 43, 54))[#raw(")")]#text(fill: rgb(0, 43, 54))[#raw(")")]#text(fill: rgb(0, 43, 54))[#raw(";")] \
-#text(fill: rgb(0, 43, 54))[#raw("}")] \
+#text(fill: rgb(209, 28, 36), weight: "bold")[#raw("fn")]#raw(" ")#text(fill: rgb(33, 118, 199), weight: "bold", style: "italic")[#raw("main")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(234, 227, 203))[#raw(")")]#raw(" ")#text(fill: rgb(234, 227, 203))[#raw("{")] \
+#raw("    ")#text(fill: rgb(198, 28, 111), weight: "bold", style: "italic")[#raw("println")]#text(fill: rgb(198, 28, 111), weight: "bold", style: "italic")[#raw("!")]#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(115, 138, 5))[#raw("\"fib(10) = {}\"")]#text(fill: rgb(234, 227, 203))[#raw(",")]#raw(" fib")#text(fill: rgb(234, 227, 203))[#raw("(")]#text(fill: rgb(83, 104, 112))[#raw("10")]#text(fill: rgb(234, 227, 203))[#raw(")")]#text(fill: rgb(234, 227, 203))[#raw(")")]#text(fill: rgb(234, 227, 203))[#raw(";")] \
+#text(fill: rgb(234, 227, 203))[#raw("}")] \
 ]
 ]
 #v(0.5em)
