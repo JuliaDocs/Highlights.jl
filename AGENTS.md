@@ -15,7 +15,10 @@ just format
 just changelog
 
 # Update Gogh themes to latest release
-julia --project scripts/update_gogh.jl
+julia --project=scripts/gogh scripts/gogh/gogh.jl
+
+# Regenerate reference outputs after a theme update
+JULIA_REFERENCETESTS_UPDATE=true julia --project -e 'using Pkg; Pkg.test()'
 ```
 
 ## Architecture
@@ -63,4 +66,5 @@ Language JLL packages must be installed but are auto-loaded when using Symbol/St
 
 ### Themes
 
-362 themes from Gogh project, accessed via Julia Artifacts. Update with `scripts/update_gogh.jl`.
+811 themes from Gogh project, accessed via Julia Artifacts. Update with `scripts/gogh/gogh.jl`.
+Names Gogh has respelled are aliased in `RENAMED_THEMES` so the old spelling keeps working.

@@ -2,7 +2,7 @@
 
 View the [Theme Gallery](gallery.html) to see syntax highlighting examples with popular themes across multiple languages.
 
-The gallery showcases popular themes rendering code samples in Julia, Python, JavaScript, Rust, Go, Bash, and R. Highlights.jl includes over 360 themes from the [Gogh](https://gogh-co.github.io/Gogh/) project.
+The gallery showcases popular themes rendering code samples in Julia, Python, JavaScript, Rust, Go, Bash, and R. Highlights.jl includes over 800 themes from the [Gogh](https://gogh-co.github.io/Gogh/) project.
 
 ## PDF Demo
 

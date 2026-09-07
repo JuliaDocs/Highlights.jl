@@ -13,9 +13,9 @@ const DEMO_THEMES = [
     "Gruvbox Dark",
     "One Dark",
     "Solarized Dark",
-    "Tokyo Night",
+    "TokyoNight",
     "Catppuccin Mocha",
-    "Github Dark",
+    "GitHub Dark",
     "Everforest Dark Hard",
     # Light
     "Github Light",

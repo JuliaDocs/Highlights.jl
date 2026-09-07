@@ -1,6 +1,6 @@
 # Themes
 
-Highlights.jl includes over 360 color themes from the [Gogh](https://gogh-co.github.io/Gogh/) project.
+Highlights.jl includes over 800 color themes from the [Gogh](https://gogh-co.github.io/Gogh/) project.
 
 ## Listing Themes
 
@@ -21,7 +21,7 @@ Some commonly used themes include:
 - **Gruvbox Dark** - Retro groove colors
 - **One Dark** - Atom-inspired dark theme
 - **Solarized Dark** - Precision colors for dark backgrounds
-- **Tokyo Night** - Dark theme inspired by Tokyo lights
+- **TokyoNight** - Dark theme inspired by Tokyo lights
 - **Catppuccin Mocha** - Soothing pastel theme
 
 ## Theme Selection
@@ -51,6 +51,19 @@ highlight(code, :julia, "monokai")
 #   - Monokai Pro
 #   - ...
 ```
+
+## Renamed Themes
+
+Gogh occasionally respells a theme. Highlights.jl keeps the previous spelling
+working, loads the renamed theme, and warns once per name:
+
+```julia
+highlight(code, :julia, "Tokyo Night")
+# ┌ Warning: Theme 'Tokyo Night' has been renamed to 'TokyoNight'. Use the new
+# │ name; the old one will stop resolving in a future release.
+```
+
+The full mapping lives in `Highlights.RENAMED_THEMES`.
 
 ## Theme Colors
 
