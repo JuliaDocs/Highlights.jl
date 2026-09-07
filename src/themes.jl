@@ -109,6 +109,37 @@ end
 const THEME_CACHE = Dict{String,Theme}()
 const THEME_INDEX = Dict{String,String}()  # name → filename (basename)
 
+# Names Gogh has since respelled, mapped to the name that now carries the same
+# palette. `load_theme` resolves these and warns once per name.
+const RENAMED_THEMES = Dict(
+    "Catppuccin Frappé" => "Catppuccin Frappe",
+    "Clrs" => "CLRS",
+    "Cobalt 2" => "Cobalt2",
+    "Fairy Floss" => "Fairyfloss",
+    "Fishtank" => "Fish Tank",
+    "Frontend Delight" => "Front End Delight",
+    "Frontend Fun Forrest" => "Fun Forrest",
+    "Frontend Galaxy" => "Galaxy",
+    "Github Dark" => "GitHub Dark",
+    "Gruvbox" => "Gruvbox Light",
+    "Homebrew Light" => "Terminal Basic",
+    "Homebrew Ocean" => "Ocean",
+    "Ic Green Ppl" => "IC Green PPL",
+    "Ic Orange Ppl" => "IC Orange PPL",
+    "Ir Black" => "IR Black",
+    "Monokai Pro Ocatagon" => "Monokai Pro Octagon",
+    "Nightlion V1" => "Night Lion V1",
+    "Nightlion V2" => "Night Lion V2",
+    "Rosé Pine" => "Rose Pine",
+    "Rosé Pine Dawn" => "Rose Pine Dawn",
+    "Rosé Pine Moon" => "Rose Pine Moon",
+    "Symphonic" => "Symfonic",
+    "Tokyo Night" => "TokyoNight",
+    "Tokyo Night Storm" => "TokyoNight Storm",
+)
+
+const WARNED_RENAMES = Set{String}()
+
 function themes_dir()
     return joinpath(Artifacts.artifact"Gogh", "data", "json")
 end
@@ -252,6 +283,17 @@ function load_theme(name::String)
     if haskey(THEME_INDEX, name)
         data = JSON.parsefile(joinpath(themes_dir(), THEME_INDEX[name]))
         theme = parse_theme(data)
+        THEME_CACHE[name] = theme
+        return theme
+    end
+
+    if haskey(RENAMED_THEMES, name)
+        current = RENAMED_THEMES[name]
+        if !(name in WARNED_RENAMES)
+            push!(WARNED_RENAMES, name)
+            @warn "Theme '$name' has been renamed to '$current'. Use the new name; the old one will stop resolving in a future release."
+        end
+        theme = load_theme(current)
         THEME_CACHE[name] = theme
         return theme
     end

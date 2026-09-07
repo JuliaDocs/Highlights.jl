@@ -63,4 +63,5 @@ Language JLL packages must be installed but are auto-loaded when using Symbol/St
 
 ### Themes
 
-362 themes from Gogh project, accessed via Julia Artifacts. Update with `scripts/update_gogh.jl`.
+811 themes from Gogh project, accessed via Julia Artifacts. Update with `scripts/update_gogh.jl`.
+Names Gogh has respelled are aliased in `RENAMED_THEMES` so the old spelling keeps working.

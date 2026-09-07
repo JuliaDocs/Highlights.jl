@@ -226,6 +226,33 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
         @test suggestions[1] == "Dracula"
     end
 
+    @testset "Renamed themes" begin
+        # Every rename target must exist, otherwise the alias errors just as
+        # the old name did.
+        for (old, current) in Highlights.RENAMED_THEMES
+            @test haskey(Highlights.THEME_INDEX, current)
+            @test !haskey(Highlights.THEME_INDEX, old)
+        end
+
+        # Deprecated names are aliases, not entries in their own right.
+        @test !("Tokyo Night" in Highlights.available_themes())
+
+        # Loading through the old name yields the renamed theme.
+        renamed =
+            @test_logs (:warn, r"renamed to 'Fish Tank'") Highlights.load_theme("Fishtank")
+        @test renamed.colors == Highlights.load_theme("Fish Tank").colors
+        @test renamed.background == Highlights.load_theme("Fish Tank").background
+
+        # The warning is emitted once per deprecated name.
+        @test_logs Highlights.load_theme("Fishtank")
+
+        # Highlighting accepts the old name.
+        @test contains(
+            Highlights.highlight("text/html", "1", :julia, "Tokyo Night"),
+            "<pre",
+        )
+    end
+
     @testset "Capture color mapping" begin
         colors = Highlights.default_capture_colors()
 
@@ -1104,21 +1131,21 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
 
         # HTML: continuation prefixes should be styled spans inside the string
         html = Highlights.highlight("text/html", code, :pycon, "Dracula")
-        # Prefix "... " wrapped in styled span (yellow #F1FA8C for pycon)
-        @test contains(html, "<span style=\"color: #F1FA8C\">... </span>")
+        # Prefix "... " wrapped in styled span (yellow #FFFFA5 for pycon)
+        @test contains(html, "<span style=\"color: #FFFFA5\">... </span>")
         # Should appear 3 times (one per continuation line)
-        @test count("<span style=\"color: #F1FA8C\">... </span>", html) == 3
+        @test count("<span style=\"color: #FFFFA5\">... </span>", html) == 3
 
         # LaTeX: continuation prefixes should use textcolor
         latex = Highlights.highlight("text/latex", code, :pycon, "Dracula")
         # Prefix wrapped in textcolor command
-        @test contains(latex, "\\textcolor[RGB]{241,250,140}{... }")
-        @test count("\\textcolor[RGB]{241,250,140}{... }", latex) == 3
+        @test contains(latex, "\\textcolor[RGB]{255,255,165}{... }")
+        @test count("\\textcolor[RGB]{255,255,165}{... }", latex) == 3
 
         # Typst: continuation prefixes should use #text(fill: ...)[#raw(...)]
         typst = Highlights.highlight("text/typst", code, :pycon, "Dracula")
-        @test contains(typst, "#text(fill: rgb(241, 250, 140))[#raw(\"... \")]")
-        @test count("#text(fill: rgb(241, 250, 140))[#raw(\"... \")]", typst) == 3
+        @test contains(typst, "#text(fill: rgb(255, 255, 165))[#raw(\"... \")]")
+        @test count("#text(fill: rgb(255, 255, 165))[#raw(\"... \")]", typst) == 3
     end
 
     @testset "pycon preprocessor" begin
