@@ -30,9 +30,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      # A Gogh release can restyle a theme, which shifts every rendered output.
+      # Regenerate the references here so the pull request carries them. A theme
+      # rename still fails the suite; the pull request's own CI reports that.
+      - run: julia --project -e 'using Pkg; Pkg.test()'
+        continue-on-error: true
+        env:
+          JULIA_REFERENCETESTS_UPDATE: 'true'
+
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          add-paths: Artifacts.toml
+          add-paths: |
+            Artifacts.toml
+            test/references
           commit-message: "Update Gogh themes artifact"
           title: "Update Gogh themes"
           branch: update-gogh-artifact
