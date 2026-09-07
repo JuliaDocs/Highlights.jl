@@ -54,7 +54,13 @@ jobs:
         with:
           version: ${{ matrix.version }}
           show-versioninfo: true
+      # Julia 1.6 keeps the General registry as a git clone. Restoring one on
+      # Windows leaves every file modified under core.autocrlf, Pkg calls the
+      # registry dirty and refuses to update it, and resolution then sees no
+      # versions for any package. Fetching the registry each run costs seconds.
       - uses: julia-actions/cache@a7bed9df697e5d7309d68afe7542a87621a8b6c8 # v3.3.0
+        with:
+          cache-registries: 'false'
       - uses: julia-actions/julia-runtest@6e050c8013b833b1195105ff2fce9cd802f53271 # v1.12.0
       - uses: julia-actions/julia-processcoverage@03114f09f119417c3242a9fb6e0b722676aedf38 # v1.2.2
       - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
