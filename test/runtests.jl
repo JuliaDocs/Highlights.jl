@@ -835,21 +835,15 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
             "Dracula",
         )
 
-        # Invalid language error handling
-        @static if VERSION >= v"1.7"
-            # Should suggest similar packages
-            err = try
-                Highlights.highlight(code, :jula, "Dracula")
-            catch e
-                e
-            end
-            err_str = sprint(showerror, err)
-            @test contains(err_str, "Language 'jula' not found")
-            @test contains(err_str, "julia (tree_sitter_julia_jll)")
-        else
-            # On 1.6, registry scanning unavailable
-            @test_throws ErrorException Highlights.highlight(code, :jula, "Dracula")
+        # Invalid language suggests similar packages
+        err = try
+            Highlights.highlight(code, :jula, "Dracula")
+        catch e
+            e
         end
+        err_str = sprint(showerror, err)
+        @test contains(err_str, "Language 'jula' not found")
+        @test contains(err_str, "julia (tree_sitter_julia_jll)")
     end
 
     @testset "Language suggestions" begin
@@ -857,17 +851,18 @@ read_sample(name) = read(joinpath(SAMPLES_DIR, name), String)
         @test Highlights.extract_language_name("tree_sitter_julia_jll") == "julia"
         @test Highlights.extract_language_name("tree_sitter_c_sharp_jll") == "c_sharp"
 
-        # Available languages from registry (requires Julia 1.7+)
-        @static if VERSION >= v"1.7"
-            langs = Highlights.available_languages()
-            @test length(langs) > 0
-            @test issorted(langs)
-            @test all(l -> !startswith(l, "tree_sitter_"), langs)
+        # Language list ships with the package, so loading needs no Pkg
+        @test !isdefined(Highlights, :Pkg)
 
-            jlls = Highlights.available_language_jlls()
-            @test length(jlls) > 0
-            @test all(j -> startswith(j, "tree_sitter_") && endswith(j, "_jll"), jlls)
-        end
+        langs = Highlights.available_languages()
+        @test length(langs) > 0
+        @test issorted(langs)
+        @test all(l -> !startswith(l, "tree_sitter_"), langs)
+
+        jlls = Highlights.available_language_jlls()
+        @test "tree_sitter_julia_jll" in jlls
+        @test "tree_sitter_jll" ∉ jlls
+        @test all(j -> startswith(j, "tree_sitter_") && endswith(j, "_jll"), jlls)
 
         # Suggestion ordering by levenshtein distance
         test_jlls = [

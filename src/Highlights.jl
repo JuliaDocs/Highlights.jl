@@ -2,13 +2,13 @@ module Highlights
 
 import Artifacts
 import JSON
-import Pkg
 import TreeSitter
 
 export highlight, stylesheet, Theme, Highlight
 
 include("ansi.jl")
 include("themes.jl")
+include("language_jlls.jl")
 include("languages.jl")
 include("highlight.jl")
 include("formats/ansi.jl")

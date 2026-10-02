@@ -32,30 +32,15 @@ end
 """
     available_language_jlls() -> Vector{String}
 
-Return all tree_sitter_*_jll packages available in registries.
+Return the tree_sitter_*_jll packages registered in General, as generated
+into `language_jlls.jl` by `scripts/languages/languages.jl`.
 """
-function available_language_jlls()
-    jlls = String[]
-    @static if VERSION >= v"1.7"
-        for reg in Pkg.Registry.reachable_registries()
-            for (uuid, regpkg) in reg
-                name = regpkg.name
-                # Match tree_sitter_<lang>_jll but exclude tree_sitter_jll itself
-                if startswith(name, "tree_sitter_") &&
-                   endswith(name, "_jll") &&
-                   name != "tree_sitter_jll"
-                    name in jlls || push!(jlls, name)
-                end
-            end
-        end
-    end
-    return jlls
-end
+available_language_jlls() = LANGUAGE_JLLS
 
 """
     available_languages() -> Vector{String}
 
-Return sorted list of language names available in registries.
+Return sorted list of language names registered in General.
 
 Use this to discover installable grammar packages. Each name corresponds to
 a `tree_sitter_<name>_jll` package that can be installed via `Pkg.add`.
@@ -123,8 +108,6 @@ function resolve_language(lang::Union{Symbol,AbstractString})
             error(
                 "Language '$lang_str' requires package '$name'. Install with: Pkg.add(\"$name\")",
             )
-        elseif isempty(available)
-            error("Language '$lang_str' not found (no grammar packages found in registry)")
         else
             suggestions = suggest_language_jlls(lang_str, available)
             list = join(["  - $lang ($jll)" for (lang, jll) in suggestions], "\n")
