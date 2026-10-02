@@ -7,12 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.6.3] - 2026-10-02
+
 ### Changed
 
 - Drop the `Pkg` dependency. The list of grammar packages behind language
   suggestions and `available_languages` now ships with the package and is
   refreshed weekly from General, so private registries no longer contribute
   suggestions [#103].
+- Update the Gogh themes to v1229. Gogh moved each theme's colours from the
+  bright ANSI slots into the normal ones, so rendered colours shift. The 24
+  theme names Gogh respelled still resolve to the same palette, with a
+  one-time warning per name [#98].
+- Allow TreeSitter 0.3 [#93].
 
 ## [v0.6.2] - 2026-07-19
 
@@ -181,6 +188,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.6.0]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.0
 [v0.6.1]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.1
 [v0.6.2]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.2
+[v0.6.3]: https://github.com/JuliaDocs/Highlights.jl/releases/tag/v0.6.3
 [#7]: https://github.com/JuliaDocs/Highlights.jl/issues/7
 [#9]: https://github.com/JuliaDocs/Highlights.jl/issues/9
 [#10]: https://github.com/JuliaDocs/Highlights.jl/issues/10
@@ -204,4 +212,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#81]: https://github.com/JuliaDocs/Highlights.jl/issues/81
 [#84]: https://github.com/JuliaDocs/Highlights.jl/issues/84
 [#86]: https://github.com/JuliaDocs/Highlights.jl/issues/86
+[#93]: https://github.com/JuliaDocs/Highlights.jl/issues/93
+[#98]: https://github.com/JuliaDocs/Highlights.jl/issues/98
 [#103]: https://github.com/JuliaDocs/Highlights.jl/issues/103
