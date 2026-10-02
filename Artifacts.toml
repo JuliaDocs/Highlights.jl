@@ -1,6 +1,6 @@
 [Gogh]
-git-tree-sha1 = "f3275673ca001392641ab03ed205025f7b2dfbd7"
+git-tree-sha1 = "3f9099f5697e35a7807ef6ba2b155c4f7a5b133f"
 
 [[Gogh.download]]
-url = "https://raw.githubusercontent.com/JuliaDocs/Highlights.jl/a80c3dd371f04e1612df3b01ac62d1081de105cd/gogh-v1235.tar.gz"
-sha256 = "0f5eea96c4f98fa8828c7f4ab78fc089bae7d860e2d463c5b4651daab5763333"
+url = "https://raw.githubusercontent.com/JuliaDocs/Highlights.jl/eac825e13eefc1a23d4980e4111e8f284b0e53bb/gogh-v1247.tar.gz"
+sha256 = "0d2fa4d1fe052bc155a47c5ae0e4f829ebfef0c9b7b2e2c5b1bc45099f50619e"
