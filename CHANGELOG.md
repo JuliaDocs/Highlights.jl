@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+
+- Drop the `Pkg` dependency. The list of grammar packages behind language
+  suggestions and `available_languages` now ships with the package and is
+  refreshed weekly from General, so private registries no longer contribute
+  suggestions [#103].
+
 ## [v0.6.2] - 2026-07-19
 
 ### Added
@@ -197,3 +204,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#81]: https://github.com/JuliaDocs/Highlights.jl/issues/81
 [#84]: https://github.com/JuliaDocs/Highlights.jl/issues/84
 [#86]: https://github.com/JuliaDocs/Highlights.jl/issues/86
+[#103]: https://github.com/JuliaDocs/Highlights.jl/issues/103

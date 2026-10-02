@@ -1,4 +1,4 @@
-name: Update Gogh Themes
+name: Update Generated Data
 
 on:
   schedule:
@@ -30,6 +30,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - run: julia scripts/languages/languages.jl
+
       # A Gogh release can restyle a theme, which shifts every rendered output.
       # Regenerate the references here so the pull request carries them. A theme
       # rename still fails the suite; the pull request's own CI reports that.
@@ -42,8 +44,9 @@ jobs:
         with:
           add-paths: |
             Artifacts.toml
+            src/language_jlls.jl
             test/references
-          commit-message: "Update Gogh themes artifact"
-          title: "Update Gogh themes"
-          branch: update-gogh-artifact
+          commit-message: "Update generated data"
+          title: "Update generated data"
+          branch: update-generated-data
           delete-branch: true

@@ -16,7 +16,15 @@ julia --project=scripts/gogh scripts/gogh/gogh.jl ../highlights-artifacts
 
 ### CI
 
-The `update-gogh.yml` workflow runs weekly, checks for new Gogh releases, and opens a PR with updated `Artifacts.toml` if there are changes.
+The `update-data.yml` workflow runs weekly. It checks for new Gogh releases and regenerates the language list, then opens a PR if `Artifacts.toml` or `src/language_jlls.jl` changed.
+
+## languages/
+
+Regenerates `src/language_jlls.jl`, the list of `tree_sitter_*_jll` packages registered in General.
+
+```bash
+julia scripts/languages/languages.jl
+```
 
 ## format/
 
