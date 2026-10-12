@@ -13,7 +13,7 @@ jobs:
       - uses: julia-actions/setup-julia@fa02766e078afaaf09b14210362cee14137e6a32 # v3.0.2
         with:
           version: '1'
-      - uses: julia-actions/cache@a7bed9df697e5d7309d68afe7542a87621a8b6c8 # v3.3.0
+      - uses: julia-actions/cache@e32267b41e0fa7df82a3d53e8c7273620d52c586 # v3.4.0
       - run: julia --project=scripts/format -e 'using Pkg; Pkg.instantiate()'
       - run: julia --project=scripts/format scripts/format/format.jl
       - run: git diff --exit-code --color
@@ -26,7 +26,7 @@ jobs:
       - uses: julia-actions/setup-julia@fa02766e078afaaf09b14210362cee14137e6a32 # v3.0.2
         with:
           version: '1'
-      - uses: julia-actions/cache@a7bed9df697e5d7309d68afe7542a87621a8b6c8 # v3.3.0
+      - uses: julia-actions/cache@e32267b41e0fa7df82a3d53e8c7273620d52c586 # v3.4.0
       - run: julia --project=scripts/changelog -e 'using Pkg; Pkg.instantiate()'
       - run: julia --project=scripts/changelog scripts/changelog/changelog.jl
       - run: git diff --exit-code --color
@@ -58,7 +58,7 @@ jobs:
       # Windows leaves every file modified under core.autocrlf, Pkg calls the
       # registry dirty and refuses to update it, and resolution then sees no
       # versions for any package. Fetching the registry each run costs seconds.
-      - uses: julia-actions/cache@a7bed9df697e5d7309d68afe7542a87621a8b6c8 # v3.3.0
+      - uses: julia-actions/cache@e32267b41e0fa7df82a3d53e8c7273620d52c586 # v3.4.0
         with:
           cache-registries: 'false'
       - uses: julia-actions/julia-runtest@6e050c8013b833b1195105ff2fce9cd802f53271 # v1.12.0
