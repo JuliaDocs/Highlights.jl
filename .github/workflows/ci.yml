@@ -61,7 +61,7 @@ jobs:
       - uses: julia-actions/cache@9353db09a0f2bbbdec6f41791918c75d37391b36 # v3.5.0
         with:
           cache-registries: 'false'
-      - uses: julia-actions/julia-runtest@6e050c8013b833b1195105ff2fce9cd802f53271 # v1.12.0
+      - uses: julia-actions/julia-runtest@e89ac6c957d7c4d7e0cb3162f12d8290a008f9d1 # v1.13.0
       # CoverageTools reads `Base.PkgLoadSpec.julia_syntax_version`, which
       # nightly renamed to `julia_edition`, so processing coverage there throws.
       - uses: julia-actions/julia-processcoverage@03114f09f119417c3242a9fb6e0b722676aedf38 # v1.2.2
